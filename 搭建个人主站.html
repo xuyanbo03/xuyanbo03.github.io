@@ -104,7 +104,7 @@
 自己用代码写一个。
 
 其中，第一种最简单，也最受限，说不定还会被删帖删号。第二种稍复杂，另外需要自己找部署的服务器，但可定制化">
-<meta property="og:updated_time" content="2017-02-24T11:27:15.399Z">
+<meta property="og:updated_time" content="2017-02-24T12:19:12.612Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用GitHub和hexo搭建个人主站">
 <meta name="twitter:description" content="用GitHub和hexo搭建个人主站作为一个程序员，拥有一个自己的博客，平时记录一下，分享点技术文章，是很有必要的。建立博客的通常渠道包括：
@@ -437,16 +437,15 @@
 <li>自己用代码写一个。</li>
 </ol>
 <p>其中，第一种最简单，也最受限，说不定还会被删帖删号。第二种稍复杂，另外需要自己找部署的服务器，但可定制化较高，是很多程序员的选择。最后一种，是在重复造轮子，不过从另一个方面来看，倒是锻炼编程能力的好方式。</p>
-<hr>
-<h3 id="下面我们就来看下第二种搭建博客的方式。"><a href="#下面我们就来看下第二种搭建博客的方式。" class="headerlink" title="下面我们就来看下第二种搭建博客的方式。"></a>下面我们就来看下第二种搭建博客的方式。</h3><ol>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p><strong>下面我们就来看下第二种搭建博客的方式。</strong></p>
+<ol>
 <li>github＋hexo 建立你的第一个博客</li>
 <li>部署博客及更新博文</li>
 <li>安装自己喜欢的主题</li>
 <li>购买并绑定域名</li>
 </ol>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>其实呢，建立博客是非常简单的（哈哈，不管什么东西，你会的就觉得简单，不会的怎样都难），我来给大家说说如何使用 GitHubPages 和 Hexo 建立自己的博客。</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>其实呢，建立博客是非常简单的（哈哈，不管什么东西，你会的就觉得简单，不会的怎样都难），我来给大家说说如何使用 GitHubPages 和 Hexo 建立自己的博客。</p>
 <p>这个有一点难度，但是不要怕，我会一步一步的给大家完成指导的，如果有任何问题也可以随时联系我，我会尽力给大家解决的！</p>
-<a id="more"></a>
 <h3 id="第一步：github＋hexo-建立你的第一个博客"><a href="#第一步：github＋hexo-建立你的第一个博客" class="headerlink" title="第一步：github＋hexo 建立你的第一个博客"></a>第一步：github＋hexo 建立你的第一个博客</h3><p>下面先介绍为何选择 GitHubPages 和 Hexo 来搭建博客，然后介绍搭建博客的详细过程。</p>
 <p>Why GitHub Pages and Hexo</p>
 <p>因为 GitHub 的存在，我们得以简单快速地搭建个人博客。</p>
@@ -471,13 +470,14 @@
 <h5 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h5><p>安装软件</p>
 <p><a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a><br>下载完成后根据提示一步一步安装就好，这个没有什么需要特别说明的。</p>
 <p><a href="https://desktop.github.com/" target="_blank" rel="external">GitHub for Windows</a><br>下载并安装这个软件，一直点击下一步即可</p>
+<p><a href="https://www.baidu.com/link?url=o8u5B5T07ibHSwXJYNkBxlvwOsSFGGMXm-ABta1del8wif08riRADzUtuclP_th-&amp;wd=&amp;eqid=e80ce7320000c9800000000658b0248f" target="_blank" rel="external">git</a></p>
 <h5 id="使用GitHub-for-Windows登录GitHub"><a href="#使用GitHub-for-Windows登录GitHub" class="headerlink" title="使用GitHub for Windows登录GitHub"></a>使用GitHub for Windows登录GitHub</h5><p>配置 SSH</p>
 <p>我们如何让本地 git 项目与远程的 GitHub 建立联系呢？方法是用 SSH。</p>
 <p>打开命令行，输入以下命令：<code>ssh -T git@github.com</code></p>
 <p>如果是下面之类的反馈（或者显示 Hi xxx）：<br><code>The authenticity of host &#39;github.com &#39; can&#39;t be established. RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48. Are you sure you want to continue connecting (yes/no)?</code><br>不用紧张，输入 yes 之后就配置成功了。</p>
 <h5 id="使用-Hexo-创建博客框架"><a href="#使用-Hexo-创建博客框架" class="headerlink" title="使用 Hexo 创建博客框架"></a>使用 Hexo 创建博客框架</h5><p>Hexo 安装</p>
 <p>Node和Git都安装好后,首先创建一个文件夹,如blog,用户存放hexo的配置文件,然后进入blog里安装Hexo。</p>
-<p>打开命令行，输入命令：<br><code>npm install -g hexo</code></p>
+<p>打开git bash命令行，输入命令：<br><code>npm install -g hexo</code></p>
 <p>Hexo 部署</p>
 <p>Hexo 的部署输入命令：<br><code>hexo init</code></p>
 <p>部署成功之后，用hexo生成静态页面，输入命令：<br><code>hexo generate</code>或者<code>hexo g</code>也可以</p>
@@ -540,7 +540,7 @@ INFOHexois running at http://0.0.0.0:4000/.PressCtrl+C to stop.
 <p>启动本地服务器：<br><code>hexo server</code>或<code>hexo s</code></p>
 <p>本地已经简单的设置好了，但是现在域名和服务器都是基于自己的电脑，接下来需要跟github进行关联。</p>
 <h3 id="第二步：部署博客及更新博文"><a href="#第二步：部署博客及更新博文" class="headerlink" title="第二步：部署博客及更新博文"></a>第二步：部署博客及更新博文</h3><p>在blog文件夹下将博客放入public文件夹中</p>
-<p>在blog文件夹下打开git shell，按以下三步进行：</p>
+<p>在blog文件夹下打开git bash，按以下三步进行：</p>
 <pre><code>`hexo clean`
 
 `hexo g`
@@ -630,6 +630,10 @@ INFOHexois running at http://0.0.0.0:4000/.PressCtrl+C to stop.
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/格局.html" rel="prev" title="格局">
+                格局 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -722,7 +726,7 @@ INFOHexois running at http://0.0.0.0:4000/.PressCtrl+C to stop.
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -820,7 +824,7 @@ INFOHexois running at http://0.0.0.0:4000/.PressCtrl+C to stop.
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#用GitHub和hexo搭建个人主站"><span class="nav-number">1.</span> <span class="nav-text">用GitHub和hexo搭建个人主站</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下面我们就来看下第二种搭建博客的方式。"><span class="nav-number">1.0.1.</span> <span class="nav-text">下面我们就来看下第二种搭建博客的方式。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一步：github＋hexo-建立你的第一个博客"><span class="nav-number">1.1.1.</span> <span class="nav-text">第一步：github＋hexo 建立你的第一个博客</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-GitHub-Pages-建立博客站点"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">使用 GitHub Pages 建立博客站点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#注册-GitHub"><span class="nav-number">1.1.1.1.1.</span> <span class="nav-text">注册 GitHub</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在-GitHub-上建立仓库"><span class="nav-number">1.1.1.1.2.</span> <span class="nav-text">在 GitHub 上建立仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#搭建环境"><span class="nav-number">1.1.1.1.3.</span> <span class="nav-text">搭建环境</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用GitHub-for-Windows登录GitHub"><span class="nav-number">1.1.1.1.4.</span> <span class="nav-text">使用GitHub for Windows登录GitHub</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用-Hexo-创建博客框架"><span class="nav-number">1.1.1.1.5.</span> <span class="nav-text">使用 Hexo 创建博客框架</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置Github"><span class="nav-number">1.1.1.1.6.</span> <span class="nav-text">配置Github</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#部署步骤"><span class="nav-number">1.1.1.1.7.</span> <span class="nav-text">部署步骤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#报错总结"><span class="nav-number">1.1.1.1.8.</span> <span class="nav-text">报错总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二步：部署博客及更新博文"><span class="nav-number">1.1.2.</span> <span class="nav-text">第二步：部署博客及更新博文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三步：安装主题"><span class="nav-number">1.1.3.</span> <span class="nav-text">第三步：安装主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四步：购买并绑定域名"><span class="nav-number">1.1.4.</span> <span class="nav-text">第四步：购买并绑定域名</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#购买域名"><span class="nav-number">1.1.4.0.1.</span> <span class="nav-text">购买域名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#绑定域名"><span class="nav-number">1.1.4.0.2.</span> <span class="nav-text">绑定域名</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考博客："><span class="nav-number">1.1.5.</span> <span class="nav-text">参考博客：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#用GitHub和hexo搭建个人主站"><span class="nav-number">1.</span> <span class="nav-text">用GitHub和hexo搭建个人主站</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.1.</span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一步：github＋hexo-建立你的第一个博客"><span class="nav-number">1.1.2.</span> <span class="nav-text">第一步：github＋hexo 建立你的第一个博客</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-GitHub-Pages-建立博客站点"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">使用 GitHub Pages 建立博客站点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#注册-GitHub"><span class="nav-number">1.1.2.1.1.</span> <span class="nav-text">注册 GitHub</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在-GitHub-上建立仓库"><span class="nav-number">1.1.2.1.2.</span> <span class="nav-text">在 GitHub 上建立仓库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#搭建环境"><span class="nav-number">1.1.2.1.3.</span> <span class="nav-text">搭建环境</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用GitHub-for-Windows登录GitHub"><span class="nav-number">1.1.2.1.4.</span> <span class="nav-text">使用GitHub for Windows登录GitHub</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用-Hexo-创建博客框架"><span class="nav-number">1.1.2.1.5.</span> <span class="nav-text">使用 Hexo 创建博客框架</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置Github"><span class="nav-number">1.1.2.1.6.</span> <span class="nav-text">配置Github</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#部署步骤"><span class="nav-number">1.1.2.1.7.</span> <span class="nav-text">部署步骤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#报错总结"><span class="nav-number">1.1.2.1.8.</span> <span class="nav-text">报错总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二步：部署博客及更新博文"><span class="nav-number">1.1.3.</span> <span class="nav-text">第二步：部署博客及更新博文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三步：安装主题"><span class="nav-number">1.1.4.</span> <span class="nav-text">第三步：安装主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四步：购买并绑定域名"><span class="nav-number">1.1.5.</span> <span class="nav-text">第四步：购买并绑定域名</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#购买域名"><span class="nav-number">1.1.5.0.1.</span> <span class="nav-text">购买域名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#绑定域名"><span class="nav-number">1.1.5.0.2.</span> <span class="nav-text">绑定域名</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考博客："><span class="nav-number">1.1.6.</span> <span class="nav-text">参考博客：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
