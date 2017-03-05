@@ -1,0 +1,1062 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>渐进</title>
+  <subtitle>见多方能识广，进而才可以融会贯通；取他人之所长，谦而才可以为我所用。</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://xxyb.online/"/>
+  <updated>2017-03-05T11:44:26.900Z</updated>
+  <id>http://xxyb.online/</id>
+  
+  <author>
+    <name>X_Sword</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于Linux问题的解决办法</title>
+    <link href="http://xxyb.online/%E5%85%B3%E4%BA%8ELinux%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html"/>
+    <id>http://xxyb.online/关于Linux问题的解决办法.html</id>
+    <published>2017-03-04T16:00:00.000Z</published>
+    <updated>2017-03-05T11:44:26.900Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="关于Linux问题的解决办法"><a href="#关于Linux问题的解决办法" class="headerlink" title="关于Linux问题的解决办法"></a>关于Linux问题的解决办法</h1><blockquote>
+<p>我安装win10和Debian系的linux双系统，以这个双系统为基础，解决linux问题。</p>
+</blockquote>
+<h2 id="关于win10更新之后，重新启动没有windows的引导的问题"><a href="#关于win10更新之后，重新启动没有windows的引导的问题" class="headerlink" title="关于win10更新之后，重新启动没有windows的引导的问题"></a>关于win10更新之后，重新启动没有windows的引导的问题</h2><p>解决方法：</p>
+<ul>
+<li><p>进入Linux操作系统，打开命令行</p>
+</li>
+<li><p>输入 <code>su</code> 切换root用户</p>
+</li>
+<li><p>输入<br><code>apt-get update</code><br><code>update-grub</code></p>
+</li>
+<li><p>重启系统，出现windows的引导</p>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="关于当前使用用户不在sudoers文件中，无法使用sudo命令的问题"><a href="#关于当前使用用户不在sudoers文件中，无法使用sudo命令的问题" class="headerlink" title="关于当前使用用户不在sudoers文件中，无法使用sudo命令的问题"></a>关于当前使用用户不在sudoers文件中，无法使用sudo命令的问题</h2><p>解决方法：</p>
+<ul>
+<li><p>切换到超级用户root <code>su</code></p>
+</li>
+<li><p>查看/etc/sudoers权限，可以看到当前权限为440<br> <code>ls -all /etc/sudoers</code><br>出现下列：<br> -r–r—– 1 root root 744  6月  8 10:29 /etc/sudoers</p>
+</li>
+<li><p>更改权限为777<br> <code>chmod 777 /etc/sudoers</code></p>
+</li>
+<li><p>编辑/etc/sudoers<br> <code>vi /etc/sudoers</code></p>
+</li>
+<li><p>在<code>root    ALL=(ALL:ALL) ALL</code> 下面添加一行<br> <code>user    ALL=(ALL)ALL</code><br> 然后保存退出。</p>
+<p> <em>解释</em>：<strong>第一个ALL是指网络中的主机，我们后面把它改成了主机名，它指明user可以在此主机上执行后面的命令。<br> 第二个括号里的ALL是指目标用户，也就是以谁的身份去执行命令。<br> 最后一个ALL当然就是指命令名了。</strong></p>
+</li>
+<li><p>把/etc/sudoers权限改回440<br> <code>chmod 440 /etc/sudoers</code></p>
+</li>
+<li><p>操作完成,可以使用<code>sudo</code>命令</p>
+</li>
+</ul>
+<h2 id="Linux中GRUB引导故障的修复"><a href="#Linux中GRUB引导故障的修复" class="headerlink" title="Linux中GRUB引导故障的修复"></a>Linux中GRUB引导故障的修复</h2><p>解决方法：</p>
+<ul>
+<li><p>需要用usb做个Debian的系统安装盘</p>
+</li>
+<li><p>从usb启动，进入debian的修复模式，进入终端</p>
+</li>
+<li><p><code>fdisk -l</code> 查看分区情况</p>
+</li>
+<li><p>需要识别出分区与原文件系统的挂接关系<br>  /dev/sda7               swp<br>  /dev/sda8               /<br>  /dev/sda9               /home<br>  /dev/sda10            /boot</p>
+</li>
+<li><p>把与目录/对应的分区/dev/sda8挂在/mnt上，把与目录home对应的分区/dev/sda9挂在/mnt/home上，<br> 把/dev挂在/mnt/dev上</p>
+</li>
+<li><p>输入命令<code>chroot /mnt</code></p>
+</li>
+<li><p>输入命令<code>grub-install /dev/sda</code></p>
+</li>
+<li><p>重启，出现引导</p>
+</li>
+<li><p>进入系统,<br>  <code>su</code><br>  <code>update-grub</code></p>
+</li>
+<li><p>重启，进入系统</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;关于Linux问题的解决办法&quot;&gt;&lt;a href=&quot;#关于Linux问题的解决办法&quot; class=&quot;headerlink&quot; title=&quot;关于Linux问题的解决办法&quot;&gt;&lt;/a&gt;关于Linux问题的解决办法&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;我安装win10和Debian系的linux双系统，以这个双系统为基础，解决linux问题。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;关于win10更新之后，重新启动没有windows的引导的问题&quot;&gt;&lt;a href=&quot;#关于win10更新之后，重新启动没有windows的引导的问题&quot; class=&quot;headerlink&quot; title=&quot;关于win10更新之后，重新启动没有windows的引导的问题&quot;&gt;&lt;/a&gt;关于win10更新之后，重新启动没有windows的引导的问题&lt;/h2&gt;&lt;p&gt;解决方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;进入Linux操作系统，打开命令行&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;输入 &lt;code&gt;su&lt;/code&gt; 切换root用户&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;输入&lt;br&gt;&lt;code&gt;apt-get update&lt;/code&gt;&lt;br&gt;&lt;code&gt;update-grub&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;重启系统，出现windows的引导&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="linux" scheme="http://xxyb.online/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="http://xxyb.online/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>格局</title>
+    <link href="http://xxyb.online/%E6%A0%BC%E5%B1%80.html"/>
+    <id>http://xxyb.online/格局.html</id>
+    <published>2017-02-24T16:00:00.000Z</published>
+    <updated>2017-03-05T11:45:28.958Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="格局"><a href="#格局" class="headerlink" title="格局"></a>格局</h1><p>如果把人生当做一盘棋，那么人生的结局就由这盘棋的格局决定。想要赢得人生这盘棋的胜利，关键在于把握住棋局。</p>
+<p>一个人的格局大小与否说实话是很难定义的，但是一个人是否拥有广阔胸襟却对自己以及周围的人影响很大。</p>
+<p>胸怀的大小会让你看见不一样的世界，会让你寻找到生活中旁人看不到的风景。</p>
+<p>你是什么样的人，你就会和什么样的人交朋友，这句话还是很有道理的。</p>
+<a id="more"></a>
+<p>做人智商高不高没关系，情商高不高也问题不大，但做人的格局一定要大，说白了，你可以不聪明，也可以不懂交际，但一定要大气。</p>
+<p>“再大的烙饼也大不过烙它的锅。”你可以烙出大饼来，但是你烙出的饼再大，它也得受烙它的那口锅的限制。</p>
+<p>我们所希望的未来就好像这张大饼一样，是否能烙出满意的“大饼”，完全取决于烙它的那口“锅”。</p>
+<p>这就是所谓的“格局”。</p>
+<hr>
+<blockquote>
+<p>格局就是指一个人的眼光、胸襟、胆识、心理等要素的内在布局。</p>
+</blockquote>
+<p>有一个乞丐，整天在街上乞讨，对路上衣着光鲜的人毫无感觉，却嫉妒比自己乞讨得多的乞丐，这人估计一直就是个乞丐了。</p>
+<p>一个人的发展往往受局限，其实“局限”就是格局太小，为其所限。谋大事者必要布大局，对于人生这盘棋来说，我们首先要学习的不是技巧，而是布局。</p>
+<p>大格局，即以大视角切入人生，力求站得更高、看得更远、做得更大。大格局决定着事情发展的方向，掌控了大格局，也就掌控了局势。</p>
+<p><strong>为什么别人会有大格局？</strong></p>
+<p>有的人说，站的高才能看的远；也有人说，欲为大树，莫于草争；有人说，格局即大局观了；有人说，大格局就是大胸怀；还有人说，大格局就是看的远。</p>
+<p>不过，事物也本无对错之分。站的高，确实是能够看的远。有大格局的人确实也不会斤斤计较，有大格局的也往往看的远。</p>
+<p>很多人认为，后天的成就主要靠自己。虽说，一个人是否有作为，后天的努力占了很大的部分。但是，先天性的环境因素占了很大一部分。</p>
+<p>试想，如果你从小生活在一个资源匮乏的环境，眼界往往不够开阔，总是为基本的生活而操劳，哪来格局。但是，即便是有的人生活在资源充沛的环境，也见过大世面，也并不一定有大格局。但是，可以肯定的是格局受环境影响很大。而我们大部分人，其实总体生活的环境本质差异并非太大。</p>
+<h3 id="眼光"><a href="#眼光" class="headerlink" title="眼光"></a>眼光</h3><blockquote>
+<p>眼光是指在某一时刻，对某领域趋势准确预测的能力。</p>
+</blockquote>
+<ul>
+<li>第一，你能不能看到别人看不到的东西，能不能够透过表象看到事物发展的本质。</li>
+<li>第二，对于事物的评判已经有自己的标准，并能够极为准确根据现在对未来进行预测。</li>
+<li>第三，是你知道这些道理之后，自己能不能做得到。</li>
+</ul>
+<p>人贵有自知之明，知道什么可为和不可为。若不可为，怎样做才能可为，那何时可为。</p>
+<h3 id="胸襟"><a href="#胸襟" class="headerlink" title="胸襟"></a>胸襟</h3><p>人的胸怀很有意思，有大的追求，大的愿望，就会有大的忍耐，大的包容，大的视野，大的宽容，这就叫大胸怀吧。</p>
+<p>如果你的想法是追求一个具体的、很小的事情，你得不到它会很生气；如果你想要的是别人没有的，是很大的东西，很远的东西，你就会变得能够理解很多，包容很多，能够承受痛苦，甚至伤害你的事情你也能够包容。这是一个正循环。</p>
+<p>如果一点点挫折就让你爬不起来，如果一两句坏话、就让你不能释怀，如果动不动就讨厌人，憎恨人，那格局就太小了。</p>
+<p>做人有多大气，就会有多成功。因为胸襟，才是成功者的标志。</p>
+<h3 id="胆识"><a href="#胆识" class="headerlink" title="胆识"></a>胆识</h3><p>曾有企业家这样说，“如果是现在把我归零，我仍然可以再来一次”。然而，史玉柱则是在资产为负数，甚至负得还很多的时候站了起来。</p>
+<p>应该说，他是中国迄今为止唯一经历了“大起——大落——又大起”这样一个完整过程的著名企业家，他创造了一个中国乃至全球经济史上绝无仅有的传奇故事。</p>
+<p>当巨人大厦倒塌，讨债人蜂拥而至之时，史玉柱庄重承诺：“欠老百姓的钱一定要还。”也正是出于这种“还债”的动力，史玉柱终于东山再起，且赚钱后的第一件事情就是还债。</p>
+<p>行军作战需要胆识，成功创业更需要胆识，只有想法却不敢去实现终究不会成功，莽撞行事也只会导致失败，有勇有谋才能事半功倍。</p>
+<p><strong>拥有大格局者：</strong></p>
+<ul>
+<li>有开阔的心胸</li>
+<li>没有因环境的不利而妄自菲薄</li>
+<li>更没有因为能力的不足而自暴自弃。</li>
+</ul>
+<p><strong>拥有小格局者：</strong></p>
+<ul>
+<li>往往会因为生活的不如意而怨天尤人</li>
+<li>因为一点小的挫折就一筹莫展</li>
+<li>看待问题的时候常常是一叶障目不见泰山，成为碌碌无为的人。局不够大，人生成就再高也有限！</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>所以说，格局真的决定人生层次。</p>
+<ul>
+<li>格局在岳飞那里就是八千里路云和月，三千功名尘与土的壮烈；</li>
+<li>格局在马致远那里却是小桥流水人家，断肠人在天涯的孤旅；</li>
+<li>格局在苏轼那里就是我欲乘风归去，又恐琼楼玉宇，高处不胜寒的的寂寞；</li>
+<li>格局在柳永那里就是杨柳岸，晓风残月，衣带渐宽终不悔，为伊消得人憔悴的烟花柳巷而已。</li>
+</ul>
+<p>一个人有多大的格局才有多大的胸襟。格局是一种眼界，是一种大情怀，海纳百川才能有容乃大。</p>
+<p>什么样的眼界和胸襟才能看到更远的风景，站在高处，整座城市不过就是几座楼房，在飞机上从云端俯瞰城市，城市也就变成了盆景。</p>
+<p>放下你的浮躁，放下你的懒惰，放下你的三分钟热度，放空你禁不住诱惑的大脑，放开你容易被任何事物吸引的眼睛，放淡你什么都想聊两句八卦的嘴巴，静下心来好好做你该做的事，该好好努力了!有时候真的努力后，你会发现自己要比想象的优秀很多。</p>
+<p>世上除了生死，其它都是小事。不管遇到了什么烦心事，都不要自己为难自己;无论今天发生多么糟糕的事，都不要对生活失望，因为还有明天。 　　</p>
+<ul>
+<li><p>有目标的人在奔跑，没目标的人在流浪，因为不知道要去哪里!</p>
+</li>
+<li><p>有目标的人在感恩，没目标的人在报怨，因为觉得全世界都欠他的!</p>
+</li>
+<li><p>有目标的人睡不着，没目标的人睡不醒，因为不知道起来去干嘛!</p>
+</li>
+</ul>
+<p>生命只有走出来的精彩，没有等待出来的辉煌! 　</p>
+<ul>
+<li><p>如果，感到此时的自己很辛苦，那告诉自己：容易走的都是下坡路!坚持住，因为你正在走上坡路，走过去，你就一定会有进步。</p>
+</li>
+<li><p>如果，你正在埋怨命运不眷顾，那请记住：命，是失败者的借口;运，是成功者的谦词。命虽由天定，但埋怨，只是一种懦弱的表现;努力，才是人生的态度!相信你可以!</p>
+</li>
+</ul>
+<p>记住一句话：越努力，越幸运。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;格局&quot;&gt;&lt;a href=&quot;#格局&quot; class=&quot;headerlink&quot; title=&quot;格局&quot;&gt;&lt;/a&gt;格局&lt;/h1&gt;&lt;p&gt;如果把人生当做一盘棋，那么人生的结局就由这盘棋的格局决定。想要赢得人生这盘棋的胜利，关键在于把握住棋局。&lt;/p&gt;
+&lt;p&gt;一个人的格局大小与否说实话是很难定义的，但是一个人是否拥有广阔胸襟却对自己以及周围的人影响很大。&lt;/p&gt;
+&lt;p&gt;胸怀的大小会让你看见不一样的世界，会让你寻找到生活中旁人看不到的风景。&lt;/p&gt;
+&lt;p&gt;你是什么样的人，你就会和什么样的人交朋友，这句话还是很有道理的。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="人生" scheme="http://xxyb.online/categories/%E4%BA%BA%E7%94%9F/"/>
+    
+    
+      <category term="人生" scheme="http://xxyb.online/tags/%E4%BA%BA%E7%94%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用GitHub和hexo搭建个人主站</title>
+    <link href="http://xxyb.online/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%BB%E7%AB%99.html"/>
+    <id>http://xxyb.online/搭建个人主站.html</id>
+    <published>2017-02-23T16:00:00.000Z</published>
+    <updated>2017-02-24T12:19:12.612Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="用GitHub和hexo搭建个人主站"><a href="#用GitHub和hexo搭建个人主站" class="headerlink" title="用GitHub和hexo搭建个人主站"></a>用GitHub和hexo搭建个人主站</h1><p>作为一个程序员，拥有一个自己的博客，平时记录一下，分享点技术文章，是很有必要的。建立博客的通常渠道包括：</p>
+<ol>
+<li>在博客平台上注册，比如 博客园、CSDN、新浪博客 等。</li>
+<li>利用博客框架搭建，如 WordPress、Jekyll、hexo 等。</li>
+<li>自己用代码写一个。</li>
+</ol>
+<p>其中，第一种最简单，也最受限，说不定还会被删帖删号。第二种稍复杂，另外需要自己找部署的服务器，但可定制化较高，是很多程序员的选择。最后一种，是在重复造轮子，不过从另一个方面来看，倒是锻炼编程能力的好方式。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p><strong>下面我们就来看下第二种搭建博客的方式。</strong></p>
+<ol>
+<li>github＋hexo 建立你的第一个博客</li>
+<li>部署博客及更新博文</li>
+<li>安装自己喜欢的主题</li>
+<li>购买并绑定域名</li>
+</ol>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>其实呢，建立博客是非常简单的（哈哈，不管什么东西，你会的就觉得简单，不会的怎样都难），我来给大家说说如何使用 GitHubPages 和 Hexo 建立自己的博客。</p>
+<p>这个有一点难度，但是不要怕，我会一步一步的给大家完成指导的，如果有任何问题也可以随时联系我，我会尽力给大家解决的！</p>
+<h3 id="第一步：github＋hexo-建立你的第一个博客"><a href="#第一步：github＋hexo-建立你的第一个博客" class="headerlink" title="第一步：github＋hexo 建立你的第一个博客"></a>第一步：github＋hexo 建立你的第一个博客</h3><p>下面先介绍为何选择 GitHubPages 和 Hexo 来搭建博客，然后介绍搭建博客的详细过程。</p>
+<p>Why GitHub Pages and Hexo</p>
+<p>因为 GitHub 的存在，我们得以简单快速地搭建个人博客。</p>
+<p><strong>GitHub</strong>，是一个代码托管网站和社交编程网站。这里聚集了世界上各路技术牛叉的大牛，和最优秀的代码库。</p>
+<p><strong>GitHub Pages</strong>，是用来托管 GitHub 上静态网页的免费站点，那 GitHub Pages具体有哪些功能呢：</p>
+<ul>
+<li>有 300M 免费空间，资料自己管理，保存可靠；</li>
+<li>享受 GitHub 的便利，上面有很多大牛，眼界会开阔很多；</li>
+<li>可以使用很多现成的博客框架，搭建过程简单快速。</li>
+</ul>
+<p><strong>Hexo</strong> 是一个简单、快速、强大的静态博客框架,出自台湾大学生 tommy351 之手。我也试过使用 Jekyll搭建个人博客的过程，确实要繁琐许多。相比之下 Hexo 更轻便更快捷，下面是其官网强调的四大特点：</p>
+<ul>
+<li>极速生成静态页面</li>
+<li>一键部署博客</li>
+<li>丰富的插件支持</li>
+<li>支持 Markdown</li>
+</ul>
+<p>大家对 GitHub Pages 和 Hexo 有了一定的了解，下面进入正题。</p>
+<h4 id="使用-GitHub-Pages-建立博客站点"><a href="#使用-GitHub-Pages-建立博客站点" class="headerlink" title="使用 GitHub Pages 建立博客站点"></a>使用 GitHub Pages 建立博客站点</h4><h5 id="注册-GitHub"><a href="#注册-GitHub" class="headerlink" title="注册 GitHub"></a>注册 GitHub</h5><p>访问 GitHub，注册十分简单，一定要记住注册时使用的邮箱，因为 GitHub 上很多通知都是通过邮箱的。申请成功后，在 GitHub 官网上登录，并验证邮箱即可。</p>
+<h5 id="在-GitHub-上建立仓库"><a href="#在-GitHub-上建立仓库" class="headerlink" title="在 GitHub 上建立仓库"></a>在 GitHub 上建立仓库</h5><p>与 GitHub 建立好连接之后，就可以方便的使用它提供的 Pages 服务，GitHub Pages 分两种，一种是用你的 GitHub 用户名建立的 username.github.io 这样的用户&amp;组织站点，另一种是依附项目的 Pages。</p>
+<p>想建立个人博客是用的第一种，形如 【username.github.io】 这样的可访问的站点，每个用户名下面只能建立一个。建立仓库的方法参照github官网的教程。</p>
+<h5 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h5><p>安装软件</p>
+<p><a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a><br>下载完成后根据提示一步一步安装就好，这个没有什么需要特别说明的。</p>
+<p><a href="https://desktop.github.com/" target="_blank" rel="external">GitHub for Windows</a><br>下载并安装这个软件，一直点击下一步即可</p>
+<p><a href="https://www.baidu.com/link?url=o8u5B5T07ibHSwXJYNkBxlvwOsSFGGMXm-ABta1del8wif08riRADzUtuclP_th-&amp;wd=&amp;eqid=e80ce7320000c9800000000658b0248f" target="_blank" rel="external">git</a></p>
+<h5 id="使用GitHub-for-Windows登录GitHub"><a href="#使用GitHub-for-Windows登录GitHub" class="headerlink" title="使用GitHub for Windows登录GitHub"></a>使用GitHub for Windows登录GitHub</h5><p>配置 SSH</p>
+<p>我们如何让本地 git 项目与远程的 GitHub 建立联系呢？方法是用 SSH。</p>
+<p>打开命令行，输入以下命令：<code>ssh -T git@github.com</code></p>
+<p>如果是下面之类的反馈（或者显示 Hi xxx）：<br><code>The authenticity of host &#39;github.com &#39; can&#39;t be established. RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48. Are you sure you want to continue connecting (yes/no)?</code><br>不用紧张，输入 yes 之后就配置成功了。</p>
+<h5 id="使用-Hexo-创建博客框架"><a href="#使用-Hexo-创建博客框架" class="headerlink" title="使用 Hexo 创建博客框架"></a>使用 Hexo 创建博客框架</h5><p>Hexo 安装</p>
+<p>Node和Git都安装好后,首先创建一个文件夹,如blog,用户存放hexo的配置文件,然后进入blog里安装Hexo。</p>
+<p>打开git bash命令行，输入命令：<br><code>npm install -g hexo</code></p>
+<p>Hexo 部署</p>
+<p>Hexo 的部署输入命令：<br><code>hexo init</code></p>
+<p>部署成功之后，用hexo生成静态页面，输入命令：<br><code>hexo generate</code>或者<code>hexo g</code>也可以</p>
+<p>此时在本地进行预览（在刚才创建的blog文件夹里）,输入命令：<br><code>hexo server</code>或者<code>hexo s</code></p>
+<p>此时打开浏览器，在浏览器地址栏输入 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> （默认端口为4000）, 便可以看到最原始的博客了。</p>
+<p>以后发表博文想先预览，也可以通过 hexo server 在本地先跑起来，看看效果。</p>
+<p>在 Git Shell 中按 <code>Ctrl+c</code> 可以停止该服务。</p>
+<h5 id="配置Github"><a href="#配置Github" class="headerlink" title="配置Github"></a>配置Github</h5><p>建立Repository</p>
+<p>建立与你用户名对应的仓库，仓库名必须为【username.github.io】，这是固定写法</p>
+<p>然后建立关系，找到之前建立的blog文件夹，之前建的东西也全在这里面，有：</p>
+<pre><code>_config.yml    node_modules    public      source
+
+db.json        package.json    scaffolds  themes
+</code></pre><p>现在我们需要修改_config.yml文件，来建立关联，使用notepad++打开_config.yml文件</p>
+<p>翻到最下面，改成这样：</p>
+<pre><code>deploy:
+
+    type: git
+
+    repo: https://github.com/username/username.github.io.git
+
+    branch: master
+</code></pre><p>注：username为你的用户名</p>
+<p>然后执行命令：<br><code>npm install hexo-deployer-git --save</code></p>
+<p>然后，执行配置命令：<br><code>hexo deploy</code></p>
+<p>然后在浏览器中输入<a href="http://username.github.io/" target="_blank" rel="external">http://username.github.io/</a> 就行了。</p>
+<h5 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h5><p>每次部署的步骤，可按以下三步来进行：</p>
+<pre><code>`hexo clean`
+
+`hexo generate`
+
+`hexo deploy`
+</code></pre><h5 id="报错总结"><a href="#报错总结" class="headerlink" title="报错总结"></a>报错总结</h5><pre><code>ERROR Deployer not found: git 或者 ERROR Deployer not found: github
+</code></pre><p>解决方法：<br><code>npm install hexo-deployer-git --save</code></p>
+<pre><code>如发生报错： ERROR Process failed: layout/.DS_Store
+</code></pre><p>那么进入主题里面layout和_partial目录下，使用删除命令：<br><code>rm-rf.DS_Store</code></p>
+<pre><code>ERROR Plugin load failed: hexo-server
+
+原因：
+
+Besides,utilities are separated into a standalone module.hexo.util is not reachable anymore.
+</code></pre><p>解决方法:<br><code>npm install hexo-server</code></p>
+<pre><code>执行命令hexo server，提示：Usage: hexo ....
+
+原因：
+
+我认为是没有生成本地服务
+</code></pre><p>解决方法:<br><code>npm install hexo-server --save</code></p>
+<pre><code>提示：hexo-server@0.1.2 node_modules/hexo-server
+
+....
+
+表示成功了参考
+</code></pre><p>这个时候再执行：<br><code>hexo-server</code></p>
+<pre><code>得到:
+
+INFOHexois running at http://0.0.0.0:4000/.PressCtrl+C to stop.
+</code></pre><p>这个时候再点击<a href="http://0.0.0.0:4000" target="_blank" rel="external">http://0.0.0.0:4000</a>, 正常情况下应该是最原始的画面。</p>
+<p>这个时候再重新生成静态文件，命令：<br><code>hexo generate</code>或<code>hexo g</code></p>
+<p>启动本地服务器：<br><code>hexo server</code>或<code>hexo s</code></p>
+<p>本地已经简单的设置好了，但是现在域名和服务器都是基于自己的电脑，接下来需要跟github进行关联。</p>
+<h3 id="第二步：部署博客及更新博文"><a href="#第二步：部署博客及更新博文" class="headerlink" title="第二步：部署博客及更新博文"></a>第二步：部署博客及更新博文</h3><p>在blog文件夹下将博客放入public文件夹中</p>
+<p>在blog文件夹下打开git bash，按以下三步进行：</p>
+<pre><code>`hexo clean`
+
+`hexo g`
+
+`hexo d`
+</code></pre><h3 id="第三步：安装主题"><a href="#第三步：安装主题" class="headerlink" title="第三步：安装主题"></a>第三步：安装主题</h3><p>我安装的是nexT主题，可参考主题作者在GitHub的README<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">nexT</a></p>
+<p>还有我比较喜欢的主题 <a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">yilia</a></p>
+<h3 id="第四步：购买并绑定域名"><a href="#第四步：购买并绑定域名" class="headerlink" title="第四步：购买并绑定域名"></a>第四步：购买并绑定域名</h3><h5 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h5><p>我是在万网上购买的域名，越出名的后缀越贵，看自己吧，比如.com .cn .net这些域名还需要备案，否则用不了。<a href="https://wanwang.aliyun.com/" target="_blank" rel="external">万网</a></p>
+<h5 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h5><p>创建CNAME。</p>
+<ol>
+<li>登陆访问github。</li>
+<li>进入github中需要关联域名的相应项目。</li>
+<li>在该项目下创建CNAME，其CNAME内容即是域名</li>
+</ol>
+<p>前往你的DNS服务商</p>
+<p>进入”新增解析”界面。</p>
+<p>在万网首页点击【进入会员中心】→ 点击【产品管理】下的【域名解析】→ 进入【域名列表】界面 → 点击域名→ 进入【新增解析】界面。</p>
+<p>设置域名解析记录。</p>
+<p>点击【新增解析】；依次填写相应内容。</p>
+<p>“记录类型”选择A；”主机记录”填写www；”解析线路”选择默认；</p>
+<p>“记录值”填写github提供的IP地址，192.30.252.153或192.30.252.154；</p>
+<p>“TTL”默认10分钟，自己可以另行设置也可；</p>
+<p>最后点击【保存】。</p>
+<p>验证域名与github关联是否成功。</p>
+<p>先以github的链接方式访问一次，查看界面；再以域名的方式访问一次，查看界面；两者所查看到的界面是一致。</p>
+<p>注：若域名不能立即访问，需等待一段时间再访问。当github成功关联到域名后，以github的链接方式进行访问，其会自动转化为域名访问。</p>
+<h3 id="参考博客："><a href="#参考博客：" class="headerlink" title="参考博客："></a>参考博客：</h3><p><a href="http://leopardpan.github.io" target="_blank" rel="external">潘柏信的博客</a></p>
+<p><a href="http://jingyan.baidu.com/article/dca1fa6fa1e403f1a5405262.html" target="_blank" rel="external">百度</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;用GitHub和hexo搭建个人主站&quot;&gt;&lt;a href=&quot;#用GitHub和hexo搭建个人主站&quot; class=&quot;headerlink&quot; title=&quot;用GitHub和hexo搭建个人主站&quot;&gt;&lt;/a&gt;用GitHub和hexo搭建个人主站&lt;/h1&gt;&lt;p&gt;作为一个程序员，拥有一个自己的博客，平时记录一下，分享点技术文章，是很有必要的。建立博客的通常渠道包括：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在博客平台上注册，比如 博客园、CSDN、新浪博客 等。&lt;/li&gt;
+&lt;li&gt;利用博客框架搭建，如 WordPress、Jekyll、hexo 等。&lt;/li&gt;
+&lt;li&gt;自己用代码写一个。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;其中，第一种最简单，也最受限，说不定还会被删帖删号。第二种稍复杂，另外需要自己找部署的服务器，但可定制化较高，是很多程序员的选择。最后一种，是在重复造轮子，不过从另一个方面来看，倒是锻炼编程能力的好方式。&lt;/p&gt;
+&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;
+    
+    </summary>
+    
+      <category term="blog" scheme="http://xxyb.online/categories/blog/"/>
+    
+    
+      <category term="github" scheme="http://xxyb.online/tags/github/"/>
+    
+      <category term="hexo" scheme="http://xxyb.online/tags/hexo/"/>
+    
+      <category term="npm" scheme="http://xxyb.online/tags/npm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用Atom编辑markdown笔记</title>
+    <link href="http://xxyb.online/atom%E7%BC%96%E8%BE%91markdown.html"/>
+    <id>http://xxyb.online/atom编辑markdown.html</id>
+    <published>2017-02-21T16:00:00.000Z</published>
+    <updated>2017-03-05T11:46:06.034Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="用Atom编辑markdown笔记"><a href="#用Atom编辑markdown笔记" class="headerlink" title="用Atom编辑markdown笔记"></a>用Atom编辑markdown笔记</h1><h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>Atom是github开发的开源跨平台的编辑器，Atom的强大可以与大名鼎鼎的Sublime Text相媲美。因为使用过Sublime Text，所以用Atom上手很快。这篇文章主要介绍使用Atom写markdown。</p>
+<p>之前在项目开发中都是使用.doc文件作为接口文档的载体，但是在使用中并不能很好的对比接口修改，如果使用.txt文件，又没有醒目的格式。所以，选择语法简单，方便对比的markdown来作为接口文档的载体。主要介绍下书写和解析markdown的编辑器。</p>
+<a id="more"></a>
+<h2 id="编辑器的选择"><a href="#编辑器的选择" class="headerlink" title="编辑器的选择"></a>编辑器的选择</h2><p>任何文本编辑器都可以书写markdown，但我们更期望能够在书写的时候能够即时的看到解析效果，方便对格式进行调整。</p>
+<h3 id="mac-os"><a href="#mac-os" class="headerlink" title="mac os"></a>mac os</h3><p>在mac os 下，我推荐Mou，界面简洁优雅，解析流畅，也许没有更好的了。</p>
+<h3 id="windows-os"><a href="#windows-os" class="headerlink" title="windows os"></a>windows os</h3><ul>
+<li>Sublime Text：有markdown preview插件支持，能够在浏览器里查看编译效果，但是并不是实时的，需要在修改后进行刷新或者，并不方便。</li>
+<li>mardown pad：能够很好的书写，并支持预览，但收费。</li>
+<li>Atom：推荐使用。内置对markdown的支持，能够方便的进行解析预览。</li>
+</ul>
+<h2 id="使用Atom预览markdown"><a href="#使用Atom预览markdown" class="headerlink" title="使用Atom预览markdown"></a>使用Atom预览markdown</h2><ol>
+<li>打开任意.md文件(markdown源文件)</li>
+<li><p><code>windows : ctrl + shift + p</code></p>
+<p> <code>mac : command + shift + p</code></p>
+<p> 这条命令跟Sublime Text是一样的，打开命令输入框</p>
+</li>
+<li>输入 markdown preview toggle(可以只输入mdpt，跟Sublime Text一样支持模糊匹配)</li>
+<li>按enter键即可看到预览，左边编辑，右边实时预览。</li>
+<li>也可以直接用快捷键<code>ctrl + shift + m</code></li>
+</ol>
+<h2 id="使用Atom编写markdown的特性"><a href="#使用Atom编写markdown的特性" class="headerlink" title="使用Atom编写markdown的特性"></a>使用Atom编写markdown的特性</h2><h5 id="以下几个特性是我选择Atom的主要原因："><a href="#以下几个特性是我选择Atom的主要原因：" class="headerlink" title="以下几个特性是我选择Atom的主要原因："></a>以下几个特性是我选择Atom的主要原因：</h5><ul>
+<li><p>Markdown实时预览</p>
+</li>
+<li><p>使用Crtl+Shift+M开启</p>
+</li>
+<li><p>Markdown代码高亮</p>
+</li>
+<li><p>比Mou的代码高亮效果好多了</p>
+</li>
+<li><p>多文件管理</p>
+</li>
+<li><p>Atom提供了文件树列表的功能（IDE中常见）</p>
+</li>
+<li><p>Github紧密结合</p>
+</li>
+<li><p>多平台支持</p>
+</li>
+<li><p>Mou只支持Mac OS</p>
+</li>
+<li><p>Atom插件管理工具：使用apm install 插件名称， 可以很方便的安装插件。</p>
+</li>
+</ul>
+<h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><p><strong>以下是Mac OS平台的常用快捷键：</strong></p>
+<p><code>Command+Shift+P</code> 打开命令窗口，可以运行各种菜单功能</p>
+<p><code>Command + T</code> 快速多文件切换</p>
+<p><code>Command + G</code> 文件内跳转到指定行</p>
+<p><code>Command + F</code> 文件内查找和替换</p>
+<p><code>Command + Shift + F</code> 多文件查找和替换</p>
+<p><code>Command + [</code> 对选中内容向左缩进</p>
+<p><code>Command + ]</code> 对选中内容向右缩进</p>
+<h2 id="Markdown网上编辑"><a href="#Markdown网上编辑" class="headerlink" title="Markdown网上编辑"></a>Markdown网上编辑</h2><p>推荐：<a href="https://maxiang.io/" target="_blank" rel="external">马克飞象</a></p>
+<h2 id="Atom下载"><a href="#Atom下载" class="headerlink" title="Atom下载"></a>Atom下载</h2><p><a href="https://atom.io/" target="_blank" rel="external">Atom下载</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;用Atom编辑markdown笔记&quot;&gt;&lt;a href=&quot;#用Atom编辑markdown笔记&quot; class=&quot;headerlink&quot; title=&quot;用Atom编辑markdown笔记&quot;&gt;&lt;/a&gt;用Atom编辑markdown笔记&lt;/h1&gt;&lt;h2 id=&quot;简述&quot;&gt;&lt;a href=&quot;#简述&quot; class=&quot;headerlink&quot; title=&quot;简述&quot;&gt;&lt;/a&gt;简述&lt;/h2&gt;&lt;p&gt;Atom是github开发的开源跨平台的编辑器，Atom的强大可以与大名鼎鼎的Sublime Text相媲美。因为使用过Sublime Text，所以用Atom上手很快。这篇文章主要介绍使用Atom写markdown。&lt;/p&gt;
+&lt;p&gt;之前在项目开发中都是使用.doc文件作为接口文档的载体，但是在使用中并不能很好的对比接口修改，如果使用.txt文件，又没有醒目的格式。所以，选择语法简单，方便对比的markdown来作为接口文档的载体。主要介绍下书写和解析markdown的编辑器。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="blog" scheme="http://xxyb.online/categories/blog/"/>
+    
+    
+      <category term="atom" scheme="http://xxyb.online/tags/atom/"/>
+    
+      <category term="markdown" scheme="http://xxyb.online/tags/markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习方法总结</title>
+    <link href="http://xxyb.online/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95.html"/>
+    <id>http://xxyb.online/学习方法.html</id>
+    <published>2017-02-08T16:00:00.000Z</published>
+    <updated>2017-03-05T11:44:44.659Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="学习方法总结"><a href="#学习方法总结" class="headerlink" title="学习方法总结"></a>学习方法总结</h1><p><strong>学习的三要素</strong></p>
+<ol>
+<li>规范的学习行为</li>
+<li>良好的学习习惯</li>
+<li>有效的学习方法</li>
+</ol>
+<a id="more"></a>
+<p><strong>学习能力的三要素又可分为八大学习环节，即学习管理八环节</strong></p>
+<ol>
+<li>计划管理</li>
+<li>预习管理</li>
+<li>听课管理</li>
+<li>复习管理</li>
+<li>作业管理</li>
+<li>错题管理</li>
+<li>难题管理</li>
+<li>考试管理</li>
+</ol>
+<p>一个人学习成绩的优劣取决于他的学习能力，学习能力包括三个要素：规范的学习行为；良好的学习习惯；有效的学习方法。有了规范的学习行为才能培养出良好的学习习惯，形成了良好的学习习惯就会形成适合自己的有效学习方法，三者是相辅相成的，规范的学习行为是前提，是基础。</p>
+<p>过程不变结果不变，过程改变结果巨变，过程合理成绩斐然！</p>
+<blockquote>
+<p>实践证明：一个行为持续30天以上，就会形成稳定的行为，超过100天就可以形成习惯。</p>
+</blockquote>
+<h3 id="一、计划管理——有规律"><a href="#一、计划管理——有规律" class="headerlink" title="一、计划管理——有规律"></a>一、计划管理——有规律</h3><ol>
+<li><p>长计划，短安排。在制定一个相对较长期目标的同时，一定要制定一个短期学习目标，这个目标要切合自己的实际，通过努力是完全可以实现的。达到了一个目标后，再制定下一个目标，确保一个目标一个目标的实现。</p>
+</li>
+<li><p>挤时间，讲效率。重要的是进行时间上的通盘计划，制定较为详细的课后时间安排计划表，课后时间要充分利用，合理安排，严格遵守，坚持下去，形成习惯。计划表要按照时间和内容顺序，把放学回家后自己的吃饭、休息、学习时间安排一下，学习时间以45分钟为一节，中间休息10分钟，下午第四节若为自习课也列入计划表内。</p>
+</li>
+</ol>
+<h3 id="二、预习管理――争主动"><a href="#二、预习管理――争主动" class="headerlink" title="二、预习管理――争主动"></a>二、预习管理――争主动</h3><ol>
+<li><p>读：每科用10分钟左右的时间通读教材，对不理解的内容记录下来，这是你明天上课要重点听的内容。预习的目的是要形成问题，带着问题听课，当你的问题在脑中形成后，第二天听课就会集中精力听教师讲这个地方。所以，发现不明白之处你要写在预习本上。 ——<em>建立预习本</em></p>
+</li>
+<li><p>写：预习时将模糊的、有障碍的、思维上的断点（不明白之处）书写下来。――<em>读写同步走</em></p>
+</li>
+<li><p>练：预习的最高层次是练习，预习要体现在练习上，就是做课后能体现双基要求的练习题1到2道。做题时若你会做了，说明你的自学能力在提高，若不会做，没关系，很正常，因为老师没讲。——<em>记录问题</em></p>
+</li>
+</ol>
+<blockquote>
+<p>事实证明：不预习当堂懂的在50％――60％左右，而预习后懂的则能在80％――90％左右。</p>
+</blockquote>
+<h3 id="三、听课管理――重效益"><a href="#三、听课管理――重效益" class="headerlink" title="三、听课管理――重效益"></a>三、听课管理――重效益</h3><p>听课必须做到跟老师，抓重点，当堂懂。听课时要跟着老师的思维走，不预习跟不上。跟老师的目的是抓重点，抓公共重点，如：定理、公式、单词、句型,更重要的是抓自己个性化的重点，抓自己预习中不懂之处。<br>当堂没听懂的知识当堂问懂、研究懂。―<em>建立听课笔记本</em></p>
+<h3 id="四、复习管理――讲方法"><a href="#四、复习管理――讲方法" class="headerlink" title="四、复习管理――讲方法"></a>四、复习管理――讲方法</h3><p><strong>有效复习的核心是做到五个字：想、查、看、写、说</strong></p>
+<ol>
+<li><p>想：即回想，回忆，是闭着眼睛想，在大脑中放电影。学生课后最需要做的就是是回想。此过程非常重要，几乎所有清华生、北大生、高考状元都是这样做的。学生应在每天晚上临睡前安排一定时间回想。</p>
+</li>
+<li><p>查：回想是目前联合国教科文组织承认的最有效的复习方法，也是查漏补缺的最好方法。回想时，有些会非常清楚地想出来，有些则模糊，甚至一点也想不起来。能想起来的，说明你已经很好地复习了一遍。通过这样间隔性的2－3遍，几乎终生不忘。而模糊和完全想不起来的就是漏缺部分，需要从头再学。</p>
+</li>
+<li><p>看：即看课本，看听课笔记。既要有面，更要有点。这个点，既包括课程内容上的重点，也包括回忆的时候没有想起来、较模糊的“漏缺”点。</p>
+</li>
+<li><p>写：随时记下重难点、漏缺点。一定要在笔记中把它详细整理，并做上记号，以便总复习的时候，注意复习这部分内容。―<em>建立复习本</em></p>
+</li>
+<li><p>说：就是复述。如：每天都复述一下自己学过的知识，每周末复述一下自己一周内学过的知识。听明白不是真的明白，说明白才是真的明白。坚持2～3个月就会记忆力好，概括能力、领悟能力提高，表达能力增强，写作能力突飞猛进。―<em>此法用于预习和复习</em></p>
+</li>
+</ol>
+<h3 id="五、作业管理――要自律"><a href="#五、作业管理――要自律" class="headerlink" title="五、作业管理――要自律"></a>五、作业管理――要自律</h3><ol>
+<li><p>不计时不作业：限时作业，记录作业时间，与作业无关的事什么也不做。比如：20分钟写完英语；25分钟写完数学。</p>
+</li>
+<li><p>不复习不作业：先复习所学的内容，然后作业。</p>
+</li>
+<li><p>遇到难题，百思不得，先放过，后攻坚。</p>
+</li>
+<li><p>不检查不作业：作业后必须检查一遍。</p>
+</li>
+<li><p>不小结不作业：写完作业后，告诉自己学会了什么，得到了什么，有什么体会。</p>
+</li>
+<li><p>独立作业忌抄袭。</p>
+</li>
+</ol>
+<h3 id="六、错题管理――常反思"><a href="#六、错题管理――常反思" class="headerlink" title="六、错题管理――常反思"></a>六、错题管理――常反思</h3><ol>
+<li><p>有了错题本和难题本就叫会考试，目的是为以后复习使用。错题和难题反映着许多知识点的联结，掌握了错题和难题就等于把高分拿在手。</p>
+</li>
+<li><p>建立错题本和难题本可用16K的横格本，每页上下分五部分。</p>
+<ul>
+<li>第一部分是原题</li>
+<li>第二部分是错因</li>
+<li>第三部分是改正确与举一反三：正确即写出正确答案，过了一个月复习时，搭眼一看还不会，就问自己：怎么还不会？就要进一步查找原因，这时举一反三，将与本题相关的知识点或习题联系起来，写下来</li>
+<li>第四部分是归纳提醒：写出错题错在什么地方，如：错在代数方面，则提醒自己这部分掌握不好，重新自学或请教老师和同学</li>
+<li>第五部分是复习次数：每隔一段时间要复习一次，怎么复习？盖住原题自己用脑子想。―<em>此法比较适用于理科</em></li>
+</ul>
+</li>
+</ol>
+<h3 id="七、难题管理——会溯源"><a href="#七、难题管理——会溯源" class="headerlink" title="七、难题管理——会溯源"></a>七、难题管理——会溯源</h3><p> 一般来说，难题之难多半在于题目所涉知识点众多，知识点之间关系错综复杂，思维（及方法运用）跳跃性大、逻辑性强，因此，对于难题，建议用溯源的方法整理。</p>
+<ul>
+<li>一是查清楚题目所需知识清单，同步辨清知识间的内在联系</li>
+<li>二是复原自己考试时的思维路径，查“堵”点、“歧”点</li>
+<li>三是借助参考答案探究自身存在的盲点疑点甚至是漏点。之后，同样需要每隔一段时间复习与检查一次。</li>
+</ul>
+<h3 id="八、考试管理――抓重点"><a href="#八、考试管理――抓重点" class="headerlink" title="八、考试管理――抓重点"></a>八、考试管理――抓重点</h3><p> 用一张丢分统计表管理。按科目分为填空、选择、计算、阅读……项目。错了、丢了多少分，用统计表说话，这样，就能明白哪些是审题出了偏差，哪些是运算出了错误，是什么知识点有问题，哪方面需改进和提高。用纸把错题抄下来，每隔20天再做一遍，尤其是在考试前可找出考点。――<em>考前拿出专门时间做错题难题本上的题</em></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;学习方法总结&quot;&gt;&lt;a href=&quot;#学习方法总结&quot; class=&quot;headerlink&quot; title=&quot;学习方法总结&quot;&gt;&lt;/a&gt;学习方法总结&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;学习的三要素&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;规范的学习行为&lt;/li&gt;
+&lt;li&gt;良好的学习习惯&lt;/li&gt;
+&lt;li&gt;有效的学习方法&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="方法" scheme="http://xxyb.online/categories/%E6%96%B9%E6%B3%95/"/>
+    
+    
+      <category term="学习" scheme="http://xxyb.online/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP编辑器整理</title>
+    <link href="http://xxyb.online/php%E7%BC%96%E8%BE%91%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86.html"/>
+    <id>http://xxyb.online/php编辑工具整理.html</id>
+    <published>2017-01-23T16:00:00.000Z</published>
+    <updated>2017-03-05T11:45:48.251Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="PHP编辑器整理"><a href="#PHP编辑器整理" class="headerlink" title="PHP编辑器整理"></a>PHP编辑器整理</h1><h3 id="第一：Eclipse"><a href="#第一：Eclipse" class="headerlink" title="第一：Eclipse"></a>第一：Eclipse</h3><p>Eclipse 是一个开放源代码的、基于Java的可扩展开发平台。就其本身而言，它只是一个框架和一组服务，用于通过插件组件构建开发环境。幸运的是，Eclipse 附带了一个标准的插件集，包括Java开发工具。虽然大多数用户很乐于将Eclipse 当作Java 集成开发环境（IDE）来使用，但Eclipse 的目标却不仅限于此。<br>Eclipse 还包括插件开发环境（Plug-in Development Environment，PDE），这个组件主要针对希望扩展Eclipse 的软件开发人员，因为它允许他们构建与Eclipse 环境无缝集成的工具。由于Eclipse 中的每样东西都是插件，对于给Eclipse 提供插件，以及给用户提供一致和统一的集成开发环境而言，所有工具开发人员都具有同等的发挥场所。</p>
+<p><em>P.S：程序员用Eclipse的话，有代码自动缩进、补全功能，有方法跳转，相同变量提醒。另外其实phpstorm、sublime 都还不错。看个人喜好。</em></p>
+<a id="more"></a>
+<h3 id="第二：PHPstorm"><a href="#第二：PHPstorm" class="headerlink" title="第二：PHPstorm"></a>第二：PHPstorm</h3><p>PhpStorm是一个轻量级且便捷的PHP IDE，其旨在提供用户效率，可深刻理解用户的编码，提供智能代码补全，快速导航以及即时错误检查。<br>PHPstorm优点：</p>
+<ol>
+<li>跨平台。</li>
+<li>对PHP支持refactor功能。</li>
+<li>自动生成phpdoc的注释，非常方便进行大型编程。</li>
+<li>内置支持Zencode。</li>
+<li>生成类的继承关系图，如果有一个类，多次继承之后，可以通过这个功能查看他所有的父级关系。</li>
+<li>支持代码重构，方便修改代码。</li>
+<li>拥有本地历史记录功能（local history功能）。</li>
+<li>方便的部署，可以直接将代码直接upload到服务器。</li>
+</ol>
+<p>补充：phpstrom下的vim模式。大家一般都用vim，用的精通了都感觉效率高。但用了之后插件装了一大堆。而且框架目录层太深，用vim导航，找文件就很尴尬，于是尝试了phpstorm，但是，习惯了vim的跳转，光标移动等等，偶然发现phpstorm还有vim模式，基本可以兼容vim的常用编辑操作，同时也可以享受到phpstrom其他强大的功能，如函数跳转（个人认为最强大的地方）、文件搜索等等。</p>
+<p><em>PS：搞PHP，必用PHPStorm，这可以说是神器！它的不足之处，内存太大。有的时候公司电脑不行，电脑配置是跟不上的，还有就是PHPstorm，功能全，该有的都有，比较适合偷懒程序员用。</em></p>
+<h3 id="第三：sublime-Text"><a href="#第三：sublime-Text" class="headerlink" title="第三：sublime Text"></a>第三：sublime Text</h3><p>Sublime Text 不仅是一个代码编辑器（Sublime Text 2是收费软件，但可以无限期试用），也是HTML和散文先进的文本编辑器。它最初被设计为一个具有丰富扩展功能的Vim。<br>Sublime Text具有漂亮的用户界面和强大的功能，例如代码缩略图，Python的插件，代码段等。还可自定义键绑定，菜单和工具栏。Sublime Text 的主要功能包括：拼写检查，书签，完整的Python API，Goto 功能，即时项目切换，多选择，多窗口等等。Sublime Text 是一个跨平台的编辑器，同时支持Windows、Linux、Mac OS X等操作系统。</p>
+<p>Sublime Text优点：</p>
+<ol>
+<li>主流前端开发编辑器</li>
+<li>体积较小，运行速度快</li>
+<li>文本功能强大</li>
+<li>支持编译功能且可在控制台看到输出</li>
+<li>内嵌python解释器支持插件开发以达到可扩展目的</li>
+<li>Package Control：ST支持的大量插件可通过其进行管理[3]</li>
+</ol>
+<h3 id="第四：EditPlus"><a href="#第四：EditPlus" class="headerlink" title="第四：EditPlus"></a>第四：EditPlus</h3><p>EditPlus是一款由韩国Sangil Kim （ES-Computing）出品的小巧但是功能强大的可处理文本、HTML和程序语言的Windows编辑器，你甚至可以通过设置用户工具将其作为C,Java,Php等等语言的一个简单的IDE。</p>
+<p>EditPlus（文字编辑器）汉化版是一套功能强大，可取代记事本的文字编辑器，拥有无限制的撤消与重做、英文拼字检查、自动换行、列数标记、搜寻取代、同时编辑多文件、全屏幕浏览功能。而它还有一个好用的功能，就是它有监视剪贴板的功能，同步于剪贴板可自动粘贴进EditPlus 的窗口中省去粘贴的步骤。另外它也是一个非常好用的HTML编辑器，它除了支持颜色标记、HTML 标记，同时支持C、C++、Perl、Java，另外，它还内建完整的HTML &amp; CSS1 指令功能，对于习惯用记事本编辑网页的朋友，它可帮你节省一半以上的网页制作时间，若你有安装IE3.0 以上版本，它还会结合IE浏览器于EditPlus 窗口中，让你可以直接预览编辑好的网页（若没安装IE，也可指定浏览器路径）。因此，它是一个相当棒又多用途多状态的编辑软件。</p>
+<p><em>P.S：经常用到EditPlus里面的ftp功能，在线编辑代码，很合适！用Editplus编辑器感觉有点异类。</em></p>
+<h3 id="第五：notepad"><a href="#第五：notepad" class="headerlink" title="第五：notepad++"></a>第五：notepad++</h3><p>Notepad++是Windows操作系统下的一套文本编辑器(软件版权许可证: GPL)，有完整的中文化接口及支持多国语言编写的功能(UTF8技术)。Notepad++功能比Windows 中的Notepad(记事本)强大，除了可以用来制作一般的纯文字说明文件，也十分适合编写计算机程序代码。Notepad++ 不仅有语法高亮度显示，也有语法折叠功能，并且支持宏以及扩充基本功能的外挂模组。Notepad++是免费软件，可以免费使用，自带中文，支持众多计算机程序语言:C,C++,Java,pascal,C#,XML,SQL,Ada,HTML,PHP,ASP, AutoIt,汇编, DOS批处理, Caml, COBOL, Cmake, CSS,D, Diff,Action, Fortran,Gui4Cli, HTML, Haskell,INNO, JSP,KIXtart, LISP, Lua, Make处理(Makefile), Matlab, INI文件, MS-DOSStyle, NSIS, Normal text, Objective-C, Pascal,Python, Java,Verilog,Haskell,InnoSetup,CMake,VHDL,AutoIt,Matlab<br>notepad++的优点：比windows自带的记事本强一点，因为能显示括号跟颜色，用这个写代码速度最快，因为与复杂的编辑器相比，打开跟关闭还有电脑卡的效率已经远远低于编辑器能提供的辅助的效率。</p>
+<p><em>P．S：Notepad++ 快速而且简单，还在用NetBeans的话有个缺点就是html的模板，如果有thinkphp的模板标签html标记的起始结束符高亮就失效了，只能等待更新之前用的netbeans 后来netbeans开大项目有点卡换成了Notepad++。</em></p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>PHP 编辑工具其实挺多的，以至于很多php程序员无从下手。很多同事常用的编辑器phpstorm，Notepad++，PhpStorm，editplus;等等，工欲善其事，必先利其器，用熟用精一款编辑器就行，自己顺手才是最舒服的。一开始初学的时候用editplus;后来又用editplus;最后用vim ，其实用eclipse次数比较多，喜欢自己装插件，插件很多，大项目常用。平时自己开发小项目，学习用notepad++,editplus，公司电脑内存小，可以用Sublime。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;PHP编辑器整理&quot;&gt;&lt;a href=&quot;#PHP编辑器整理&quot; class=&quot;headerlink&quot; title=&quot;PHP编辑器整理&quot;&gt;&lt;/a&gt;PHP编辑器整理&lt;/h1&gt;&lt;h3 id=&quot;第一：Eclipse&quot;&gt;&lt;a href=&quot;#第一：Eclipse&quot; class=&quot;headerlink&quot; title=&quot;第一：Eclipse&quot;&gt;&lt;/a&gt;第一：Eclipse&lt;/h3&gt;&lt;p&gt;Eclipse 是一个开放源代码的、基于Java的可扩展开发平台。就其本身而言，它只是一个框架和一组服务，用于通过插件组件构建开发环境。幸运的是，Eclipse 附带了一个标准的插件集，包括Java开发工具。虽然大多数用户很乐于将Eclipse 当作Java 集成开发环境（IDE）来使用，但Eclipse 的目标却不仅限于此。&lt;br&gt;Eclipse 还包括插件开发环境（Plug-in Development Environment，PDE），这个组件主要针对希望扩展Eclipse 的软件开发人员，因为它允许他们构建与Eclipse 环境无缝集成的工具。由于Eclipse 中的每样东西都是插件，对于给Eclipse 提供插件，以及给用户提供一致和统一的集成开发环境而言，所有工具开发人员都具有同等的发挥场所。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;P.S：程序员用Eclipse的话，有代码自动缩进、补全功能，有方法跳转，相同变量提醒。另外其实phpstorm、sublime 都还不错。看个人喜好。&lt;/em&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="工具" scheme="http://xxyb.online/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="php" scheme="http://xxyb.online/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>健身七大黄金动作</title>
+    <link href="http://xxyb.online/%E5%81%A5%E8%BA%AB%E4%B8%83%E5%A4%A7%E9%BB%84%E9%87%91%E5%8A%A8%E4%BD%9C.html"/>
+    <id>http://xxyb.online/健身七大黄金动作.html</id>
+    <published>2017-01-08T16:00:00.000Z</published>
+    <updated>2017-02-24T12:19:58.964Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="健身七大黄金动作"><a href="#健身七大黄金动作" class="headerlink" title="健身七大黄金动作"></a>健身七大黄金动作</h1><blockquote>
+<p>在健身房中有一些经典的训练动作，他们被称为最有效的黄金动作！并且每个动作都有它不同伟大的作用。当然这些动作也是你必须掌握的训练动作！</p>
+</blockquote>
+<h3 id="一、卧推"><a href="#一、卧推" class="headerlink" title="一、卧推"></a>一、卧推</h3><p>卧推是练上肢，特别是胸部的最佳动作，是其它很多动作无法比拟的，卧推是健身房里最受人喜爱的训练动作。</p>
+<p><strong>动作过程</strong><br>将杠铃垂直上举至两臂完全伸直，胸肌彻底收缩，静止一秒钟，两臂慢慢弯屈，杠铃垂直落下，直至横杠接触到胸部（乳头上），然后向上推起至起始位</p>
+<h3 id="二、深蹲"><a href="#二、深蹲" class="headerlink" title="二、深蹲"></a>二、深蹲</h3><p>深蹲是力量和肌肉训练中的王者。深蹲不仅对于构建腿部肌肉有明显的作用，还会核心力量有好处。深蹲简直就是核弹，炸毁你身体上的每一个细胞。</p>
+<a id="more"></a>
+<h3 id="三、硬拉"><a href="#三、硬拉" class="headerlink" title="三、硬拉"></a>三、硬拉</h3><p>硬拉是健身必练的动作，对增肌和减脂都有无可代替的作用！</p>
+<p>它可以打造全身的块头和力量，对于像硬拉这样的大力气动作来说，用“拉起的越多，肌肉增长的越多”这句话来形容则更为确切。推举的越多就是推举的负重更大，但是这需要精确的动作姿势，这样才可以得到最大的收获和避免受伤。</p>
+<h3 id="四、引体向上"><a href="#四、引体向上" class="headerlink" title="四、引体向上"></a>四、引体向上</h3><p>引体向上是发展上身力量和肌肉体积的王牌力量训练动作之一。任何健身高手的训练菜单里都离不开这个动作！</p>
+<p>虽然看似很简单很常见很普通的动作，但被很多高手称为上半身力量训练之王！</p>
+<h3 id="五、双杠臂屈伸"><a href="#五、双杠臂屈伸" class="headerlink" title="五、双杠臂屈伸"></a>五、双杠臂屈伸</h3><p>双杠臂屈伸被认为是锻炼上半身经典的的徒手训练动作之一，难度也不小。它能锻炼上半身很多部位的肌肉，包括胸肌、肱三头肌和三角肌（前束）为主，兼练背阔肌、斜方肌等。</p>
+<p>这一动作具有多效应的功能，不同的做法会产生不同的锻炼效果。双杠臂屈伸也被人叫做上肢深蹲，他会刺激你的胸肌，三头，三角，帮助你获得结实的上肢。</p>
+<h3 id="六、划船"><a href="#六、划船" class="headerlink" title="六、划船"></a>六、划船</h3><p>划船会集中刺激你的后背，给背部带来超级增长！</p>
+<p>背部大概是身体上最难锻炼到的部分，杠铃划船这是最好的增加背部肌肉质量的运动之一，背阔肌、大圆肌、菱形肌、斜方肌承受了主要负荷，此外还锻炼到二头肌。</p>
+<h3 id="七、推举"><a href="#七、推举" class="headerlink" title="七、推举"></a>七、推举</h3><p>无论是哑铃还是杠铃，推举都会给你的肩部带来无与伦比的刺激。这个动作是很多人练习肩部的时候最喜欢，也最常用的的动作，也是练习三角肌的首选动作之一。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;健身七大黄金动作&quot;&gt;&lt;a href=&quot;#健身七大黄金动作&quot; class=&quot;headerlink&quot; title=&quot;健身七大黄金动作&quot;&gt;&lt;/a&gt;健身七大黄金动作&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;在健身房中有一些经典的训练动作，他们被称为最有效的黄金动作！并且每个动作都有它不同伟大的作用。当然这些动作也是你必须掌握的训练动作！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;一、卧推&quot;&gt;&lt;a href=&quot;#一、卧推&quot; class=&quot;headerlink&quot; title=&quot;一、卧推&quot;&gt;&lt;/a&gt;一、卧推&lt;/h3&gt;&lt;p&gt;卧推是练上肢，特别是胸部的最佳动作，是其它很多动作无法比拟的，卧推是健身房里最受人喜爱的训练动作。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;动作过程&lt;/strong&gt;&lt;br&gt;将杠铃垂直上举至两臂完全伸直，胸肌彻底收缩，静止一秒钟，两臂慢慢弯屈，杠铃垂直落下，直至横杠接触到胸部（乳头上），然后向上推起至起始位&lt;/p&gt;
+&lt;h3 id=&quot;二、深蹲&quot;&gt;&lt;a href=&quot;#二、深蹲&quot; class=&quot;headerlink&quot; title=&quot;二、深蹲&quot;&gt;&lt;/a&gt;二、深蹲&lt;/h3&gt;&lt;p&gt;深蹲是力量和肌肉训练中的王者。深蹲不仅对于构建腿部肌肉有明显的作用，还会核心力量有好处。深蹲简直就是核弹，炸毁你身体上的每一个细胞。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="健身" scheme="http://xxyb.online/categories/%E5%81%A5%E8%BA%AB/"/>
+    
+    
+      <category term="健身" scheme="http://xxyb.online/tags/%E5%81%A5%E8%BA%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>人生的境界</title>
+    <link href="http://xxyb.online/%E4%BA%BA%E7%94%9F%E7%9A%84%E5%A2%83%E7%95%8C.html"/>
+    <id>http://xxyb.online/人生的境界.html</id>
+    <published>2017-01-08T16:00:00.000Z</published>
+    <updated>2017-03-05T11:45:05.205Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="人生的境界"><a href="#人生的境界" class="headerlink" title="人生的境界"></a>人生的境界</h1><blockquote>
+<p>人生有四种境界：自然境界、功利境界、道德境界、天地境界。<br>—中国哲学家冯友兰</p>
+</blockquote>
+<h3 id="一、自然境界"><a href="#一、自然境界" class="headerlink" title="一、自然境界"></a>一、自然境界</h3><p>一个人做事，可能只是顺着他的本能或其社会的风俗习惯。就像小孩和原始人那样，他做他所做的事，然而并无觉解，或不甚觉解。这样，他所做的事，对于他就没有意义，或很少意义。他的人生境界，就是我所说的自然境界。</p>
+<a id="more"></a>
+<h3 id="二、功利境界"><a href="#二、功利境界" class="headerlink" title="二、功利境界"></a>二、功利境界</h3><p>一个人可能意识到他自己，为自己而做各种事。这并不意味着他必然是不道德的人。他可以做些事，其后果有利于他人，其动机则是利已的。所以他所做的各种事，对于他，有功利的意义。他的人生境界，就是我所说的功利境界。</p>
+<h3 id="三、道德境界"><a href="#三、道德境界" class="headerlink" title="三、道德境界"></a>三、道德境界</h3><p>还有的人，可能了解到社会的存在，他是社会的一员。这个社会是一个整体，他是这个整体的一部分。有这种觉解，他就为社会的利益做各种事，或如儒家所说，他做事是为了”正其义不谋其利”。他真正是有道德的人，他所做的都是符合严格的道德意义的道德行为。他所做的各种事都有道德的意义。所以他的人生境界，是我所说的道德境界。</p>
+<h3 id="四、天地境界"><a href="#四、天地境界" class="headerlink" title="四、天地境界"></a>四、天地境界</h3><p>最后，一个人可能了解到超乎社会整体之上，还有一个更大的整体，即宇宙。他不仅是社会的一员，同时还是宇宙的一员。他是社会组织的公民，同时还是孟子所说的”天民”。有这种觉解，他就为宇宙的利益而做各种事。他了解他所做的事的意义，自觉他正在做他所做的事。这种觉解为他构成了最高的人生境界，就是我所说的天地境界。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>人与其他动物的不同，在于人做某事时，他了解他在做什么，并且自觉地在做。正是这种觉解，使他正在做的事对于他有了意义。他做各种事，有各种意义，各种意义合成一个整体，就构成他的人生境界。如此构成各人的人生境界，这是我的说法。不同的人可能做相同的事，但是各人的觉解程度不同，所做的事对于他们也就各有不同的意义。每个人各有自己的人生境界，与其他任何个人的都不完全相同。若是不管这些个人的差异，我们可以把各种不同的人生境界划分为四个等级。从最低的说起，它们是：自然境界，功利境界，道德境界，天地境界。</p>
+<p>这四种人生境界之中，自然境界、功利境界的人，是人现在就是的人；道德境界、天地境界的人，是人应该成为的人。前两者是自然的产物，后两者是精神的创造。自然境界最低，往上是功利境界，再往上是道德境界，最后是天地境界。它们之所以如此，是由于自然境界，几乎不需要觉解；功利境界、道德境界，需要较多的觉解；天地境界则需要最多的觉解。道德境界有道德价值，天地境界有超道德价值。</p>
+<p>照中国哲学的传统，哲学的任务是帮助人达到道德境界和天地境界，特别是达到天地境界。天地境界又可以叫做哲学境界，因为只有通过哲学，获得对宇宙的某些了解，才能达到天地境界。但是道德境界，也是哲学的产物。道德认为，并不单纯是遵循道德律的行为；有道德的人也不单纯是养成某些道德习惯的人。他行动和生活，都必须觉解其中的道德原理，哲学的任务正是给予他这种觉解。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;人生的境界&quot;&gt;&lt;a href=&quot;#人生的境界&quot; class=&quot;headerlink&quot; title=&quot;人生的境界&quot;&gt;&lt;/a&gt;人生的境界&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;人生有四种境界：自然境界、功利境界、道德境界、天地境界。&lt;br&gt;—中国哲学家冯友兰&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;一、自然境界&quot;&gt;&lt;a href=&quot;#一、自然境界&quot; class=&quot;headerlink&quot; title=&quot;一、自然境界&quot;&gt;&lt;/a&gt;一、自然境界&lt;/h3&gt;&lt;p&gt;一个人做事，可能只是顺着他的本能或其社会的风俗习惯。就像小孩和原始人那样，他做他所做的事，然而并无觉解，或不甚觉解。这样，他所做的事，对于他就没有意义，或很少意义。他的人生境界，就是我所说的自然境界。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="人生" scheme="http://xxyb.online/categories/%E4%BA%BA%E7%94%9F/"/>
+    
+    
+      <category term="人生" scheme="http://xxyb.online/tags/%E4%BA%BA%E7%94%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用JavaScript实现焦点轮播图</title>
+    <link href="http://xxyb.online/%E7%94%A8js%E5%AE%9E%E7%8E%B0%E7%84%A6%E7%82%B9%E8%BD%AE%E6%92%AD%E5%9B%BE.html"/>
+    <id>http://xxyb.online/用js实现焦点轮播图.html</id>
+    <published>2016-12-28T16:00:00.000Z</published>
+    <updated>2017-02-24T11:40:02.064Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="使用JavaScript实现焦点轮播图"><a href="#使用JavaScript实现焦点轮播图" class="headerlink" title="使用JavaScript实现焦点轮播图"></a>使用JavaScript实现焦点轮播图</h1><hr>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p><strong>各大网站都使用焦点轮播图来展示自己的图片，如淘宝、京东等。</strong></p>
+<ol>
+<li>焦点轮播图所用技能点：DOM操作、定时器、事件运用、JS动画、函数递归、无限滚动；</li>
+<li>无限滚动实现：包含图片的父级标签要有一个属性<code>overflow:hidden</code> 来隐藏超出自身尺寸的内容;有<code>style:left</code>通过控制left值来实现滚动; 图片列表中要在开始和结束位置添加两张相同的附属图，使图片实现无缝连接。</li>
+</ol>
+<a id="more"></a>
+<h2 id="使用html和css实现静态页面布局"><a href="#使用html和css实现静态页面布局" class="headerlink" title="使用html和css实现静态页面布局"></a>使用html和css实现静态页面布局</h2><ol>
+<li>父容器要承载图片、圆点下标、左右切换箭头，要让超出部分隐藏<code>overflow：hidden</code>、定位为<code>position：relative</code>；</li>
+<li>图片的div要添加定位：<code>position：absolute</code>让它基于父容器relative，<code>z-index：1</code>使图片堆叠在第一层上；</li>
+<li>圆点下标和左右切换箭头设置<code>z-index：2</code>，<code>position：absolute</code>，让其覆盖在图片上；</li>
+<li>左右切换箭头在初始状态下设置为隐藏<code>display：none</code>，鼠标移上图片时使其显示<code>display：block</code>，鼠标移到箭头上时改变透明度RGBA，使箭头颜色加深；</li>
+</ol>
+<p>附源码<br>HTML代码</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;焦点轮播图&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/焦点轮播图.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;container&quot;&gt;
+        &lt;div id=&quot;list&quot; style=&quot;left: -600px&quot;&gt;
+            &lt;img src=&quot;images/5.jpg&quot; alt=&quot;5&quot;&gt; &lt;!-- 附属图实现无缝的滚动 --&gt;
+            &lt;img src=&quot;images/1.jpg&quot; alt=&quot;1&quot;&gt;
+            &lt;img src=&quot;images/2.jpg&quot; alt=&quot;2&quot;&gt;
+            &lt;img src=&quot;images/3.jpg&quot; alt=&quot;3&quot;&gt;
+            &lt;img src=&quot;images/4.jpg&quot; alt=&quot;4&quot;&gt;
+            &lt;img src=&quot;images/5.jpg&quot; alt=&quot;5&quot;&gt;
+            &lt;img src=&quot;images/1.jpg&quot; alt=&quot;5&quot;&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;buttons&quot;&gt;
+            &lt;span index=&quot;1&quot; class=&quot;on&quot;&gt;&lt;/span&gt;
+            &lt;span index=&quot;2&quot;&gt;&lt;/span&gt;
+            &lt;span index=&quot;3&quot;&gt;&lt;/span&gt;
+            &lt;span index=&quot;4&quot;&gt;&lt;/span&gt;
+            &lt;span index=&quot;5&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;a href=&quot;javascript:;&quot; id=&quot;prev&quot; class=&quot;arrow&quot;&gt;&amp;lt;&lt;/a&gt;
+        &lt;a href=&quot;javascript:;&quot; id=&quot;next&quot; class=&quot;arrow&quot;&gt;&amp;gt;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;js/焦点轮播图.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>css代码</p>
+<pre><code>*{
+    margin: 0;
+    padding: 0;
+    text-decoration :none;
+}
+body{
+    padding: 20px;
+}
+#container{
+    width: 600px;
+    height: 400px;
+    position: relative;
+    border: 3px solid #333;
+    overflow: hidden;
+}
+#list{
+    height: 400px;
+    width: 4200px;
+    position: absolute;
+    z-index: 1;  /*设置元素的堆叠顺序*/
+}
+#list img{
+    float: left;
+}
+#buttons{
+    height: 10px;
+    width: 100px;
+    z-index: 2;
+    bottom: 20px;
+    left: 250px;
+    position: absolute;
+}
+#buttons span {
+    cursor: pointer; /*规定要显示的光标的类型（手指)*/
+    float: left;
+    border: 1px solid #fff;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #333;
+    margin-right: 5px;
+}
+#buttons .on {  
+    background: orangered;
+}
+
+.arrow {
+    cursor: pointer;
+    display: none; /*箭头隐藏*/
+    line-height: 39px;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    width: 40px; height: 40px;  
+    position: absolute;
+    z-index: 2;
+    top: 180px;
+    background-color: RGBA(0,0,0,.3); /*透明度设置*/
+    color: #fff;
+}
+.arrow:hover {
+    background-color: RGBA(0,0,0,.7);
+}
+#container:hover .arrow {
+    display: block; /*箭头显示*/
+}
+#prev {
+    left: 20px;
+}
+#next {
+    right: 20px;
+}
+</code></pre><h2 id="JS动画实现"><a href="#JS动画实现" class="headerlink" title="JS动画实现"></a>JS动画实现</h2><p><strong>箭头切换-&gt;无限滚动-&gt;按钮切换-&gt;延迟切换-&gt;自动播放</strong></p>
+<ol>
+<li>箭头切换<ul>
+<li>整个页面加载<code>window.onload</code>，获取元素</li>
+<li>通过ID名获取页面中的元素（父容器、承载图片容器、圆点列表、箭头），赋值给一个变量</li>
+<li>添加一个时间绑定，点击箭头时实现图片的切换</li>
+<li>当点击右箭头时，改变left的值，向左移动，要减去一张图的宽度</li>
+<li>获取图片容器的值，<code>list.style.left</code> = 自身的值再减去一张图片的宽度<br><strong>注意要把等号后面字符串使用<code>parseInt</code>函数转换为数字才可以进行减法，减去的图片宽度要加px单位</strong></li>
+<li>反方向同理，加上一张图片的宽度</li>
+<li>左右箭头的写法很相似，只是加减不一样，可以封装成一个函数，通过参数的正负值实现加减</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li>无限滚动：弥补左右键切换的空白<ul>
+<li>当前面的附属图比第一张大，最后一张附属图比最后一张小的时候，出现这两种情况时让它复位到真正的第一张或第五张图</li>
+<li>判断是否滚到了辅助图上，滚到了让它归位</li>
+<li>把常用的<code>list.style.left</code>，存到一个变量中，方便使用</li>
+<li>添加圆点的切换功能，创建一个变量来承载当前存储的第几张图片/显示第个圆点</li>
+<li>写一个函数，用来显示亮起小圆点的功能</li>
+<li>圆点是数组，所以创建的变量要减去1才能对应上要显示的圆点，让它亮起来添加class名<br><code>&lt;span index=&quot;1&quot; class=&quot;on&quot;&gt;</code></li>
+<li>再绑定事件中左箭头index要加一，右箭头要减一，调用圆点函数让它点击时显示，每次点击箭头的时候都要改变index的值，使它对应到正确的图片上，调用showButton亮起对应的圆点</li>
+<li>亮起自己的同时，让其他不亮，使用for循环，去掉所有的class，然后break退出循环，不再继续遍历元素节点</li>
+<li>箭头点击时，当圆点index大于5时，让它归位为1，小于1时，归位为5，不到5时加1</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li><p>圆点按钮切换</p>
+<ul>
+<li>通过for循环遍历圆点，添加点击事件</li>
+<li>点击按钮时，取到index值，就可以知道当前点击的是第几个按钮，要显示第几张图片</li>
+<li>通过DOM2级方法<code>getAttribute（）</code>获取到自定义（或自带）属性，为了计算再转换为数字<code>var myIndex = parseInt(this.getAttribute(&#39;index&#39;));</code></li>
+<li>通过新的值减去旧的值获取偏移量<code>var offset = -600 * (myIndex - index);</code></li>
+<li>写一个判断，当这张图片是打开状态的，就什么都不做，用class=on来判断是否打开，return跳出，后面的代码不会再执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">if (animated) &#123;</div><div class="line">	return;</div><div class="line">&#125;</div><div class="line">if (this.className == &apos;on&apos;) &#123;</div><div class="line">     return;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>动画函数</p>
+<ul>
+<li>图片在一定时间内进行位移，要判断是否达到目标值，没有达到还要继续做位移</li>
+<li>声明一个变量用offset总共的偏移量除以次数（位移总时间time除以位移间隔时间inteval),求出每次移动多少<code>var speed = offset / (time / inteval);</code></li>
+<li>判断speed小于0并且left值是否大于目标值newLeft或speed大于0并且left值小于目标值，这两种情况让它做位移<code>speed &gt; 0 &amp;&amp; parseInt(list.style.left) &lt; left) || (speed &lt; 0 &amp;&amp; parseInt(list.style.left) &gt; left</code></li>
+<li>在判断中放入定时器setTimeout<br><em>一个函数不停的在一定的条件之后调用自身这种做法叫做递归</em></li>
+<li>优化：声明一个变量，作为动画是否在运行的依据，开始状态为false表示没有运行<code>var animated = false; //优化</code></li>
+</ul>
+</li>
+<li><p>自动播放：</p>
+<ul>
+<li>鼠标移开时自动播放，鼠标移上去时停止，通过定时器<code>setTimeout</code>和<code>clearTimeout</code>来实现的</li>
+<li>设置定时器，让它隔几秒切换一次，相当于3秒钟调一次next.onclick（右箭头）事件</li>
+<li>自动切换需要写两个函数来控制自动切换，声明一个变量来存放定时器不给任何值</li>
+<li>鼠标移开时定时器执行，移上时清除定时器执行，要给整个容器加一个鼠标移入移开事件</li>
+<li>鼠标不做任何事情时让它自动播放，调用函数</li>
+</ul>
+</li>
+</ol>
+<p>附源码</p>
+<pre><code>window.onload = function() {
+    var container = document.getElementById(&apos;container&apos;);
+    var list = document.getElementById(&apos;list&apos;);
+    var buttons = document.getElementById(&apos;buttons&apos;).getElementsByTagName(&apos;span&apos;);
+    var prev = document.getElementById(&apos;prev&apos;);
+    var next = document.getElementById(&apos;next&apos;);
+    var index = 1; //索引
+    var len = 5;
+    var animated = false; //优化
+    var interval = 3000; //时间间隔
+    var timer;
+
+    function showButton() {
+        for (var i = 0; i &lt; buttons.length; i++) {
+            if (buttons[i].className == &apos;on&apos;) {
+                buttons[i].className = &apos;&apos;;
+                break;
+            }
+        }
+        buttons[index - 1].className = &apos;on&apos;;
+    } //按钮切换
+
+    next.onclick = function() {
+        if (animated) {
+            return;
+        }
+        if (index == 5) {
+            index = 1;
+        } else {
+            index += 1;
+        }
+        animate(-600);
+        showButton();
+    }//右切换
+    prev.onclick = function() {
+        if (animated) {
+            return;
+        }
+        if (index == 1) {
+            index = 5;
+        } else {
+            index -= 1;
+        }
+        animate(600);
+        showButton();
+    }//左切换
+
+    function play() {
+        timer = setTimeout(function() {
+            next.onclick();
+            play();
+        }, interval);
+    }
+
+    function stop() {
+        clearTimeout(timer);
+    }
+
+    for (var i = 0; i &lt; buttons.length; i++) {
+        buttons[i].onclick = function() {
+            if (animated) {
+                return;
+            }
+            if (this.className == &apos;on&apos;) {
+                return;
+            }
+            var myIndex = parseInt(this.getAttribute(&apos;index&apos;));
+            var offset = -600 * (myIndex - index);
+            animate(offset);
+            index = myIndex;
+            showButton();
+        }
+    }
+
+    function animate(offset) {
+        if (offset == 0) {
+            return;
+        }
+        animated = true;
+        var time = 300; //时间
+        var inteval = 10; //时间间隔
+        var speed = offset / (time / inteval); //速度
+        var left = parseInt(list.style.left) + offset; //改变值来实现滚动
+
+        var go = function() {
+                if ((speed &gt; 0 &amp;&amp; parseInt(list.style.left) &lt; left) || (speed &lt; 0 &amp;&amp; parseInt(list.style.left) &gt; left)) {
+                    list.style.left = parseInt(list.style.left) + speed + &apos;px&apos;;
+                    setTimeout(go, inteval);
+                } else {
+                    list.style.left = left + &apos;px&apos;;
+                    if (left &gt; -200) {
+                        list.style.left = -600 * len + &apos;px&apos;;
+                    }
+                    if (left &lt; (-600 * len)) {
+                        list.style.left = &apos;-600px&apos;;
+                    }
+                    animated = false;
+                }
+            } //自动滚动
+        go();
+    }
+
+    container.onmouseover = stop();
+    container.onmouseout = play();
+
+    play();
+}
+</code></pre><p>##总结##</p>
+<p>焦点轮播图的实现需要耐心分析原理，掌握焦点轮播图所需的技能点，从而通过代码实现。</p>
+<p>先写出静态页面html+css，注意属性值的设置。再用js一步一步写出箭头切换、按钮切换的函数，学会设置和清除定时器、递归调用函数，实现自动滚动播放。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;使用JavaScript实现焦点轮播图&quot;&gt;&lt;a href=&quot;#使用JavaScript实现焦点轮播图&quot; class=&quot;headerlink&quot; title=&quot;使用JavaScript实现焦点轮播图&quot;&gt;&lt;/a&gt;使用JavaScript实现焦点轮播图&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;原理&quot;&gt;&lt;a href=&quot;#原理&quot; class=&quot;headerlink&quot; title=&quot;原理&quot;&gt;&lt;/a&gt;原理&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;各大网站都使用焦点轮播图来展示自己的图片，如淘宝、京东等。&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;焦点轮播图所用技能点：DOM操作、定时器、事件运用、JS动画、函数递归、无限滚动；&lt;/li&gt;
+&lt;li&gt;无限滚动实现：包含图片的父级标签要有一个属性&lt;code&gt;overflow:hidden&lt;/code&gt; 来隐藏超出自身尺寸的内容;有&lt;code&gt;style:left&lt;/code&gt;通过控制left值来实现滚动; 图片列表中要在开始和结束位置添加两张相同的附属图，使图片实现无缝连接。&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="web前端" scheme="http://xxyb.online/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="html" scheme="http://xxyb.online/tags/html/"/>
+    
+      <category term="css" scheme="http://xxyb.online/tags/css/"/>
+    
+      <category term="javascript" scheme="http://xxyb.online/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://xxyb.online/hello-world.html"/>
+    <id>http://xxyb.online/hello-world.html</id>
+    <published>2016-12-08T16:00:00.000Z</published>
+    <updated>2017-02-24T11:29:16.152Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<a id="more"></a>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="blog" scheme="http://xxyb.online/categories/blog/"/>
+    
+    
+      <category term="html" scheme="http://xxyb.online/tags/html/"/>
+    
+      <category term="css" scheme="http://xxyb.online/tags/css/"/>
+    
+      <category term="javascript" scheme="http://xxyb.online/tags/javascript/"/>
+    
+  </entry>
+  
+</feed>
