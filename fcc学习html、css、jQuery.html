@@ -104,7 +104,7 @@ a标签用#做占位符
 
 img标签里应加alt属性，为了盲人朋友
 1&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;&amp;lt;img class=&amp;quot;smaller-image thick-green-border&amp;quot; alt=&amp;quot;A cute orange cat lying on its back&amp;quot;">
-<meta property="og:updated_time" content="2017-04-22T12:15:41.129Z">
+<meta property="og:updated_time" content="2017-04-22T12:25:15.661Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FreeCodeCamp学习笔记">
 <meta name="twitter:description" content="FreeCodeCamp学习笔记html学习知识点补充
@@ -464,11 +464,11 @@ img标签里应加alt属性，为了盲人朋友
 <p>Hex code 遵循 red-green-blue（红-绿-蓝），或者叫 rgb 格式。hex code 中的前两位表示颜色中红色的数量，第三四位代表绿色的数量，第五六位代表蓝色的数量。</p>
 <h1 id="jquery学习"><a href="#jquery学习" class="headerlink" title="jquery学习"></a>jquery学习</h1><p><strong>jQuery通过选择器来选择一个元素的，然后操作元素做些改变。</strong></p>
 <ol>
-<li>要让所有的按钮做弹回效果，只要把这段代码写在<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(document).ready(function() &#123;&#125;);</div></pre></td></tr></table></figure>
+<li><p>要让所有的按钮做弹回效果，只要把这段代码写在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(document).ready(function() &#123;&#125;);</div></pre></td></tr></table></figure>
+<p>里面，然后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;button&quot;).addClass(&quot;animated bounce&quot;);</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>里面，然后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;button&quot;).addClass(&quot;animated bounce&quot;);</div></pre></td></tr></table></figure></p>
-<ol>
 <li><p>你可以通过jQuery的addClass()方法给元素添加class,也可以通过jQueryremoveClass()方法去掉元素上的class。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;#target2&quot;).removeClass(&quot;btn-default&quot;);</div></pre></td></tr></table></figure>
 </li>
@@ -487,7 +487,7 @@ img标签里应加alt属性，为了盲人朋友
 <li><p>jQuery有一个appendTo()方法可以把选中的元素加到其他元素中。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;#target4&quot;).appendTo(&quot;#left-well&quot;);</div></pre></td></tr></table></figure>
 </li>
-<li><p>jQuery的clone()方法可以拷贝元素。<br>方法链function chaining，使用起来很方便</p>
+<li><p>jQuery的clone()方法可以拷贝元素，方法链function chaining，使用起来很方便。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;#target2&quot;).clone().appendTo(&quot;#right-well&quot;);</div></pre></td></tr></table></figure>
 </li>
 <li><p>每个HTML元素根据继承属性都有父parent元素,jQuery有一个方法叫parent()，它允许你访问指定元素的父元素</p>
@@ -501,11 +501,11 @@ img标签里应加alt属性，为了盲人朋友
 </li>
 <li><p>获取class为target且索引为奇数的所有元素，并给他们添加class。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;.target:odd&quot;).addClass(&quot;animated shake&quot;);</div></pre></td></tr></table></figure>
+<p>jQuery里的索引是从0开始的，也就是说：:odd 选择第2、4、6个元素，因为target#2(索引为1)，target#4(索引为3)，target6(索引为5)。获取class为target且索引为偶数的所有元素，并给他们添加class。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;.target:even&quot;).addClass(&quot;animated shake&quot;);</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>jQuery里的索引是从0开始的，也就是说：:odd 选择第2、4、6个元素，因为target#2(索引为1)，target#4(索引为3)，target6(索引为5)。获取class为target且索引为偶数的所有元素，并给他们添加class。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;.target:even&quot;).addClass(&quot;animated shake&quot;);</div></pre></td></tr></table></figure></p>
-<ol>
-<li>让整个body都有淡出效果(fadeOut)：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;body&quot;).addClass(&quot;animated fadeOut&quot;);</div></pre></td></tr></table></figure>
+<li><p>让整个body都有淡出效果(fadeOut)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;body&quot;).addClass(&quot;animated fadeOut&quot;);</div></pre></td></tr></table></figure>
 </li>
 </ol>
 

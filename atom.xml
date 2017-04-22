@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xxyb.online/"/>
-  <updated>2017-04-22T12:15:41.129Z</updated>
+  <updated>2017-04-22T12:25:15.661Z</updated>
   <id>http://xxyb.online/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://xxyb.online/fcc%E5%AD%A6%E4%B9%A0html%E3%80%81css%E3%80%81jQuery.html"/>
     <id>http://xxyb.online/fcc学习html、css、jQuery.html</id>
     <published>2017-04-23T16:00:00.000Z</published>
-    <updated>2017-04-22T12:15:41.129Z</updated>
+    <updated>2017-04-22T12:25:15.661Z</updated>
     
     <content type="html"><![CDATA[<h1 id="FreeCodeCamp学习笔记"><a href="#FreeCodeCamp学习笔记" class="headerlink" title="FreeCodeCamp学习笔记"></a>FreeCodeCamp学习笔记</h1><h1 id="html学习"><a href="#html学习" class="headerlink" title="html学习"></a>html学习</h1><h2 id="知识点补充"><a href="#知识点补充" class="headerlink" title="知识点补充"></a>知识点补充</h2><ul>
 <li><p>a标签用#做占位符</p>
@@ -53,11 +53,11 @@
 <p>Hex code 遵循 red-green-blue（红-绿-蓝），或者叫 rgb 格式。hex code 中的前两位表示颜色中红色的数量，第三四位代表绿色的数量，第五六位代表蓝色的数量。</p>
 <h1 id="jquery学习"><a href="#jquery学习" class="headerlink" title="jquery学习"></a>jquery学习</h1><p><strong>jQuery通过选择器来选择一个元素的，然后操作元素做些改变。</strong></p>
 <ol>
-<li>要让所有的按钮做弹回效果，只要把这段代码写在<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(document).ready(function() &#123;&#125;);</div></pre></td></tr></table></figure>
+<li><p>要让所有的按钮做弹回效果，只要把这段代码写在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(document).ready(function() &#123;&#125;);</div></pre></td></tr></table></figure>
+<p>里面，然后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;button&quot;).addClass(&quot;animated bounce&quot;);</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>里面，然后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;button&quot;).addClass(&quot;animated bounce&quot;);</div></pre></td></tr></table></figure></p>
-<ol>
 <li><p>你可以通过jQuery的addClass()方法给元素添加class,也可以通过jQueryremoveClass()方法去掉元素上的class。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;#target2&quot;).removeClass(&quot;btn-default&quot;);</div></pre></td></tr></table></figure>
 </li>
@@ -76,7 +76,7 @@
 <li><p>jQuery有一个appendTo()方法可以把选中的元素加到其他元素中。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;#target4&quot;).appendTo(&quot;#left-well&quot;);</div></pre></td></tr></table></figure>
 </li>
-<li><p>jQuery的clone()方法可以拷贝元素。<br>方法链function chaining，使用起来很方便</p>
+<li><p>jQuery的clone()方法可以拷贝元素，方法链function chaining，使用起来很方便。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;#target2&quot;).clone().appendTo(&quot;#right-well&quot;);</div></pre></td></tr></table></figure>
 </li>
 <li><p>每个HTML元素根据继承属性都有父parent元素,jQuery有一个方法叫parent()，它允许你访问指定元素的父元素</p>
@@ -90,11 +90,11 @@
 </li>
 <li><p>获取class为target且索引为奇数的所有元素，并给他们添加class。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;.target:odd&quot;).addClass(&quot;animated shake&quot;);</div></pre></td></tr></table></figure>
+<p>jQuery里的索引是从0开始的，也就是说：:odd 选择第2、4、6个元素，因为target#2(索引为1)，target#4(索引为3)，target6(索引为5)。获取class为target且索引为偶数的所有元素，并给他们添加class。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;.target:even&quot;).addClass(&quot;animated shake&quot;);</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>jQuery里的索引是从0开始的，也就是说：:odd 选择第2、4、6个元素，因为target#2(索引为1)，target#4(索引为3)，target6(索引为5)。获取class为target且索引为偶数的所有元素，并给他们添加class。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;.target:even&quot;).addClass(&quot;animated shake&quot;);</div></pre></td></tr></table></figure></p>
-<ol>
-<li>让整个body都有淡出效果(fadeOut)：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;body&quot;).addClass(&quot;animated fadeOut&quot;);</div></pre></td></tr></table></figure>
+<li><p>让整个body都有淡出效果(fadeOut)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;body&quot;).addClass(&quot;animated fadeOut&quot;);</div></pre></td></tr></table></figure>
 </li>
 </ol>
 ]]></content>
@@ -121,7 +121,7 @@
     <link href="http://xxyb.online/kali%20linux%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97.html"/>
     <id>http://xxyb.online/kali linux安装指南.html</id>
     <published>2017-04-19T16:00:00.000Z</published>
-    <updated>2017-04-22T12:16:19.323Z</updated>
+    <updated>2017-04-22T12:26:37.689Z</updated>
     
     <content type="html"><![CDATA[<h1 id="kali-linux-安装指南"><a href="#kali-linux-安装指南" class="headerlink" title="kali linux 安装指南"></a>kali linux 安装指南</h1><blockquote>
 <p>Kali Linux是基于Debian的Linux发行版， 设计用于数字取证和渗透测试。Kali Linux预装了许多渗透测试软件，包括nmap (端口扫描器)、Wireshark (数据包分析器)、John the Ripper (密码破解器),以及Aircrack-ng (一应用于对无线局域网进行渗透测试的软件).用户可通过硬盘、live CD或live USB运行Kali Linux。Metasploit的Metasploit Framework支持Kali Linux，Metasploit一套针对远程主机进行开发和执行Exploit代码的工具。<br>Kali Linux既有32位和64位的镜像。可用于x86 指令集。同时还有基于ARM架构的镜像，可用于树莓派和三星的ARM Chromebook. –[百度百科]</p>
@@ -159,17 +159,17 @@
 <p>文件小，用户多要注意/tmp和/var挂载点大小</p>
 </li>
 <li>选择“分区设定结束并将修改写入磁盘”继续</li>
+</ul>
+</li>
 <li>开始格式化并写入磁盘，这个过程可能有点长，请耐心等待</li>
 <li>网络镜像</li>
 <li>写入引导（很重要一步）:一定选是，是个坑</li>
 <li>安装完成</li>
 </ul>
-</li>
-</ul>
 <h1 id="安装之后"><a href="#安装之后" class="headerlink" title="安装之后"></a>安装之后</h1><ul>
 <li><p>更新软件源</p>
 <p>修改sources.list文件：/etc/apt/sources.list</p>
-<p>然后选择添加以下适合自己较快的源（可自由选择喔）</p>
+<p>然后选择添加适合自己较快的源（可自由选择）</p>
 <p>保存之后：</p>
 <p>apt-get update      #刷新系统</p>
 <p>apt-get dist-upgrade         #安装更新</p>
@@ -211,9 +211,9 @@
       <category term="安全" scheme="http://xxyb.online/categories/%E5%AE%89%E5%85%A8/"/>
     
     
-      <category term="kali" scheme="http://xxyb.online/tags/kali/"/>
-    
       <category term="linux" scheme="http://xxyb.online/tags/linux/"/>
+    
+      <category term="kali" scheme="http://xxyb.online/tags/kali/"/>
     
   </entry>
   
@@ -222,9 +222,9 @@
     <link href="http://xxyb.online/MapReduce%E5%88%9D%E6%8E%A2.html"/>
     <id>http://xxyb.online/MapReduce初探.html</id>
     <published>2017-04-13T16:00:00.000Z</published>
-    <updated>2017-04-22T12:16:50.704Z</updated>
+    <updated>2017-04-22T12:27:31.915Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="MapReduce初探"><a href="#MapReduce初探" class="headerlink" title="MapReduce初探"></a>MapReduce初探</h1><h1 id="MapReduce-简介"><a href="#MapReduce-简介" class="headerlink" title="MapReduce 简介"></a>MapReduce 简介</h1><p><strong>MapReduce是一个用于处理海量数据的分布式计算框架</strong></p>
+    <content type="html"><![CDATA[<h1 id="MapReduce初探"><a href="#MapReduce初探" class="headerlink" title="MapReduce初探"></a>MapReduce初探</h1><p><strong>MapReduce是一个用于处理海量数据的分布式计算框架</strong></p>
 <p>MapReduce解决的问题：</p>
 <ul>
 <li>数据分布式存储</li>
@@ -310,7 +310,7 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;MapReduce初探&quot;&gt;&lt;a href=&quot;#MapReduce初探&quot; class=&quot;headerlink&quot; title=&quot;MapReduce初探&quot;&gt;&lt;/a&gt;MapReduce初探&lt;/h1&gt;&lt;h1 id=&quot;MapReduce-简介&quot;&gt;&lt;a href=&quot;#MapRe
+      &lt;h1 id=&quot;MapReduce初探&quot;&gt;&lt;a href=&quot;#MapReduce初探&quot; class=&quot;headerlink&quot; title=&quot;MapReduce初探&quot;&gt;&lt;/a&gt;MapReduce初探&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;MapReduce是一个用于处理海量数据的分布式计算
     
     </summary>
     
@@ -652,6 +652,61 @@
   </entry>
   
   <entry>
+    <title>提升效率</title>
+    <link href="http://xxyb.online/%E6%8F%90%E5%8D%87%E6%95%88%E7%8E%87.html"/>
+    <id>http://xxyb.online/提升效率.html</id>
+    <published>2017-03-18T16:00:00.000Z</published>
+    <updated>2017-03-21T16:40:54.251Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="提升效率"><a href="#提升效率" class="headerlink" title="提升效率"></a>提升效率</h1><blockquote>
+<p>在前进的路上，放弃那些次要的、可有可无的东西，获取真正重要、有意义的价值，让自己更加认同自己的付出和努力方向，这才是时间管理的本质和最大意义所在。</p>
+</blockquote>
+<h2 id="必须学会说“不”"><a href="#必须学会说“不”" class="headerlink" title="必须学会说“不”"></a>必须学会说“不”</h2><p>说“不”其实是个非常艰难的事情，可是如果不说no，那么就很难专心地应对真正重要的任务。因为有太多看起来不错的机会、看上去不能拒绝的要求、事成后有利的图景，以及无法拒绝的人情世故，诱惑着你答应下来。</p>
+<p>其实工作越久，你就越会发现，真正的牛人，往往就牛在敢于放弃上。所谓的战略化决策，不仅仅是指战略高度的选择，也指战略高度的放弃。刚开始放弃的时候会很难受，这是多年形成的习惯和求全责备的心态发出的尖叫和抗议。可是时间久了才发现：不重要的事情真做不完也不会死，倒是重要的事情老拖着不做往往会后果比较严重。</p>
+<a id="more"></a>
+<h2 id="必须学会说yes"><a href="#必须学会说yes" class="headerlink" title="必须学会说yes"></a>必须学会说yes</h2><p>对我而言，如果想要找时间完成真正重要的事情，那么就先答应下来，再商量个相对宽裕的时间。将这些定下来之后，我总能想出方法，排除万难去实践。</p>
+<p>无论是写小说、开公众号、参加考试，都可以遵循这个套路。牺牲掉部分娱乐、睡眠、社交，甚至是和家人团聚的时间，会非常适合短期内的明确目标，并督促你用冲刺的方式完成。</p>
+<p>如果一件事情并不重要，那么就明确地拒绝；如果很重要，就大胆地接受。你不会因为说“不”损失多少，也不会因为应承去做却没有做好而损失很多。真正的损失是在我们说“这事儿很好，我再想想”中发生的。</p>
+<h2 id="金钱换时间"><a href="#金钱换时间" class="headerlink" title="金钱换时间"></a>金钱换时间</h2><p>以前没有孩子的时候，我习惯利用整块时间写作，写作进入状态也非常缓慢，必须要在阳光充足的某个角落坐下，泡杯咖啡，看看新闻，再慢慢进入状态。</p>
+<p>现在可用的业余时间往往是零散的，如果不能抓住零散时间进行思考和打草稿，那就更没有时间了。为了能更好地抓住这些碎片时间，我添置了更多的电子设备，例如静音且无须插电源的平板电脑，它能让我更好地利用孩子入睡后的时间。再比如我打破了从前不下载App的习惯，安装了多个阅读、记录、拍照笔记类的App，方便自己在零碎时间里能随时把读到的、想到的、看到的、诱发灵感的材料都尽快地收纳进来。</p>
+<p>找到时间后，就是筹划和管理时间了。</p>
+<h2 id="关掉提醒，高效专注地工作"><a href="#关掉提醒，高效专注地工作" class="headerlink" title="关掉提醒，高效专注地工作"></a>关掉提醒，高效专注地工作</h2><p>要想工作有效，就必须运用整块的时间。如果将时间分割开来零星使用，纵然时间总和相同，但其效果与整块运用时间的效果却差距很大。比如我以前工作时常要写一些措辞讲究的英文邮件，如果能够聚精会神地写，再加上润色，十几分钟就能完成。可是我总会忍不住一边写一边去看看什么人又说了什么话，有时还会因为查某个单词去逛下红迪网。</p>
+<p>后来实在忙起来了，任凭各种新信息提醒也不去查看，等到某个任务告一段落，再统一查看和回复，既保证了效率，又不至于错过什么。仅这一项小小的改变，就大大提高了我的工作效率。</p>
+<h2 id="减少选项，设置优先级"><a href="#减少选项，设置优先级" class="headerlink" title="减少选项，设置优先级"></a>减少选项，设置优先级</h2><p>选项越少，时间越多。一个比较经典的时间管理方法是：每天只选择1～3件事情去做，并辅以不懈地追求。你的本能不会喜欢这样的限制，可是这种方法有利于排列真正重要的事情，比起事无巨细地齐头并进，能让工作更为出色。</p>
+<h2 id="提前把你想到的写下来"><a href="#提前把你想到的写下来" class="headerlink" title="提前把你想到的写下来"></a>提前把你想到的写下来</h2><p>当事情一旦多了杂了，脑子就明显不够用。我经常发现，哪怕是小事，如果写下来就会遵守；不写，无论在脑子里想多久，一被打扰就会忘掉。提前计划的目的其实不是为了“计划”，而是为了更重视时间的流向，知道时间都花到哪里去了。</p>
+<p>如果不是很清晰地知道要做什么，就容易碰到什么是什么。于是哪件事情先找上来就先处理了，就好比我特别反感邮箱，因为邮件不停地进来，叮的一声响。只要邮箱的叮声不关，我就永远干不了该干的事情，会一直挂在邮箱上回复邮件，而且要一会儿回邮件，一会儿写报告，一会儿又查数据。数据查到一半叮的一声邮件又进来了，说到了另一件事，再去查……忙了一上午，几件重要的大事却一件都没干。</p>
+<p>先把所有需要完成的事列出来，然后对大任务进行分解，分解成小一些的子任务，再对任务进行排序。排序时最艰难的步骤就是决定放弃或者推迟哪些东西。</p>
+<h2 id="找到适合自己的好方法"><a href="#找到适合自己的好方法" class="headerlink" title="找到适合自己的好方法"></a>找到适合自己的好方法</h2><p>开始时间管理的时候，大家都会热衷于搜罗和学习各种方法。比如有一种著名的战拖策略叫作“吃掉那只青蛙”，鼓励大家给最重要、最困难的任务以第一优先权。但是我在实践之后，却发现这个方法极其不适合我。因为如果一上来就强迫自己完成最艰巨的任务，我反而会容易知难而退，会造成各种拖延。所以我摸索出的合适自己的方法是先完成最简单、最有兴趣的工作，通过这些初级工作渐入佳境，等效率上来了，再去啃“坚硬的骨头”。</p>
+<p>说到这里，时间管理却还不能结束。桥本和彦曾经说过，“没有体现结果的时间管理就不能称之为时间管理”，因此定期对时间管理的成就和不足之处进行反思，就有非常重要的意义。</p>
+<p>坚持时间管理最大的挑战就在于：即便你用最高科技的工具，按照最合理的科学方法、符合生物钟的方法规划好了时间，然后恪守，一天下来有很大的收获，你的内心也在呼唤你歪倒在沙发上刷手机、追美剧、和朋友瞎聊。</p>
+<p>为了战胜无时不在的诱惑，就需要时不时地重温一下目标，配合着各种短期、中期、长期的目标，时间管理上也应相应配合着进行松弛有度的分布。任何时间管理和战拖秘诀都离不开恒心，但是生活必须要张弛有度。</p>
+<p>如果是学生为了考GRE，那么两个月的短期突击式的冲刺，要比断断续续地复习一年有效；而大考完毕，可以有一小段时间让大脑放松下，以便进入下一阶段的目标。</p>
+<p>一个人如果长期无目标地疲劳战斗，那么时间管理便会沦为空谈，你依旧会身心俱疲且内心无比迷茫，那样的话还不如好好歇着。</p>
+<p>当然，如果把时间管理放到整个人生来看，有些人喜欢有计划、高产高效的生活，也有人喜欢随性自由的节奏。这些都没有问题，你尽可以按自己的喜好选择自己喜欢的方式。不过要记住，每种选择都意味着相应的放弃，只要回过头时不会患得患失就好。</p>
+<p>对很多人而言，时间管理也是一种成就。他们对时间管理的追求，就是对成就感的追求，这也是他们进行时间管理的最大动力。</p>
+<p>如果是这种情况，那么拥有一个能完成后打钩的to-dolist（待办事项列表）或者任务工作本、相关任务管理App，让这种成就可视化，就是很好的选择。</p>
+<p>对我个人而言，时间管理的最大成功，不是达成了什么了不起的大成就，而是让自己能更明晰时间的去向、对事物的价值度有所衡量，并通过“管理时间”这一具体行动，让自己不再盲目焦虑。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在前进的路上，放弃那些次要的、可有可无的东西，获取真正重要、有意义的价值，让自己更加认同自己的付出和努力方向，这才是时间管理的本质和最大意义所在。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;提升效率&quot;&gt;&lt;a href=&quot;#提升效率&quot; class=&quot;headerlink&quot; title=&quot;提升效率&quot;&gt;&lt;/a&gt;提升效率&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;在前进的路上，放弃那些次要的、可有可无的东西，获取真正重要、有意义的价值，让自己更加认同自己的付出和努力方向，这才是时间管理的本质和最大意义所在。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;必须学会说“不”&quot;&gt;&lt;a href=&quot;#必须学会说“不”&quot; class=&quot;headerlink&quot; title=&quot;必须学会说“不”&quot;&gt;&lt;/a&gt;必须学会说“不”&lt;/h2&gt;&lt;p&gt;说“不”其实是个非常艰难的事情，可是如果不说no，那么就很难专心地应对真正重要的任务。因为有太多看起来不错的机会、看上去不能拒绝的要求、事成后有利的图景，以及无法拒绝的人情世故，诱惑着你答应下来。&lt;/p&gt;
+&lt;p&gt;其实工作越久，你就越会发现，真正的牛人，往往就牛在敢于放弃上。所谓的战略化决策，不仅仅是指战略高度的选择，也指战略高度的放弃。刚开始放弃的时候会很难受，这是多年形成的习惯和求全责备的心态发出的尖叫和抗议。可是时间久了才发现：不重要的事情真做不完也不会死，倒是重要的事情老拖着不做往往会后果比较严重。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="方法" scheme="http://xxyb.online/categories/%E6%96%B9%E6%B3%95/"/>
+    
+    
+      <category term="学习" scheme="http://xxyb.online/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>内心感悟</title>
     <link href="http://xxyb.online/%E5%86%85%E5%BF%83%E6%84%9F%E5%8F%97.html"/>
     <id>http://xxyb.online/内心感受.html</id>
@@ -747,61 +802,6 @@
     
     
       <category term="人生" scheme="http://xxyb.online/tags/%E4%BA%BA%E7%94%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>提升效率</title>
-    <link href="http://xxyb.online/%E6%8F%90%E5%8D%87%E6%95%88%E7%8E%87.html"/>
-    <id>http://xxyb.online/提升效率.html</id>
-    <published>2017-03-18T16:00:00.000Z</published>
-    <updated>2017-03-21T16:40:54.251Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="提升效率"><a href="#提升效率" class="headerlink" title="提升效率"></a>提升效率</h1><blockquote>
-<p>在前进的路上，放弃那些次要的、可有可无的东西，获取真正重要、有意义的价值，让自己更加认同自己的付出和努力方向，这才是时间管理的本质和最大意义所在。</p>
-</blockquote>
-<h2 id="必须学会说“不”"><a href="#必须学会说“不”" class="headerlink" title="必须学会说“不”"></a>必须学会说“不”</h2><p>说“不”其实是个非常艰难的事情，可是如果不说no，那么就很难专心地应对真正重要的任务。因为有太多看起来不错的机会、看上去不能拒绝的要求、事成后有利的图景，以及无法拒绝的人情世故，诱惑着你答应下来。</p>
-<p>其实工作越久，你就越会发现，真正的牛人，往往就牛在敢于放弃上。所谓的战略化决策，不仅仅是指战略高度的选择，也指战略高度的放弃。刚开始放弃的时候会很难受，这是多年形成的习惯和求全责备的心态发出的尖叫和抗议。可是时间久了才发现：不重要的事情真做不完也不会死，倒是重要的事情老拖着不做往往会后果比较严重。</p>
-<a id="more"></a>
-<h2 id="必须学会说yes"><a href="#必须学会说yes" class="headerlink" title="必须学会说yes"></a>必须学会说yes</h2><p>对我而言，如果想要找时间完成真正重要的事情，那么就先答应下来，再商量个相对宽裕的时间。将这些定下来之后，我总能想出方法，排除万难去实践。</p>
-<p>无论是写小说、开公众号、参加考试，都可以遵循这个套路。牺牲掉部分娱乐、睡眠、社交，甚至是和家人团聚的时间，会非常适合短期内的明确目标，并督促你用冲刺的方式完成。</p>
-<p>如果一件事情并不重要，那么就明确地拒绝；如果很重要，就大胆地接受。你不会因为说“不”损失多少，也不会因为应承去做却没有做好而损失很多。真正的损失是在我们说“这事儿很好，我再想想”中发生的。</p>
-<h2 id="金钱换时间"><a href="#金钱换时间" class="headerlink" title="金钱换时间"></a>金钱换时间</h2><p>以前没有孩子的时候，我习惯利用整块时间写作，写作进入状态也非常缓慢，必须要在阳光充足的某个角落坐下，泡杯咖啡，看看新闻，再慢慢进入状态。</p>
-<p>现在可用的业余时间往往是零散的，如果不能抓住零散时间进行思考和打草稿，那就更没有时间了。为了能更好地抓住这些碎片时间，我添置了更多的电子设备，例如静音且无须插电源的平板电脑，它能让我更好地利用孩子入睡后的时间。再比如我打破了从前不下载App的习惯，安装了多个阅读、记录、拍照笔记类的App，方便自己在零碎时间里能随时把读到的、想到的、看到的、诱发灵感的材料都尽快地收纳进来。</p>
-<p>找到时间后，就是筹划和管理时间了。</p>
-<h2 id="关掉提醒，高效专注地工作"><a href="#关掉提醒，高效专注地工作" class="headerlink" title="关掉提醒，高效专注地工作"></a>关掉提醒，高效专注地工作</h2><p>要想工作有效，就必须运用整块的时间。如果将时间分割开来零星使用，纵然时间总和相同，但其效果与整块运用时间的效果却差距很大。比如我以前工作时常要写一些措辞讲究的英文邮件，如果能够聚精会神地写，再加上润色，十几分钟就能完成。可是我总会忍不住一边写一边去看看什么人又说了什么话，有时还会因为查某个单词去逛下红迪网。</p>
-<p>后来实在忙起来了，任凭各种新信息提醒也不去查看，等到某个任务告一段落，再统一查看和回复，既保证了效率，又不至于错过什么。仅这一项小小的改变，就大大提高了我的工作效率。</p>
-<h2 id="减少选项，设置优先级"><a href="#减少选项，设置优先级" class="headerlink" title="减少选项，设置优先级"></a>减少选项，设置优先级</h2><p>选项越少，时间越多。一个比较经典的时间管理方法是：每天只选择1～3件事情去做，并辅以不懈地追求。你的本能不会喜欢这样的限制，可是这种方法有利于排列真正重要的事情，比起事无巨细地齐头并进，能让工作更为出色。</p>
-<h2 id="提前把你想到的写下来"><a href="#提前把你想到的写下来" class="headerlink" title="提前把你想到的写下来"></a>提前把你想到的写下来</h2><p>当事情一旦多了杂了，脑子就明显不够用。我经常发现，哪怕是小事，如果写下来就会遵守；不写，无论在脑子里想多久，一被打扰就会忘掉。提前计划的目的其实不是为了“计划”，而是为了更重视时间的流向，知道时间都花到哪里去了。</p>
-<p>如果不是很清晰地知道要做什么，就容易碰到什么是什么。于是哪件事情先找上来就先处理了，就好比我特别反感邮箱，因为邮件不停地进来，叮的一声响。只要邮箱的叮声不关，我就永远干不了该干的事情，会一直挂在邮箱上回复邮件，而且要一会儿回邮件，一会儿写报告，一会儿又查数据。数据查到一半叮的一声邮件又进来了，说到了另一件事，再去查……忙了一上午，几件重要的大事却一件都没干。</p>
-<p>先把所有需要完成的事列出来，然后对大任务进行分解，分解成小一些的子任务，再对任务进行排序。排序时最艰难的步骤就是决定放弃或者推迟哪些东西。</p>
-<h2 id="找到适合自己的好方法"><a href="#找到适合自己的好方法" class="headerlink" title="找到适合自己的好方法"></a>找到适合自己的好方法</h2><p>开始时间管理的时候，大家都会热衷于搜罗和学习各种方法。比如有一种著名的战拖策略叫作“吃掉那只青蛙”，鼓励大家给最重要、最困难的任务以第一优先权。但是我在实践之后，却发现这个方法极其不适合我。因为如果一上来就强迫自己完成最艰巨的任务，我反而会容易知难而退，会造成各种拖延。所以我摸索出的合适自己的方法是先完成最简单、最有兴趣的工作，通过这些初级工作渐入佳境，等效率上来了，再去啃“坚硬的骨头”。</p>
-<p>说到这里，时间管理却还不能结束。桥本和彦曾经说过，“没有体现结果的时间管理就不能称之为时间管理”，因此定期对时间管理的成就和不足之处进行反思，就有非常重要的意义。</p>
-<p>坚持时间管理最大的挑战就在于：即便你用最高科技的工具，按照最合理的科学方法、符合生物钟的方法规划好了时间，然后恪守，一天下来有很大的收获，你的内心也在呼唤你歪倒在沙发上刷手机、追美剧、和朋友瞎聊。</p>
-<p>为了战胜无时不在的诱惑，就需要时不时地重温一下目标，配合着各种短期、中期、长期的目标，时间管理上也应相应配合着进行松弛有度的分布。任何时间管理和战拖秘诀都离不开恒心，但是生活必须要张弛有度。</p>
-<p>如果是学生为了考GRE，那么两个月的短期突击式的冲刺，要比断断续续地复习一年有效；而大考完毕，可以有一小段时间让大脑放松下，以便进入下一阶段的目标。</p>
-<p>一个人如果长期无目标地疲劳战斗，那么时间管理便会沦为空谈，你依旧会身心俱疲且内心无比迷茫，那样的话还不如好好歇着。</p>
-<p>当然，如果把时间管理放到整个人生来看，有些人喜欢有计划、高产高效的生活，也有人喜欢随性自由的节奏。这些都没有问题，你尽可以按自己的喜好选择自己喜欢的方式。不过要记住，每种选择都意味着相应的放弃，只要回过头时不会患得患失就好。</p>
-<p>对很多人而言，时间管理也是一种成就。他们对时间管理的追求，就是对成就感的追求，这也是他们进行时间管理的最大动力。</p>
-<p>如果是这种情况，那么拥有一个能完成后打钩的to-dolist（待办事项列表）或者任务工作本、相关任务管理App，让这种成就可视化，就是很好的选择。</p>
-<p>对我个人而言，时间管理的最大成功，不是达成了什么了不起的大成就，而是让自己能更明晰时间的去向、对事物的价值度有所衡量，并通过“管理时间”这一具体行动，让自己不再盲目焦虑。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在前进的路上，放弃那些次要的、可有可无的东西，获取真正重要、有意义的价值，让自己更加认同自己的付出和努力方向，这才是时间管理的本质和最大意义所在。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;提升效率&quot;&gt;&lt;a href=&quot;#提升效率&quot; class=&quot;headerlink&quot; title=&quot;提升效率&quot;&gt;&lt;/a&gt;提升效率&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;在前进的路上，放弃那些次要的、可有可无的东西，获取真正重要、有意义的价值，让自己更加认同自己的付出和努力方向，这才是时间管理的本质和最大意义所在。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;必须学会说“不”&quot;&gt;&lt;a href=&quot;#必须学会说“不”&quot; class=&quot;headerlink&quot; title=&quot;必须学会说“不”&quot;&gt;&lt;/a&gt;必须学会说“不”&lt;/h2&gt;&lt;p&gt;说“不”其实是个非常艰难的事情，可是如果不说no，那么就很难专心地应对真正重要的任务。因为有太多看起来不错的机会、看上去不能拒绝的要求、事成后有利的图景，以及无法拒绝的人情世故，诱惑着你答应下来。&lt;/p&gt;
-&lt;p&gt;其实工作越久，你就越会发现，真正的牛人，往往就牛在敢于放弃上。所谓的战略化决策，不仅仅是指战略高度的选择，也指战略高度的放弃。刚开始放弃的时候会很难受，这是多年形成的习惯和求全责备的心态发出的尖叫和抗议。可是时间久了才发现：不重要的事情真做不完也不会死，倒是重要的事情老拖着不做往往会后果比较严重。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="方法" scheme="http://xxyb.online/categories/%E6%96%B9%E6%B3%95/"/>
-    
-    
-      <category term="学习" scheme="http://xxyb.online/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -1509,42 +1509,6 @@ INFOHexois running at http://0.0.0.0:4000/.PressCtrl+C to stop.
   </entry>
   
   <entry>
-    <title>人生的境界</title>
-    <link href="http://xxyb.online/%E4%BA%BA%E7%94%9F%E7%9A%84%E5%A2%83%E7%95%8C.html"/>
-    <id>http://xxyb.online/人生的境界.html</id>
-    <published>2017-01-08T16:00:00.000Z</published>
-    <updated>2017-03-05T11:45:05.205Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="人生的境界"><a href="#人生的境界" class="headerlink" title="人生的境界"></a>人生的境界</h1><blockquote>
-<p>人生有四种境界：自然境界、功利境界、道德境界、天地境界。<br>—中国哲学家冯友兰</p>
-</blockquote>
-<h3 id="一、自然境界"><a href="#一、自然境界" class="headerlink" title="一、自然境界"></a>一、自然境界</h3><p>一个人做事，可能只是顺着他的本能或其社会的风俗习惯。就像小孩和原始人那样，他做他所做的事，然而并无觉解，或不甚觉解。这样，他所做的事，对于他就没有意义，或很少意义。他的人生境界，就是我所说的自然境界。</p>
-<a id="more"></a>
-<h3 id="二、功利境界"><a href="#二、功利境界" class="headerlink" title="二、功利境界"></a>二、功利境界</h3><p>一个人可能意识到他自己，为自己而做各种事。这并不意味着他必然是不道德的人。他可以做些事，其后果有利于他人，其动机则是利已的。所以他所做的各种事，对于他，有功利的意义。他的人生境界，就是我所说的功利境界。</p>
-<h3 id="三、道德境界"><a href="#三、道德境界" class="headerlink" title="三、道德境界"></a>三、道德境界</h3><p>还有的人，可能了解到社会的存在，他是社会的一员。这个社会是一个整体，他是这个整体的一部分。有这种觉解，他就为社会的利益做各种事，或如儒家所说，他做事是为了”正其义不谋其利”。他真正是有道德的人，他所做的都是符合严格的道德意义的道德行为。他所做的各种事都有道德的意义。所以他的人生境界，是我所说的道德境界。</p>
-<h3 id="四、天地境界"><a href="#四、天地境界" class="headerlink" title="四、天地境界"></a>四、天地境界</h3><p>最后，一个人可能了解到超乎社会整体之上，还有一个更大的整体，即宇宙。他不仅是社会的一员，同时还是宇宙的一员。他是社会组织的公民，同时还是孟子所说的”天民”。有这种觉解，他就为宇宙的利益而做各种事。他了解他所做的事的意义，自觉他正在做他所做的事。这种觉解为他构成了最高的人生境界，就是我所说的天地境界。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>人与其他动物的不同，在于人做某事时，他了解他在做什么，并且自觉地在做。正是这种觉解，使他正在做的事对于他有了意义。他做各种事，有各种意义，各种意义合成一个整体，就构成他的人生境界。如此构成各人的人生境界，这是我的说法。不同的人可能做相同的事，但是各人的觉解程度不同，所做的事对于他们也就各有不同的意义。每个人各有自己的人生境界，与其他任何个人的都不完全相同。若是不管这些个人的差异，我们可以把各种不同的人生境界划分为四个等级。从最低的说起，它们是：自然境界，功利境界，道德境界，天地境界。</p>
-<p>这四种人生境界之中，自然境界、功利境界的人，是人现在就是的人；道德境界、天地境界的人，是人应该成为的人。前两者是自然的产物，后两者是精神的创造。自然境界最低，往上是功利境界，再往上是道德境界，最后是天地境界。它们之所以如此，是由于自然境界，几乎不需要觉解；功利境界、道德境界，需要较多的觉解；天地境界则需要最多的觉解。道德境界有道德价值，天地境界有超道德价值。</p>
-<p>照中国哲学的传统，哲学的任务是帮助人达到道德境界和天地境界，特别是达到天地境界。天地境界又可以叫做哲学境界，因为只有通过哲学，获得对宇宙的某些了解，才能达到天地境界。但是道德境界，也是哲学的产物。道德认为，并不单纯是遵循道德律的行为；有道德的人也不单纯是养成某些道德习惯的人。他行动和生活，都必须觉解其中的道德原理，哲学的任务正是给予他这种觉解。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;人生的境界&quot;&gt;&lt;a href=&quot;#人生的境界&quot; class=&quot;headerlink&quot; title=&quot;人生的境界&quot;&gt;&lt;/a&gt;人生的境界&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;人生有四种境界：自然境界、功利境界、道德境界、天地境界。&lt;br&gt;—中国哲学家冯友兰&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;一、自然境界&quot;&gt;&lt;a href=&quot;#一、自然境界&quot; class=&quot;headerlink&quot; title=&quot;一、自然境界&quot;&gt;&lt;/a&gt;一、自然境界&lt;/h3&gt;&lt;p&gt;一个人做事，可能只是顺着他的本能或其社会的风俗习惯。就像小孩和原始人那样，他做他所做的事，然而并无觉解，或不甚觉解。这样，他所做的事，对于他就没有意义，或很少意义。他的人生境界，就是我所说的自然境界。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="人生" scheme="http://xxyb.online/categories/%E4%BA%BA%E7%94%9F/"/>
-    
-    
-      <category term="人生" scheme="http://xxyb.online/tags/%E4%BA%BA%E7%94%9F/"/>
-    
-  </entry>
-  
-  <entry>
     <title>健身七大黄金动作</title>
     <link href="http://xxyb.online/%E5%81%A5%E8%BA%AB%E4%B8%83%E5%A4%A7%E9%BB%84%E9%87%91%E5%8A%A8%E4%BD%9C.html"/>
     <id>http://xxyb.online/健身七大黄金动作.html</id>
@@ -1584,6 +1548,42 @@ INFOHexois running at http://0.0.0.0:4000/.PressCtrl+C to stop.
     
     
       <category term="健身" scheme="http://xxyb.online/tags/%E5%81%A5%E8%BA%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>人生的境界</title>
+    <link href="http://xxyb.online/%E4%BA%BA%E7%94%9F%E7%9A%84%E5%A2%83%E7%95%8C.html"/>
+    <id>http://xxyb.online/人生的境界.html</id>
+    <published>2017-01-08T16:00:00.000Z</published>
+    <updated>2017-03-05T11:45:05.205Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="人生的境界"><a href="#人生的境界" class="headerlink" title="人生的境界"></a>人生的境界</h1><blockquote>
+<p>人生有四种境界：自然境界、功利境界、道德境界、天地境界。<br>—中国哲学家冯友兰</p>
+</blockquote>
+<h3 id="一、自然境界"><a href="#一、自然境界" class="headerlink" title="一、自然境界"></a>一、自然境界</h3><p>一个人做事，可能只是顺着他的本能或其社会的风俗习惯。就像小孩和原始人那样，他做他所做的事，然而并无觉解，或不甚觉解。这样，他所做的事，对于他就没有意义，或很少意义。他的人生境界，就是我所说的自然境界。</p>
+<a id="more"></a>
+<h3 id="二、功利境界"><a href="#二、功利境界" class="headerlink" title="二、功利境界"></a>二、功利境界</h3><p>一个人可能意识到他自己，为自己而做各种事。这并不意味着他必然是不道德的人。他可以做些事，其后果有利于他人，其动机则是利已的。所以他所做的各种事，对于他，有功利的意义。他的人生境界，就是我所说的功利境界。</p>
+<h3 id="三、道德境界"><a href="#三、道德境界" class="headerlink" title="三、道德境界"></a>三、道德境界</h3><p>还有的人，可能了解到社会的存在，他是社会的一员。这个社会是一个整体，他是这个整体的一部分。有这种觉解，他就为社会的利益做各种事，或如儒家所说，他做事是为了”正其义不谋其利”。他真正是有道德的人，他所做的都是符合严格的道德意义的道德行为。他所做的各种事都有道德的意义。所以他的人生境界，是我所说的道德境界。</p>
+<h3 id="四、天地境界"><a href="#四、天地境界" class="headerlink" title="四、天地境界"></a>四、天地境界</h3><p>最后，一个人可能了解到超乎社会整体之上，还有一个更大的整体，即宇宙。他不仅是社会的一员，同时还是宇宙的一员。他是社会组织的公民，同时还是孟子所说的”天民”。有这种觉解，他就为宇宙的利益而做各种事。他了解他所做的事的意义，自觉他正在做他所做的事。这种觉解为他构成了最高的人生境界，就是我所说的天地境界。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>人与其他动物的不同，在于人做某事时，他了解他在做什么，并且自觉地在做。正是这种觉解，使他正在做的事对于他有了意义。他做各种事，有各种意义，各种意义合成一个整体，就构成他的人生境界。如此构成各人的人生境界，这是我的说法。不同的人可能做相同的事，但是各人的觉解程度不同，所做的事对于他们也就各有不同的意义。每个人各有自己的人生境界，与其他任何个人的都不完全相同。若是不管这些个人的差异，我们可以把各种不同的人生境界划分为四个等级。从最低的说起，它们是：自然境界，功利境界，道德境界，天地境界。</p>
+<p>这四种人生境界之中，自然境界、功利境界的人，是人现在就是的人；道德境界、天地境界的人，是人应该成为的人。前两者是自然的产物，后两者是精神的创造。自然境界最低，往上是功利境界，再往上是道德境界，最后是天地境界。它们之所以如此，是由于自然境界，几乎不需要觉解；功利境界、道德境界，需要较多的觉解；天地境界则需要最多的觉解。道德境界有道德价值，天地境界有超道德价值。</p>
+<p>照中国哲学的传统，哲学的任务是帮助人达到道德境界和天地境界，特别是达到天地境界。天地境界又可以叫做哲学境界，因为只有通过哲学，获得对宇宙的某些了解，才能达到天地境界。但是道德境界，也是哲学的产物。道德认为，并不单纯是遵循道德律的行为；有道德的人也不单纯是养成某些道德习惯的人。他行动和生活，都必须觉解其中的道德原理，哲学的任务正是给予他这种觉解。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;人生的境界&quot;&gt;&lt;a href=&quot;#人生的境界&quot; class=&quot;headerlink&quot; title=&quot;人生的境界&quot;&gt;&lt;/a&gt;人生的境界&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;人生有四种境界：自然境界、功利境界、道德境界、天地境界。&lt;br&gt;—中国哲学家冯友兰&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;一、自然境界&quot;&gt;&lt;a href=&quot;#一、自然境界&quot; class=&quot;headerlink&quot; title=&quot;一、自然境界&quot;&gt;&lt;/a&gt;一、自然境界&lt;/h3&gt;&lt;p&gt;一个人做事，可能只是顺着他的本能或其社会的风俗习惯。就像小孩和原始人那样，他做他所做的事，然而并无觉解，或不甚觉解。这样，他所做的事，对于他就没有意义，或很少意义。他的人生境界，就是我所说的自然境界。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="人生" scheme="http://xxyb.online/categories/%E4%BA%BA%E7%94%9F/"/>
+    
+    
+      <category term="人生" scheme="http://xxyb.online/tags/%E4%BA%BA%E7%94%9F/"/>
     
   </entry>
   
