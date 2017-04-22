@@ -117,6 +117,73 @@
   </entry>
   
   <entry>
+    <title>CSS3实现3D魔方</title>
+    <link href="http://xxyb.online/css%E5%AE%9E%E7%8E%B0%E6%97%8B%E8%BD%AC%E9%AD%94%E6%96%B9.html"/>
+    <id>http://xxyb.online/css实现旋转魔方.html</id>
+    <published>2017-04-21T16:00:00.000Z</published>
+    <updated>2017-04-22T13:10:06.395Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="CSS3实现3D魔方"><a href="#CSS3实现3D魔方" class="headerlink" title="CSS3实现3D魔方"></a>CSS3实现3D魔方</h1><h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><ul>
+<li><p>写出基础HTML框架</p>
+</li>
+<li><p>基本CSS样式，初始化</p>
+</li>
+<li><p>CSS实现魔方的各个面：外轮廓和内盒子</p>
+</li>
+<li><p>CSS3实现魔方表面的3D位置</p>
+</li>
+<li><p>CSS3实现旋转</p>
+</li>
+</ul>
+<h2 id="第一步：HTML结构"><a href="#第一步：HTML结构" class="headerlink" title="第一步：HTML结构"></a>第一步：HTML结构</h2><p><strong>六个面类似如下结构</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>3D魔方<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"view"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"red-surfaces"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"one"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"two"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"three"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"four"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"five"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"six"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"seven"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"eight"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"nine"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="第二步：CSS初始化"><a href="#第二步：CSS初始化" class="headerlink" title="第二步：CSS初始化"></a>第二步：CSS初始化</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">* &#123;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">0px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">    <span class="attribute">min-height</span>: <span class="number">600px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100%</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-tag">body</span> <span class="selector-tag">h1</span> &#123;</div><div class="line">    <span class="attribute">margin-top</span>: <span class="number">50px</span>;</div><div class="line">    <span class="attribute">text-align</span>: center;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.view</span> &#123;</div><div class="line">    <span class="attribute">margin</span>: -<span class="number">60px</span> auto;</div><div class="line">    <span class="attribute">width</span>: <span class="number">800px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">800px</span>;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">20px</span>;</div><div class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">scale</span>(0.7);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="第三步：CSS实现魔方的各个面：外轮廓和内盒子"><a href="#第三步：CSS实现魔方的各个面：外轮廓和内盒子" class="headerlink" title="第三步：CSS实现魔方的各个面：外轮廓和内盒子"></a>第三步：CSS实现魔方的各个面：外轮廓和内盒子</h2><p>外轮廓样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.red-surfaces</span>,</div><div class="line"><span class="selector-class">.blue-surfaces</span>,</div><div class="line"><span class="selector-class">.green-surfaces</span>,</div><div class="line"><span class="selector-class">.white-surfaces</span>,</div><div class="line"><span class="selector-class">.orange-surfaces</span>,</div><div class="line"><span class="selector-class">.yellow-surfaces</span> &#123;</div><div class="line">    <span class="attribute">height</span>: <span class="number">330px</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">330px</span>;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">5px</span>;</div><div class="line">    <span class="attribute">top</span>: <span class="number">235px</span>;</div><div class="line">    <span class="attribute">left</span>: <span class="number">235px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>内盒子样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.red-surfaces</span>&gt;<span class="selector-tag">div</span>,</div><div class="line"><span class="selector-class">.blue-surfaces</span>&gt;<span class="selector-tag">div</span>,</div><div class="line"><span class="selector-class">.green-surfaces</span>&gt;<span class="selector-tag">div</span>,</div><div class="line"><span class="selector-class">.white-surfaces</span>&gt;<span class="selector-tag">div</span>,</div><div class="line"><span class="selector-class">.orange-surfaces</span>&gt;<span class="selector-tag">div</span>,</div><div class="line"><span class="selector-class">.yellow-surfaces</span>&gt;<span class="selector-tag">div</span> &#123;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">display</span>: inline-block;</div><div class="line">    <span class="attribute">border</span>: <span class="number">5px</span> solid <span class="built_in">rgba</span>(170, 170, 170, 0.9);</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>内盒子颜色 : 六面</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.red-surfaces</span>&gt;<span class="selector-tag">div</span> &#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(255, 0, 0, 0.8);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>内盒子定位 ：九个小块</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#one</span> &#123;</div><div class="line">    <span class="attribute">left</span>: <span class="number">0px</span>;</div><div class="line">    <span class="attribute">top</span>: <span class="number">0px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="第四步：CSS3实现魔方表面的3D位置"><a href="#第四步：CSS3实现魔方表面的3D位置" class="headerlink" title="第四步：CSS3实现魔方表面的3D位置"></a>第四步：CSS3实现魔方表面的3D位置</h2><p>六个表面不同角度设置</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.red-surfaces</span> &#123;</div><div class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">rotateX</span>(-90deg) <span class="built_in">translateZ</span>(165px);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="第五步：CSS3实现旋转"><a href="#第五步：CSS3实现旋转" class="headerlink" title="第五步：CSS3实现旋转"></a>第五步：CSS3实现旋转</h2><p>keyframe定义 ：animation</p>
+<ul>
+<li>name规定需要绑定到选择器的keyframe名称</li>
+<li>duration规定完成动画所花费的时间，以秒或毫秒计</li>
+<li>timing-function规定动画的速度曲线</li>
+<li>delay规定在动画开始之前的延迟</li>
+<li>iteration-count规定动画应该播放的次数</li>
+<li>direction规定是否应该轮流反向播放动画</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">  <span class="attribute">-webkit-animation</span>:BoxRotate <span class="number">3s</span> ease-in-out infinite;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>动画旋转基准 : transform-origin<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">  <span class="attribute">-webkit-transform-origin</span>: <span class="number">400px</span> <span class="number">400px</span> <span class="number">200px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>3D实现：transform-style<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">  <span class="attribute">-webkit-transform-style</span>: preserve-<span class="number">3</span>d;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>keyframe定义旋转</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">@-<span class="keyword">webkit</span>-<span class="keyword">keyframes</span> BoxRotate &#123;</div><div class="line">    16% &#123;</div><div class="line">        <span class="attribute">-webkit-transform</span>: <span class="built_in">rotateY</span>(-90deg) <span class="built_in">rotateZ</span>(135deg);</div><div class="line">    &#125;</div><div class="line">    33% &#123;</div><div class="line">        <span class="attribute">-webkit-transform</span>: <span class="built_in">rotateY</span>(-90deg) <span class="built_in">rotateX</span>(135deg);</div><div class="line">    &#125;</div><div class="line">    50% &#123;</div><div class="line">        <span class="attribute">-webkit-transform</span>: <span class="built_in">rotateY</span>(225deg) <span class="built_in">rotateZ</span>(135deg);</div><div class="line">    &#125;</div><div class="line">    66% &#123;</div><div class="line">        <span class="attribute">-webkit-transform</span>: <span class="built_in">rotateY</span>(135deg) <span class="built_in">rotateX</span>(135deg);</div><div class="line">    &#125;</div><div class="line">    83% &#123;</div><div class="line">        <span class="attribute">-webkit-transform</span>: <span class="built_in">rotateX</span>(135deg);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>CSS3也可以实现js实现的动画，而且还减少资源消耗，要熟练掌握新特性。</p>
+<p>源码地址：<a href="https://github.com/xuyanbo03/Front-End/tree/master/3D-magic-cube" target="_blank" rel="external">github-xuyanbo03</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;CSS3实现3D魔方&quot;&gt;&lt;a href=&quot;#CSS3实现3D魔方&quot; class=&quot;headerlink&quot; title=&quot;CSS3实现3D魔方&quot;&gt;&lt;/a&gt;CSS3实现3D魔方&lt;/h1&gt;&lt;h2 id=&quot;实现思路&quot;&gt;&lt;a href=&quot;#实现思路&quot; class=&quot;head
+    
+    </summary>
+    
+      <category term="web前端" scheme="http://xxyb.online/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="html" scheme="http://xxyb.online/tags/html/"/>
+    
+      <category term="css" scheme="http://xxyb.online/tags/css/"/>
+    
+      <category term="javascript，css3" scheme="http://xxyb.online/tags/javascript%EF%BC%8Ccss3/"/>
+    
+  </entry>
+  
+  <entry>
     <title>kali linux 安装指南</title>
     <link href="http://xxyb.online/kali%20linux%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97.html"/>
     <id>http://xxyb.online/kali linux安装指南.html</id>
@@ -211,9 +278,9 @@
       <category term="安全" scheme="http://xxyb.online/categories/%E5%AE%89%E5%85%A8/"/>
     
     
-      <category term="linux" scheme="http://xxyb.online/tags/linux/"/>
-    
       <category term="kali" scheme="http://xxyb.online/tags/kali/"/>
+    
+      <category term="linux" scheme="http://xxyb.online/tags/linux/"/>
     
   </entry>
   
@@ -652,61 +719,6 @@
   </entry>
   
   <entry>
-    <title>提升效率</title>
-    <link href="http://xxyb.online/%E6%8F%90%E5%8D%87%E6%95%88%E7%8E%87.html"/>
-    <id>http://xxyb.online/提升效率.html</id>
-    <published>2017-03-18T16:00:00.000Z</published>
-    <updated>2017-03-21T16:40:54.251Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="提升效率"><a href="#提升效率" class="headerlink" title="提升效率"></a>提升效率</h1><blockquote>
-<p>在前进的路上，放弃那些次要的、可有可无的东西，获取真正重要、有意义的价值，让自己更加认同自己的付出和努力方向，这才是时间管理的本质和最大意义所在。</p>
-</blockquote>
-<h2 id="必须学会说“不”"><a href="#必须学会说“不”" class="headerlink" title="必须学会说“不”"></a>必须学会说“不”</h2><p>说“不”其实是个非常艰难的事情，可是如果不说no，那么就很难专心地应对真正重要的任务。因为有太多看起来不错的机会、看上去不能拒绝的要求、事成后有利的图景，以及无法拒绝的人情世故，诱惑着你答应下来。</p>
-<p>其实工作越久，你就越会发现，真正的牛人，往往就牛在敢于放弃上。所谓的战略化决策，不仅仅是指战略高度的选择，也指战略高度的放弃。刚开始放弃的时候会很难受，这是多年形成的习惯和求全责备的心态发出的尖叫和抗议。可是时间久了才发现：不重要的事情真做不完也不会死，倒是重要的事情老拖着不做往往会后果比较严重。</p>
-<a id="more"></a>
-<h2 id="必须学会说yes"><a href="#必须学会说yes" class="headerlink" title="必须学会说yes"></a>必须学会说yes</h2><p>对我而言，如果想要找时间完成真正重要的事情，那么就先答应下来，再商量个相对宽裕的时间。将这些定下来之后，我总能想出方法，排除万难去实践。</p>
-<p>无论是写小说、开公众号、参加考试，都可以遵循这个套路。牺牲掉部分娱乐、睡眠、社交，甚至是和家人团聚的时间，会非常适合短期内的明确目标，并督促你用冲刺的方式完成。</p>
-<p>如果一件事情并不重要，那么就明确地拒绝；如果很重要，就大胆地接受。你不会因为说“不”损失多少，也不会因为应承去做却没有做好而损失很多。真正的损失是在我们说“这事儿很好，我再想想”中发生的。</p>
-<h2 id="金钱换时间"><a href="#金钱换时间" class="headerlink" title="金钱换时间"></a>金钱换时间</h2><p>以前没有孩子的时候，我习惯利用整块时间写作，写作进入状态也非常缓慢，必须要在阳光充足的某个角落坐下，泡杯咖啡，看看新闻，再慢慢进入状态。</p>
-<p>现在可用的业余时间往往是零散的，如果不能抓住零散时间进行思考和打草稿，那就更没有时间了。为了能更好地抓住这些碎片时间，我添置了更多的电子设备，例如静音且无须插电源的平板电脑，它能让我更好地利用孩子入睡后的时间。再比如我打破了从前不下载App的习惯，安装了多个阅读、记录、拍照笔记类的App，方便自己在零碎时间里能随时把读到的、想到的、看到的、诱发灵感的材料都尽快地收纳进来。</p>
-<p>找到时间后，就是筹划和管理时间了。</p>
-<h2 id="关掉提醒，高效专注地工作"><a href="#关掉提醒，高效专注地工作" class="headerlink" title="关掉提醒，高效专注地工作"></a>关掉提醒，高效专注地工作</h2><p>要想工作有效，就必须运用整块的时间。如果将时间分割开来零星使用，纵然时间总和相同，但其效果与整块运用时间的效果却差距很大。比如我以前工作时常要写一些措辞讲究的英文邮件，如果能够聚精会神地写，再加上润色，十几分钟就能完成。可是我总会忍不住一边写一边去看看什么人又说了什么话，有时还会因为查某个单词去逛下红迪网。</p>
-<p>后来实在忙起来了，任凭各种新信息提醒也不去查看，等到某个任务告一段落，再统一查看和回复，既保证了效率，又不至于错过什么。仅这一项小小的改变，就大大提高了我的工作效率。</p>
-<h2 id="减少选项，设置优先级"><a href="#减少选项，设置优先级" class="headerlink" title="减少选项，设置优先级"></a>减少选项，设置优先级</h2><p>选项越少，时间越多。一个比较经典的时间管理方法是：每天只选择1～3件事情去做，并辅以不懈地追求。你的本能不会喜欢这样的限制，可是这种方法有利于排列真正重要的事情，比起事无巨细地齐头并进，能让工作更为出色。</p>
-<h2 id="提前把你想到的写下来"><a href="#提前把你想到的写下来" class="headerlink" title="提前把你想到的写下来"></a>提前把你想到的写下来</h2><p>当事情一旦多了杂了，脑子就明显不够用。我经常发现，哪怕是小事，如果写下来就会遵守；不写，无论在脑子里想多久，一被打扰就会忘掉。提前计划的目的其实不是为了“计划”，而是为了更重视时间的流向，知道时间都花到哪里去了。</p>
-<p>如果不是很清晰地知道要做什么，就容易碰到什么是什么。于是哪件事情先找上来就先处理了，就好比我特别反感邮箱，因为邮件不停地进来，叮的一声响。只要邮箱的叮声不关，我就永远干不了该干的事情，会一直挂在邮箱上回复邮件，而且要一会儿回邮件，一会儿写报告，一会儿又查数据。数据查到一半叮的一声邮件又进来了，说到了另一件事，再去查……忙了一上午，几件重要的大事却一件都没干。</p>
-<p>先把所有需要完成的事列出来，然后对大任务进行分解，分解成小一些的子任务，再对任务进行排序。排序时最艰难的步骤就是决定放弃或者推迟哪些东西。</p>
-<h2 id="找到适合自己的好方法"><a href="#找到适合自己的好方法" class="headerlink" title="找到适合自己的好方法"></a>找到适合自己的好方法</h2><p>开始时间管理的时候，大家都会热衷于搜罗和学习各种方法。比如有一种著名的战拖策略叫作“吃掉那只青蛙”，鼓励大家给最重要、最困难的任务以第一优先权。但是我在实践之后，却发现这个方法极其不适合我。因为如果一上来就强迫自己完成最艰巨的任务，我反而会容易知难而退，会造成各种拖延。所以我摸索出的合适自己的方法是先完成最简单、最有兴趣的工作，通过这些初级工作渐入佳境，等效率上来了，再去啃“坚硬的骨头”。</p>
-<p>说到这里，时间管理却还不能结束。桥本和彦曾经说过，“没有体现结果的时间管理就不能称之为时间管理”，因此定期对时间管理的成就和不足之处进行反思，就有非常重要的意义。</p>
-<p>坚持时间管理最大的挑战就在于：即便你用最高科技的工具，按照最合理的科学方法、符合生物钟的方法规划好了时间，然后恪守，一天下来有很大的收获，你的内心也在呼唤你歪倒在沙发上刷手机、追美剧、和朋友瞎聊。</p>
-<p>为了战胜无时不在的诱惑，就需要时不时地重温一下目标，配合着各种短期、中期、长期的目标，时间管理上也应相应配合着进行松弛有度的分布。任何时间管理和战拖秘诀都离不开恒心，但是生活必须要张弛有度。</p>
-<p>如果是学生为了考GRE，那么两个月的短期突击式的冲刺，要比断断续续地复习一年有效；而大考完毕，可以有一小段时间让大脑放松下，以便进入下一阶段的目标。</p>
-<p>一个人如果长期无目标地疲劳战斗，那么时间管理便会沦为空谈，你依旧会身心俱疲且内心无比迷茫，那样的话还不如好好歇着。</p>
-<p>当然，如果把时间管理放到整个人生来看，有些人喜欢有计划、高产高效的生活，也有人喜欢随性自由的节奏。这些都没有问题，你尽可以按自己的喜好选择自己喜欢的方式。不过要记住，每种选择都意味着相应的放弃，只要回过头时不会患得患失就好。</p>
-<p>对很多人而言，时间管理也是一种成就。他们对时间管理的追求，就是对成就感的追求，这也是他们进行时间管理的最大动力。</p>
-<p>如果是这种情况，那么拥有一个能完成后打钩的to-dolist（待办事项列表）或者任务工作本、相关任务管理App，让这种成就可视化，就是很好的选择。</p>
-<p>对我个人而言，时间管理的最大成功，不是达成了什么了不起的大成就，而是让自己能更明晰时间的去向、对事物的价值度有所衡量，并通过“管理时间”这一具体行动，让自己不再盲目焦虑。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在前进的路上，放弃那些次要的、可有可无的东西，获取真正重要、有意义的价值，让自己更加认同自己的付出和努力方向，这才是时间管理的本质和最大意义所在。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;提升效率&quot;&gt;&lt;a href=&quot;#提升效率&quot; class=&quot;headerlink&quot; title=&quot;提升效率&quot;&gt;&lt;/a&gt;提升效率&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;在前进的路上，放弃那些次要的、可有可无的东西，获取真正重要、有意义的价值，让自己更加认同自己的付出和努力方向，这才是时间管理的本质和最大意义所在。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;必须学会说“不”&quot;&gt;&lt;a href=&quot;#必须学会说“不”&quot; class=&quot;headerlink&quot; title=&quot;必须学会说“不”&quot;&gt;&lt;/a&gt;必须学会说“不”&lt;/h2&gt;&lt;p&gt;说“不”其实是个非常艰难的事情，可是如果不说no，那么就很难专心地应对真正重要的任务。因为有太多看起来不错的机会、看上去不能拒绝的要求、事成后有利的图景，以及无法拒绝的人情世故，诱惑着你答应下来。&lt;/p&gt;
-&lt;p&gt;其实工作越久，你就越会发现，真正的牛人，往往就牛在敢于放弃上。所谓的战略化决策，不仅仅是指战略高度的选择，也指战略高度的放弃。刚开始放弃的时候会很难受，这是多年形成的习惯和求全责备的心态发出的尖叫和抗议。可是时间久了才发现：不重要的事情真做不完也不会死，倒是重要的事情老拖着不做往往会后果比较严重。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="方法" scheme="http://xxyb.online/categories/%E6%96%B9%E6%B3%95/"/>
-    
-    
-      <category term="学习" scheme="http://xxyb.online/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>内心感悟</title>
     <link href="http://xxyb.online/%E5%86%85%E5%BF%83%E6%84%9F%E5%8F%97.html"/>
     <id>http://xxyb.online/内心感受.html</id>
@@ -802,6 +814,61 @@
     
     
       <category term="人生" scheme="http://xxyb.online/tags/%E4%BA%BA%E7%94%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>提升效率</title>
+    <link href="http://xxyb.online/%E6%8F%90%E5%8D%87%E6%95%88%E7%8E%87.html"/>
+    <id>http://xxyb.online/提升效率.html</id>
+    <published>2017-03-18T16:00:00.000Z</published>
+    <updated>2017-03-21T16:40:54.251Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="提升效率"><a href="#提升效率" class="headerlink" title="提升效率"></a>提升效率</h1><blockquote>
+<p>在前进的路上，放弃那些次要的、可有可无的东西，获取真正重要、有意义的价值，让自己更加认同自己的付出和努力方向，这才是时间管理的本质和最大意义所在。</p>
+</blockquote>
+<h2 id="必须学会说“不”"><a href="#必须学会说“不”" class="headerlink" title="必须学会说“不”"></a>必须学会说“不”</h2><p>说“不”其实是个非常艰难的事情，可是如果不说no，那么就很难专心地应对真正重要的任务。因为有太多看起来不错的机会、看上去不能拒绝的要求、事成后有利的图景，以及无法拒绝的人情世故，诱惑着你答应下来。</p>
+<p>其实工作越久，你就越会发现，真正的牛人，往往就牛在敢于放弃上。所谓的战略化决策，不仅仅是指战略高度的选择，也指战略高度的放弃。刚开始放弃的时候会很难受，这是多年形成的习惯和求全责备的心态发出的尖叫和抗议。可是时间久了才发现：不重要的事情真做不完也不会死，倒是重要的事情老拖着不做往往会后果比较严重。</p>
+<a id="more"></a>
+<h2 id="必须学会说yes"><a href="#必须学会说yes" class="headerlink" title="必须学会说yes"></a>必须学会说yes</h2><p>对我而言，如果想要找时间完成真正重要的事情，那么就先答应下来，再商量个相对宽裕的时间。将这些定下来之后，我总能想出方法，排除万难去实践。</p>
+<p>无论是写小说、开公众号、参加考试，都可以遵循这个套路。牺牲掉部分娱乐、睡眠、社交，甚至是和家人团聚的时间，会非常适合短期内的明确目标，并督促你用冲刺的方式完成。</p>
+<p>如果一件事情并不重要，那么就明确地拒绝；如果很重要，就大胆地接受。你不会因为说“不”损失多少，也不会因为应承去做却没有做好而损失很多。真正的损失是在我们说“这事儿很好，我再想想”中发生的。</p>
+<h2 id="金钱换时间"><a href="#金钱换时间" class="headerlink" title="金钱换时间"></a>金钱换时间</h2><p>以前没有孩子的时候，我习惯利用整块时间写作，写作进入状态也非常缓慢，必须要在阳光充足的某个角落坐下，泡杯咖啡，看看新闻，再慢慢进入状态。</p>
+<p>现在可用的业余时间往往是零散的，如果不能抓住零散时间进行思考和打草稿，那就更没有时间了。为了能更好地抓住这些碎片时间，我添置了更多的电子设备，例如静音且无须插电源的平板电脑，它能让我更好地利用孩子入睡后的时间。再比如我打破了从前不下载App的习惯，安装了多个阅读、记录、拍照笔记类的App，方便自己在零碎时间里能随时把读到的、想到的、看到的、诱发灵感的材料都尽快地收纳进来。</p>
+<p>找到时间后，就是筹划和管理时间了。</p>
+<h2 id="关掉提醒，高效专注地工作"><a href="#关掉提醒，高效专注地工作" class="headerlink" title="关掉提醒，高效专注地工作"></a>关掉提醒，高效专注地工作</h2><p>要想工作有效，就必须运用整块的时间。如果将时间分割开来零星使用，纵然时间总和相同，但其效果与整块运用时间的效果却差距很大。比如我以前工作时常要写一些措辞讲究的英文邮件，如果能够聚精会神地写，再加上润色，十几分钟就能完成。可是我总会忍不住一边写一边去看看什么人又说了什么话，有时还会因为查某个单词去逛下红迪网。</p>
+<p>后来实在忙起来了，任凭各种新信息提醒也不去查看，等到某个任务告一段落，再统一查看和回复，既保证了效率，又不至于错过什么。仅这一项小小的改变，就大大提高了我的工作效率。</p>
+<h2 id="减少选项，设置优先级"><a href="#减少选项，设置优先级" class="headerlink" title="减少选项，设置优先级"></a>减少选项，设置优先级</h2><p>选项越少，时间越多。一个比较经典的时间管理方法是：每天只选择1～3件事情去做，并辅以不懈地追求。你的本能不会喜欢这样的限制，可是这种方法有利于排列真正重要的事情，比起事无巨细地齐头并进，能让工作更为出色。</p>
+<h2 id="提前把你想到的写下来"><a href="#提前把你想到的写下来" class="headerlink" title="提前把你想到的写下来"></a>提前把你想到的写下来</h2><p>当事情一旦多了杂了，脑子就明显不够用。我经常发现，哪怕是小事，如果写下来就会遵守；不写，无论在脑子里想多久，一被打扰就会忘掉。提前计划的目的其实不是为了“计划”，而是为了更重视时间的流向，知道时间都花到哪里去了。</p>
+<p>如果不是很清晰地知道要做什么，就容易碰到什么是什么。于是哪件事情先找上来就先处理了，就好比我特别反感邮箱，因为邮件不停地进来，叮的一声响。只要邮箱的叮声不关，我就永远干不了该干的事情，会一直挂在邮箱上回复邮件，而且要一会儿回邮件，一会儿写报告，一会儿又查数据。数据查到一半叮的一声邮件又进来了，说到了另一件事，再去查……忙了一上午，几件重要的大事却一件都没干。</p>
+<p>先把所有需要完成的事列出来，然后对大任务进行分解，分解成小一些的子任务，再对任务进行排序。排序时最艰难的步骤就是决定放弃或者推迟哪些东西。</p>
+<h2 id="找到适合自己的好方法"><a href="#找到适合自己的好方法" class="headerlink" title="找到适合自己的好方法"></a>找到适合自己的好方法</h2><p>开始时间管理的时候，大家都会热衷于搜罗和学习各种方法。比如有一种著名的战拖策略叫作“吃掉那只青蛙”，鼓励大家给最重要、最困难的任务以第一优先权。但是我在实践之后，却发现这个方法极其不适合我。因为如果一上来就强迫自己完成最艰巨的任务，我反而会容易知难而退，会造成各种拖延。所以我摸索出的合适自己的方法是先完成最简单、最有兴趣的工作，通过这些初级工作渐入佳境，等效率上来了，再去啃“坚硬的骨头”。</p>
+<p>说到这里，时间管理却还不能结束。桥本和彦曾经说过，“没有体现结果的时间管理就不能称之为时间管理”，因此定期对时间管理的成就和不足之处进行反思，就有非常重要的意义。</p>
+<p>坚持时间管理最大的挑战就在于：即便你用最高科技的工具，按照最合理的科学方法、符合生物钟的方法规划好了时间，然后恪守，一天下来有很大的收获，你的内心也在呼唤你歪倒在沙发上刷手机、追美剧、和朋友瞎聊。</p>
+<p>为了战胜无时不在的诱惑，就需要时不时地重温一下目标，配合着各种短期、中期、长期的目标，时间管理上也应相应配合着进行松弛有度的分布。任何时间管理和战拖秘诀都离不开恒心，但是生活必须要张弛有度。</p>
+<p>如果是学生为了考GRE，那么两个月的短期突击式的冲刺，要比断断续续地复习一年有效；而大考完毕，可以有一小段时间让大脑放松下，以便进入下一阶段的目标。</p>
+<p>一个人如果长期无目标地疲劳战斗，那么时间管理便会沦为空谈，你依旧会身心俱疲且内心无比迷茫，那样的话还不如好好歇着。</p>
+<p>当然，如果把时间管理放到整个人生来看，有些人喜欢有计划、高产高效的生活，也有人喜欢随性自由的节奏。这些都没有问题，你尽可以按自己的喜好选择自己喜欢的方式。不过要记住，每种选择都意味着相应的放弃，只要回过头时不会患得患失就好。</p>
+<p>对很多人而言，时间管理也是一种成就。他们对时间管理的追求，就是对成就感的追求，这也是他们进行时间管理的最大动力。</p>
+<p>如果是这种情况，那么拥有一个能完成后打钩的to-dolist（待办事项列表）或者任务工作本、相关任务管理App，让这种成就可视化，就是很好的选择。</p>
+<p>对我个人而言，时间管理的最大成功，不是达成了什么了不起的大成就，而是让自己能更明晰时间的去向、对事物的价值度有所衡量，并通过“管理时间”这一具体行动，让自己不再盲目焦虑。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在前进的路上，放弃那些次要的、可有可无的东西，获取真正重要、有意义的价值，让自己更加认同自己的付出和努力方向，这才是时间管理的本质和最大意义所在。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;提升效率&quot;&gt;&lt;a href=&quot;#提升效率&quot; class=&quot;headerlink&quot; title=&quot;提升效率&quot;&gt;&lt;/a&gt;提升效率&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;在前进的路上，放弃那些次要的、可有可无的东西，获取真正重要、有意义的价值，让自己更加认同自己的付出和努力方向，这才是时间管理的本质和最大意义所在。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;必须学会说“不”&quot;&gt;&lt;a href=&quot;#必须学会说“不”&quot; class=&quot;headerlink&quot; title=&quot;必须学会说“不”&quot;&gt;&lt;/a&gt;必须学会说“不”&lt;/h2&gt;&lt;p&gt;说“不”其实是个非常艰难的事情，可是如果不说no，那么就很难专心地应对真正重要的任务。因为有太多看起来不错的机会、看上去不能拒绝的要求、事成后有利的图景，以及无法拒绝的人情世故，诱惑着你答应下来。&lt;/p&gt;
+&lt;p&gt;其实工作越久，你就越会发现，真正的牛人，往往就牛在敢于放弃上。所谓的战略化决策，不仅仅是指战略高度的选择，也指战略高度的放弃。刚开始放弃的时候会很难受，这是多年形成的习惯和求全责备的心态发出的尖叫和抗议。可是时间久了才发现：不重要的事情真做不完也不会死，倒是重要的事情老拖着不做往往会后果比较严重。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="方法" scheme="http://xxyb.online/categories/%E6%96%B9%E6%B3%95/"/>
+    
+    
+      <category term="学习" scheme="http://xxyb.online/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -1584,323 +1651,6 @@ INFOHexois running at http://0.0.0.0:4000/.PressCtrl+C to stop.
     
     
       <category term="人生" scheme="http://xxyb.online/tags/%E4%BA%BA%E7%94%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用JavaScript实现焦点轮播图</title>
-    <link href="http://xxyb.online/%E7%94%A8js%E5%AE%9E%E7%8E%B0%E7%84%A6%E7%82%B9%E8%BD%AE%E6%92%AD%E5%9B%BE.html"/>
-    <id>http://xxyb.online/用js实现焦点轮播图.html</id>
-    <published>2016-12-28T16:00:00.000Z</published>
-    <updated>2017-02-24T11:40:02.064Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="使用JavaScript实现焦点轮播图"><a href="#使用JavaScript实现焦点轮播图" class="headerlink" title="使用JavaScript实现焦点轮播图"></a>使用JavaScript实现焦点轮播图</h1><hr>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p><strong>各大网站都使用焦点轮播图来展示自己的图片，如淘宝、京东等。</strong></p>
-<ol>
-<li>焦点轮播图所用技能点：DOM操作、定时器、事件运用、JS动画、函数递归、无限滚动；</li>
-<li>无限滚动实现：包含图片的父级标签要有一个属性<code>overflow:hidden</code> 来隐藏超出自身尺寸的内容;有<code>style:left</code>通过控制left值来实现滚动; 图片列表中要在开始和结束位置添加两张相同的附属图，使图片实现无缝连接。</li>
-</ol>
-<a id="more"></a>
-<h2 id="使用html和css实现静态页面布局"><a href="#使用html和css实现静态页面布局" class="headerlink" title="使用html和css实现静态页面布局"></a>使用html和css实现静态页面布局</h2><ol>
-<li>父容器要承载图片、圆点下标、左右切换箭头，要让超出部分隐藏<code>overflow：hidden</code>、定位为<code>position：relative</code>；</li>
-<li>图片的div要添加定位：<code>position：absolute</code>让它基于父容器relative，<code>z-index：1</code>使图片堆叠在第一层上；</li>
-<li>圆点下标和左右切换箭头设置<code>z-index：2</code>，<code>position：absolute</code>，让其覆盖在图片上；</li>
-<li>左右切换箭头在初始状态下设置为隐藏<code>display：none</code>，鼠标移上图片时使其显示<code>display：block</code>，鼠标移到箭头上时改变透明度RGBA，使箭头颜色加深；</li>
-</ol>
-<p>附源码<br>HTML代码</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;焦点轮播图&lt;/title&gt;
-    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/焦点轮播图.css&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div id=&quot;container&quot;&gt;
-        &lt;div id=&quot;list&quot; style=&quot;left: -600px&quot;&gt;
-            &lt;img src=&quot;images/5.jpg&quot; alt=&quot;5&quot;&gt; &lt;!-- 附属图实现无缝的滚动 --&gt;
-            &lt;img src=&quot;images/1.jpg&quot; alt=&quot;1&quot;&gt;
-            &lt;img src=&quot;images/2.jpg&quot; alt=&quot;2&quot;&gt;
-            &lt;img src=&quot;images/3.jpg&quot; alt=&quot;3&quot;&gt;
-            &lt;img src=&quot;images/4.jpg&quot; alt=&quot;4&quot;&gt;
-            &lt;img src=&quot;images/5.jpg&quot; alt=&quot;5&quot;&gt;
-            &lt;img src=&quot;images/1.jpg&quot; alt=&quot;5&quot;&gt;
-        &lt;/div&gt;
-        &lt;div id=&quot;buttons&quot;&gt;
-            &lt;span index=&quot;1&quot; class=&quot;on&quot;&gt;&lt;/span&gt;
-            &lt;span index=&quot;2&quot;&gt;&lt;/span&gt;
-            &lt;span index=&quot;3&quot;&gt;&lt;/span&gt;
-            &lt;span index=&quot;4&quot;&gt;&lt;/span&gt;
-            &lt;span index=&quot;5&quot;&gt;&lt;/span&gt;
-        &lt;/div&gt;
-        &lt;a href=&quot;javascript:;&quot; id=&quot;prev&quot; class=&quot;arrow&quot;&gt;&amp;lt;&lt;/a&gt;
-        &lt;a href=&quot;javascript:;&quot; id=&quot;next&quot; class=&quot;arrow&quot;&gt;&amp;gt;&lt;/a&gt;
-    &lt;/div&gt;
-    &lt;script type=&quot;text/javascript&quot; src=&quot;js/焦点轮播图.js&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>css代码</p>
-<pre><code>*{
-    margin: 0;
-    padding: 0;
-    text-decoration :none;
-}
-body{
-    padding: 20px;
-}
-#container{
-    width: 600px;
-    height: 400px;
-    position: relative;
-    border: 3px solid #333;
-    overflow: hidden;
-}
-#list{
-    height: 400px;
-    width: 4200px;
-    position: absolute;
-    z-index: 1;  /*设置元素的堆叠顺序*/
-}
-#list img{
-    float: left;
-}
-#buttons{
-    height: 10px;
-    width: 100px;
-    z-index: 2;
-    bottom: 20px;
-    left: 250px;
-    position: absolute;
-}
-#buttons span {
-    cursor: pointer; /*规定要显示的光标的类型（手指)*/
-    float: left;
-    border: 1px solid #fff;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #333;
-    margin-right: 5px;
-}
-#buttons .on {  
-    background: orangered;
-}
-
-.arrow {
-    cursor: pointer;
-    display: none; /*箭头隐藏*/
-    line-height: 39px;
-    text-align: center;
-    font-size: 36px;
-    font-weight: bold;
-    width: 40px; height: 40px;  
-    position: absolute;
-    z-index: 2;
-    top: 180px;
-    background-color: RGBA(0,0,0,.3); /*透明度设置*/
-    color: #fff;
-}
-.arrow:hover {
-    background-color: RGBA(0,0,0,.7);
-}
-#container:hover .arrow {
-    display: block; /*箭头显示*/
-}
-#prev {
-    left: 20px;
-}
-#next {
-    right: 20px;
-}
-</code></pre><h2 id="JS动画实现"><a href="#JS动画实现" class="headerlink" title="JS动画实现"></a>JS动画实现</h2><p><strong>箭头切换-&gt;无限滚动-&gt;按钮切换-&gt;延迟切换-&gt;自动播放</strong></p>
-<ol>
-<li>箭头切换<ul>
-<li>整个页面加载<code>window.onload</code>，获取元素</li>
-<li>通过ID名获取页面中的元素（父容器、承载图片容器、圆点列表、箭头），赋值给一个变量</li>
-<li>添加一个时间绑定，点击箭头时实现图片的切换</li>
-<li>当点击右箭头时，改变left的值，向左移动，要减去一张图的宽度</li>
-<li>获取图片容器的值，<code>list.style.left</code> = 自身的值再减去一张图片的宽度<br><strong>注意要把等号后面字符串使用<code>parseInt</code>函数转换为数字才可以进行减法，减去的图片宽度要加px单位</strong></li>
-<li>反方向同理，加上一张图片的宽度</li>
-<li>左右箭头的写法很相似，只是加减不一样，可以封装成一个函数，通过参数的正负值实现加减</li>
-</ul>
-</li>
-</ol>
-<ol>
-<li>无限滚动：弥补左右键切换的空白<ul>
-<li>当前面的附属图比第一张大，最后一张附属图比最后一张小的时候，出现这两种情况时让它复位到真正的第一张或第五张图</li>
-<li>判断是否滚到了辅助图上，滚到了让它归位</li>
-<li>把常用的<code>list.style.left</code>，存到一个变量中，方便使用</li>
-<li>添加圆点的切换功能，创建一个变量来承载当前存储的第几张图片/显示第个圆点</li>
-<li>写一个函数，用来显示亮起小圆点的功能</li>
-<li>圆点是数组，所以创建的变量要减去1才能对应上要显示的圆点，让它亮起来添加class名<br><code>&lt;span index=&quot;1&quot; class=&quot;on&quot;&gt;</code></li>
-<li>再绑定事件中左箭头index要加一，右箭头要减一，调用圆点函数让它点击时显示，每次点击箭头的时候都要改变index的值，使它对应到正确的图片上，调用showButton亮起对应的圆点</li>
-<li>亮起自己的同时，让其他不亮，使用for循环，去掉所有的class，然后break退出循环，不再继续遍历元素节点</li>
-<li>箭头点击时，当圆点index大于5时，让它归位为1，小于1时，归位为5，不到5时加1</li>
-</ul>
-</li>
-</ol>
-<ol>
-<li><p>圆点按钮切换</p>
-<ul>
-<li>通过for循环遍历圆点，添加点击事件</li>
-<li>点击按钮时，取到index值，就可以知道当前点击的是第几个按钮，要显示第几张图片</li>
-<li>通过DOM2级方法<code>getAttribute（）</code>获取到自定义（或自带）属性，为了计算再转换为数字<code>var myIndex = parseInt(this.getAttribute(&#39;index&#39;));</code></li>
-<li>通过新的值减去旧的值获取偏移量<code>var offset = -600 * (myIndex - index);</code></li>
-<li>写一个判断，当这张图片是打开状态的，就什么都不做，用class=on来判断是否打开，return跳出，后面的代码不会再执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">if (animated) &#123;</div><div class="line">	return;</div><div class="line">&#125;</div><div class="line">if (this.className == &apos;on&apos;) &#123;</div><div class="line">     return;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>动画函数</p>
-<ul>
-<li>图片在一定时间内进行位移，要判断是否达到目标值，没有达到还要继续做位移</li>
-<li>声明一个变量用offset总共的偏移量除以次数（位移总时间time除以位移间隔时间inteval),求出每次移动多少<code>var speed = offset / (time / inteval);</code></li>
-<li>判断speed小于0并且left值是否大于目标值newLeft或speed大于0并且left值小于目标值，这两种情况让它做位移<code>speed &gt; 0 &amp;&amp; parseInt(list.style.left) &lt; left) || (speed &lt; 0 &amp;&amp; parseInt(list.style.left) &gt; left</code></li>
-<li>在判断中放入定时器setTimeout<br><em>一个函数不停的在一定的条件之后调用自身这种做法叫做递归</em></li>
-<li>优化：声明一个变量，作为动画是否在运行的依据，开始状态为false表示没有运行<code>var animated = false; //优化</code></li>
-</ul>
-</li>
-<li><p>自动播放：</p>
-<ul>
-<li>鼠标移开时自动播放，鼠标移上去时停止，通过定时器<code>setTimeout</code>和<code>clearTimeout</code>来实现的</li>
-<li>设置定时器，让它隔几秒切换一次，相当于3秒钟调一次next.onclick（右箭头）事件</li>
-<li>自动切换需要写两个函数来控制自动切换，声明一个变量来存放定时器不给任何值</li>
-<li>鼠标移开时定时器执行，移上时清除定时器执行，要给整个容器加一个鼠标移入移开事件</li>
-<li>鼠标不做任何事情时让它自动播放，调用函数</li>
-</ul>
-</li>
-</ol>
-<p>附源码</p>
-<pre><code>window.onload = function() {
-    var container = document.getElementById(&apos;container&apos;);
-    var list = document.getElementById(&apos;list&apos;);
-    var buttons = document.getElementById(&apos;buttons&apos;).getElementsByTagName(&apos;span&apos;);
-    var prev = document.getElementById(&apos;prev&apos;);
-    var next = document.getElementById(&apos;next&apos;);
-    var index = 1; //索引
-    var len = 5;
-    var animated = false; //优化
-    var interval = 3000; //时间间隔
-    var timer;
-
-    function showButton() {
-        for (var i = 0; i &lt; buttons.length; i++) {
-            if (buttons[i].className == &apos;on&apos;) {
-                buttons[i].className = &apos;&apos;;
-                break;
-            }
-        }
-        buttons[index - 1].className = &apos;on&apos;;
-    } //按钮切换
-
-    next.onclick = function() {
-        if (animated) {
-            return;
-        }
-        if (index == 5) {
-            index = 1;
-        } else {
-            index += 1;
-        }
-        animate(-600);
-        showButton();
-    }//右切换
-    prev.onclick = function() {
-        if (animated) {
-            return;
-        }
-        if (index == 1) {
-            index = 5;
-        } else {
-            index -= 1;
-        }
-        animate(600);
-        showButton();
-    }//左切换
-
-    function play() {
-        timer = setTimeout(function() {
-            next.onclick();
-            play();
-        }, interval);
-    }
-
-    function stop() {
-        clearTimeout(timer);
-    }
-
-    for (var i = 0; i &lt; buttons.length; i++) {
-        buttons[i].onclick = function() {
-            if (animated) {
-                return;
-            }
-            if (this.className == &apos;on&apos;) {
-                return;
-            }
-            var myIndex = parseInt(this.getAttribute(&apos;index&apos;));
-            var offset = -600 * (myIndex - index);
-            animate(offset);
-            index = myIndex;
-            showButton();
-        }
-    }
-
-    function animate(offset) {
-        if (offset == 0) {
-            return;
-        }
-        animated = true;
-        var time = 300; //时间
-        var inteval = 10; //时间间隔
-        var speed = offset / (time / inteval); //速度
-        var left = parseInt(list.style.left) + offset; //改变值来实现滚动
-
-        var go = function() {
-                if ((speed &gt; 0 &amp;&amp; parseInt(list.style.left) &lt; left) || (speed &lt; 0 &amp;&amp; parseInt(list.style.left) &gt; left)) {
-                    list.style.left = parseInt(list.style.left) + speed + &apos;px&apos;;
-                    setTimeout(go, inteval);
-                } else {
-                    list.style.left = left + &apos;px&apos;;
-                    if (left &gt; -200) {
-                        list.style.left = -600 * len + &apos;px&apos;;
-                    }
-                    if (left &lt; (-600 * len)) {
-                        list.style.left = &apos;-600px&apos;;
-                    }
-                    animated = false;
-                }
-            } //自动滚动
-        go();
-    }
-
-    container.onmouseover = stop();
-    container.onmouseout = play();
-
-    play();
-}
-</code></pre><p>##总结##</p>
-<p>焦点轮播图的实现需要耐心分析原理，掌握焦点轮播图所需的技能点，从而通过代码实现。</p>
-<p>先写出静态页面html+css，注意属性值的设置。再用js一步一步写出箭头切换、按钮切换的函数，学会设置和清除定时器、递归调用函数，实现自动滚动播放。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;使用JavaScript实现焦点轮播图&quot;&gt;&lt;a href=&quot;#使用JavaScript实现焦点轮播图&quot; class=&quot;headerlink&quot; title=&quot;使用JavaScript实现焦点轮播图&quot;&gt;&lt;/a&gt;使用JavaScript实现焦点轮播图&lt;/h1&gt;&lt;hr&gt;
-&lt;h2 id=&quot;原理&quot;&gt;&lt;a href=&quot;#原理&quot; class=&quot;headerlink&quot; title=&quot;原理&quot;&gt;&lt;/a&gt;原理&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;各大网站都使用焦点轮播图来展示自己的图片，如淘宝、京东等。&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;焦点轮播图所用技能点：DOM操作、定时器、事件运用、JS动画、函数递归、无限滚动；&lt;/li&gt;
-&lt;li&gt;无限滚动实现：包含图片的父级标签要有一个属性&lt;code&gt;overflow:hidden&lt;/code&gt; 来隐藏超出自身尺寸的内容;有&lt;code&gt;style:left&lt;/code&gt;通过控制left值来实现滚动; 图片列表中要在开始和结束位置添加两张相同的附属图，使图片实现无缝连接。&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="web前端" scheme="http://xxyb.online/categories/web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="html" scheme="http://xxyb.online/tags/html/"/>
-    
-      <category term="css" scheme="http://xxyb.online/tags/css/"/>
-    
-      <category term="javascript" scheme="http://xxyb.online/tags/javascript/"/>
     
   </entry>
   
