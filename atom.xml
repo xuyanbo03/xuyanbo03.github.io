@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xxyb.online/"/>
-  <updated>2017-04-22T12:25:15.661Z</updated>
+  <updated>2017-04-23T12:11:04.409Z</updated>
   <id>http://xxyb.online/</id>
   
   <author>
@@ -16,11 +16,211 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>HTML5存储初探</title>
+    <link href="http://xxyb.online/HTML5%E5%AD%98%E5%82%A8.html"/>
+    <id>http://xxyb.online/HTML5存储.html</id>
+    <published>2017-04-25T16:00:00.000Z</published>
+    <updated>2017-04-23T12:11:04.409Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="HTML5存储初探"><a href="#HTML5存储初探" class="headerlink" title="HTML5存储初探"></a>HTML5存储初探</h1><p><strong>常见存储：</strong></p>
+<ol>
+<li>Cookies</li>
+<li>localStorage  &amp;&amp;  sessionStorage</li>
+<li>indexedDB</li>
+<li>application cache</li>
+</ol>
+<p><strong>其它客户端存储：</strong></p>
+<ol>
+<li><p>userData</p>
+<p>只有IE支持（IE5.0 … 9.0）</p>
+</li>
+<li><p>google Gears</p>
+<ul>
+<li>chrome (12.0后放弃支持)</li>
+<li>引擎：64SQLite</li>
+<li>需要用户授权</li>
+</ul>
+</li>
+</ol>
+<hr>
+<a id="more"></a>
+<h2 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h2><p>Cookies是一种能够让网站服务器把少量数据储存到客户端的硬盘或内存，或是从客户端的硬盘读取数据的一种技术。Cookies是当你浏览某网站时，由Web服务器置于你硬盘上的一个非常小的文本文件，它可以记录你的用户ID、密码、浏览过的网页、停留的时间等信息。</p>
+<p>当你再次来到该网站时，网站通过读取Cookies，得知你的相关信息，就可以做出相应的动作，如在页面显示欢迎你的标语，或者让你不用输入ID、密码就直接登录等等</p>
+<p>Cookies文件是在无声无息中伴随浏览器进入我们本地硬盘的，当我们浏览某个站点时，该站点很可能将记录我们隐私的cookies文件上传到本地硬盘。</p>
+<p>H5存储解决了cookie的问题</p>
+<ul>
+<li>解决cookie总数和单个大小的限制(4k 4095B)</li>
+<li>解决请求头常带存储信息的问题</li>
+<li>解决关系型存储的问题</li>
+<li>跨浏览器</li>
+</ul>
+<h2 id="本地存储-localStorage-amp-amp-sessionStorage"><a href="#本地存储-localStorage-amp-amp-sessionStorage" class="headerlink" title="本地存储( localStorage  &amp;&amp;  sessionStorage)"></a>本地存储( localStorage  &amp;&amp;  sessionStorage)</h2><blockquote>
+<p>图片不经常更改，不过如果图片bash64比较大的话，会比较浪费资源）</p>
+</blockquote>
+<ul>
+<li><p>常用属性和方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">localStorage.key(i)</div><div class="line">.length</div><div class="line">.getItem(&quot;&lt;key&gt;&quot;)</div><div class="line">.setItem(&quot;&lt;key&gt;&quot;,&quot;&lt;value&gt;&quot;)</div><div class="line">.removeItem(&quot;&lt;key&gt;&quot;)</div><div class="line">.clear()</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用注意事项：</p>
+<ul>
+<li>使用前先判断浏览器是否支持(浏览器开启无痕模式后不能用, 有的可读但不可写,所以不能用 if(window.localStorage){}来做兼容处理 先set,然后再捕获异常)；</li>
+<li>写数据时，要异常处理，避免抛出容量错误；</li>
+<li>避免将敏感信息写入localStorage；</li>
+<li>注意key的唯一性,会被覆盖</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>使用场景：<ul>
+<li>利用本地数据，减少网络传输；</li>
+<li>弱网络环境下，高延迟，低带宽，尽量把数据本地化。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>H5本地存储的使用限制<ul>
+<li>需要添加存储更新策略和过期控制</li>
+<li>子域名之间不能共享存储数据</li>
+<li>超出存储后如何存储(LRU,FIFO)  –&gt;  LRU (Least Recently Used) FIFO (先入先出)</li>
+<li>server端如何取到数据（请求参数）</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>localStorage优点：<ul>
+<li>存储大小达5M</li>
+<li>兼容性好，功能强大</li>
+<li>应用范围广</li>
+</ul>
+</li>
+</ul>
+<h2 id="indexedDB"><a href="#indexedDB" class="headerlink" title="indexedDB"></a>indexedDB</h2><ul>
+<li><p>定义</p>
+<p>一种能在浏览器中持久存储结构化数据的数据库，并为web应用提供了丰富的查询能力。</p>
+</li>
+<li><p>浏览器支持</p>
+<p>chromw11+，FF4+，IE10+，移动端支持弱</p>
+</li>
+<li><p>存储结构</p>
+<p>按域名分配独立空间，一个域名下可创建多个数据库，一个DB可以创建多个对象储存空间（表），一个对象存储空间可以创建多个对象数据。</p>
+<p><img src="./IndexedSQL.jpg" alt="Alt Text"></p>
+</li>
+<li><p>功能</p>
+<ul>
+<li>增 删 改</li>
+<li>事务</li>
+<li>游标  </li>
+<li>索引</li>
+</ul>
+</li>
+</ul>
+<p><em>注：w3c已不在维护Web SQL.</em></p>
+<h2 id="离线缓存（application-cache）"><a href="#离线缓存（application-cache）" class="headerlink" title="离线缓存（application cache）"></a>离线缓存（application cache）</h2><ul>
+<li><p>离线缓存（application cache）:让web应用在离线情况下继续使用，通过manifest文件指明要缓存的资源。</p>
+</li>
+<li><p>检测是否在线：navigator.onLine</p>
+</li>
+<li><p>原理（如图）：读取离线缓存，同时检查manifest文件，有更新时更新文件和缓存。</p>
+<p><img src="./H51.jpg" alt="Alt Text"></p>
+</li>
+<li><p>appcache使用和更新</p>
+<ul>
+<li>使用：创建manifest文件</li>
+<li>修改资源文件，必须通过修改manifest文件来更新被缓存的文件列表。</li>
+</ul>
+<p><img src="./H52.jpg" alt="Alt Text"></p>
+</li>
+<li><p>优点</p>
+<ul>
+<li>完全离线；</li>
+<li>资源被缓存，加载更快；</li>
+<li>降低server负载。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>缺陷<ul>
+<li>含有manifest属性的当前页一定会被缓存；</li>
+<li>更新依赖manifest文件，更新后需要再次刷新；</li>
+<li>更新是全局性的，无法单点更新；</li>
+<li>对于链接的参数变化敏感，不同的参数视为不同的文件。</li>
+<li>占用资源</li>
+<li>更新内容会在下次生效</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>浏览器支持：IE8-不支持。</p>
+</li>
+<li><p>适用场景</p>
+<ul>
+<li>单地址的页面（无参数）；</li>
+<li>对实时性要求不高的业务；</li>
+<li>离线webapp。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li><p>H5存储优势：</p>
+<ul>
+<li>存储空间大</li>
+<li>接口丰富</li>
+<li>数据相对安全</li>
+<li>关系型</li>
+<li>省流量</li>
+</ul>
+</li>
+<li><p>H5存储劣势：</p>
+<ul>
+<li>浏览器兼容；( localStorage 和 app cache 主流浏览器都兼容的不错 )</li>
+<li>同源策略；( localStorage 不可以跨子域，manifest 所引用的文件必须在同一个域名下面 )</li>
+<li>脚本控制；( 只能在浏览器端存放；服务器端想拿到数据，只能通过请求 )</li>
+<li>更新策略; ( 不像cookie可以设置过期时间；比如localStorage永不过期，必须自己写一套更新机制 )</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;HTML5存储初探&quot;&gt;&lt;a href=&quot;#HTML5存储初探&quot; class=&quot;headerlink&quot; title=&quot;HTML5存储初探&quot;&gt;&lt;/a&gt;HTML5存储初探&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;常见存储：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Cookies&lt;/li&gt;
+&lt;li&gt;localStorage  &amp;amp;&amp;amp;  sessionStorage&lt;/li&gt;
+&lt;li&gt;indexedDB&lt;/li&gt;
+&lt;li&gt;application cache&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;其它客户端存储：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;userData&lt;/p&gt;
+&lt;p&gt;只有IE支持（IE5.0 … 9.0）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;google Gears&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;chrome (12.0后放弃支持)&lt;/li&gt;
+&lt;li&gt;引擎：64SQLite&lt;/li&gt;
+&lt;li&gt;需要用户授权&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="web前端" scheme="http://xxyb.online/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="html5" scheme="http://xxyb.online/tags/html5/"/>
+    
+  </entry>
+  
+  <entry>
     <title>FreeCodeCamp学习笔记</title>
     <link href="http://xxyb.online/fcc%E5%AD%A6%E4%B9%A0html%E3%80%81css%E3%80%81jQuery.html"/>
     <id>http://xxyb.online/fcc学习html、css、jQuery.html</id>
     <published>2017-04-23T16:00:00.000Z</published>
-    <updated>2017-04-22T12:25:15.661Z</updated>
+    <updated>2017-04-23T12:12:04.951Z</updated>
     
     <content type="html"><![CDATA[<h1 id="FreeCodeCamp学习笔记"><a href="#FreeCodeCamp学习笔记" class="headerlink" title="FreeCodeCamp学习笔记"></a>FreeCodeCamp学习笔记</h1><h1 id="html学习"><a href="#html学习" class="headerlink" title="html学习"></a>html学习</h1><h2 id="知识点补充"><a href="#知识点补充" class="headerlink" title="知识点补充"></a>知识点补充</h2><ul>
 <li><p>a标签用#做占位符</p>
@@ -28,6 +228,9 @@
 <li><p>img标签里应加alt属性，为了盲人朋友</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a href=&quot;#&quot;&gt;&lt;img class=&quot;smaller-image thick-green-border&quot; alt=&quot;A cute orange cat lying on its back&quot; src=&quot;/images/relaxing-cat.jpg&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
 </li>
+</ul>
+<a id="more"></a>
+<ul>
 <li><p>input标签加placeholder做占位符提示，在需要设置必填项的时候加required属性</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;text&quot; placeholder=&quot;cat photo URL&quot; required&gt;</div></pre></td></tr></table></figure>
 </li>
@@ -101,11 +304,17 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;FreeCodeCamp学习笔记&quot;&gt;&lt;a href=&quot;#FreeCodeCamp学习笔记&quot; class=&quot;headerlink&quot; title=&quot;FreeCodeCamp学习笔记&quot;&gt;&lt;/a&gt;FreeCodeCamp学习笔记&lt;/h1&gt;&lt;h1 id=&quot;html学习&quot;&gt;&lt;
+      &lt;h1 id=&quot;FreeCodeCamp学习笔记&quot;&gt;&lt;a href=&quot;#FreeCodeCamp学习笔记&quot; class=&quot;headerlink&quot; title=&quot;FreeCodeCamp学习笔记&quot;&gt;&lt;/a&gt;FreeCodeCamp学习笔记&lt;/h1&gt;&lt;h1 id=&quot;html学习&quot;&gt;&lt;a href=&quot;#html学习&quot; class=&quot;headerlink&quot; title=&quot;html学习&quot;&gt;&lt;/a&gt;html学习&lt;/h1&gt;&lt;h2 id=&quot;知识点补充&quot;&gt;&lt;a href=&quot;#知识点补充&quot; class=&quot;headerlink&quot; title=&quot;知识点补充&quot;&gt;&lt;/a&gt;知识点补充&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;a标签用#做占位符&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;img标签里应加alt属性，为了盲人朋友&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;&amp;lt;img class=&amp;quot;smaller-image thick-green-border&amp;quot; alt=&amp;quot;A cute orange cat lying on its back&amp;quot; src=&amp;quot;/images/relaxing-cat.jpg&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
-      <category term="前端" scheme="http://xxyb.online/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="web前端" scheme="http://xxyb.online/categories/web%E5%89%8D%E7%AB%AF/"/>
     
     
       <category term="html" scheme="http://xxyb.online/tags/html/"/>
@@ -121,7 +330,7 @@
     <link href="http://xxyb.online/css%E5%AE%9E%E7%8E%B0%E6%97%8B%E8%BD%AC%E9%AD%94%E6%96%B9.html"/>
     <id>http://xxyb.online/css实现旋转魔方.html</id>
     <published>2017-04-21T16:00:00.000Z</published>
-    <updated>2017-04-22T13:10:06.395Z</updated>
+    <updated>2017-04-23T12:11:18.495Z</updated>
     
     <content type="html"><![CDATA[<h1 id="CSS3实现3D魔方"><a href="#CSS3实现3D魔方" class="headerlink" title="CSS3实现3D魔方"></a>CSS3实现3D魔方</h1><h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><ul>
 <li><p>写出基础HTML框架</p>
@@ -135,6 +344,7 @@
 <li><p>CSS3实现旋转</p>
 </li>
 </ul>
+<a id="more"></a>
 <h2 id="第一步：HTML结构"><a href="#第一步：HTML结构" class="headerlink" title="第一步：HTML结构"></a>第一步：HTML结构</h2><p><strong>六个面类似如下结构</strong></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>3D魔方<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"view"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"red-surfaces"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"one"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"two"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"three"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"four"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"five"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"six"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"seven"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"eight"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"nine"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <h2 id="第二步：CSS初始化"><a href="#第二步：CSS初始化" class="headerlink" title="第二步：CSS初始化"></a>第二步：CSS初始化</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">* &#123;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">0px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">    <span class="attribute">min-height</span>: <span class="number">600px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100%</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-tag">body</span> <span class="selector-tag">h1</span> &#123;</div><div class="line">    <span class="attribute">margin-top</span>: <span class="number">50px</span>;</div><div class="line">    <span class="attribute">text-align</span>: center;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.view</span> &#123;</div><div class="line">    <span class="attribute">margin</span>: -<span class="number">60px</span> auto;</div><div class="line">    <span class="attribute">width</span>: <span class="number">800px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">800px</span>;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">20px</span>;</div><div class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">scale</span>(0.7);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -168,7 +378,18 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;CSS3实现3D魔方&quot;&gt;&lt;a href=&quot;#CSS3实现3D魔方&quot; class=&quot;headerlink&quot; title=&quot;CSS3实现3D魔方&quot;&gt;&lt;/a&gt;CSS3实现3D魔方&lt;/h1&gt;&lt;h2 id=&quot;实现思路&quot;&gt;&lt;a href=&quot;#实现思路&quot; class=&quot;head
+      &lt;h1 id=&quot;CSS3实现3D魔方&quot;&gt;&lt;a href=&quot;#CSS3实现3D魔方&quot; class=&quot;headerlink&quot; title=&quot;CSS3实现3D魔方&quot;&gt;&lt;/a&gt;CSS3实现3D魔方&lt;/h1&gt;&lt;h2 id=&quot;实现思路&quot;&gt;&lt;a href=&quot;#实现思路&quot; class=&quot;headerlink&quot; title=&quot;实现思路&quot;&gt;&lt;/a&gt;实现思路&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;写出基础HTML框架&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;基本CSS样式，初始化&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;CSS实现魔方的各个面：外轮廓和内盒子&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;CSS3实现魔方表面的3D位置&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;CSS3实现旋转&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -188,11 +409,12 @@
     <link href="http://xxyb.online/kali%20linux%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97.html"/>
     <id>http://xxyb.online/kali linux安装指南.html</id>
     <published>2017-04-19T16:00:00.000Z</published>
-    <updated>2017-04-22T12:26:37.689Z</updated>
+    <updated>2017-04-23T12:11:44.599Z</updated>
     
     <content type="html"><![CDATA[<h1 id="kali-linux-安装指南"><a href="#kali-linux-安装指南" class="headerlink" title="kali linux 安装指南"></a>kali linux 安装指南</h1><blockquote>
 <p>Kali Linux是基于Debian的Linux发行版， 设计用于数字取证和渗透测试。Kali Linux预装了许多渗透测试软件，包括nmap (端口扫描器)、Wireshark (数据包分析器)、John the Ripper (密码破解器),以及Aircrack-ng (一应用于对无线局域网进行渗透测试的软件).用户可通过硬盘、live CD或live USB运行Kali Linux。Metasploit的Metasploit Framework支持Kali Linux，Metasploit一套针对远程主机进行开发和执行Exploit代码的工具。<br>Kali Linux既有32位和64位的镜像。可用于x86 指令集。同时还有基于ARM架构的镜像，可用于树莓派和三星的ARM Chromebook. –[百度百科]</p>
 </blockquote>
+<a id="more"></a>
 <h1 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h1><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="https://www.kali.org/downloads/" target="_blank" rel="external">kali linux 官网</a></p>
 <h2 id="U盘刻录"><a href="#U盘刻录" class="headerlink" title="U盘刻录"></a>U盘刻录</h2><p>镜像刻录U盘工具：Win32 Disk Imager</p>
 <p>这个工具刻录的镜像比较完整，可直接用U盘启动，比软碟通要好。</p>
@@ -271,7 +493,8 @@
     <summary type="html">
     
       &lt;h1 id=&quot;kali-linux-安装指南&quot;&gt;&lt;a href=&quot;#kali-linux-安装指南&quot; class=&quot;headerlink&quot; title=&quot;kali linux 安装指南&quot;&gt;&lt;/a&gt;kali linux 安装指南&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;Kali 
+&lt;p&gt;Kali Linux是基于Debian的Linux发行版， 设计用于数字取证和渗透测试。Kali Linux预装了许多渗透测试软件，包括nmap (端口扫描器)、Wireshark (数据包分析器)、John the Ripper (密码破解器),以及Aircrack-ng (一应用于对无线局域网进行渗透测试的软件).用户可通过硬盘、live CD或live USB运行Kali Linux。Metasploit的Metasploit Framework支持Kali Linux，Metasploit一套针对远程主机进行开发和执行Exploit代码的工具。&lt;br&gt;Kali Linux既有32位和64位的镜像。可用于x86 指令集。同时还有基于ARM架构的镜像，可用于树莓派和三星的ARM Chromebook. –[百度百科]&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
@@ -289,7 +512,7 @@
     <link href="http://xxyb.online/MapReduce%E5%88%9D%E6%8E%A2.html"/>
     <id>http://xxyb.online/MapReduce初探.html</id>
     <published>2017-04-13T16:00:00.000Z</published>
-    <updated>2017-04-22T12:27:31.915Z</updated>
+    <updated>2017-04-23T12:11:34.958Z</updated>
     
     <content type="html"><![CDATA[<h1 id="MapReduce初探"><a href="#MapReduce初探" class="headerlink" title="MapReduce初探"></a>MapReduce初探</h1><p><strong>MapReduce是一个用于处理海量数据的分布式计算框架</strong></p>
 <p>MapReduce解决的问题：</p>
@@ -299,6 +522,7 @@
 <li>容错</li>
 <li>机器间通信</li>
 </ul>
+<a id="more"></a>
 <p>MapReduce存储：HDFS</p>
 <ul>
 <li>系统可靠性</li>
@@ -377,7 +601,14 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;MapReduce初探&quot;&gt;&lt;a href=&quot;#MapReduce初探&quot; class=&quot;headerlink&quot; title=&quot;MapReduce初探&quot;&gt;&lt;/a&gt;MapReduce初探&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;MapReduce是一个用于处理海量数据的分布式计算
+      &lt;h1 id=&quot;MapReduce初探&quot;&gt;&lt;a href=&quot;#MapReduce初探&quot; class=&quot;headerlink&quot; title=&quot;MapReduce初探&quot;&gt;&lt;/a&gt;MapReduce初探&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;MapReduce是一个用于处理海量数据的分布式计算框架&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;MapReduce解决的问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数据分布式存储&lt;/li&gt;
+&lt;li&gt;作业调度&lt;/li&gt;
+&lt;li&gt;容错&lt;/li&gt;
+&lt;li&gt;机器间通信&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -494,62 +725,6 @@
   </entry>
   
   <entry>
-    <title>怎样建一个自己的网站</title>
-    <link href="http://xxyb.online/%E6%80%8E%E4%B9%88%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99.html"/>
-    <id>http://xxyb.online/怎么建立自己的网站.html</id>
-    <published>2017-03-20T16:00:00.000Z</published>
-    <updated>2017-03-20T17:23:20.709Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="怎样建一个自己的网站"><a href="#怎样建一个自己的网站" class="headerlink" title="怎样建一个自己的网站"></a>怎样建一个自己的网站</h1><p><strong>下面是详细步骤：</strong></p>
-<ol>
-<li>要建立个人网站，首先必须要了解一下目前网页制作的基本语言HTML，入门即可，大概花个一二小时就可。</li>
-</ol>
-<a id="more"></a>
-<ol>
-<li><p>学会使用目前流行的网页制作软件，如Atom、Brackets等一些功能强大，所见所得的软件，初步了解就可，不用全部掌握，一般是边用边学，不断提高使用水平。</p>
-</li>
-<li><p>广泛的上网浏览各种网页，一开始最好能下载一些较简单的个人网页，因为他们所用到的技术较为简单，可用网页制作软件打开研究。然后推荐去浏览一些专业的网页设计网站，学习一些排版经验，同时可下载一些网页结构模版供自己套用。</p>
-</li>
-<li><p>确定你的网站主题，网站主题最好是有你的个人特色，实在不能确定我建议自己做一个私人门户网站，将平时自己经常去的网站做一个较为综合的连结。</p>
-</li>
-<li><p>网页最好不要用特别与众不同的颜色、字体，因为每个人使用的计算机各不相同，特别的颜色、字体别人不一定能看得到。</p>
-</li>
-<li><p>网页要增加美观图片不可缺少，我建议如果你会用一些专业的作图软件最好自己制作，这会有自己的特色，放些私人照片也可以，但切记各种图片一定要作优化处理，减小它的存储尺寸。提醒一下每页不要放过多的图片，因为第一会使网页显得杂乱，第二会使你的网页显示速度过慢。制作图片的常用软件有Photoshop，Fireworks等。</p>
-</li>
-<li><p>网页上可以用一些动画与特效增加你主页的美观与功能，动画可上网找，同样最好能自己制作，GIF格式的最常用，可用Ulead的Gig Animator软件制作，目前流行的是H5动画，更多变化，尺寸更小。网上还有许多免费的Javascript等可供使用，与图片一样，我建议每页不要放太多的动画与特效。</p>
-</li>
-<li><p>网页基本建成后，上网找免费的主页空间，以其主机的速度，提供的空间大小和有无基本的CGI功能及其提供的域名是否简单易记为考量依据，所谓CGI是指主机服务器上提供的程序，一般你可申请有免费计数器、留言板等。找到速度快，主页存放空间大，域名简单的网站存放你的网页。</p>
-</li>
-<li><p>将网页上传至你申请的服务器上，具体上传的办法你在申请主页空间时就会了解，具体使用你制作网页的软件即可，我个人推荐使用FTP上传，这个软件功能强大，简单易用。</p>
-</li>
-<li><p>网站已建立,可与其它网站申请友情连结、去一些提供连结交换的网站申请广告交换，如太极链，酷站等。在做这一步时你需要做二个468X60和88X31尺寸的广告图片，动画最好，存储大小尽量控制在10k以下。</p>
-</li>
-<li><p>如果你还想靠你的网站赚一些小钱，你可去一些商业网站申请广告连结，替他们做广告，一般以从你的网页点击到他们的网页次数算钱。</p>
-</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;怎样建一个自己的网站&quot;&gt;&lt;a href=&quot;#怎样建一个自己的网站&quot; class=&quot;headerlink&quot; title=&quot;怎样建一个自己的网站&quot;&gt;&lt;/a&gt;怎样建一个自己的网站&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;下面是详细步骤：&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;要建立个人网站，首先必须要了解一下目前网页制作的基本语言HTML，入门即可，大概花个一二小时就可。&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="web前端" scheme="http://xxyb.online/categories/web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="html" scheme="http://xxyb.online/tags/html/"/>
-    
-      <category term="css" scheme="http://xxyb.online/tags/css/"/>
-    
-      <category term="javascript" scheme="http://xxyb.online/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
     <title>HTML学习笔记</title>
     <link href="http://xxyb.online/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html"/>
     <id>http://xxyb.online/html学习笔记.html</id>
@@ -608,6 +783,62 @@
 &lt;h1 id=&quot;html结构及常用元素&quot;&gt;&lt;a href=&quot;#html结构及常用元素&quot; class=&quot;headerlink&quot; title=&quot;html结构及常用元素&quot;&gt;&lt;/a&gt;html结构及常用元素&lt;/h1&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;html&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;head&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;title&amp;gt;文档标题&amp;lt;/title&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/head&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;可见文本...&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/body&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/html&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h1&amp;gt;最大的标题&amp;lt;/h1&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h2&amp;gt; . . . &amp;lt;/h2&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h3&amp;gt; . . . &amp;lt;/h3&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h4&amp;gt; . . . &amp;lt;/h4&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h5&amp;gt; . . . &amp;lt;/h5&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h6&amp;gt;最小的标题&amp;lt;/h6&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;26&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;27&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;28&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;29&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;30&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;p&amp;gt;这是一个段落。&amp;lt;/p&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;br&amp;gt; （换行）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;hr&amp;gt; （水平线）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;!-- 这是注释 --&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;b&amp;gt;粗体文本&amp;lt;/b&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;code&amp;gt;计算机代码&amp;lt;/code&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;em&amp;gt;强调文本&amp;lt;/em&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;i&amp;gt;斜体文本&amp;lt;/i&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;kbd&amp;gt;键盘输入&amp;lt;/kbd&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;pre&amp;gt;预格式化文本&amp;lt;/pre&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;small&amp;gt;更小的文本&amp;lt;/small&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;strong&amp;gt;重要的文本&amp;lt;/strong&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;abbr&amp;gt; （缩写）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;address&amp;gt; （联系信息）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;bdo&amp;gt; （文字方向）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;blockquote&amp;gt; （从另一个源引用的部分）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;cite&amp;gt; （工作的名称）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;del&amp;gt; （删除的文本）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;ins&amp;gt; （插入的文本）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;sub&amp;gt; （下标文本）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;sup&amp;gt; （上标文本）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;普通的链接：&amp;lt;a href=&amp;quot;http://www.example.com/&amp;quot;&amp;gt;链接文本&amp;lt;/a&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;图像链接： &amp;lt;a href=&amp;quot;http://www.example.com/&amp;quot;&amp;gt;&amp;lt;img src=&amp;quot;URL&amp;quot; alt=&amp;quot;替换文本&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;邮件链接： &amp;lt;a href=&amp;quot;mailto:webmaster@example.com&amp;quot;&amp;gt;发送e-mail&amp;lt;/a&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;书签：&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;a id=&amp;quot;tips&amp;quot;&amp;gt;提示部分&amp;lt;/a&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;a href=&amp;quot;#tips&amp;quot;&amp;gt;跳到提示部分&amp;lt;/a&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;img src=&amp;quot;URL&amp;quot; alt=&amp;quot;替换文本&amp;quot; height=&amp;quot;42&amp;quot; width=&amp;quot;42&amp;quot;&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="web前端" scheme="http://xxyb.online/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="html" scheme="http://xxyb.online/tags/html/"/>
+    
+      <category term="css" scheme="http://xxyb.online/tags/css/"/>
+    
+      <category term="javascript" scheme="http://xxyb.online/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>怎样建一个自己的网站</title>
+    <link href="http://xxyb.online/%E6%80%8E%E4%B9%88%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99.html"/>
+    <id>http://xxyb.online/怎么建立自己的网站.html</id>
+    <published>2017-03-20T16:00:00.000Z</published>
+    <updated>2017-03-20T17:23:20.709Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="怎样建一个自己的网站"><a href="#怎样建一个自己的网站" class="headerlink" title="怎样建一个自己的网站"></a>怎样建一个自己的网站</h1><p><strong>下面是详细步骤：</strong></p>
+<ol>
+<li>要建立个人网站，首先必须要了解一下目前网页制作的基本语言HTML，入门即可，大概花个一二小时就可。</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li><p>学会使用目前流行的网页制作软件，如Atom、Brackets等一些功能强大，所见所得的软件，初步了解就可，不用全部掌握，一般是边用边学，不断提高使用水平。</p>
+</li>
+<li><p>广泛的上网浏览各种网页，一开始最好能下载一些较简单的个人网页，因为他们所用到的技术较为简单，可用网页制作软件打开研究。然后推荐去浏览一些专业的网页设计网站，学习一些排版经验，同时可下载一些网页结构模版供自己套用。</p>
+</li>
+<li><p>确定你的网站主题，网站主题最好是有你的个人特色，实在不能确定我建议自己做一个私人门户网站，将平时自己经常去的网站做一个较为综合的连结。</p>
+</li>
+<li><p>网页最好不要用特别与众不同的颜色、字体，因为每个人使用的计算机各不相同，特别的颜色、字体别人不一定能看得到。</p>
+</li>
+<li><p>网页要增加美观图片不可缺少，我建议如果你会用一些专业的作图软件最好自己制作，这会有自己的特色，放些私人照片也可以，但切记各种图片一定要作优化处理，减小它的存储尺寸。提醒一下每页不要放过多的图片，因为第一会使网页显得杂乱，第二会使你的网页显示速度过慢。制作图片的常用软件有Photoshop，Fireworks等。</p>
+</li>
+<li><p>网页上可以用一些动画与特效增加你主页的美观与功能，动画可上网找，同样最好能自己制作，GIF格式的最常用，可用Ulead的Gig Animator软件制作，目前流行的是H5动画，更多变化，尺寸更小。网上还有许多免费的Javascript等可供使用，与图片一样，我建议每页不要放太多的动画与特效。</p>
+</li>
+<li><p>网页基本建成后，上网找免费的主页空间，以其主机的速度，提供的空间大小和有无基本的CGI功能及其提供的域名是否简单易记为考量依据，所谓CGI是指主机服务器上提供的程序，一般你可申请有免费计数器、留言板等。找到速度快，主页存放空间大，域名简单的网站存放你的网页。</p>
+</li>
+<li><p>将网页上传至你申请的服务器上，具体上传的办法你在申请主页空间时就会了解，具体使用你制作网页的软件即可，我个人推荐使用FTP上传，这个软件功能强大，简单易用。</p>
+</li>
+<li><p>网站已建立,可与其它网站申请友情连结、去一些提供连结交换的网站申请广告交换，如太极链，酷站等。在做这一步时你需要做二个468X60和88X31尺寸的广告图片，动画最好，存储大小尽量控制在10k以下。</p>
+</li>
+<li><p>如果你还想靠你的网站赚一些小钱，你可去一些商业网站申请广告连结，替他们做广告，一般以从你的网页点击到他们的网页次数算钱。</p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;怎样建一个自己的网站&quot;&gt;&lt;a href=&quot;#怎样建一个自己的网站&quot; class=&quot;headerlink&quot; title=&quot;怎样建一个自己的网站&quot;&gt;&lt;/a&gt;怎样建一个自己的网站&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;下面是详细步骤：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;要建立个人网站，首先必须要了解一下目前网页制作的基本语言HTML，入门即可，大概花个一二小时就可。&lt;/li&gt;
+&lt;/ol&gt;
     
     </summary>
     
@@ -1615,42 +1846,6 @@ INFOHexois running at http://0.0.0.0:4000/.PressCtrl+C to stop.
     
     
       <category term="健身" scheme="http://xxyb.online/tags/%E5%81%A5%E8%BA%AB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>人生的境界</title>
-    <link href="http://xxyb.online/%E4%BA%BA%E7%94%9F%E7%9A%84%E5%A2%83%E7%95%8C.html"/>
-    <id>http://xxyb.online/人生的境界.html</id>
-    <published>2017-01-08T16:00:00.000Z</published>
-    <updated>2017-03-05T11:45:05.205Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="人生的境界"><a href="#人生的境界" class="headerlink" title="人生的境界"></a>人生的境界</h1><blockquote>
-<p>人生有四种境界：自然境界、功利境界、道德境界、天地境界。<br>—中国哲学家冯友兰</p>
-</blockquote>
-<h3 id="一、自然境界"><a href="#一、自然境界" class="headerlink" title="一、自然境界"></a>一、自然境界</h3><p>一个人做事，可能只是顺着他的本能或其社会的风俗习惯。就像小孩和原始人那样，他做他所做的事，然而并无觉解，或不甚觉解。这样，他所做的事，对于他就没有意义，或很少意义。他的人生境界，就是我所说的自然境界。</p>
-<a id="more"></a>
-<h3 id="二、功利境界"><a href="#二、功利境界" class="headerlink" title="二、功利境界"></a>二、功利境界</h3><p>一个人可能意识到他自己，为自己而做各种事。这并不意味着他必然是不道德的人。他可以做些事，其后果有利于他人，其动机则是利已的。所以他所做的各种事，对于他，有功利的意义。他的人生境界，就是我所说的功利境界。</p>
-<h3 id="三、道德境界"><a href="#三、道德境界" class="headerlink" title="三、道德境界"></a>三、道德境界</h3><p>还有的人，可能了解到社会的存在，他是社会的一员。这个社会是一个整体，他是这个整体的一部分。有这种觉解，他就为社会的利益做各种事，或如儒家所说，他做事是为了”正其义不谋其利”。他真正是有道德的人，他所做的都是符合严格的道德意义的道德行为。他所做的各种事都有道德的意义。所以他的人生境界，是我所说的道德境界。</p>
-<h3 id="四、天地境界"><a href="#四、天地境界" class="headerlink" title="四、天地境界"></a>四、天地境界</h3><p>最后，一个人可能了解到超乎社会整体之上，还有一个更大的整体，即宇宙。他不仅是社会的一员，同时还是宇宙的一员。他是社会组织的公民，同时还是孟子所说的”天民”。有这种觉解，他就为宇宙的利益而做各种事。他了解他所做的事的意义，自觉他正在做他所做的事。这种觉解为他构成了最高的人生境界，就是我所说的天地境界。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>人与其他动物的不同，在于人做某事时，他了解他在做什么，并且自觉地在做。正是这种觉解，使他正在做的事对于他有了意义。他做各种事，有各种意义，各种意义合成一个整体，就构成他的人生境界。如此构成各人的人生境界，这是我的说法。不同的人可能做相同的事，但是各人的觉解程度不同，所做的事对于他们也就各有不同的意义。每个人各有自己的人生境界，与其他任何个人的都不完全相同。若是不管这些个人的差异，我们可以把各种不同的人生境界划分为四个等级。从最低的说起，它们是：自然境界，功利境界，道德境界，天地境界。</p>
-<p>这四种人生境界之中，自然境界、功利境界的人，是人现在就是的人；道德境界、天地境界的人，是人应该成为的人。前两者是自然的产物，后两者是精神的创造。自然境界最低，往上是功利境界，再往上是道德境界，最后是天地境界。它们之所以如此，是由于自然境界，几乎不需要觉解；功利境界、道德境界，需要较多的觉解；天地境界则需要最多的觉解。道德境界有道德价值，天地境界有超道德价值。</p>
-<p>照中国哲学的传统，哲学的任务是帮助人达到道德境界和天地境界，特别是达到天地境界。天地境界又可以叫做哲学境界，因为只有通过哲学，获得对宇宙的某些了解，才能达到天地境界。但是道德境界，也是哲学的产物。道德认为，并不单纯是遵循道德律的行为；有道德的人也不单纯是养成某些道德习惯的人。他行动和生活，都必须觉解其中的道德原理，哲学的任务正是给予他这种觉解。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;人生的境界&quot;&gt;&lt;a href=&quot;#人生的境界&quot; class=&quot;headerlink&quot; title=&quot;人生的境界&quot;&gt;&lt;/a&gt;人生的境界&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;人生有四种境界：自然境界、功利境界、道德境界、天地境界。&lt;br&gt;—中国哲学家冯友兰&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;一、自然境界&quot;&gt;&lt;a href=&quot;#一、自然境界&quot; class=&quot;headerlink&quot; title=&quot;一、自然境界&quot;&gt;&lt;/a&gt;一、自然境界&lt;/h3&gt;&lt;p&gt;一个人做事，可能只是顺着他的本能或其社会的风俗习惯。就像小孩和原始人那样，他做他所做的事，然而并无觉解，或不甚觉解。这样，他所做的事，对于他就没有意义，或很少意义。他的人生境界，就是我所说的自然境界。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="人生" scheme="http://xxyb.online/categories/%E4%BA%BA%E7%94%9F/"/>
-    
-    
-      <category term="人生" scheme="http://xxyb.online/tags/%E4%BA%BA%E7%94%9F/"/>
     
   </entry>
   
