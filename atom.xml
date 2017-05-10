@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xxyb.online/"/>
-  <updated>2017-05-10T15:11:11.230Z</updated>
+  <updated>2017-05-10T15:41:38.329Z</updated>
   <id>http://xxyb.online/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://xxyb.online/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95JavaScript%EF%BC%88%E4%B8%80%EF%BC%89.html"/>
     <id>http://xxyb.online/数据结构与算法JavaScript（一）.html</id>
     <published>2017-05-09T16:00:00.000Z</published>
-    <updated>2017-05-10T15:11:11.230Z</updated>
+    <updated>2017-05-10T15:41:38.329Z</updated>
     
     <content type="html"><![CDATA[<h1 id="数据结构与算法JavaScript学习（一）"><a href="#数据结构与算法JavaScript学习（一）" class="headerlink" title="数据结构与算法JavaScript学习（一）"></a>数据结构与算法JavaScript学习（一）</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="常用数组方法"><a href="#常用数组方法" class="headerlink" title="常用数组方法"></a>常用数组方法</h3><ul>
 <li><p>push方法，能把元素添加到数组的末尾</p>
@@ -36,7 +36,7 @@
 <p><code>number.splice(5,0,2,3,4)</code>从数组索引5开始增加3个元素2,3,4</p>
 </li>
 </ul>
-<p>&lt;!– more – &gt;</p>
+<a id="more"></a>
 <h3 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h3><ul>
 <li>concat方法，合并数组，可迭代数组，把每个元素加入到最终数组</li>
 </ul>
@@ -102,7 +102,20 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;数据结构与算法JavaScript学习（一）&quot;&gt;&lt;a href=&quot;#数据结构与算法JavaScript学习（一）&quot; class=&quot;headerlink&quot; title=&quot;数据结构与算法JavaScript学习（一）&quot;&gt;&lt;/a&gt;数据结构与算法JavaScript学习（
+      &lt;h1 id=&quot;数据结构与算法JavaScript学习（一）&quot;&gt;&lt;a href=&quot;#数据结构与算法JavaScript学习（一）&quot; class=&quot;headerlink&quot; title=&quot;数据结构与算法JavaScript学习（一）&quot;&gt;&lt;/a&gt;数据结构与算法JavaScript学习（一）&lt;/h1&gt;&lt;h2 id=&quot;数组&quot;&gt;&lt;a href=&quot;#数组&quot; class=&quot;headerlink&quot; title=&quot;数组&quot;&gt;&lt;/a&gt;数组&lt;/h2&gt;&lt;h3 id=&quot;常用数组方法&quot;&gt;&lt;a href=&quot;#常用数组方法&quot; class=&quot;headerlink&quot; title=&quot;常用数组方法&quot;&gt;&lt;/a&gt;常用数组方法&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;push方法，能把元素添加到数组的末尾&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;unshift方法，可直接把数值插入到数组首位&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;pop方法，删除数组里靠后的元素&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;shift方法，删除数组的第一个元素&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;splice方法，通过指定位置/索引，删除或增加相应位置和数量的元素&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;number.splice(5,3)&lt;/code&gt;删除从数组索引5开始3个元素&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;number.splice(5,0,2,3,4)&lt;/code&gt;从数组索引5开始增加3个元素2,3,4&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -875,17 +888,73 @@
   </entry>
   
   <entry>
+    <title>怎样建一个自己的网站</title>
+    <link href="http://xxyb.online/%E6%80%8E%E4%B9%88%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99.html"/>
+    <id>http://xxyb.online/怎么建立自己的网站.html</id>
+    <published>2017-03-20T16:00:00.000Z</published>
+    <updated>2017-03-20T17:23:20.709Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="怎样建一个自己的网站"><a href="#怎样建一个自己的网站" class="headerlink" title="怎样建一个自己的网站"></a>怎样建一个自己的网站</h1><p><strong>下面是详细步骤：</strong></p>
+<ol>
+<li>要建立个人网站，首先必须要了解一下目前网页制作的基本语言HTML，入门即可，大概花个一二小时就可。</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li><p>学会使用目前流行的网页制作软件，如Atom、Brackets等一些功能强大，所见所得的软件，初步了解就可，不用全部掌握，一般是边用边学，不断提高使用水平。</p>
+</li>
+<li><p>广泛的上网浏览各种网页，一开始最好能下载一些较简单的个人网页，因为他们所用到的技术较为简单，可用网页制作软件打开研究。然后推荐去浏览一些专业的网页设计网站，学习一些排版经验，同时可下载一些网页结构模版供自己套用。</p>
+</li>
+<li><p>确定你的网站主题，网站主题最好是有你的个人特色，实在不能确定我建议自己做一个私人门户网站，将平时自己经常去的网站做一个较为综合的连结。</p>
+</li>
+<li><p>网页最好不要用特别与众不同的颜色、字体，因为每个人使用的计算机各不相同，特别的颜色、字体别人不一定能看得到。</p>
+</li>
+<li><p>网页要增加美观图片不可缺少，我建议如果你会用一些专业的作图软件最好自己制作，这会有自己的特色，放些私人照片也可以，但切记各种图片一定要作优化处理，减小它的存储尺寸。提醒一下每页不要放过多的图片，因为第一会使网页显得杂乱，第二会使你的网页显示速度过慢。制作图片的常用软件有Photoshop，Fireworks等。</p>
+</li>
+<li><p>网页上可以用一些动画与特效增加你主页的美观与功能，动画可上网找，同样最好能自己制作，GIF格式的最常用，可用Ulead的Gig Animator软件制作，目前流行的是H5动画，更多变化，尺寸更小。网上还有许多免费的Javascript等可供使用，与图片一样，我建议每页不要放太多的动画与特效。</p>
+</li>
+<li><p>网页基本建成后，上网找免费的主页空间，以其主机的速度，提供的空间大小和有无基本的CGI功能及其提供的域名是否简单易记为考量依据，所谓CGI是指主机服务器上提供的程序，一般你可申请有免费计数器、留言板等。找到速度快，主页存放空间大，域名简单的网站存放你的网页。</p>
+</li>
+<li><p>将网页上传至你申请的服务器上，具体上传的办法你在申请主页空间时就会了解，具体使用你制作网页的软件即可，我个人推荐使用FTP上传，这个软件功能强大，简单易用。</p>
+</li>
+<li><p>网站已建立,可与其它网站申请友情连结、去一些提供连结交换的网站申请广告交换，如太极链，酷站等。在做这一步时你需要做二个468X60和88X31尺寸的广告图片，动画最好，存储大小尽量控制在10k以下。</p>
+</li>
+<li><p>如果你还想靠你的网站赚一些小钱，你可去一些商业网站申请广告连结，替他们做广告，一般以从你的网页点击到他们的网页次数算钱。</p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;怎样建一个自己的网站&quot;&gt;&lt;a href=&quot;#怎样建一个自己的网站&quot; class=&quot;headerlink&quot; title=&quot;怎样建一个自己的网站&quot;&gt;&lt;/a&gt;怎样建一个自己的网站&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;下面是详细步骤：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;要建立个人网站，首先必须要了解一下目前网页制作的基本语言HTML，入门即可，大概花个一二小时就可。&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="web前端" scheme="http://xxyb.online/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="html" scheme="http://xxyb.online/tags/html/"/>
+    
+      <category term="css" scheme="http://xxyb.online/tags/css/"/>
+    
+      <category term="javascript" scheme="http://xxyb.online/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>HTML学习笔记</title>
     <link href="http://xxyb.online/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html"/>
     <id>http://xxyb.online/html学习笔记.html</id>
     <published>2017-03-20T16:00:00.000Z</published>
-    <updated>2017-03-21T16:42:30.251Z</updated>
+    <updated>2017-05-10T15:41:55.727Z</updated>
     
     <content type="html"><![CDATA[<h1 id="HTML学习笔记"><a href="#HTML学习笔记" class="headerlink" title="HTML学习笔记"></a>HTML学习笔记</h1><hr>
 <h1 id="html结构及常用元素"><a href="#html结构及常用元素" class="headerlink" title="html结构及常用元素"></a>html结构及常用元素</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;title&gt;文档标题&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">可见文本...</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;h1&gt;最大的标题&lt;/h1&gt;</div><div class="line">&lt;h2&gt; . . . &lt;/h2&gt;</div><div class="line">&lt;h3&gt; . . . &lt;/h3&gt;</div><div class="line">&lt;h4&gt; . . . &lt;/h4&gt;</div><div class="line">&lt;h5&gt; . . . &lt;/h5&gt;</div><div class="line">&lt;h6&gt;最小的标题&lt;/h6&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;这是一个段落。&lt;/p&gt;</div><div class="line">&lt;br&gt; （换行）</div><div class="line">&lt;hr&gt; （水平线）</div><div class="line">&lt;!-- 这是注释 --&gt;</div><div class="line">&lt;b&gt;粗体文本&lt;/b&gt;</div><div class="line">&lt;code&gt;计算机代码&lt;/code&gt;</div><div class="line">&lt;em&gt;强调文本&lt;/em&gt;</div><div class="line">&lt;i&gt;斜体文本&lt;/i&gt;</div><div class="line">&lt;kbd&gt;键盘输入&lt;/kbd&gt;</div><div class="line">&lt;pre&gt;预格式化文本&lt;/pre&gt;</div><div class="line">&lt;small&gt;更小的文本&lt;/small&gt;</div><div class="line">&lt;strong&gt;重要的文本&lt;/strong&gt;</div><div class="line">&lt;abbr&gt; （缩写）</div><div class="line">&lt;address&gt; （联系信息）</div><div class="line">&lt;bdo&gt; （文字方向）</div><div class="line">&lt;blockquote&gt; （从另一个源引用的部分）</div><div class="line">&lt;cite&gt; （工作的名称）</div><div class="line">&lt;del&gt; （删除的文本）</div><div class="line">&lt;ins&gt; （插入的文本）</div><div class="line">&lt;sub&gt; （下标文本）</div><div class="line">&lt;sup&gt; （上标文本）</div><div class="line"></div><div class="line">普通的链接：&lt;a href=&quot;http://www.example.com/&quot;&gt;链接文本&lt;/a&gt;</div><div class="line">图像链接： &lt;a href=&quot;http://www.example.com/&quot;&gt;&lt;img src=&quot;URL&quot; alt=&quot;替换文本&quot;&gt;&lt;/a&gt;</div><div class="line">邮件链接： &lt;a href=&quot;mailto:webmaster@example.com&quot;&gt;发送e-mail&lt;/a&gt;</div><div class="line"></div><div class="line">书签：</div><div class="line">&lt;a id=&quot;tips&quot;&gt;提示部分&lt;/a&gt;</div><div class="line">&lt;a href=&quot;#tips&quot;&gt;跳到提示部分&lt;/a&gt;</div><div class="line">&lt;img src=&quot;URL&quot; alt=&quot;替换文本&quot; height=&quot;42&quot; width=&quot;42&quot;&gt;</div></pre></td></tr></table></figure>
 <a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;这是一个段落。&lt;/p&gt;</div><div class="line">&lt;br&gt; （换行）</div><div class="line">&lt;hr&gt; （水平线）</div><div class="line">&lt;!-- 这是注释 --&gt;</div><div class="line">&lt;b&gt;粗体文本&lt;/b&gt;</div><div class="line">&lt;code&gt;计算机代码&lt;/code&gt;</div><div class="line">&lt;em&gt;强调文本&lt;/em&gt;</div><div class="line">&lt;i&gt;斜体文本&lt;/i&gt;</div><div class="line">&lt;kbd&gt;键盘输入&lt;/kbd&gt;</div><div class="line">&lt;pre&gt;预格式化文本&lt;/pre&gt;</div><div class="line">&lt;small&gt;更小的文本&lt;/small&gt;</div><div class="line">&lt;strong&gt;重要的文本&lt;/strong&gt;</div><div class="line">&lt;abbr&gt; （缩写）</div><div class="line">&lt;address&gt; （联系信息）</div><div class="line">&lt;bdo&gt; （文字方向）</div><div class="line">&lt;blockquote&gt; （从另一个源引用的部分）</div><div class="line">&lt;cite&gt; （工作的名称）</div><div class="line">&lt;del&gt; （删除的文本）</div><div class="line">&lt;ins&gt; （插入的文本）</div><div class="line">&lt;sub&gt; （下标文本）</div><div class="line">&lt;sup&gt; （上标文本）</div><div class="line"></div><div class="line">普通的链接：&lt;a href=&quot;http://www.example.com/&quot;&gt;链接文本&lt;/a&gt;</div><div class="line">图像链接： &lt;a href=&quot;http://www.example.com/&quot;&gt;&lt;img src=&quot;URL&quot; alt=&quot;替换文本&quot;&gt;&lt;/a&gt;</div><div class="line">邮件链接： &lt;a href=&quot;mailto:webmaster@example.com&quot;&gt;发送e-mail&lt;/a&gt;</div><div class="line"></div><div class="line">书签：</div><div class="line">&lt;a id=&quot;tips&quot;&gt;提示部分&lt;/a&gt;</div><div class="line">&lt;a href=&quot;#tips&quot;&gt;跳到提示部分&lt;/a&gt;</div><div class="line">&lt;img src=&quot;URL&quot; alt=&quot;替换文本&quot; height=&quot;42&quot; width=&quot;42&quot;&gt;</div></pre></td></tr></table></figure>
 <h1 id="HTML实例代码"><a href="#HTML实例代码" class="headerlink" title="HTML实例代码"></a>HTML实例代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;文档中的块级元素&lt;/div&gt;</div><div class="line">&lt;span&gt;文档中的内联元素&lt;/span&gt;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">    &lt;li&gt;项目&lt;/li&gt;</div><div class="line">    &lt;li&gt;项目&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;ol&gt;</div><div class="line">    &lt;li&gt;第一项&lt;/li&gt;</div><div class="line">    &lt;li&gt;第二项&lt;/li&gt;</div><div class="line">&lt;/ol&gt;</div></pre></td></tr></table></figure>
@@ -932,63 +1001,6 @@
       &lt;h1 id=&quot;HTML学习笔记&quot;&gt;&lt;a href=&quot;#HTML学习笔记&quot; class=&quot;headerlink&quot; title=&quot;HTML学习笔记&quot;&gt;&lt;/a&gt;HTML学习笔记&lt;/h1&gt;&lt;hr&gt;
 &lt;h1 id=&quot;html结构及常用元素&quot;&gt;&lt;a href=&quot;#html结构及常用元素&quot; class=&quot;headerlink&quot; title=&quot;html结构及常用元素&quot;&gt;&lt;/a&gt;html结构及常用元素&lt;/h1&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;html&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;head&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;title&amp;gt;文档标题&amp;lt;/title&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/head&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;可见文本...&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/body&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/html&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h1&amp;gt;最大的标题&amp;lt;/h1&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h2&amp;gt; . . . &amp;lt;/h2&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h3&amp;gt; . . . &amp;lt;/h3&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h4&amp;gt; . . . &amp;lt;/h4&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h5&amp;gt; . . . &amp;lt;/h5&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h6&amp;gt;最小的标题&amp;lt;/h6&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;26&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;27&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;28&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;29&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;30&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;p&amp;gt;这是一个段落。&amp;lt;/p&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;br&amp;gt; （换行）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;hr&amp;gt; （水平线）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;!-- 这是注释 --&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;b&amp;gt;粗体文本&amp;lt;/b&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;code&amp;gt;计算机代码&amp;lt;/code&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;em&amp;gt;强调文本&amp;lt;/em&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;i&amp;gt;斜体文本&amp;lt;/i&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;kbd&amp;gt;键盘输入&amp;lt;/kbd&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;pre&amp;gt;预格式化文本&amp;lt;/pre&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;small&amp;gt;更小的文本&amp;lt;/small&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;strong&amp;gt;重要的文本&amp;lt;/strong&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;abbr&amp;gt; （缩写）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;address&amp;gt; （联系信息）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;bdo&amp;gt; （文字方向）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;blockquote&amp;gt; （从另一个源引用的部分）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;cite&amp;gt; （工作的名称）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;del&amp;gt; （删除的文本）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;ins&amp;gt; （插入的文本）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;sub&amp;gt; （下标文本）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;sup&amp;gt; （上标文本）&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;普通的链接：&amp;lt;a href=&amp;quot;http://www.example.com/&amp;quot;&amp;gt;链接文本&amp;lt;/a&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;图像链接： &amp;lt;a href=&amp;quot;http://www.example.com/&amp;quot;&amp;gt;&amp;lt;img src=&amp;quot;URL&amp;quot; alt=&amp;quot;替换文本&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;邮件链接： &amp;lt;a href=&amp;quot;mailto:webmaster@example.com&amp;quot;&amp;gt;发送e-mail&amp;lt;/a&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;书签：&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;a id=&amp;quot;tips&amp;quot;&amp;gt;提示部分&amp;lt;/a&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;a href=&amp;quot;#tips&amp;quot;&amp;gt;跳到提示部分&amp;lt;/a&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;img src=&amp;quot;URL&amp;quot; alt=&amp;quot;替换文本&amp;quot; height=&amp;quot;42&amp;quot; width=&amp;quot;42&amp;quot;&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="web前端" scheme="http://xxyb.online/categories/web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="html" scheme="http://xxyb.online/tags/html/"/>
-    
-      <category term="css" scheme="http://xxyb.online/tags/css/"/>
-    
-      <category term="javascript" scheme="http://xxyb.online/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>怎样建一个自己的网站</title>
-    <link href="http://xxyb.online/%E6%80%8E%E4%B9%88%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99.html"/>
-    <id>http://xxyb.online/怎么建立自己的网站.html</id>
-    <published>2017-03-20T16:00:00.000Z</published>
-    <updated>2017-03-20T17:23:20.709Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="怎样建一个自己的网站"><a href="#怎样建一个自己的网站" class="headerlink" title="怎样建一个自己的网站"></a>怎样建一个自己的网站</h1><p><strong>下面是详细步骤：</strong></p>
-<ol>
-<li>要建立个人网站，首先必须要了解一下目前网页制作的基本语言HTML，入门即可，大概花个一二小时就可。</li>
-</ol>
-<a id="more"></a>
-<ol>
-<li><p>学会使用目前流行的网页制作软件，如Atom、Brackets等一些功能强大，所见所得的软件，初步了解就可，不用全部掌握，一般是边用边学，不断提高使用水平。</p>
-</li>
-<li><p>广泛的上网浏览各种网页，一开始最好能下载一些较简单的个人网页，因为他们所用到的技术较为简单，可用网页制作软件打开研究。然后推荐去浏览一些专业的网页设计网站，学习一些排版经验，同时可下载一些网页结构模版供自己套用。</p>
-</li>
-<li><p>确定你的网站主题，网站主题最好是有你的个人特色，实在不能确定我建议自己做一个私人门户网站，将平时自己经常去的网站做一个较为综合的连结。</p>
-</li>
-<li><p>网页最好不要用特别与众不同的颜色、字体，因为每个人使用的计算机各不相同，特别的颜色、字体别人不一定能看得到。</p>
-</li>
-<li><p>网页要增加美观图片不可缺少，我建议如果你会用一些专业的作图软件最好自己制作，这会有自己的特色，放些私人照片也可以，但切记各种图片一定要作优化处理，减小它的存储尺寸。提醒一下每页不要放过多的图片，因为第一会使网页显得杂乱，第二会使你的网页显示速度过慢。制作图片的常用软件有Photoshop，Fireworks等。</p>
-</li>
-<li><p>网页上可以用一些动画与特效增加你主页的美观与功能，动画可上网找，同样最好能自己制作，GIF格式的最常用，可用Ulead的Gig Animator软件制作，目前流行的是H5动画，更多变化，尺寸更小。网上还有许多免费的Javascript等可供使用，与图片一样，我建议每页不要放太多的动画与特效。</p>
-</li>
-<li><p>网页基本建成后，上网找免费的主页空间，以其主机的速度，提供的空间大小和有无基本的CGI功能及其提供的域名是否简单易记为考量依据，所谓CGI是指主机服务器上提供的程序，一般你可申请有免费计数器、留言板等。找到速度快，主页存放空间大，域名简单的网站存放你的网页。</p>
-</li>
-<li><p>将网页上传至你申请的服务器上，具体上传的办法你在申请主页空间时就会了解，具体使用你制作网页的软件即可，我个人推荐使用FTP上传，这个软件功能强大，简单易用。</p>
-</li>
-<li><p>网站已建立,可与其它网站申请友情连结、去一些提供连结交换的网站申请广告交换，如太极链，酷站等。在做这一步时你需要做二个468X60和88X31尺寸的广告图片，动画最好，存储大小尽量控制在10k以下。</p>
-</li>
-<li><p>如果你还想靠你的网站赚一些小钱，你可去一些商业网站申请广告连结，替他们做广告，一般以从你的网页点击到他们的网页次数算钱。</p>
-</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;怎样建一个自己的网站&quot;&gt;&lt;a href=&quot;#怎样建一个自己的网站&quot; class=&quot;headerlink&quot; title=&quot;怎样建一个自己的网站&quot;&gt;&lt;/a&gt;怎样建一个自己的网站&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;下面是详细步骤：&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;要建立个人网站，首先必须要了解一下目前网页制作的基本语言HTML，入门即可，大概花个一二小时就可。&lt;/li&gt;
-&lt;/ol&gt;
     
     </summary>
     
