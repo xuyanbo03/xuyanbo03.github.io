@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xxyb.online/"/>
-  <updated>2017-05-10T15:41:38.329Z</updated>
+  <updated>2017-05-10T16:22:09.571Z</updated>
   <id>http://xxyb.online/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://xxyb.online/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95JavaScript%EF%BC%88%E4%B8%80%EF%BC%89.html"/>
     <id>http://xxyb.online/数据结构与算法JavaScript（一）.html</id>
     <published>2017-05-09T16:00:00.000Z</published>
-    <updated>2017-05-10T15:41:38.329Z</updated>
+    <updated>2017-05-10T16:22:09.571Z</updated>
     
     <content type="html"><![CDATA[<h1 id="数据结构与算法JavaScript学习（一）"><a href="#数据结构与算法JavaScript学习（一）" class="headerlink" title="数据结构与算法JavaScript学习（一）"></a>数据结构与算法JavaScript学习（一）</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="常用数组方法"><a href="#常用数组方法" class="headerlink" title="常用数组方法"></a>常用数组方法</h3><ul>
 <li><p>push方法，能把元素添加到数组的末尾</p>
@@ -86,6 +86,9 @@
 <li><p>size(),返回栈里元素的个数</p>
 </li>
 </ul>
+<h3 id="完整实例"><a href="#完整实例" class="headerlink" title="完整实例"></a>完整实例</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Stack</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">let</span> items = [];</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.push = <span class="function"><span class="keyword">function</span>(<span class="params">element</span>)</span>&#123;</div><div class="line">        items.push(element);</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.pop = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> items.pop();</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.peek = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> items[items.length<span class="number">-1</span>];</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.isEmpty = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> items.length == <span class="number">0</span>;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.size = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> items.length;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.clear = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        items = [];</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.print = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(items.toString());</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> items.toString();</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ES6语法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">constructor</span> () &#123;</div><div class="line">        <span class="keyword">this</span>.items = [];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    push(element)&#123;</div><div class="line">        <span class="keyword">this</span>.items.push(element);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    pop()&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.items.pop();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    peek()&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.items[<span class="keyword">this</span>.items.length<span class="number">-1</span>];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    isEmpty()&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.items.length == <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    size()&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.items.length;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    clear()&#123;</div><div class="line">        <span class="keyword">this</span>.items = [];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    print()&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.toString());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    toString()&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.items.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><h3 id="常用方法-1"><a href="#常用方法-1" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
 <li><p>enqueue(element(s)),向队列尾部添加一个或多个新的项</p>
 </li>
@@ -98,7 +101,9 @@
 <li><p>size(),返回队列包含的元素个数</p>
 </li>
 </ul>
-]]></content>
+<h3 id="完整实例-1"><a href="#完整实例-1" class="headerlink" title="完整实例"></a>完整实例</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Queue</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">let</span> items = [];</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.enqueue = <span class="function"><span class="keyword">function</span>(<span class="params">element</span>)</span>&#123;</div><div class="line">        items.push(element);</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.dequeue = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> items.shift();</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.front = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> items[<span class="number">0</span>];</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.isEmpty = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> items.length == <span class="number">0</span>;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.clear = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        items = [];</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.size = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> items.length;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.print = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(items.toString());</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ES6语法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">constructor</span> () &#123;</div><div class="line">        <span class="keyword">this</span>.items = [];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    enqueue(element)&#123;</div><div class="line">        <span class="keyword">this</span>.items.push(element);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    dequeue()&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.items.shift();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    front()&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.items[<span class="number">0</span>];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    isEmpty()&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.items.length == <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    size()&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.items.length;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    clear()&#123;</div><div class="line">        <span class="keyword">this</span>.items = [];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    print()&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.toString());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    toString()&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.items.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -888,62 +893,6 @@
   </entry>
   
   <entry>
-    <title>怎样建一个自己的网站</title>
-    <link href="http://xxyb.online/%E6%80%8E%E4%B9%88%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99.html"/>
-    <id>http://xxyb.online/怎么建立自己的网站.html</id>
-    <published>2017-03-20T16:00:00.000Z</published>
-    <updated>2017-03-20T17:23:20.709Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="怎样建一个自己的网站"><a href="#怎样建一个自己的网站" class="headerlink" title="怎样建一个自己的网站"></a>怎样建一个自己的网站</h1><p><strong>下面是详细步骤：</strong></p>
-<ol>
-<li>要建立个人网站，首先必须要了解一下目前网页制作的基本语言HTML，入门即可，大概花个一二小时就可。</li>
-</ol>
-<a id="more"></a>
-<ol>
-<li><p>学会使用目前流行的网页制作软件，如Atom、Brackets等一些功能强大，所见所得的软件，初步了解就可，不用全部掌握，一般是边用边学，不断提高使用水平。</p>
-</li>
-<li><p>广泛的上网浏览各种网页，一开始最好能下载一些较简单的个人网页，因为他们所用到的技术较为简单，可用网页制作软件打开研究。然后推荐去浏览一些专业的网页设计网站，学习一些排版经验，同时可下载一些网页结构模版供自己套用。</p>
-</li>
-<li><p>确定你的网站主题，网站主题最好是有你的个人特色，实在不能确定我建议自己做一个私人门户网站，将平时自己经常去的网站做一个较为综合的连结。</p>
-</li>
-<li><p>网页最好不要用特别与众不同的颜色、字体，因为每个人使用的计算机各不相同，特别的颜色、字体别人不一定能看得到。</p>
-</li>
-<li><p>网页要增加美观图片不可缺少，我建议如果你会用一些专业的作图软件最好自己制作，这会有自己的特色，放些私人照片也可以，但切记各种图片一定要作优化处理，减小它的存储尺寸。提醒一下每页不要放过多的图片，因为第一会使网页显得杂乱，第二会使你的网页显示速度过慢。制作图片的常用软件有Photoshop，Fireworks等。</p>
-</li>
-<li><p>网页上可以用一些动画与特效增加你主页的美观与功能，动画可上网找，同样最好能自己制作，GIF格式的最常用，可用Ulead的Gig Animator软件制作，目前流行的是H5动画，更多变化，尺寸更小。网上还有许多免费的Javascript等可供使用，与图片一样，我建议每页不要放太多的动画与特效。</p>
-</li>
-<li><p>网页基本建成后，上网找免费的主页空间，以其主机的速度，提供的空间大小和有无基本的CGI功能及其提供的域名是否简单易记为考量依据，所谓CGI是指主机服务器上提供的程序，一般你可申请有免费计数器、留言板等。找到速度快，主页存放空间大，域名简单的网站存放你的网页。</p>
-</li>
-<li><p>将网页上传至你申请的服务器上，具体上传的办法你在申请主页空间时就会了解，具体使用你制作网页的软件即可，我个人推荐使用FTP上传，这个软件功能强大，简单易用。</p>
-</li>
-<li><p>网站已建立,可与其它网站申请友情连结、去一些提供连结交换的网站申请广告交换，如太极链，酷站等。在做这一步时你需要做二个468X60和88X31尺寸的广告图片，动画最好，存储大小尽量控制在10k以下。</p>
-</li>
-<li><p>如果你还想靠你的网站赚一些小钱，你可去一些商业网站申请广告连结，替他们做广告，一般以从你的网页点击到他们的网页次数算钱。</p>
-</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;怎样建一个自己的网站&quot;&gt;&lt;a href=&quot;#怎样建一个自己的网站&quot; class=&quot;headerlink&quot; title=&quot;怎样建一个自己的网站&quot;&gt;&lt;/a&gt;怎样建一个自己的网站&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;下面是详细步骤：&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;要建立个人网站，首先必须要了解一下目前网页制作的基本语言HTML，入门即可，大概花个一二小时就可。&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="web前端" scheme="http://xxyb.online/categories/web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="html" scheme="http://xxyb.online/tags/html/"/>
-    
-      <category term="css" scheme="http://xxyb.online/tags/css/"/>
-    
-      <category term="javascript" scheme="http://xxyb.online/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
     <title>HTML学习笔记</title>
     <link href="http://xxyb.online/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html"/>
     <id>http://xxyb.online/html学习笔记.html</id>
@@ -1001,6 +950,62 @@
       &lt;h1 id=&quot;HTML学习笔记&quot;&gt;&lt;a href=&quot;#HTML学习笔记&quot; class=&quot;headerlink&quot; title=&quot;HTML学习笔记&quot;&gt;&lt;/a&gt;HTML学习笔记&lt;/h1&gt;&lt;hr&gt;
 &lt;h1 id=&quot;html结构及常用元素&quot;&gt;&lt;a href=&quot;#html结构及常用元素&quot; class=&quot;headerlink&quot; title=&quot;html结构及常用元素&quot;&gt;&lt;/a&gt;html结构及常用元素&lt;/h1&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;html&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;head&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;title&amp;gt;文档标题&amp;lt;/title&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/head&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;可见文本...&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/body&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/html&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h1&amp;gt;最大的标题&amp;lt;/h1&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h2&amp;gt; . . . &amp;lt;/h2&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h3&amp;gt; . . . &amp;lt;/h3&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h4&amp;gt; . . . &amp;lt;/h4&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h5&amp;gt; . . . &amp;lt;/h5&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h6&amp;gt;最小的标题&amp;lt;/h6&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="web前端" scheme="http://xxyb.online/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="html" scheme="http://xxyb.online/tags/html/"/>
+    
+      <category term="css" scheme="http://xxyb.online/tags/css/"/>
+    
+      <category term="javascript" scheme="http://xxyb.online/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>怎样建一个自己的网站</title>
+    <link href="http://xxyb.online/%E6%80%8E%E4%B9%88%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99.html"/>
+    <id>http://xxyb.online/怎么建立自己的网站.html</id>
+    <published>2017-03-20T16:00:00.000Z</published>
+    <updated>2017-03-20T17:23:20.709Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="怎样建一个自己的网站"><a href="#怎样建一个自己的网站" class="headerlink" title="怎样建一个自己的网站"></a>怎样建一个自己的网站</h1><p><strong>下面是详细步骤：</strong></p>
+<ol>
+<li>要建立个人网站，首先必须要了解一下目前网页制作的基本语言HTML，入门即可，大概花个一二小时就可。</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li><p>学会使用目前流行的网页制作软件，如Atom、Brackets等一些功能强大，所见所得的软件，初步了解就可，不用全部掌握，一般是边用边学，不断提高使用水平。</p>
+</li>
+<li><p>广泛的上网浏览各种网页，一开始最好能下载一些较简单的个人网页，因为他们所用到的技术较为简单，可用网页制作软件打开研究。然后推荐去浏览一些专业的网页设计网站，学习一些排版经验，同时可下载一些网页结构模版供自己套用。</p>
+</li>
+<li><p>确定你的网站主题，网站主题最好是有你的个人特色，实在不能确定我建议自己做一个私人门户网站，将平时自己经常去的网站做一个较为综合的连结。</p>
+</li>
+<li><p>网页最好不要用特别与众不同的颜色、字体，因为每个人使用的计算机各不相同，特别的颜色、字体别人不一定能看得到。</p>
+</li>
+<li><p>网页要增加美观图片不可缺少，我建议如果你会用一些专业的作图软件最好自己制作，这会有自己的特色，放些私人照片也可以，但切记各种图片一定要作优化处理，减小它的存储尺寸。提醒一下每页不要放过多的图片，因为第一会使网页显得杂乱，第二会使你的网页显示速度过慢。制作图片的常用软件有Photoshop，Fireworks等。</p>
+</li>
+<li><p>网页上可以用一些动画与特效增加你主页的美观与功能，动画可上网找，同样最好能自己制作，GIF格式的最常用，可用Ulead的Gig Animator软件制作，目前流行的是H5动画，更多变化，尺寸更小。网上还有许多免费的Javascript等可供使用，与图片一样，我建议每页不要放太多的动画与特效。</p>
+</li>
+<li><p>网页基本建成后，上网找免费的主页空间，以其主机的速度，提供的空间大小和有无基本的CGI功能及其提供的域名是否简单易记为考量依据，所谓CGI是指主机服务器上提供的程序，一般你可申请有免费计数器、留言板等。找到速度快，主页存放空间大，域名简单的网站存放你的网页。</p>
+</li>
+<li><p>将网页上传至你申请的服务器上，具体上传的办法你在申请主页空间时就会了解，具体使用你制作网页的软件即可，我个人推荐使用FTP上传，这个软件功能强大，简单易用。</p>
+</li>
+<li><p>网站已建立,可与其它网站申请友情连结、去一些提供连结交换的网站申请广告交换，如太极链，酷站等。在做这一步时你需要做二个468X60和88X31尺寸的广告图片，动画最好，存储大小尽量控制在10k以下。</p>
+</li>
+<li><p>如果你还想靠你的网站赚一些小钱，你可去一些商业网站申请广告连结，替他们做广告，一般以从你的网页点击到他们的网页次数算钱。</p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;怎样建一个自己的网站&quot;&gt;&lt;a href=&quot;#怎样建一个自己的网站&quot; class=&quot;headerlink&quot; title=&quot;怎样建一个自己的网站&quot;&gt;&lt;/a&gt;怎样建一个自己的网站&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;下面是详细步骤：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;要建立个人网站，首先必须要了解一下目前网页制作的基本语言HTML，入门即可，大概花个一二小时就可。&lt;/li&gt;
+&lt;/ol&gt;
     
     </summary>
     
@@ -1112,61 +1117,6 @@
   </entry>
   
   <entry>
-    <title>提升效率</title>
-    <link href="http://xxyb.online/%E6%8F%90%E5%8D%87%E6%95%88%E7%8E%87.html"/>
-    <id>http://xxyb.online/提升效率.html</id>
-    <published>2017-03-18T16:00:00.000Z</published>
-    <updated>2017-03-21T16:40:54.251Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="提升效率"><a href="#提升效率" class="headerlink" title="提升效率"></a>提升效率</h1><blockquote>
-<p>在前进的路上，放弃那些次要的、可有可无的东西，获取真正重要、有意义的价值，让自己更加认同自己的付出和努力方向，这才是时间管理的本质和最大意义所在。</p>
-</blockquote>
-<h2 id="必须学会说“不”"><a href="#必须学会说“不”" class="headerlink" title="必须学会说“不”"></a>必须学会说“不”</h2><p>说“不”其实是个非常艰难的事情，可是如果不说no，那么就很难专心地应对真正重要的任务。因为有太多看起来不错的机会、看上去不能拒绝的要求、事成后有利的图景，以及无法拒绝的人情世故，诱惑着你答应下来。</p>
-<p>其实工作越久，你就越会发现，真正的牛人，往往就牛在敢于放弃上。所谓的战略化决策，不仅仅是指战略高度的选择，也指战略高度的放弃。刚开始放弃的时候会很难受，这是多年形成的习惯和求全责备的心态发出的尖叫和抗议。可是时间久了才发现：不重要的事情真做不完也不会死，倒是重要的事情老拖着不做往往会后果比较严重。</p>
-<a id="more"></a>
-<h2 id="必须学会说yes"><a href="#必须学会说yes" class="headerlink" title="必须学会说yes"></a>必须学会说yes</h2><p>对我而言，如果想要找时间完成真正重要的事情，那么就先答应下来，再商量个相对宽裕的时间。将这些定下来之后，我总能想出方法，排除万难去实践。</p>
-<p>无论是写小说、开公众号、参加考试，都可以遵循这个套路。牺牲掉部分娱乐、睡眠、社交，甚至是和家人团聚的时间，会非常适合短期内的明确目标，并督促你用冲刺的方式完成。</p>
-<p>如果一件事情并不重要，那么就明确地拒绝；如果很重要，就大胆地接受。你不会因为说“不”损失多少，也不会因为应承去做却没有做好而损失很多。真正的损失是在我们说“这事儿很好，我再想想”中发生的。</p>
-<h2 id="金钱换时间"><a href="#金钱换时间" class="headerlink" title="金钱换时间"></a>金钱换时间</h2><p>以前没有孩子的时候，我习惯利用整块时间写作，写作进入状态也非常缓慢，必须要在阳光充足的某个角落坐下，泡杯咖啡，看看新闻，再慢慢进入状态。</p>
-<p>现在可用的业余时间往往是零散的，如果不能抓住零散时间进行思考和打草稿，那就更没有时间了。为了能更好地抓住这些碎片时间，我添置了更多的电子设备，例如静音且无须插电源的平板电脑，它能让我更好地利用孩子入睡后的时间。再比如我打破了从前不下载App的习惯，安装了多个阅读、记录、拍照笔记类的App，方便自己在零碎时间里能随时把读到的、想到的、看到的、诱发灵感的材料都尽快地收纳进来。</p>
-<p>找到时间后，就是筹划和管理时间了。</p>
-<h2 id="关掉提醒，高效专注地工作"><a href="#关掉提醒，高效专注地工作" class="headerlink" title="关掉提醒，高效专注地工作"></a>关掉提醒，高效专注地工作</h2><p>要想工作有效，就必须运用整块的时间。如果将时间分割开来零星使用，纵然时间总和相同，但其效果与整块运用时间的效果却差距很大。比如我以前工作时常要写一些措辞讲究的英文邮件，如果能够聚精会神地写，再加上润色，十几分钟就能完成。可是我总会忍不住一边写一边去看看什么人又说了什么话，有时还会因为查某个单词去逛下红迪网。</p>
-<p>后来实在忙起来了，任凭各种新信息提醒也不去查看，等到某个任务告一段落，再统一查看和回复，既保证了效率，又不至于错过什么。仅这一项小小的改变，就大大提高了我的工作效率。</p>
-<h2 id="减少选项，设置优先级"><a href="#减少选项，设置优先级" class="headerlink" title="减少选项，设置优先级"></a>减少选项，设置优先级</h2><p>选项越少，时间越多。一个比较经典的时间管理方法是：每天只选择1～3件事情去做，并辅以不懈地追求。你的本能不会喜欢这样的限制，可是这种方法有利于排列真正重要的事情，比起事无巨细地齐头并进，能让工作更为出色。</p>
-<h2 id="提前把你想到的写下来"><a href="#提前把你想到的写下来" class="headerlink" title="提前把你想到的写下来"></a>提前把你想到的写下来</h2><p>当事情一旦多了杂了，脑子就明显不够用。我经常发现，哪怕是小事，如果写下来就会遵守；不写，无论在脑子里想多久，一被打扰就会忘掉。提前计划的目的其实不是为了“计划”，而是为了更重视时间的流向，知道时间都花到哪里去了。</p>
-<p>如果不是很清晰地知道要做什么，就容易碰到什么是什么。于是哪件事情先找上来就先处理了，就好比我特别反感邮箱，因为邮件不停地进来，叮的一声响。只要邮箱的叮声不关，我就永远干不了该干的事情，会一直挂在邮箱上回复邮件，而且要一会儿回邮件，一会儿写报告，一会儿又查数据。数据查到一半叮的一声邮件又进来了，说到了另一件事，再去查……忙了一上午，几件重要的大事却一件都没干。</p>
-<p>先把所有需要完成的事列出来，然后对大任务进行分解，分解成小一些的子任务，再对任务进行排序。排序时最艰难的步骤就是决定放弃或者推迟哪些东西。</p>
-<h2 id="找到适合自己的好方法"><a href="#找到适合自己的好方法" class="headerlink" title="找到适合自己的好方法"></a>找到适合自己的好方法</h2><p>开始时间管理的时候，大家都会热衷于搜罗和学习各种方法。比如有一种著名的战拖策略叫作“吃掉那只青蛙”，鼓励大家给最重要、最困难的任务以第一优先权。但是我在实践之后，却发现这个方法极其不适合我。因为如果一上来就强迫自己完成最艰巨的任务，我反而会容易知难而退，会造成各种拖延。所以我摸索出的合适自己的方法是先完成最简单、最有兴趣的工作，通过这些初级工作渐入佳境，等效率上来了，再去啃“坚硬的骨头”。</p>
-<p>说到这里，时间管理却还不能结束。桥本和彦曾经说过，“没有体现结果的时间管理就不能称之为时间管理”，因此定期对时间管理的成就和不足之处进行反思，就有非常重要的意义。</p>
-<p>坚持时间管理最大的挑战就在于：即便你用最高科技的工具，按照最合理的科学方法、符合生物钟的方法规划好了时间，然后恪守，一天下来有很大的收获，你的内心也在呼唤你歪倒在沙发上刷手机、追美剧、和朋友瞎聊。</p>
-<p>为了战胜无时不在的诱惑，就需要时不时地重温一下目标，配合着各种短期、中期、长期的目标，时间管理上也应相应配合着进行松弛有度的分布。任何时间管理和战拖秘诀都离不开恒心，但是生活必须要张弛有度。</p>
-<p>如果是学生为了考GRE，那么两个月的短期突击式的冲刺，要比断断续续地复习一年有效；而大考完毕，可以有一小段时间让大脑放松下，以便进入下一阶段的目标。</p>
-<p>一个人如果长期无目标地疲劳战斗，那么时间管理便会沦为空谈，你依旧会身心俱疲且内心无比迷茫，那样的话还不如好好歇着。</p>
-<p>当然，如果把时间管理放到整个人生来看，有些人喜欢有计划、高产高效的生活，也有人喜欢随性自由的节奏。这些都没有问题，你尽可以按自己的喜好选择自己喜欢的方式。不过要记住，每种选择都意味着相应的放弃，只要回过头时不会患得患失就好。</p>
-<p>对很多人而言，时间管理也是一种成就。他们对时间管理的追求，就是对成就感的追求，这也是他们进行时间管理的最大动力。</p>
-<p>如果是这种情况，那么拥有一个能完成后打钩的to-dolist（待办事项列表）或者任务工作本、相关任务管理App，让这种成就可视化，就是很好的选择。</p>
-<p>对我个人而言，时间管理的最大成功，不是达成了什么了不起的大成就，而是让自己能更明晰时间的去向、对事物的价值度有所衡量，并通过“管理时间”这一具体行动，让自己不再盲目焦虑。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在前进的路上，放弃那些次要的、可有可无的东西，获取真正重要、有意义的价值，让自己更加认同自己的付出和努力方向，这才是时间管理的本质和最大意义所在。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;提升效率&quot;&gt;&lt;a href=&quot;#提升效率&quot; class=&quot;headerlink&quot; title=&quot;提升效率&quot;&gt;&lt;/a&gt;提升效率&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;在前进的路上，放弃那些次要的、可有可无的东西，获取真正重要、有意义的价值，让自己更加认同自己的付出和努力方向，这才是时间管理的本质和最大意义所在。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;必须学会说“不”&quot;&gt;&lt;a href=&quot;#必须学会说“不”&quot; class=&quot;headerlink&quot; title=&quot;必须学会说“不”&quot;&gt;&lt;/a&gt;必须学会说“不”&lt;/h2&gt;&lt;p&gt;说“不”其实是个非常艰难的事情，可是如果不说no，那么就很难专心地应对真正重要的任务。因为有太多看起来不错的机会、看上去不能拒绝的要求、事成后有利的图景，以及无法拒绝的人情世故，诱惑着你答应下来。&lt;/p&gt;
-&lt;p&gt;其实工作越久，你就越会发现，真正的牛人，往往就牛在敢于放弃上。所谓的战略化决策，不仅仅是指战略高度的选择，也指战略高度的放弃。刚开始放弃的时候会很难受，这是多年形成的习惯和求全责备的心态发出的尖叫和抗议。可是时间久了才发现：不重要的事情真做不完也不会死，倒是重要的事情老拖着不做往往会后果比较严重。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="方法" scheme="http://xxyb.online/categories/%E6%96%B9%E6%B3%95/"/>
-    
-    
-      <category term="学习" scheme="http://xxyb.online/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>内心感悟</title>
     <link href="http://xxyb.online/%E5%86%85%E5%BF%83%E6%84%9F%E5%8F%97.html"/>
     <id>http://xxyb.online/内心感受.html</id>
@@ -1262,6 +1212,61 @@
     
     
       <category term="人生" scheme="http://xxyb.online/tags/%E4%BA%BA%E7%94%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>提升效率</title>
+    <link href="http://xxyb.online/%E6%8F%90%E5%8D%87%E6%95%88%E7%8E%87.html"/>
+    <id>http://xxyb.online/提升效率.html</id>
+    <published>2017-03-18T16:00:00.000Z</published>
+    <updated>2017-03-21T16:40:54.251Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="提升效率"><a href="#提升效率" class="headerlink" title="提升效率"></a>提升效率</h1><blockquote>
+<p>在前进的路上，放弃那些次要的、可有可无的东西，获取真正重要、有意义的价值，让自己更加认同自己的付出和努力方向，这才是时间管理的本质和最大意义所在。</p>
+</blockquote>
+<h2 id="必须学会说“不”"><a href="#必须学会说“不”" class="headerlink" title="必须学会说“不”"></a>必须学会说“不”</h2><p>说“不”其实是个非常艰难的事情，可是如果不说no，那么就很难专心地应对真正重要的任务。因为有太多看起来不错的机会、看上去不能拒绝的要求、事成后有利的图景，以及无法拒绝的人情世故，诱惑着你答应下来。</p>
+<p>其实工作越久，你就越会发现，真正的牛人，往往就牛在敢于放弃上。所谓的战略化决策，不仅仅是指战略高度的选择，也指战略高度的放弃。刚开始放弃的时候会很难受，这是多年形成的习惯和求全责备的心态发出的尖叫和抗议。可是时间久了才发现：不重要的事情真做不完也不会死，倒是重要的事情老拖着不做往往会后果比较严重。</p>
+<a id="more"></a>
+<h2 id="必须学会说yes"><a href="#必须学会说yes" class="headerlink" title="必须学会说yes"></a>必须学会说yes</h2><p>对我而言，如果想要找时间完成真正重要的事情，那么就先答应下来，再商量个相对宽裕的时间。将这些定下来之后，我总能想出方法，排除万难去实践。</p>
+<p>无论是写小说、开公众号、参加考试，都可以遵循这个套路。牺牲掉部分娱乐、睡眠、社交，甚至是和家人团聚的时间，会非常适合短期内的明确目标，并督促你用冲刺的方式完成。</p>
+<p>如果一件事情并不重要，那么就明确地拒绝；如果很重要，就大胆地接受。你不会因为说“不”损失多少，也不会因为应承去做却没有做好而损失很多。真正的损失是在我们说“这事儿很好，我再想想”中发生的。</p>
+<h2 id="金钱换时间"><a href="#金钱换时间" class="headerlink" title="金钱换时间"></a>金钱换时间</h2><p>以前没有孩子的时候，我习惯利用整块时间写作，写作进入状态也非常缓慢，必须要在阳光充足的某个角落坐下，泡杯咖啡，看看新闻，再慢慢进入状态。</p>
+<p>现在可用的业余时间往往是零散的，如果不能抓住零散时间进行思考和打草稿，那就更没有时间了。为了能更好地抓住这些碎片时间，我添置了更多的电子设备，例如静音且无须插电源的平板电脑，它能让我更好地利用孩子入睡后的时间。再比如我打破了从前不下载App的习惯，安装了多个阅读、记录、拍照笔记类的App，方便自己在零碎时间里能随时把读到的、想到的、看到的、诱发灵感的材料都尽快地收纳进来。</p>
+<p>找到时间后，就是筹划和管理时间了。</p>
+<h2 id="关掉提醒，高效专注地工作"><a href="#关掉提醒，高效专注地工作" class="headerlink" title="关掉提醒，高效专注地工作"></a>关掉提醒，高效专注地工作</h2><p>要想工作有效，就必须运用整块的时间。如果将时间分割开来零星使用，纵然时间总和相同，但其效果与整块运用时间的效果却差距很大。比如我以前工作时常要写一些措辞讲究的英文邮件，如果能够聚精会神地写，再加上润色，十几分钟就能完成。可是我总会忍不住一边写一边去看看什么人又说了什么话，有时还会因为查某个单词去逛下红迪网。</p>
+<p>后来实在忙起来了，任凭各种新信息提醒也不去查看，等到某个任务告一段落，再统一查看和回复，既保证了效率，又不至于错过什么。仅这一项小小的改变，就大大提高了我的工作效率。</p>
+<h2 id="减少选项，设置优先级"><a href="#减少选项，设置优先级" class="headerlink" title="减少选项，设置优先级"></a>减少选项，设置优先级</h2><p>选项越少，时间越多。一个比较经典的时间管理方法是：每天只选择1～3件事情去做，并辅以不懈地追求。你的本能不会喜欢这样的限制，可是这种方法有利于排列真正重要的事情，比起事无巨细地齐头并进，能让工作更为出色。</p>
+<h2 id="提前把你想到的写下来"><a href="#提前把你想到的写下来" class="headerlink" title="提前把你想到的写下来"></a>提前把你想到的写下来</h2><p>当事情一旦多了杂了，脑子就明显不够用。我经常发现，哪怕是小事，如果写下来就会遵守；不写，无论在脑子里想多久，一被打扰就会忘掉。提前计划的目的其实不是为了“计划”，而是为了更重视时间的流向，知道时间都花到哪里去了。</p>
+<p>如果不是很清晰地知道要做什么，就容易碰到什么是什么。于是哪件事情先找上来就先处理了，就好比我特别反感邮箱，因为邮件不停地进来，叮的一声响。只要邮箱的叮声不关，我就永远干不了该干的事情，会一直挂在邮箱上回复邮件，而且要一会儿回邮件，一会儿写报告，一会儿又查数据。数据查到一半叮的一声邮件又进来了，说到了另一件事，再去查……忙了一上午，几件重要的大事却一件都没干。</p>
+<p>先把所有需要完成的事列出来，然后对大任务进行分解，分解成小一些的子任务，再对任务进行排序。排序时最艰难的步骤就是决定放弃或者推迟哪些东西。</p>
+<h2 id="找到适合自己的好方法"><a href="#找到适合自己的好方法" class="headerlink" title="找到适合自己的好方法"></a>找到适合自己的好方法</h2><p>开始时间管理的时候，大家都会热衷于搜罗和学习各种方法。比如有一种著名的战拖策略叫作“吃掉那只青蛙”，鼓励大家给最重要、最困难的任务以第一优先权。但是我在实践之后，却发现这个方法极其不适合我。因为如果一上来就强迫自己完成最艰巨的任务，我反而会容易知难而退，会造成各种拖延。所以我摸索出的合适自己的方法是先完成最简单、最有兴趣的工作，通过这些初级工作渐入佳境，等效率上来了，再去啃“坚硬的骨头”。</p>
+<p>说到这里，时间管理却还不能结束。桥本和彦曾经说过，“没有体现结果的时间管理就不能称之为时间管理”，因此定期对时间管理的成就和不足之处进行反思，就有非常重要的意义。</p>
+<p>坚持时间管理最大的挑战就在于：即便你用最高科技的工具，按照最合理的科学方法、符合生物钟的方法规划好了时间，然后恪守，一天下来有很大的收获，你的内心也在呼唤你歪倒在沙发上刷手机、追美剧、和朋友瞎聊。</p>
+<p>为了战胜无时不在的诱惑，就需要时不时地重温一下目标，配合着各种短期、中期、长期的目标，时间管理上也应相应配合着进行松弛有度的分布。任何时间管理和战拖秘诀都离不开恒心，但是生活必须要张弛有度。</p>
+<p>如果是学生为了考GRE，那么两个月的短期突击式的冲刺，要比断断续续地复习一年有效；而大考完毕，可以有一小段时间让大脑放松下，以便进入下一阶段的目标。</p>
+<p>一个人如果长期无目标地疲劳战斗，那么时间管理便会沦为空谈，你依旧会身心俱疲且内心无比迷茫，那样的话还不如好好歇着。</p>
+<p>当然，如果把时间管理放到整个人生来看，有些人喜欢有计划、高产高效的生活，也有人喜欢随性自由的节奏。这些都没有问题，你尽可以按自己的喜好选择自己喜欢的方式。不过要记住，每种选择都意味着相应的放弃，只要回过头时不会患得患失就好。</p>
+<p>对很多人而言，时间管理也是一种成就。他们对时间管理的追求，就是对成就感的追求，这也是他们进行时间管理的最大动力。</p>
+<p>如果是这种情况，那么拥有一个能完成后打钩的to-dolist（待办事项列表）或者任务工作本、相关任务管理App，让这种成就可视化，就是很好的选择。</p>
+<p>对我个人而言，时间管理的最大成功，不是达成了什么了不起的大成就，而是让自己能更明晰时间的去向、对事物的价值度有所衡量，并通过“管理时间”这一具体行动，让自己不再盲目焦虑。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在前进的路上，放弃那些次要的、可有可无的东西，获取真正重要、有意义的价值，让自己更加认同自己的付出和努力方向，这才是时间管理的本质和最大意义所在。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;提升效率&quot;&gt;&lt;a href=&quot;#提升效率&quot; class=&quot;headerlink&quot; title=&quot;提升效率&quot;&gt;&lt;/a&gt;提升效率&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;在前进的路上，放弃那些次要的、可有可无的东西，获取真正重要、有意义的价值，让自己更加认同自己的付出和努力方向，这才是时间管理的本质和最大意义所在。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;必须学会说“不”&quot;&gt;&lt;a href=&quot;#必须学会说“不”&quot; class=&quot;headerlink&quot; title=&quot;必须学会说“不”&quot;&gt;&lt;/a&gt;必须学会说“不”&lt;/h2&gt;&lt;p&gt;说“不”其实是个非常艰难的事情，可是如果不说no，那么就很难专心地应对真正重要的任务。因为有太多看起来不错的机会、看上去不能拒绝的要求、事成后有利的图景，以及无法拒绝的人情世故，诱惑着你答应下来。&lt;/p&gt;
+&lt;p&gt;其实工作越久，你就越会发现，真正的牛人，往往就牛在敢于放弃上。所谓的战略化决策，不仅仅是指战略高度的选择，也指战略高度的放弃。刚开始放弃的时候会很难受，这是多年形成的习惯和求全责备的心态发出的尖叫和抗议。可是时间久了才发现：不重要的事情真做不完也不会死，倒是重要的事情老拖着不做往往会后果比较严重。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="方法" scheme="http://xxyb.online/categories/%E6%96%B9%E6%B3%95/"/>
+    
+    
+      <category term="学习" scheme="http://xxyb.online/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
