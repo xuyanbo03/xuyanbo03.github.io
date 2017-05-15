@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xxyb.online/"/>
-  <updated>2017-05-14T15:25:04.968Z</updated>
+  <updated>2017-05-15T16:23:37.906Z</updated>
   <id>http://xxyb.online/</id>
   
   <author>
@@ -14,6 +14,213 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>FreeCodeCamp学习笔记（三）</title>
+    <link href="http://xxyb.online/fcc%20%E5%AD%A6%E4%B9%A0chrome.html"/>
+    <id>http://xxyb.online/fcc 学习chrome.html</id>
+    <published>2017-05-15T16:00:00.000Z</published>
+    <updated>2017-05-15T16:23:37.906Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="FreeCodeCamp学习笔记（三）"><a href="#FreeCodeCamp学习笔记（三）" class="headerlink" title="FreeCodeCamp学习笔记（三）"></a>FreeCodeCamp学习笔记（三）</h1><h1 id="chrome调试学习"><a href="#chrome调试学习" class="headerlink" title="chrome调试学习"></a>chrome调试学习</h1><h2 id="elements标签"><a href="#elements标签" class="headerlink" title="elements标签"></a>elements标签</h2><ul>
+<li><p>在chrome浏览器中右击选中<code>Inspect element</code>即可访问elements标签，然后你就可以随便修改元素文本，元素标签和任何其他CSS或者HTML。</p>
+</li>
+<li><p>这些修改不会自动保存，不能当做IDE或者可以保存内容的编辑器。你可以使用chrome中的’persistent authoring’功能去保存更改。</p>
+</li>
+<li><p>记住这里层叠，继承和其他CSS规则都可以使用，另外，被覆盖的式样会以穿越文字的横线的形式展示。</p>
+</li>
+<li><p>需要注意的是现在”树”中看到的代码是当前的HTML，而不是页面加载时的代码。如果你用JavaScript或Jquery来改变页面元素，”树”就会更新。</p>
+</li>
+<li><p>Padding，border和margin都很容易在右下角的彩色盒子里面检查和编辑。</p>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="network标签"><a href="#network标签" class="headerlink" title="network标签"></a>network标签</h2><ul>
+<li><p>network标签页是用来回答’页面中哪个部分最耗时间’或’哪个调用初始化了网络请求’</p>
+</li>
+<li><p>network仪表盘记录了页面中每个元素加载的详细信息。</p>
+</li>
+<li><p>每一个请求都记录在network仪表盘的底部日志中</p>
+</li>
+<li><p>观察底部的线条，你会注意到彩色图案。每一个颜色都代表了请求中的不同类型内容。</p>
+</li>
+<li><p>线越长代表网络耗时越大，我们最终目标就是缩短线长。如果出现长线条，说明某些内容拖慢了整个网页。</p>
+</li>
+<li><p>点击请求日志，会看到更加详细的请求信息。</p>
+</li>
+</ul>
+<h2 id="Sources标签"><a href="#Sources标签" class="headerlink" title="Sources标签"></a>Sources标签</h2><ul>
+<li><p>Sources标签页对调试JavaScript帮助很大。项目越大，越难准确找到问题所在。</p>
+</li>
+<li><p>可以对代码的不同部分设置断点，代码会到此停止执行。</p>
+</li>
+<li><p>有很多种断点类型可以使用，如一行特定代码，一个DOM事件，XMLHTTP请求或一个JavaScript事件。</p>
+</li>
+<li><p>设置好断电之后，浏览器在进入这段代码或事件时，会暂停执行。</p>
+</li>
+<li><p>通过减缓代码执行，我们就有机会仔细观察每一个设置点，准确跟踪页面行为。</p>
+</li>
+<li><p>一旦断点设置好，我们就可以逐步浏览和检查页面中断点处的代码。</p>
+</li>
+<li><p>和elements标签一样，可以实时编辑代码观察结果，不过记得在别处保存更改。</p>
+</li>
+</ul>
+<h2 id="Timeline-面板"><a href="#Timeline-面板" class="headerlink" title="Timeline 面板"></a>Timeline 面板</h2><ul>
+<li><p>Timeline 面板可以在应用运行时记录和分析所有行为。此处最适合分析应用性能问题。</p>
+</li>
+<li><p>就像通过network标签找出时间耗费，通过sources标签找出有问题的代码一样，通过Timeline可以观察到更多详细细节。</p>
+</li>
+<li><p>使用点击timeline的圆形按钮，你可以记录（捕获）堆栈，js性能，内存和图形绘制(CSS)等信息。</p>
+</li>
+<li><p>chrome会以小粒度的详细日志来展现这些信息，可以通过很多种形式来查看。</p>
+</li>
+<li><p>所有这些信息可以帮助你很好地理解浏览器中发生的行为，尤其是发现内存占用比较多的事件。</p>
+</li>
+<li><p>在加载新页面之前记得先点击’clear’按钮再开始记录。</p>
+</li>
+<li><p>当记录JS事件时，点击title或左侧的’function call’，会重定向到resource标签，同时定位到函数所在位置的代码行。</p>
+</li>
+</ul>
+<h2 id="Profiles-面板"><a href="#Profiles-面板" class="headerlink" title="Profiles 面板"></a>Profiles 面板</h2><ul>
+<li><p>Profiles 面板可以提供web应用或页面的执行时间和内存，主要是针对运行于页面或app上的JavaScript。</p>
+</li>
+<li><p>这里可以收集到3种类型的概述信息: CPU profile，HEAP snapshot和HEAP profile。HEAP profiles更多的和内存使用信息相关，CPU profile和JavaScript性能相关。</p>
+</li>
+<li><p>V8分析器可以帮助定位JavaScript中的性能问题，有助于优化代码。</p>
+</li>
+<li><p>每一个profile都可以在左侧查看，可以对每个页面采集多个profile。总体而言，profiles标签页非常适合优化代码。</p>
+</li>
+</ul>
+<h2 id="Resources-面板"><a href="#Resources-面板" class="headerlink" title="Resources 面板"></a>Resources 面板</h2><ul>
+<li><p>Resources 面板可以显示已经加载的资源，包括：IndexedDB，Web SQL数据库，local storage，session storage，cookies，Application Cache, 图片, 字体和样式表。</p>
+</li>
+<li><p>可以在浏览器中查看和修改所有这些信息。</p>
+</li>
+<li><p>当你进行高级网站构建时，resources 面板可以帮你更好的理解app和页面的实时性要求。</p>
+</li>
+</ul>
+<h2 id="Audit-工具"><a href="#Audit-工具" class="headerlink" title="Audit 工具"></a>Audit 工具</h2><ul>
+<li><p>Audit 工具帮助你逐步改善你的页面。</p>
+</li>
+<li><p>Audit 工具会自动给你提供改进建议。</p>
+</li>
+</ul>
+<h2 id="Console-面板"><a href="#Console-面板" class="headerlink" title="Console 面板"></a>Console 面板</h2><ul>
+<li><p>Console 面板提供了2个主要功能：在开发过程中记录调试信息和提供一个可以用于和文档、开发工具交互的shell环境。</p>
+</li>
+<li><p>可以使用标准JS语法和特定控制台命令来查看原始数据和结构化数据。</p>
+</li>
+<li><p>从API中获取的JSON数据是典型的结构化数据。</p>
+</li>
+<li><p>信息经常会叠加满屏幕，你可以键入’clear()’来清空屏幕。通过勾选’Preserve Log’可以保存日志。</p>
+</li>
+<li><p>有几种不同的日志命令，比如console.log()用于基本日志记录，console.error()和colsole.warn()用于一些重要信息。</p>
+</li>
+<li><p>Console中可以追踪异常（代码出现了问题），甚至可以在出现异常时暂停代码的执行，如果你还记得，这个功能在Source标签页中也有。</p>
+</li>
+</ul>
+<h1 id="复杂度学习"><a href="#复杂度学习" class="headerlink" title="复杂度学习"></a>复杂度学习</h1><ul>
+<li><p>时间复杂度是讨论算法花费多少时间的一种方式。它对于更快的提高精简中的软件的运行速度有着很大的作用。</p>
+</li>
+<li><p>当你编写代码的时候，你应该要知道这个软件需要花多长时间去执行。没有人想要创造一个由于运行缓慢而让用户觉得沮丧的项目。</p>
+</li>
+<li><p>时间复杂度相对于一个算法来说，是一个或多个函数的集合。</p>
+</li>
+<li><p>大O符号专门帮助您识别是算法没有’规模’好，还是在有大量不同的用户，信息，或其他投入量工作下运行良好。</p>
+</li>
+<li><p>这不符合摩尔定律 - 不管你的电脑有多大有快捷，如果算法是成倍地低效率，它在现实就无法使用。</p>
+</li>
+<li><p>通过在算法中执行的基本操作（基本操作=一个花费固定时间执行的操作）的数目统计来测量时间复杂度。</p>
+</li>
+<li><p>时间复杂度由函数T(n)表示。O代表函数，(n)表示作用于元件的数目。</p>
+</li>
+<li><p>渐进时间复杂度，对于任何的有效输入它可能花费的最长时间，是表达时间复杂度最常见的方式。</p>
+</li>
+<li><p>当你讨论大0符号,通常指的是最坏的情况。</p>
+</li>
+<li><p>作为一个经验法则,任何用N ^ 2或其他指数对于多个用户的网站来说都不是好的算法。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">O(1)——确定一个数字是奇数或偶数。O(1)是一个静态的时间常量,不管有多少信息或有多少用户它都是一样的不改变。</div><div class="line"></div><div class="line">O(log N)——发现一个字在字典里(使用二分法检索)。二分法检索是一个典型的“分而治之”的算法。</div><div class="line"></div><div class="line">O(N)——看一本书</div><div class="line"></div><div class="line">O(N log N)——排序一副扑克牌(使用归并排序)</div><div class="line"></div><div class="line">O(N ^ 2)——在你购物车上检查你的购物清单的每一样东西</div><div class="line"></div><div class="line">O(∞)-掷硬币,直到它落在头上</div></pre></td></tr></table></figure>
+<h1 id="计算机安全"><a href="#计算机安全" class="headerlink" title="计算机安全"></a>计算机安全</h1><h2 id="针对密码的字典攻击。"><a href="#针对密码的字典攻击。" class="headerlink" title="针对密码的字典攻击。"></a>针对密码的字典攻击。</h2><ul>
+<li><p>当创建您的密码，有些网站需要极其特殊和复杂的密码，这实际上是一个也不必要的。</p>
+</li>
+<li><p>他们想要保护你不受字典攻击的攻击。</p>
+</li>
+<li><p>字典攻击就是尝试字典里的每一个字词，或者是它自己数据库中的常见词汇和很多人使用过的密码</p>
+</li>
+<li><p>大多数密码都没有这个简单的，但是，这并不重要。</p>
+</li>
+<li><p>他们只需要简单的密码就可以攻击巨量的账户。</p>
+</li>
+<li><p>在创建密码时，你想要使用不同的类型，数字和符号，但是最有效的方法之一是出现一些随机的字母。</p>
+</li>
+</ul>
+<h2 id="网络钓鱼"><a href="#网络钓鱼" class="headerlink" title="网络钓鱼"></a>网络钓鱼</h2><ul>
+<li><p>网络钓鱼，是模仿其他正规站点的网页或者邮件，试图欺骗用户输入自己的个人信息，而它却没有连接到它所模仿的站点。</p>
+</li>
+<li><p>一般情况下，两种方式来保护免受这些攻击：在地址栏中查看网址，打开一个新的浏览器并转到它所声称的网站。</p>
+</li>
+<li><p>我们还要学习加密和HTTPS。</p>
+</li>
+<li><p>如果你是在星巴克试图访问您的银行帐户，您有理由怀疑有人能看到，并采集您的信息。</p>
+</li>
+<li><p>你会想在网址的开头寻找一个绿色的HTTPS而不是HTTP。</p>
+</li>
+<li><p>这意味着，你向该网站所发送的密码和其他信息都被加密，只有他们可以根据一串码解开的数据。</p>
+</li>
+<li><p>一般情况下，只要你显示的是私人或敏感信息，检查一下HTTPS。</p>
+</li>
+<li><p>其他一些提示：重要账户之间不要使用相同的代码。</p>
+</li>
+<li><p>如果您使用的网站被黑客侵入，密码再长也没用。</p>
+</li>
+<li><p>同样，不要下载奇怪的文件。</p>
+</li>
+<li><p>如果你下载的文件不是像.PDF，txt文件，JPG格式这样常见的文件类型，就要小心了。</p>
+</li>
+<li><p>你下载的一些文件非常厉害，它们甚至可以在后台运行。</p>
+</li>
+<li><p>最后，让你的软件更新，特别是联网的软件。</p>
+</li>
+<li><p>信息泄露的一种方式就是’坏人’发现了旧版本的漏洞并突破了安全系统。</p>
+</li>
+<li><p>这些漏洞在新版本中已经修复，如果你每个软件都保持更新，你可以避免很多问题。</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;FreeCodeCamp学习笔记（三）&quot;&gt;&lt;a href=&quot;#FreeCodeCamp学习笔记（三）&quot; class=&quot;headerlink&quot; title=&quot;FreeCodeCamp学习笔记（三）&quot;&gt;&lt;/a&gt;FreeCodeCamp学习笔记（三）&lt;/h1&gt;&lt;h1 id=&quot;chrome调试学习&quot;&gt;&lt;a href=&quot;#chrome调试学习&quot; class=&quot;headerlink&quot; title=&quot;chrome调试学习&quot;&gt;&lt;/a&gt;chrome调试学习&lt;/h1&gt;&lt;h2 id=&quot;elements标签&quot;&gt;&lt;a href=&quot;#elements标签&quot; class=&quot;headerlink&quot; title=&quot;elements标签&quot;&gt;&lt;/a&gt;elements标签&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;在chrome浏览器中右击选中&lt;code&gt;Inspect element&lt;/code&gt;即可访问elements标签，然后你就可以随便修改元素文本，元素标签和任何其他CSS或者HTML。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;这些修改不会自动保存，不能当做IDE或者可以保存内容的编辑器。你可以使用chrome中的’persistent authoring’功能去保存更改。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;记住这里层叠，继承和其他CSS规则都可以使用，另外，被覆盖的式样会以穿越文字的横线的形式展示。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;需要注意的是现在”树”中看到的代码是当前的HTML，而不是页面加载时的代码。如果你用JavaScript或Jquery来改变页面元素，”树”就会更新。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Padding，border和margin都很容易在右下角的彩色盒子里面检查和编辑。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="web前端" scheme="http://xxyb.online/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="html" scheme="http://xxyb.online/tags/html/"/>
+    
+      <category term="css" scheme="http://xxyb.online/tags/css/"/>
+    
+      <category term="jquery" scheme="http://xxyb.online/tags/jquery/"/>
+    
+      <category term="FreeCodeCamp" scheme="http://xxyb.online/tags/FreeCodeCamp/"/>
+    
+      <category term="Chrome" scheme="http://xxyb.online/tags/Chrome/"/>
+    
+  </entry>
   
   <entry>
     <title>FreeCodeCamp学习笔记（二）</title>
@@ -913,9 +1120,9 @@
       <category term="安全" scheme="http://xxyb.online/categories/%E5%AE%89%E5%85%A8/"/>
     
     
-      <category term="kali" scheme="http://xxyb.online/tags/kali/"/>
-    
       <category term="linux" scheme="http://xxyb.online/tags/linux/"/>
+    
+      <category term="kali" scheme="http://xxyb.online/tags/kali/"/>
     
   </entry>
   
@@ -1137,62 +1344,6 @@
   </entry>
   
   <entry>
-    <title>怎样建一个自己的网站</title>
-    <link href="http://xxyb.online/%E6%80%8E%E4%B9%88%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99.html"/>
-    <id>http://xxyb.online/怎么建立自己的网站.html</id>
-    <published>2017-03-20T16:00:00.000Z</published>
-    <updated>2017-03-20T17:23:20.709Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="怎样建一个自己的网站"><a href="#怎样建一个自己的网站" class="headerlink" title="怎样建一个自己的网站"></a>怎样建一个自己的网站</h1><p><strong>下面是详细步骤：</strong></p>
-<ol>
-<li>要建立个人网站，首先必须要了解一下目前网页制作的基本语言HTML，入门即可，大概花个一二小时就可。</li>
-</ol>
-<a id="more"></a>
-<ol>
-<li><p>学会使用目前流行的网页制作软件，如Atom、Brackets等一些功能强大，所见所得的软件，初步了解就可，不用全部掌握，一般是边用边学，不断提高使用水平。</p>
-</li>
-<li><p>广泛的上网浏览各种网页，一开始最好能下载一些较简单的个人网页，因为他们所用到的技术较为简单，可用网页制作软件打开研究。然后推荐去浏览一些专业的网页设计网站，学习一些排版经验，同时可下载一些网页结构模版供自己套用。</p>
-</li>
-<li><p>确定你的网站主题，网站主题最好是有你的个人特色，实在不能确定我建议自己做一个私人门户网站，将平时自己经常去的网站做一个较为综合的连结。</p>
-</li>
-<li><p>网页最好不要用特别与众不同的颜色、字体，因为每个人使用的计算机各不相同，特别的颜色、字体别人不一定能看得到。</p>
-</li>
-<li><p>网页要增加美观图片不可缺少，我建议如果你会用一些专业的作图软件最好自己制作，这会有自己的特色，放些私人照片也可以，但切记各种图片一定要作优化处理，减小它的存储尺寸。提醒一下每页不要放过多的图片，因为第一会使网页显得杂乱，第二会使你的网页显示速度过慢。制作图片的常用软件有Photoshop，Fireworks等。</p>
-</li>
-<li><p>网页上可以用一些动画与特效增加你主页的美观与功能，动画可上网找，同样最好能自己制作，GIF格式的最常用，可用Ulead的Gig Animator软件制作，目前流行的是H5动画，更多变化，尺寸更小。网上还有许多免费的Javascript等可供使用，与图片一样，我建议每页不要放太多的动画与特效。</p>
-</li>
-<li><p>网页基本建成后，上网找免费的主页空间，以其主机的速度，提供的空间大小和有无基本的CGI功能及其提供的域名是否简单易记为考量依据，所谓CGI是指主机服务器上提供的程序，一般你可申请有免费计数器、留言板等。找到速度快，主页存放空间大，域名简单的网站存放你的网页。</p>
-</li>
-<li><p>将网页上传至你申请的服务器上，具体上传的办法你在申请主页空间时就会了解，具体使用你制作网页的软件即可，我个人推荐使用FTP上传，这个软件功能强大，简单易用。</p>
-</li>
-<li><p>网站已建立,可与其它网站申请友情连结、去一些提供连结交换的网站申请广告交换，如太极链，酷站等。在做这一步时你需要做二个468X60和88X31尺寸的广告图片，动画最好，存储大小尽量控制在10k以下。</p>
-</li>
-<li><p>如果你还想靠你的网站赚一些小钱，你可去一些商业网站申请广告连结，替他们做广告，一般以从你的网页点击到他们的网页次数算钱。</p>
-</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;怎样建一个自己的网站&quot;&gt;&lt;a href=&quot;#怎样建一个自己的网站&quot; class=&quot;headerlink&quot; title=&quot;怎样建一个自己的网站&quot;&gt;&lt;/a&gt;怎样建一个自己的网站&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;下面是详细步骤：&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;要建立个人网站，首先必须要了解一下目前网页制作的基本语言HTML，入门即可，大概花个一二小时就可。&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="web前端" scheme="http://xxyb.online/categories/web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="html" scheme="http://xxyb.online/tags/html/"/>
-    
-      <category term="css" scheme="http://xxyb.online/tags/css/"/>
-    
-      <category term="javascript" scheme="http://xxyb.online/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
     <title>HTML学习笔记</title>
     <link href="http://xxyb.online/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html"/>
     <id>http://xxyb.online/html学习笔记.html</id>
@@ -1250,6 +1401,62 @@
       &lt;h1 id=&quot;HTML学习笔记&quot;&gt;&lt;a href=&quot;#HTML学习笔记&quot; class=&quot;headerlink&quot; title=&quot;HTML学习笔记&quot;&gt;&lt;/a&gt;HTML学习笔记&lt;/h1&gt;&lt;hr&gt;
 &lt;h1 id=&quot;html结构及常用元素&quot;&gt;&lt;a href=&quot;#html结构及常用元素&quot; class=&quot;headerlink&quot; title=&quot;html结构及常用元素&quot;&gt;&lt;/a&gt;html结构及常用元素&lt;/h1&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;html&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;head&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;title&amp;gt;文档标题&amp;lt;/title&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/head&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;可见文本...&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/body&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/html&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h1&amp;gt;最大的标题&amp;lt;/h1&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h2&amp;gt; . . . &amp;lt;/h2&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h3&amp;gt; . . . &amp;lt;/h3&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h4&amp;gt; . . . &amp;lt;/h4&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h5&amp;gt; . . . &amp;lt;/h5&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;h6&amp;gt;最小的标题&amp;lt;/h6&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="web前端" scheme="http://xxyb.online/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="html" scheme="http://xxyb.online/tags/html/"/>
+    
+      <category term="css" scheme="http://xxyb.online/tags/css/"/>
+    
+      <category term="javascript" scheme="http://xxyb.online/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>怎样建一个自己的网站</title>
+    <link href="http://xxyb.online/%E6%80%8E%E4%B9%88%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99.html"/>
+    <id>http://xxyb.online/怎么建立自己的网站.html</id>
+    <published>2017-03-20T16:00:00.000Z</published>
+    <updated>2017-03-20T17:23:20.709Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="怎样建一个自己的网站"><a href="#怎样建一个自己的网站" class="headerlink" title="怎样建一个自己的网站"></a>怎样建一个自己的网站</h1><p><strong>下面是详细步骤：</strong></p>
+<ol>
+<li>要建立个人网站，首先必须要了解一下目前网页制作的基本语言HTML，入门即可，大概花个一二小时就可。</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li><p>学会使用目前流行的网页制作软件，如Atom、Brackets等一些功能强大，所见所得的软件，初步了解就可，不用全部掌握，一般是边用边学，不断提高使用水平。</p>
+</li>
+<li><p>广泛的上网浏览各种网页，一开始最好能下载一些较简单的个人网页，因为他们所用到的技术较为简单，可用网页制作软件打开研究。然后推荐去浏览一些专业的网页设计网站，学习一些排版经验，同时可下载一些网页结构模版供自己套用。</p>
+</li>
+<li><p>确定你的网站主题，网站主题最好是有你的个人特色，实在不能确定我建议自己做一个私人门户网站，将平时自己经常去的网站做一个较为综合的连结。</p>
+</li>
+<li><p>网页最好不要用特别与众不同的颜色、字体，因为每个人使用的计算机各不相同，特别的颜色、字体别人不一定能看得到。</p>
+</li>
+<li><p>网页要增加美观图片不可缺少，我建议如果你会用一些专业的作图软件最好自己制作，这会有自己的特色，放些私人照片也可以，但切记各种图片一定要作优化处理，减小它的存储尺寸。提醒一下每页不要放过多的图片，因为第一会使网页显得杂乱，第二会使你的网页显示速度过慢。制作图片的常用软件有Photoshop，Fireworks等。</p>
+</li>
+<li><p>网页上可以用一些动画与特效增加你主页的美观与功能，动画可上网找，同样最好能自己制作，GIF格式的最常用，可用Ulead的Gig Animator软件制作，目前流行的是H5动画，更多变化，尺寸更小。网上还有许多免费的Javascript等可供使用，与图片一样，我建议每页不要放太多的动画与特效。</p>
+</li>
+<li><p>网页基本建成后，上网找免费的主页空间，以其主机的速度，提供的空间大小和有无基本的CGI功能及其提供的域名是否简单易记为考量依据，所谓CGI是指主机服务器上提供的程序，一般你可申请有免费计数器、留言板等。找到速度快，主页存放空间大，域名简单的网站存放你的网页。</p>
+</li>
+<li><p>将网页上传至你申请的服务器上，具体上传的办法你在申请主页空间时就会了解，具体使用你制作网页的软件即可，我个人推荐使用FTP上传，这个软件功能强大，简单易用。</p>
+</li>
+<li><p>网站已建立,可与其它网站申请友情连结、去一些提供连结交换的网站申请广告交换，如太极链，酷站等。在做这一步时你需要做二个468X60和88X31尺寸的广告图片，动画最好，存储大小尽量控制在10k以下。</p>
+</li>
+<li><p>如果你还想靠你的网站赚一些小钱，你可去一些商业网站申请广告连结，替他们做广告，一般以从你的网页点击到他们的网页次数算钱。</p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;怎样建一个自己的网站&quot;&gt;&lt;a href=&quot;#怎样建一个自己的网站&quot; class=&quot;headerlink&quot; title=&quot;怎样建一个自己的网站&quot;&gt;&lt;/a&gt;怎样建一个自己的网站&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;下面是详细步骤：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;要建立个人网站，首先必须要了解一下目前网页制作的基本语言HTML，入门即可，大概花个一二小时就可。&lt;/li&gt;
+&lt;/ol&gt;
     
     </summary>
     
@@ -1967,83 +2174,6 @@ INFOHexois running at http://0.0.0.0:4000/.PressCtrl+C to stop.
       <category term="hexo" scheme="http://xxyb.online/tags/hexo/"/>
     
       <category term="npm" scheme="http://xxyb.online/tags/npm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用Atom编辑markdown笔记</title>
-    <link href="http://xxyb.online/atom%E7%BC%96%E8%BE%91markdown.html"/>
-    <id>http://xxyb.online/atom编辑markdown.html</id>
-    <published>2017-02-21T16:00:00.000Z</published>
-    <updated>2017-03-05T11:46:06.034Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="用Atom编辑markdown笔记"><a href="#用Atom编辑markdown笔记" class="headerlink" title="用Atom编辑markdown笔记"></a>用Atom编辑markdown笔记</h1><h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>Atom是github开发的开源跨平台的编辑器，Atom的强大可以与大名鼎鼎的Sublime Text相媲美。因为使用过Sublime Text，所以用Atom上手很快。这篇文章主要介绍使用Atom写markdown。</p>
-<p>之前在项目开发中都是使用.doc文件作为接口文档的载体，但是在使用中并不能很好的对比接口修改，如果使用.txt文件，又没有醒目的格式。所以，选择语法简单，方便对比的markdown来作为接口文档的载体。主要介绍下书写和解析markdown的编辑器。</p>
-<a id="more"></a>
-<h2 id="编辑器的选择"><a href="#编辑器的选择" class="headerlink" title="编辑器的选择"></a>编辑器的选择</h2><p>任何文本编辑器都可以书写markdown，但我们更期望能够在书写的时候能够即时的看到解析效果，方便对格式进行调整。</p>
-<h3 id="mac-os"><a href="#mac-os" class="headerlink" title="mac os"></a>mac os</h3><p>在mac os 下，我推荐Mou，界面简洁优雅，解析流畅，也许没有更好的了。</p>
-<h3 id="windows-os"><a href="#windows-os" class="headerlink" title="windows os"></a>windows os</h3><ul>
-<li>Sublime Text：有markdown preview插件支持，能够在浏览器里查看编译效果，但是并不是实时的，需要在修改后进行刷新或者，并不方便。</li>
-<li>mardown pad：能够很好的书写，并支持预览，但收费。</li>
-<li>Atom：推荐使用。内置对markdown的支持，能够方便的进行解析预览。</li>
-</ul>
-<h2 id="使用Atom预览markdown"><a href="#使用Atom预览markdown" class="headerlink" title="使用Atom预览markdown"></a>使用Atom预览markdown</h2><ol>
-<li>打开任意.md文件(markdown源文件)</li>
-<li><p><code>windows : ctrl + shift + p</code></p>
-<p> <code>mac : command + shift + p</code></p>
-<p> 这条命令跟Sublime Text是一样的，打开命令输入框</p>
-</li>
-<li>输入 markdown preview toggle(可以只输入mdpt，跟Sublime Text一样支持模糊匹配)</li>
-<li>按enter键即可看到预览，左边编辑，右边实时预览。</li>
-<li>也可以直接用快捷键<code>ctrl + shift + m</code></li>
-</ol>
-<h2 id="使用Atom编写markdown的特性"><a href="#使用Atom编写markdown的特性" class="headerlink" title="使用Atom编写markdown的特性"></a>使用Atom编写markdown的特性</h2><h5 id="以下几个特性是我选择Atom的主要原因："><a href="#以下几个特性是我选择Atom的主要原因：" class="headerlink" title="以下几个特性是我选择Atom的主要原因："></a>以下几个特性是我选择Atom的主要原因：</h5><ul>
-<li><p>Markdown实时预览</p>
-</li>
-<li><p>使用Crtl+Shift+M开启</p>
-</li>
-<li><p>Markdown代码高亮</p>
-</li>
-<li><p>比Mou的代码高亮效果好多了</p>
-</li>
-<li><p>多文件管理</p>
-</li>
-<li><p>Atom提供了文件树列表的功能（IDE中常见）</p>
-</li>
-<li><p>Github紧密结合</p>
-</li>
-<li><p>多平台支持</p>
-</li>
-<li><p>Mou只支持Mac OS</p>
-</li>
-<li><p>Atom插件管理工具：使用apm install 插件名称， 可以很方便的安装插件。</p>
-</li>
-</ul>
-<h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><p><strong>以下是Mac OS平台的常用快捷键：</strong></p>
-<p><code>Command+Shift+P</code> 打开命令窗口，可以运行各种菜单功能</p>
-<p><code>Command + T</code> 快速多文件切换</p>
-<p><code>Command + G</code> 文件内跳转到指定行</p>
-<p><code>Command + F</code> 文件内查找和替换</p>
-<p><code>Command + Shift + F</code> 多文件查找和替换</p>
-<p><code>Command + [</code> 对选中内容向左缩进</p>
-<p><code>Command + ]</code> 对选中内容向右缩进</p>
-<h2 id="Markdown网上编辑"><a href="#Markdown网上编辑" class="headerlink" title="Markdown网上编辑"></a>Markdown网上编辑</h2><p>推荐：<a href="https://maxiang.io/" target="_blank" rel="external">马克飞象</a></p>
-<h2 id="Atom下载"><a href="#Atom下载" class="headerlink" title="Atom下载"></a>Atom下载</h2><p><a href="https://atom.io/" target="_blank" rel="external">Atom下载</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;用Atom编辑markdown笔记&quot;&gt;&lt;a href=&quot;#用Atom编辑markdown笔记&quot; class=&quot;headerlink&quot; title=&quot;用Atom编辑markdown笔记&quot;&gt;&lt;/a&gt;用Atom编辑markdown笔记&lt;/h1&gt;&lt;h2 id=&quot;简述&quot;&gt;&lt;a href=&quot;#简述&quot; class=&quot;headerlink&quot; title=&quot;简述&quot;&gt;&lt;/a&gt;简述&lt;/h2&gt;&lt;p&gt;Atom是github开发的开源跨平台的编辑器，Atom的强大可以与大名鼎鼎的Sublime Text相媲美。因为使用过Sublime Text，所以用Atom上手很快。这篇文章主要介绍使用Atom写markdown。&lt;/p&gt;
-&lt;p&gt;之前在项目开发中都是使用.doc文件作为接口文档的载体，但是在使用中并不能很好的对比接口修改，如果使用.txt文件，又没有醒目的格式。所以，选择语法简单，方便对比的markdown来作为接口文档的载体。主要介绍下书写和解析markdown的编辑器。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="blog" scheme="http://xxyb.online/categories/blog/"/>
-    
-    
-      <category term="atom" scheme="http://xxyb.online/tags/atom/"/>
-    
-      <category term="markdown" scheme="http://xxyb.online/tags/markdown/"/>
     
   </entry>
   
