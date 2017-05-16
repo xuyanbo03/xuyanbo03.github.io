@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xxyb.online/"/>
-  <updated>2017-05-15T16:23:37.906Z</updated>
+  <updated>2017-05-16T17:23:38.661Z</updated>
   <id>http://xxyb.online/</id>
   
   <author>
@@ -14,6 +14,219 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>FreeCodeCamp学习笔记（四）</title>
+    <link href="http://xxyb.online/fcc%E5%AD%A6%E4%B9%A0js.html"/>
+    <id>http://xxyb.online/fcc学习js.html</id>
+    <published>2017-05-16T16:00:00.000Z</published>
+    <updated>2017-05-16T17:23:38.661Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="FreeCodeCamp学习笔记（四）"><a href="#FreeCodeCamp学习笔记（四）" class="headerlink" title="FreeCodeCamp学习笔记（四）"></a>FreeCodeCamp学习笔记（四）</h1><h1 id="JavaScript基础"><a href="#JavaScript基础" class="headerlink" title="JavaScript基础"></a>JavaScript基础</h1><h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><ul>
+<li><p>一个条件语句只能执行一次代码，而一个循环语句可以多次执行代码。</p>
+</li>
+<li><p>JavaScript 中最常见的循环就是“for循环”。</p>
+<ul>
+<li><p>for循环中的三个表达式用分号隔开：for ([初始化]; [条件判断]; [计数器])</p>
+</li>
+<li><p>初始化语句只会在执行循环开始之前执行一次。它通常用于定义和设置你的循环变量。</p>
+</li>
+<li><p>条件判断语句会在每一轮循环的开始执行，只要条件判断为 true 就会继续执行循环。当条件为 false的时候，循环将停止执行。这意味着，如果条件在一开始就为 false，这个循环将不会执行。</p>
+</li>
+<li><p>计数器是在每一轮循环结束时执行，通常用于递增或递减。</p>
+</li>
+<li><p>for循环可以按照我们指定的顺序来迭代，通过更改我们的 计数器，我们可以按照偶数顺序来迭代。</p>
+</li>
+<li><p>for循环也可以逆向迭代，只要我们定义好合适的条件。</p>
+</li>
+<li><p>迭代输出一个数组的每个元素是 JavaScript 中的常见需求， for 循环可以做到这一点。记住数组的索引从零开始的，这意味着数组的最后一个元素的下标是：数组的长度 - 1。</p>
+</li>
+<li><p>如果你有一个二维数组，可以使用相同的逻辑，先遍历外面的数组，再遍历里面的子数组。对于内部循环，我们可以通过 arr[i] 的 .length 来获得子数组的长度，因为 arr[i] 的本身就是一个数组。</p>
+</li>
+</ul>
+</li>
+<li><p>另一种类型的 JavaScript 循环被称为while循环，因为它规定，当（while）条件为真，循环才会执行，反之不执行。</p>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><ul>
+<li><p>Math.random()用来生成一个在0(包括0)到1(不包括1)之间的随机小数，因此Math.random()可能返回0但绝不会返回1。要生成的随机数是在两个指定的数之间。</p>
+</li>
+<li><p>用 Math.floor() 向下取整 获得它最近的整数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">20</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>定义一个最小值和一个最大值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (max - min + <span class="number">1</span>)) + min</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="正则"><a href="#正则" class="headerlink" title="正则"></a>正则</h2><ul>
+<li><p>Regular expressions 正则表达式被用来根据某种匹配模式来寻找strings中的某些单词。</p>
+</li>
+<li><p>我们可以把这个正则表达式分成几段：</p>
+<ul>
+<li><p>/ 是这个正则表达式的头部</p>
+</li>
+<li><p>the 是我们想要匹配的模式</p>
+</li>
+<li><p>/ 是这个正则表达式的尾部</p>
+</li>
+<li><p>g 代表着 global(全局)，意味着返回所有的匹配而不仅仅是第一个。</p>
+</li>
+<li><p>i 代表着忽略大小写，意思是当我们寻找匹配的字符串的时候忽略掉字母的大小写。</p>
+</li>
+</ul>
+</li>
+<li><p>我们可以在正则表达式中使用特殊选择器来选取特殊类型的值。</p>
+<ul>
+<li><p>特殊选择器中的一种就是数字选择器<code>\d</code>，意思是被用来获取一个字符串的数字.在JavaScript中, 数字选择器类似于: <code>/\d/g</code>。</p>
+</li>
+<li><p>在选择器后面添加一个加号标记(+)，例如：<code>/\d+/g</code>，它允许这个正则表达式匹配一个或更多数字。尾部的g是’global’的简写，意思是允许这个正则表达式 找到所有的匹配而不是仅仅找到第一个匹配。</p>
+</li>
+<li><p>我们也可以使用正则表达式选择器 <code>\s</code> 来选择一个字符串中的空白。空白字符有<code>&quot; &quot; (空格符)、\r (回车符)、\n (换行符)、\t (制表符) 和 \f (换页符)</code>。空白正则表达式类似于：<code>/\s+/g</code></p>
+</li>
+<li><p>你可以用正则表达式选择器的大写版本 来转化任何匹配。举个例子：<code>\s</code> 匹配任何空白字符，<code>\S</code> 匹配任何非空白字符。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="JSON与API"><a href="#JSON与API" class="headerlink" title="JSON与API"></a>JSON与API</h2><ul>
+<li><p>JavaScript Object Notation 简称 JSON，它使用JavaScript对象的格式来存储数据。JSON是灵活的，因为它允许数据结构是字符串，数字，布尔值，字符串，和对象的任意组合。</p>
+</li>
+<li><p>数组中有多个 JSON 对象的时候，对象与对象之间要用逗号隔开。</p>
+</li>
+<li><p>通过串联起来的点操作符或中括号操作符来访问JSON对象的嵌套属性。因为属性的名字带有空格，请使用中括号操作符来访问属性的值。</p>
+</li>
+<li><p>JSON对象可以嵌套对象和数组。与访问嵌套对象一样，用中括号操作符同样可以访问嵌套数组。</p>
+</li>
+<li><p>函数返回的永远是整个对象</p>
+</li>
+<li><p>使用中括号操作符来访问对象的变量属性</p>
+</li>
+<li><p>JSON是一种非常简洁的数据格式。它通常表现为了两种形式，一种为单个对象，一种为多个对象</p>
+<ul>
+<li><p>单个对象类似于：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;<span class="attr">name</span>:<span class="string">'盖伦'</span>,<span class="attr">advantage</span>:<span class="string">'单挑无敌'</span>&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>多个对象类似于：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[&#123;<span class="attr">name</span>:<span class="string">'盖伦'</span>,<span class="attr">advantage</span>:<span class="string">'单挑无敌'</span>&#125;,&#123;<span class="attr">name</span>:<span class="string">'诺克'</span>,<span class="attr">advantage</span>:<span class="string">'上单霸主'</span>&#125;]</div></pre></td></tr></table></figure>
+</li>
+<li><p>每个对象属性和属性值的组合就是我们经常听到的”键值对(key-value pairs)”。</p>
+</li>
+</ul>
+</li>
+<li><p>当你需要根据服务器返回的数据来动态改变页面的时候，应用程序接口(API)就派上用场了。API——应用程序接口(Application Programming Interface)是计算机之间相互交流沟通的工具。</p>
+</li>
+<li><p>许多网站的应用程序接口(API)都是通过一种称为JSON格式的数据来传输的，JSON 是 JavaScript Object Notation的简写。</p>
+</li>
+</ul>
+<p><strong>举例：</strong></p>
+<ul>
+<li><p>从JSON API中获得了数据：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$.getJSON(<span class="string">"/json/cats.json"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">json</span>) </span>&#123;</div><div class="line">  $(<span class="string">".message"</span>).html(<span class="built_in">JSON</span>.stringify(json));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>把它们展现到我们的HTML页面中吧。</p>
+<ul>
+<li><p>使用.forEach()函数来循环遍历JSON数据写到html变量中。</p>
+</li>
+<li><p>首先我们定义一个HTML变量，<code>var html = &quot;&quot;;</code> 。</p>
+</li>
+<li><p>然后，我们使用.forEach()函数来循环遍历JSON数据写到html变量中，最后把html变量显示到我们的页面中。</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">json.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> keys = <span class="built_in">Object</span>.keys(val);</div><div class="line">  html += <span class="string">"&lt;div class = 'cat'&gt;"</span>;</div><div class="line">  keys.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</div><div class="line">    html += <span class="string">"&lt;b&gt;"</span> + key + <span class="string">"&lt;/b&gt;: "</span> + val[key] + <span class="string">"&lt;br&gt;"</span>;</div><div class="line">  &#125;);</div><div class="line">  html += <span class="string">"&lt;/div&gt;&lt;br&gt;"</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>获得的JSON数组中，每个对象都包含了一个以imageLink为键(key)，以猫的图片的url为值(value)的键值对。</p>
+<p>遍历,用imageLink的属性来显示img元素的图片。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">html += <span class="string">"&lt;img src = '"</span> + val.imageLink + <span class="string">"'&gt;"</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>不想把所有从JSON API中得到的图片都展现出来，可以在遍历之前做一次过滤。把其中 “id” 键的值为1的图片过滤掉。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">json = json.filter(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> (val.id !== <span class="number">1</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>可以通过浏览器navigator获得我们当前所在的位置geolocation。位置的信息包括经度longitude和纬度latitude。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (navigator.geolocation) &#123;</div><div class="line">  navigator.geolocation.getCurrentPosition(<span class="function"><span class="keyword">function</span>(<span class="params">position</span>) </span>&#123;</div><div class="line">    $(<span class="string">"#data"</span>).html(<span class="string">"latitude: "</span> + position.coords.latitude + <span class="string">"&lt;br&gt;longitude: "</span> + position.coords.longitude);</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="Object对象"><a href="#Object对象" class="headerlink" title="Object对象"></a>Object对象</h1><ul>
+<li><p>可以使用构造函数来创建对象。</p>
+</li>
+<li><p>构造函数通常使用大写字母开头，以便把自己和其他普通函数区别开。</p>
+<p>下面便是一个构造函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Car = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.wheels = <span class="number">4</span>;</div><div class="line">  <span class="keyword">this</span>.engines = <span class="number">1</span>;</div><div class="line">  <span class="keyword">this</span>.seats = <span class="number">1</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在构造函数中，this 指向被此构造函数创建出来的对象 。所以当我们在构造函数中写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.wheels = <span class="number">4</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>创建出来的新对象将带有 wheels 属性，并且赋值为 4.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>构造函数描述了它所创建出来的对象。</p>
+</li>
+<li><p>使用构造函数时，我们通过在它前面使用 new 关键字 来对它进行调用，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myCar = <span class="keyword">new</span> Car();</div></pre></td></tr></table></figure>
+<ul>
+<li><p>myCar 现在成为了 Car 的一个实例(instance），它被构造函数描述成下面的样子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">wheels</span>: <span class="number">4</span>,</div><div class="line">  <span class="attr">engines</span>: <span class="number">1</span>,</div><div class="line">  <span class="attr">seats</span>: <span class="number">1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>要使用 new 关键字去调用构造函数。因为只有这样，Javascript才知道这是要去构造一个新对象 ，并且把构造函数中的 this 指向这个新对象。</p>
+</li>
+<li><p>当 myCar（即 Car 的一个 实例 ）创建后，他可以像普通对象一样被使用，包括创建、访问、修改它的属性等，就像我们使用其他对象一样。</p>
+</li>
+</ul>
+</li>
+<li><p>对象拥有自己的特征，称为属性，对象还有自己的函数，称为方法。</p>
+</li>
+<li><p>构造函数中，我们使用了 this 指向当前（将要被创建的）对象中的公有属性 。</p>
+</li>
+<li><p>我们也可以创建私有属性和私有方法，它们两个在对象外部是不可访问的。</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;FreeCodeCamp学习笔记（四）&quot;&gt;&lt;a href=&quot;#FreeCodeCamp学习笔记（四）&quot; class=&quot;headerlink&quot; title=&quot;FreeCodeCamp学习笔记（四）&quot;&gt;&lt;/a&gt;FreeCodeCamp学习笔记（四）&lt;/h1&gt;&lt;h1 id=&quot;JavaScript基础&quot;&gt;&lt;a href=&quot;#JavaScript基础&quot; class=&quot;headerlink&quot; title=&quot;JavaScript基础&quot;&gt;&lt;/a&gt;JavaScript基础&lt;/h1&gt;&lt;h2 id=&quot;循环&quot;&gt;&lt;a href=&quot;#循环&quot; class=&quot;headerlink&quot; title=&quot;循环&quot;&gt;&lt;/a&gt;循环&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;一个条件语句只能执行一次代码，而一个循环语句可以多次执行代码。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;JavaScript 中最常见的循环就是“for循环”。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;for循环中的三个表达式用分号隔开：for ([初始化]; [条件判断]; [计数器])&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;初始化语句只会在执行循环开始之前执行一次。它通常用于定义和设置你的循环变量。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;条件判断语句会在每一轮循环的开始执行，只要条件判断为 true 就会继续执行循环。当条件为 false的时候，循环将停止执行。这意味着，如果条件在一开始就为 false，这个循环将不会执行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;计数器是在每一轮循环结束时执行，通常用于递增或递减。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;for循环可以按照我们指定的顺序来迭代，通过更改我们的 计数器，我们可以按照偶数顺序来迭代。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;for循环也可以逆向迭代，只要我们定义好合适的条件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;迭代输出一个数组的每个元素是 JavaScript 中的常见需求， for 循环可以做到这一点。记住数组的索引从零开始的，这意味着数组的最后一个元素的下标是：数组的长度 - 1。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果你有一个二维数组，可以使用相同的逻辑，先遍历外面的数组，再遍历里面的子数组。对于内部循环，我们可以通过 arr[i] 的 .length 来获得子数组的长度，因为 arr[i] 的本身就是一个数组。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;另一种类型的 JavaScript 循环被称为while循环，因为它规定，当（while）条件为真，循环才会执行，反之不执行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="web前端" scheme="http://xxyb.online/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="html" scheme="http://xxyb.online/tags/html/"/>
+    
+      <category term="css" scheme="http://xxyb.online/tags/css/"/>
+    
+      <category term="jquery" scheme="http://xxyb.online/tags/jquery/"/>
+    
+      <category term="FreeCodeCamp" scheme="http://xxyb.online/tags/FreeCodeCamp/"/>
+    
+  </entry>
   
   <entry>
     <title>FreeCodeCamp学习笔记（三）</title>
@@ -837,22 +1050,22 @@
     <link href="http://xxyb.online/fcc%E5%AD%A6%E4%B9%A0html%E3%80%81css%E3%80%81jQuery.html"/>
     <id>http://xxyb.online/fcc学习html、css、jQuery.html</id>
     <published>2017-04-23T16:00:00.000Z</published>
-    <updated>2017-05-14T15:24:56.250Z</updated>
+    <updated>2017-05-16T17:22:24.354Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="FreeCodeCamp学习笔记（一）"><a href="#FreeCodeCamp学习笔记（一）" class="headerlink" title="FreeCodeCamp学习笔记（一）"></a>FreeCodeCamp学习笔记（一）</h1><h1 id="html学习"><a href="#html学习" class="headerlink" title="html学习"></a>html学习</h1><h2 id="知识点补充"><a href="#知识点补充" class="headerlink" title="知识点补充"></a>知识点补充</h2><ul>
+    <content type="html"><![CDATA[<h1 id="FreeCodeCamp学习笔记"><a href="#FreeCodeCamp学习笔记" class="headerlink" title="FreeCodeCamp学习笔记"></a>FreeCodeCamp学习笔记</h1><h1 id="html学习"><a href="#html学习" class="headerlink" title="html学习"></a>html学习</h1><h2 id="知识点补充"><a href="#知识点补充" class="headerlink" title="知识点补充"></a>知识点补充</h2><ul>
 <li><p>a标签用#做占位符</p>
 </li>
 <li><p>img标签里应加alt属性，为了盲人朋友</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a href=&quot;#&quot;&gt;&lt;img class=&quot;smaller-image thick-green-border&quot; alt=&quot;A cute orange cat lying on its back&quot; src=&quot;/images/relaxing-cat.jpg&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"smaller-image thick-green-border"</span> <span class="attr">alt</span>=<span class="string">"A cute orange cat lying on its back"</span> <span class="attr">src</span>=<span class="string">"/images/relaxing-cat.jpg"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <a id="more"></a>
 <ul>
 <li><p>input标签加placeholder做占位符提示，在需要设置必填项的时候加required属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;text&quot; placeholder=&quot;cat photo URL&quot; required&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"cat photo URL"</span> <span class="attr">required</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>单选和复选按钮应加入到label标签里，name属性名应一致，checked为默认选中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;indoor-outdoor&quot; checked&gt; Indoor&lt;/label&gt;</div><div class="line">&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;indoor-outdoor&quot;&gt; Outdoor&lt;/label&gt;</div><div class="line">&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;personality&quot; checked&gt; Loving&lt;/label&gt;</div><div class="line">&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;personality&quot;&gt; Lazy&lt;/label&gt;</div><div class="line">&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;personality&quot;&gt; Energetic&lt;/label&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"indoor-outdoor"</span> <span class="attr">checked</span>&gt;</span> Indoor<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"indoor-outdoor"</span>&gt;</span> Outdoor<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"personality"</span> <span class="attr">checked</span>&gt;</span> Loving<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"personality"</span>&gt;</span> Lazy<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"personality"</span>&gt;</span> Energetic<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><p>有三个影响HTML元素布局的重要属性：padding(内边距)、margin(外边距)、border(边框)。</p>
@@ -873,59 +1086,65 @@
 <p>Hex code 遵循 red-green-blue（红-绿-蓝），或者叫 rgb 格式。hex code 中的前两位表示颜色中红色的数量，第三四位代表绿色的数量，第五六位代表蓝色的数量。</p>
 <h1 id="jquery学习"><a href="#jquery学习" class="headerlink" title="jquery学习"></a>jquery学习</h1><p><strong>jQuery通过选择器来选择一个元素的，然后操作元素做些改变。</strong></p>
 <ol>
-<li><p>要让所有的按钮做弹回效果，只要把这段代码写在</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(document).ready(function() &#123;&#125;);</div></pre></td></tr></table></figure>
-<p>里面，然后</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;button&quot;).addClass(&quot;animated bounce&quot;);</div></pre></td></tr></table></figure>
+<li>要让所有的按钮做弹回效果，只要把这段代码写在<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;);</div></pre></td></tr></table></figure>
 </li>
+</ol>
+<p>里面，然后<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"button"</span>).addClass(<span class="string">"animated bounce"</span>);</div></pre></td></tr></table></figure></p>
+<ol>
 <li><p>你可以通过jQuery的addClass()方法给元素添加class,也可以通过jQueryremoveClass()方法去掉元素上的class。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;#target2&quot;).removeClass(&quot;btn-default&quot;);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#target2"</span>).removeClass(<span class="string">"btn-default"</span>);</div></pre></td></tr></table></figure>
 </li>
 <li><p>jQuery有一个叫做.css()的方法能让你改变元素的CSS样式。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;#target1&quot;).css(&quot;color&quot;, &quot;blue&quot;);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#target1"</span>).css(<span class="string">"color"</span>, <span class="string">"blue"</span>);</div></pre></td></tr></table></figure>
 </li>
 <li><p>jQuery有一个.prop()的方法让你来调整元素的属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;button&quot;).prop(&quot;disabled&quot;, true);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"button"</span>).prop(<span class="string">"disabled"</span>, <span class="literal">true</span>);</div></pre></td></tr></table></figure>
 </li>
 <li><p>jQuery的.html()方法可以添加HTML标签和文字到元素，而元素之前的内容都会被方法的内容所替换掉。</p>
 <p>我们是通过em[emphasize]标签来重写和强调标题文本的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;h3&quot;).html(&quot;&lt;em&gt;jQuery Playground&lt;/em&gt;&quot;);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"h3"</span>).html(<span class="string">"&lt;em&gt;jQuery Playground&lt;/em&gt;"</span>);</div></pre></td></tr></table></figure>
 </li>
 <li><p>jQuery 还有一个类似的方法叫.text()，它只能改变文本但不能修改标记。换句话说，这个方法只会把传进来的任何东西(包括标记)当成文本来显示。</p>
 </li>
 <li><p>jQuery有一个appendTo()方法可以把选中的元素加到其他元素中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;#target4&quot;).appendTo(&quot;#left-well&quot;);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#target4"</span>).appendTo(<span class="string">"#left-well"</span>);</div></pre></td></tr></table></figure>
 </li>
-<li><p>jQuery的clone()方法可以拷贝元素，方法链function chaining，使用起来很方便。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;#target2&quot;).clone().appendTo(&quot;#right-well&quot;);</div></pre></td></tr></table></figure>
+<li><p>jQuery的clone()方法可以拷贝元素。<br>方法链function chaining，使用起来很方便</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#target2"</span>).clone().appendTo(<span class="string">"#right-well"</span>);</div></pre></td></tr></table></figure>
 </li>
 <li><p>每个HTML元素根据继承属性都有父parent元素,jQuery有一个方法叫parent()，它允许你访问指定元素的父元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;#left-well&quot;).parent().css(&quot;background-color&quot;, &quot;blue&quot;)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#left-well"</span>).parent().css(<span class="string">"background-color"</span>, <span class="string">"blue"</span>)</div></pre></td></tr></table></figure>
 </li>
 <li><p>许多HTML元素都有children(子元素)，每个子元素都从父元素那里继承了一些属性jQuery有一个方法叫children()，它允许你访问指定元素的子元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;#left-well&quot;).children().css(&quot;color&quot;, &quot;blue&quot;)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#left-well"</span>).children().css(<span class="string">"color"</span>, <span class="string">"blue"</span>)</div></pre></td></tr></table></figure>
 </li>
 <li><p>jQuery 用CSS选择器来选取元素，target:nth-child(n) CSS选择器允许你按照索引顺序(从1开始)选择目标元素的所有子元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;.target:nth-child(3)&quot;).addClass(&quot;animated bounce&quot;);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">".target:nth-child(3)"</span>).addClass(<span class="string">"animated bounce"</span>);</div></pre></td></tr></table></figure>
 </li>
 <li><p>获取class为target且索引为奇数的所有元素，并给他们添加class。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;.target:odd&quot;).addClass(&quot;animated shake&quot;);</div></pre></td></tr></table></figure>
-<p>jQuery里的索引是从0开始的，也就是说：:odd 选择第2、4、6个元素，因为target#2(索引为1)，target#4(索引为3)，target6(索引为5)。获取class为target且索引为偶数的所有元素，并给他们添加class。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;.target:even&quot;).addClass(&quot;animated shake&quot;);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">".target:odd"</span>).addClass(<span class="string">"animated shake"</span>);</div></pre></td></tr></table></figure>
 </li>
+</ol>
+<p>jQuery里的索引是从0开始的，也就是说：:odd 选择第2、4、6个元素，因为target#2(索引为1)，target#4(索引为3)，target6(索引为5)。获取class为target且索引为偶数的所有元素，并给他们添加class。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">".target:even"</span>).addClass(<span class="string">"animated shake"</span>);</div></pre></td></tr></table></figure></p>
+<ol>
 <li><p>让整个body都有淡出效果(fadeOut)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;body&quot;).addClass(&quot;animated fadeOut&quot;);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"body"</span>).addClass(<span class="string">"animated fadeOut"</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>$(document).ready(),这个函数中的代码只会在我们的页面加载时候运行一次，确保执行js之前页面所有的dom已经准备就绪。</p>
+</li>
+<li><p>增加一个click事件,通过点击事件来更改文本。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#getMessage"</span>).on(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  $(<span class="string">".message"</span>).html(<span class="string">"Here is the message"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
 </ol>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;FreeCodeCamp学习笔记（一）&quot;&gt;&lt;a href=&quot;#FreeCodeCamp学习笔记（一）&quot; class=&quot;headerlink&quot; title=&quot;FreeCodeCamp学习笔记（一）&quot;&gt;&lt;/a&gt;FreeCodeCamp学习笔记（一）&lt;/h1&gt;&lt;h1 id=&quot;html学习&quot;&gt;&lt;a href=&quot;#html学习&quot; class=&quot;headerlink&quot; title=&quot;html学习&quot;&gt;&lt;/a&gt;html学习&lt;/h1&gt;&lt;h2 id=&quot;知识点补充&quot;&gt;&lt;a href=&quot;#知识点补充&quot; class=&quot;headerlink&quot; title=&quot;知识点补充&quot;&gt;&lt;/a&gt;知识点补充&lt;/h2&gt;&lt;ul&gt;
+      &lt;h1 id=&quot;FreeCodeCamp学习笔记&quot;&gt;&lt;a href=&quot;#FreeCodeCamp学习笔记&quot; class=&quot;headerlink&quot; title=&quot;FreeCodeCamp学习笔记&quot;&gt;&lt;/a&gt;FreeCodeCamp学习笔记&lt;/h1&gt;&lt;h1 id=&quot;html学习&quot;&gt;&lt;a href=&quot;#html学习&quot; class=&quot;headerlink&quot; title=&quot;html学习&quot;&gt;&lt;/a&gt;html学习&lt;/h1&gt;&lt;h2 id=&quot;知识点补充&quot;&gt;&lt;a href=&quot;#知识点补充&quot; class=&quot;headerlink&quot; title=&quot;知识点补充&quot;&gt;&lt;/a&gt;知识点补充&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;a标签用#做占位符&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;img标签里应加alt属性，为了盲人朋友&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;&amp;lt;img class=&amp;quot;smaller-image thick-green-border&amp;quot; alt=&amp;quot;A cute orange cat lying on its back&amp;quot; src=&amp;quot;/images/relaxing-cat.jpg&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;#&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;smaller-image thick-green-border&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;alt&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;A cute orange cat lying on its back&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;/images/relaxing-cat.jpg&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
     
@@ -1120,9 +1339,9 @@
       <category term="安全" scheme="http://xxyb.online/categories/%E5%AE%89%E5%85%A8/"/>
     
     
-      <category term="linux" scheme="http://xxyb.online/tags/linux/"/>
-    
       <category term="kali" scheme="http://xxyb.online/tags/kali/"/>
+    
+      <category term="linux" scheme="http://xxyb.online/tags/linux/"/>
     
   </entry>
   
@@ -2002,178 +2221,6 @@
     
     
       <category term="人生" scheme="http://xxyb.online/tags/%E4%BA%BA%E7%94%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用GitHub和hexo搭建个人主站</title>
-    <link href="http://xxyb.online/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%BB%E7%AB%99.html"/>
-    <id>http://xxyb.online/搭建个人主站.html</id>
-    <published>2017-02-23T16:00:00.000Z</published>
-    <updated>2017-02-24T12:19:12.612Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="用GitHub和hexo搭建个人主站"><a href="#用GitHub和hexo搭建个人主站" class="headerlink" title="用GitHub和hexo搭建个人主站"></a>用GitHub和hexo搭建个人主站</h1><p>作为一个程序员，拥有一个自己的博客，平时记录一下，分享点技术文章，是很有必要的。建立博客的通常渠道包括：</p>
-<ol>
-<li>在博客平台上注册，比如 博客园、CSDN、新浪博客 等。</li>
-<li>利用博客框架搭建，如 WordPress、Jekyll、hexo 等。</li>
-<li>自己用代码写一个。</li>
-</ol>
-<p>其中，第一种最简单，也最受限，说不定还会被删帖删号。第二种稍复杂，另外需要自己找部署的服务器，但可定制化较高，是很多程序员的选择。最后一种，是在重复造轮子，不过从另一个方面来看，倒是锻炼编程能力的好方式。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p><strong>下面我们就来看下第二种搭建博客的方式。</strong></p>
-<ol>
-<li>github＋hexo 建立你的第一个博客</li>
-<li>部署博客及更新博文</li>
-<li>安装自己喜欢的主题</li>
-<li>购买并绑定域名</li>
-</ol>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>其实呢，建立博客是非常简单的（哈哈，不管什么东西，你会的就觉得简单，不会的怎样都难），我来给大家说说如何使用 GitHubPages 和 Hexo 建立自己的博客。</p>
-<p>这个有一点难度，但是不要怕，我会一步一步的给大家完成指导的，如果有任何问题也可以随时联系我，我会尽力给大家解决的！</p>
-<h3 id="第一步：github＋hexo-建立你的第一个博客"><a href="#第一步：github＋hexo-建立你的第一个博客" class="headerlink" title="第一步：github＋hexo 建立你的第一个博客"></a>第一步：github＋hexo 建立你的第一个博客</h3><p>下面先介绍为何选择 GitHubPages 和 Hexo 来搭建博客，然后介绍搭建博客的详细过程。</p>
-<p>Why GitHub Pages and Hexo</p>
-<p>因为 GitHub 的存在，我们得以简单快速地搭建个人博客。</p>
-<p><strong>GitHub</strong>，是一个代码托管网站和社交编程网站。这里聚集了世界上各路技术牛叉的大牛，和最优秀的代码库。</p>
-<p><strong>GitHub Pages</strong>，是用来托管 GitHub 上静态网页的免费站点，那 GitHub Pages具体有哪些功能呢：</p>
-<ul>
-<li>有 300M 免费空间，资料自己管理，保存可靠；</li>
-<li>享受 GitHub 的便利，上面有很多大牛，眼界会开阔很多；</li>
-<li>可以使用很多现成的博客框架，搭建过程简单快速。</li>
-</ul>
-<p><strong>Hexo</strong> 是一个简单、快速、强大的静态博客框架,出自台湾大学生 tommy351 之手。我也试过使用 Jekyll搭建个人博客的过程，确实要繁琐许多。相比之下 Hexo 更轻便更快捷，下面是其官网强调的四大特点：</p>
-<ul>
-<li>极速生成静态页面</li>
-<li>一键部署博客</li>
-<li>丰富的插件支持</li>
-<li>支持 Markdown</li>
-</ul>
-<p>大家对 GitHub Pages 和 Hexo 有了一定的了解，下面进入正题。</p>
-<h4 id="使用-GitHub-Pages-建立博客站点"><a href="#使用-GitHub-Pages-建立博客站点" class="headerlink" title="使用 GitHub Pages 建立博客站点"></a>使用 GitHub Pages 建立博客站点</h4><h5 id="注册-GitHub"><a href="#注册-GitHub" class="headerlink" title="注册 GitHub"></a>注册 GitHub</h5><p>访问 GitHub，注册十分简单，一定要记住注册时使用的邮箱，因为 GitHub 上很多通知都是通过邮箱的。申请成功后，在 GitHub 官网上登录，并验证邮箱即可。</p>
-<h5 id="在-GitHub-上建立仓库"><a href="#在-GitHub-上建立仓库" class="headerlink" title="在 GitHub 上建立仓库"></a>在 GitHub 上建立仓库</h5><p>与 GitHub 建立好连接之后，就可以方便的使用它提供的 Pages 服务，GitHub Pages 分两种，一种是用你的 GitHub 用户名建立的 username.github.io 这样的用户&amp;组织站点，另一种是依附项目的 Pages。</p>
-<p>想建立个人博客是用的第一种，形如 【username.github.io】 这样的可访问的站点，每个用户名下面只能建立一个。建立仓库的方法参照github官网的教程。</p>
-<h5 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h5><p>安装软件</p>
-<p><a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a><br>下载完成后根据提示一步一步安装就好，这个没有什么需要特别说明的。</p>
-<p><a href="https://desktop.github.com/" target="_blank" rel="external">GitHub for Windows</a><br>下载并安装这个软件，一直点击下一步即可</p>
-<p><a href="https://www.baidu.com/link?url=o8u5B5T07ibHSwXJYNkBxlvwOsSFGGMXm-ABta1del8wif08riRADzUtuclP_th-&amp;wd=&amp;eqid=e80ce7320000c9800000000658b0248f" target="_blank" rel="external">git</a></p>
-<h5 id="使用GitHub-for-Windows登录GitHub"><a href="#使用GitHub-for-Windows登录GitHub" class="headerlink" title="使用GitHub for Windows登录GitHub"></a>使用GitHub for Windows登录GitHub</h5><p>配置 SSH</p>
-<p>我们如何让本地 git 项目与远程的 GitHub 建立联系呢？方法是用 SSH。</p>
-<p>打开命令行，输入以下命令：<code>ssh -T git@github.com</code></p>
-<p>如果是下面之类的反馈（或者显示 Hi xxx）：<br><code>The authenticity of host &#39;github.com &#39; can&#39;t be established. RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48. Are you sure you want to continue connecting (yes/no)?</code><br>不用紧张，输入 yes 之后就配置成功了。</p>
-<h5 id="使用-Hexo-创建博客框架"><a href="#使用-Hexo-创建博客框架" class="headerlink" title="使用 Hexo 创建博客框架"></a>使用 Hexo 创建博客框架</h5><p>Hexo 安装</p>
-<p>Node和Git都安装好后,首先创建一个文件夹,如blog,用户存放hexo的配置文件,然后进入blog里安装Hexo。</p>
-<p>打开git bash命令行，输入命令：<br><code>npm install -g hexo</code></p>
-<p>Hexo 部署</p>
-<p>Hexo 的部署输入命令：<br><code>hexo init</code></p>
-<p>部署成功之后，用hexo生成静态页面，输入命令：<br><code>hexo generate</code>或者<code>hexo g</code>也可以</p>
-<p>此时在本地进行预览（在刚才创建的blog文件夹里）,输入命令：<br><code>hexo server</code>或者<code>hexo s</code></p>
-<p>此时打开浏览器，在浏览器地址栏输入 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> （默认端口为4000）, 便可以看到最原始的博客了。</p>
-<p>以后发表博文想先预览，也可以通过 hexo server 在本地先跑起来，看看效果。</p>
-<p>在 Git Shell 中按 <code>Ctrl+c</code> 可以停止该服务。</p>
-<h5 id="配置Github"><a href="#配置Github" class="headerlink" title="配置Github"></a>配置Github</h5><p>建立Repository</p>
-<p>建立与你用户名对应的仓库，仓库名必须为【username.github.io】，这是固定写法</p>
-<p>然后建立关系，找到之前建立的blog文件夹，之前建的东西也全在这里面，有：</p>
-<pre><code>_config.yml    node_modules    public      source
-
-db.json        package.json    scaffolds  themes
-</code></pre><p>现在我们需要修改_config.yml文件，来建立关联，使用notepad++打开_config.yml文件</p>
-<p>翻到最下面，改成这样：</p>
-<pre><code>deploy:
-
-    type: git
-
-    repo: https://github.com/username/username.github.io.git
-
-    branch: master
-</code></pre><p>注：username为你的用户名</p>
-<p>然后执行命令：<br><code>npm install hexo-deployer-git --save</code></p>
-<p>然后，执行配置命令：<br><code>hexo deploy</code></p>
-<p>然后在浏览器中输入<a href="http://username.github.io/" target="_blank" rel="external">http://username.github.io/</a> 就行了。</p>
-<h5 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h5><p>每次部署的步骤，可按以下三步来进行：</p>
-<pre><code>`hexo clean`
-
-`hexo generate`
-
-`hexo deploy`
-</code></pre><h5 id="报错总结"><a href="#报错总结" class="headerlink" title="报错总结"></a>报错总结</h5><pre><code>ERROR Deployer not found: git 或者 ERROR Deployer not found: github
-</code></pre><p>解决方法：<br><code>npm install hexo-deployer-git --save</code></p>
-<pre><code>如发生报错： ERROR Process failed: layout/.DS_Store
-</code></pre><p>那么进入主题里面layout和_partial目录下，使用删除命令：<br><code>rm-rf.DS_Store</code></p>
-<pre><code>ERROR Plugin load failed: hexo-server
-
-原因：
-
-Besides,utilities are separated into a standalone module.hexo.util is not reachable anymore.
-</code></pre><p>解决方法:<br><code>npm install hexo-server</code></p>
-<pre><code>执行命令hexo server，提示：Usage: hexo ....
-
-原因：
-
-我认为是没有生成本地服务
-</code></pre><p>解决方法:<br><code>npm install hexo-server --save</code></p>
-<pre><code>提示：hexo-server@0.1.2 node_modules/hexo-server
-
-....
-
-表示成功了参考
-</code></pre><p>这个时候再执行：<br><code>hexo-server</code></p>
-<pre><code>得到:
-
-INFOHexois running at http://0.0.0.0:4000/.PressCtrl+C to stop.
-</code></pre><p>这个时候再点击<a href="http://0.0.0.0:4000" target="_blank" rel="external">http://0.0.0.0:4000</a>, 正常情况下应该是最原始的画面。</p>
-<p>这个时候再重新生成静态文件，命令：<br><code>hexo generate</code>或<code>hexo g</code></p>
-<p>启动本地服务器：<br><code>hexo server</code>或<code>hexo s</code></p>
-<p>本地已经简单的设置好了，但是现在域名和服务器都是基于自己的电脑，接下来需要跟github进行关联。</p>
-<h3 id="第二步：部署博客及更新博文"><a href="#第二步：部署博客及更新博文" class="headerlink" title="第二步：部署博客及更新博文"></a>第二步：部署博客及更新博文</h3><p>在blog文件夹下将博客放入public文件夹中</p>
-<p>在blog文件夹下打开git bash，按以下三步进行：</p>
-<pre><code>`hexo clean`
-
-`hexo g`
-
-`hexo d`
-</code></pre><h3 id="第三步：安装主题"><a href="#第三步：安装主题" class="headerlink" title="第三步：安装主题"></a>第三步：安装主题</h3><p>我安装的是nexT主题，可参考主题作者在GitHub的README<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">nexT</a></p>
-<p>还有我比较喜欢的主题 <a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">yilia</a></p>
-<h3 id="第四步：购买并绑定域名"><a href="#第四步：购买并绑定域名" class="headerlink" title="第四步：购买并绑定域名"></a>第四步：购买并绑定域名</h3><h5 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h5><p>我是在万网上购买的域名，越出名的后缀越贵，看自己吧，比如.com .cn .net这些域名还需要备案，否则用不了。<a href="https://wanwang.aliyun.com/" target="_blank" rel="external">万网</a></p>
-<h5 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h5><p>创建CNAME。</p>
-<ol>
-<li>登陆访问github。</li>
-<li>进入github中需要关联域名的相应项目。</li>
-<li>在该项目下创建CNAME，其CNAME内容即是域名</li>
-</ol>
-<p>前往你的DNS服务商</p>
-<p>进入”新增解析”界面。</p>
-<p>在万网首页点击【进入会员中心】→ 点击【产品管理】下的【域名解析】→ 进入【域名列表】界面 → 点击域名→ 进入【新增解析】界面。</p>
-<p>设置域名解析记录。</p>
-<p>点击【新增解析】；依次填写相应内容。</p>
-<p>“记录类型”选择A；”主机记录”填写www；”解析线路”选择默认；</p>
-<p>“记录值”填写github提供的IP地址，192.30.252.153或192.30.252.154；</p>
-<p>“TTL”默认10分钟，自己可以另行设置也可；</p>
-<p>最后点击【保存】。</p>
-<p>验证域名与github关联是否成功。</p>
-<p>先以github的链接方式访问一次，查看界面；再以域名的方式访问一次，查看界面；两者所查看到的界面是一致。</p>
-<p>注：若域名不能立即访问，需等待一段时间再访问。当github成功关联到域名后，以github的链接方式进行访问，其会自动转化为域名访问。</p>
-<h3 id="参考博客："><a href="#参考博客：" class="headerlink" title="参考博客："></a>参考博客：</h3><p><a href="http://leopardpan.github.io" target="_blank" rel="external">潘柏信的博客</a></p>
-<p><a href="http://jingyan.baidu.com/article/dca1fa6fa1e403f1a5405262.html" target="_blank" rel="external">百度</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;用GitHub和hexo搭建个人主站&quot;&gt;&lt;a href=&quot;#用GitHub和hexo搭建个人主站&quot; class=&quot;headerlink&quot; title=&quot;用GitHub和hexo搭建个人主站&quot;&gt;&lt;/a&gt;用GitHub和hexo搭建个人主站&lt;/h1&gt;&lt;p&gt;作为一个程序员，拥有一个自己的博客，平时记录一下，分享点技术文章，是很有必要的。建立博客的通常渠道包括：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;在博客平台上注册，比如 博客园、CSDN、新浪博客 等。&lt;/li&gt;
-&lt;li&gt;利用博客框架搭建，如 WordPress、Jekyll、hexo 等。&lt;/li&gt;
-&lt;li&gt;自己用代码写一个。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;其中，第一种最简单，也最受限，说不定还会被删帖删号。第二种稍复杂，另外需要自己找部署的服务器，但可定制化较高，是很多程序员的选择。最后一种，是在重复造轮子，不过从另一个方面来看，倒是锻炼编程能力的好方式。&lt;/p&gt;
-&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;
-    
-    </summary>
-    
-      <category term="blog" scheme="http://xxyb.online/categories/blog/"/>
-    
-    
-      <category term="github" scheme="http://xxyb.online/tags/github/"/>
-    
-      <category term="hexo" scheme="http://xxyb.online/tags/hexo/"/>
-    
-      <category term="npm" scheme="http://xxyb.online/tags/npm/"/>
     
   </entry>
   
