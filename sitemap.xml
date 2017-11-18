@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xuyanbo03.github.io/about/index.html</loc>
+    
+    <lastmod>2017-11-18T17:21:27.623Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://xuyanbo03.github.io/es6learn1.html</loc>
     
     <lastmod>2017-07-14T07:28:06.270Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://xuyanbo03.github.io/jsawealgorithms1.html</loc>
     
     <lastmod>2017-07-11T03:14:52.527Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xuyanbo03.github.io/about/index.html</loc>
-    
-    <lastmod>2017-07-10T09:00:10.104Z</lastmod>
     
   </url>
   
