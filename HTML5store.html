@@ -1,0 +1,1166 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="html5," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="HTML5存储初探常见存储：
+
+Cookies
+localStorage  &amp;amp;&amp;amp;  sessionStorage
+indexedDB
+application cache
+
+其它客户端存储：
+
+userData
+只有IE支持（IE5.0 … 9.0）
+
+google Gears
+
+chrome (12.0后放弃支持)
+引擎：64SQLite
+需要用户授权">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5存储初探">
+<meta property="og:url" content="http://xuyanbo03.github.io/HTML5store.html">
+<meta property="og:site_name" content="Awebone's Blog">
+<meta property="og:description" content="HTML5存储初探常见存储：
+
+Cookies
+localStorage  &amp;amp;&amp;amp;  sessionStorage
+indexedDB
+application cache
+
+其它客户端存储：
+
+userData
+只有IE支持（IE5.0 … 9.0）
+
+google Gears
+
+chrome (12.0后放弃支持)
+引擎：64SQLite
+需要用户授权">
+<meta property="og:image" content="http://xuyanbo03.github.io/./IndexedSQL.jpg">
+<meta property="og:image" content="http://xuyanbo03.github.io/./H51.jpg">
+<meta property="og:image" content="http://xuyanbo03.github.io/./H52.jpg">
+<meta property="og:updated_time" content="2020-02-16T10:34:46.688Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5存储初探">
+<meta name="twitter:description" content="HTML5存储初探常见存储：
+
+Cookies
+localStorage  &amp;amp;&amp;amp;  sessionStorage
+indexedDB
+application cache
+
+其它客户端存储：
+
+userData
+只有IE支持（IE5.0 … 9.0）
+
+google Gears
+
+chrome (12.0后放弃支持)
+引擎：64SQLite
+需要用户授权">
+<meta name="twitter:image" content="http://xuyanbo03.github.io/./IndexedSQL.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xuyanbo03.github.io/HTML5store.html"/>
+
+
+
+
+
+
+    <meta name="description" content="大数据开发，算法研究者" />
+
+  <title> HTML5存储初探 | Awebone's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Awebone's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <h1 class="site-subtitle" itemprop="description">见多方能识广，进而才可以融会贯通；取他人之所长，谦而才可以为我所用。</h1>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://xuyanbo03.github.io/HTML5store.html">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Awebone">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/panda-bear.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Awebone's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Awebone's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                HTML5存储初探
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-26T00:00:00+08:00">
+                2017-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>&nbsp点击量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+		  
+		  
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="HTML5存储初探"><a href="#HTML5存储初探" class="headerlink" title="HTML5存储初探"></a>HTML5存储初探</h1><p><strong>常见存储：</strong></p>
+<ol>
+<li>Cookies</li>
+<li>localStorage  &amp;&amp;  sessionStorage</li>
+<li>indexedDB</li>
+<li>application cache</li>
+</ol>
+<p><strong>其它客户端存储：</strong></p>
+<ol>
+<li><p>userData</p>
+<p>只有IE支持（IE5.0 … 9.0）</p>
+</li>
+<li><p>google Gears</p>
+<ul>
+<li>chrome (12.0后放弃支持)</li>
+<li>引擎：64SQLite</li>
+<li>需要用户授权</li>
+</ul>
+</li>
+</ol>
+<hr>
+<a id="more"></a>
+<h2 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h2><p>Cookies是一种能够让网站服务器把少量数据储存到客户端的硬盘或内存，或是从客户端的硬盘读取数据的一种技术。Cookies是当你浏览某网站时，由Web服务器置于你硬盘上的一个非常小的文本文件，它可以记录你的用户ID、密码、浏览过的网页、停留的时间等信息。</p>
+<p>当你再次来到该网站时，网站通过读取Cookies，得知你的相关信息，就可以做出相应的动作，如在页面显示欢迎你的标语，或者让你不用输入ID、密码就直接登录等等</p>
+<p>Cookies文件是在无声无息中伴随浏览器进入我们本地硬盘的，当我们浏览某个站点时，该站点很可能将记录我们隐私的cookies文件上传到本地硬盘。</p>
+<p>H5存储解决了cookie的问题</p>
+<ul>
+<li>解决cookie总数和单个大小的限制(4k 4095B)</li>
+<li>解决请求头常带存储信息的问题</li>
+<li>解决关系型存储的问题</li>
+<li>跨浏览器</li>
+</ul>
+<h2 id="本地存储-localStorage-amp-amp-sessionStorage"><a href="#本地存储-localStorage-amp-amp-sessionStorage" class="headerlink" title="本地存储( localStorage  &amp;&amp;  sessionStorage)"></a>本地存储( localStorage  &amp;&amp;  sessionStorage)</h2><blockquote>
+<p>图片不经常更改，不过如果图片bash64比较大的话，会比较浪费资源）</p>
+</blockquote>
+<ul>
+<li><p>常用属性和方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">localStorage.key(i)</div><div class="line">.length</div><div class="line">.getItem(&quot;&lt;key&gt;&quot;)</div><div class="line">.setItem(&quot;&lt;key&gt;&quot;,&quot;&lt;value&gt;&quot;)</div><div class="line">.removeItem(&quot;&lt;key&gt;&quot;)</div><div class="line">.clear()</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用注意事项：</p>
+<ul>
+<li>使用前先判断浏览器是否支持(浏览器开启无痕模式后不能用, 有的可读但不可写,所以不能用 if(window.localStorage){}来做兼容处理 先set,然后再捕获异常)；</li>
+<li>写数据时，要异常处理，避免抛出容量错误；</li>
+<li>避免将敏感信息写入localStorage；</li>
+<li>注意key的唯一性,会被覆盖</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>使用场景：<ul>
+<li>利用本地数据，减少网络传输；</li>
+<li>弱网络环境下，高延迟，低带宽，尽量把数据本地化。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>H5本地存储的使用限制<ul>
+<li>需要添加存储更新策略和过期控制</li>
+<li>子域名之间不能共享存储数据</li>
+<li>超出存储后如何存储(LRU,FIFO)  –&gt;  LRU (Least Recently Used) FIFO (先入先出)</li>
+<li>server端如何取到数据（请求参数）</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>localStorage优点：<ul>
+<li>存储大小达5M</li>
+<li>兼容性好，功能强大</li>
+<li>应用范围广</li>
+</ul>
+</li>
+</ul>
+<h2 id="indexedDB"><a href="#indexedDB" class="headerlink" title="indexedDB"></a>indexedDB</h2><ul>
+<li><p>定义</p>
+<p>一种能在浏览器中持久存储结构化数据的数据库，并为web应用提供了丰富的查询能力。</p>
+</li>
+<li><p>浏览器支持</p>
+<p>chromw11+，FF4+，IE10+，移动端支持弱</p>
+</li>
+<li><p>存储结构</p>
+<p>按域名分配独立空间，一个域名下可创建多个数据库，一个DB可以创建多个对象储存空间（表），一个对象存储空间可以创建多个对象数据。</p>
+<p><img src="./IndexedSQL.jpg" alt="Alt Text"></p>
+</li>
+<li><p>功能</p>
+<ul>
+<li>增 删 改</li>
+<li>事务</li>
+<li>游标  </li>
+<li>索引</li>
+</ul>
+</li>
+</ul>
+<p><em>注：w3c已不在维护Web SQL.</em></p>
+<h2 id="离线缓存（application-cache）"><a href="#离线缓存（application-cache）" class="headerlink" title="离线缓存（application cache）"></a>离线缓存（application cache）</h2><ul>
+<li><p>离线缓存（application cache）:让web应用在离线情况下继续使用，通过manifest文件指明要缓存的资源。</p>
+</li>
+<li><p>检测是否在线：navigator.onLine</p>
+</li>
+<li><p>原理（如图）：读取离线缓存，同时检查manifest文件，有更新时更新文件和缓存。</p>
+<p><img src="./H51.jpg" alt="Alt Text"></p>
+</li>
+<li><p>appcache使用和更新</p>
+<ul>
+<li>使用：创建manifest文件</li>
+<li>修改资源文件，必须通过修改manifest文件来更新被缓存的文件列表。</li>
+</ul>
+<p><img src="./H52.jpg" alt="Alt Text"></p>
+</li>
+<li><p>优点</p>
+<ul>
+<li>完全离线；</li>
+<li>资源被缓存，加载更快；</li>
+<li>降低server负载。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>缺陷<ul>
+<li>含有manifest属性的当前页一定会被缓存；</li>
+<li>更新依赖manifest文件，更新后需要再次刷新；</li>
+<li>更新是全局性的，无法单点更新；</li>
+<li>对于链接的参数变化敏感，不同的参数视为不同的文件。</li>
+<li>占用资源</li>
+<li>更新内容会在下次生效</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>浏览器支持：IE8-不支持。</p>
+</li>
+<li><p>适用场景</p>
+<ul>
+<li>单地址的页面（无参数）；</li>
+<li>对实时性要求不高的业务；</li>
+<li>离线webapp。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li><p>H5存储优势：</p>
+<ul>
+<li>存储空间大</li>
+<li>接口丰富</li>
+<li>数据相对安全</li>
+<li>关系型</li>
+<li>省流量</li>
+</ul>
+</li>
+<li><p>H5存储劣势：</p>
+<ul>
+<li>浏览器兼容；( localStorage 和 app cache 主流浏览器都兼容的不错 )</li>
+<li>同源策略；( localStorage 不可以跨子域，manifest 所引用的文件必须在同一个域名下面 )</li>
+<li>脚本控制；( 只能在浏览器端存放；服务器端想拿到数据，只能通过请求 )</li>
+<li>更新策略; ( 不像cookie可以设置过期时间；比如localStorage永不过期，必须自己写一套更新机制 )</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/html5/" rel="tag"># html5</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/FreeCodeCamplearn1.html" rel="next" title="FreeCodeCamp学习笔记(一)">
+                <i class="fa fa-chevron-left"></i> FreeCodeCamp学习笔记(一)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/JavaScriptAIchess1.html" rel="prev" title="使用JavaScript做一个AI五子棋（上）">
+                使用JavaScript做一个AI五子棋（上） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/panda-bear.jpg"
+               alt="Awebone" />
+          <p class="site-author-name" itemprop="name">Awebone</p>
+          <p class="site-description motion-element" itemprop="description">大数据开发，算法研究者</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xuyanbo03" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/xuyanbo03" title="GitHub" target="_blank">GitHub</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://segmentfault.com/u/awebone" title="Segmentfault" target="_blank">Segmentfault</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://gitee.com/awebone" title="码云" target="_blank">码云</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML5存储初探"><span class="nav-number">1.</span> <span class="nav-text">HTML5存储初探</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookies"><span class="nav-number">1.1.</span> <span class="nav-text">Cookies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地存储-localStorage-amp-amp-sessionStorage"><span class="nav-number">1.2.</span> <span class="nav-text">本地存储( localStorage  &&  sessionStorage)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#indexedDB"><span class="nav-number">1.3.</span> <span class="nav-text">indexedDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离线缓存（application-cache）"><span class="nav-number">1.4.</span> <span class="nav-text">离线缓存（application cache）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Awebone</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io" rel="external nofollow">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">
+    NexT.Muse
+  </a>
+</div>
+
+
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i> 访问用户：<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人</span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i> 访问次数：<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+  
+  
+</body>
+</html>
