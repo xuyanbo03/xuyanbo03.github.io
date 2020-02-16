@@ -1,0 +1,1258 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="html,css,javascript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="使用JavaScript实现焦点轮播图
+原理各大网站都使用焦点轮播图来展示自己的图片，如淘宝、京东等。
+
+焦点轮播图所用技能点：DOM操作、定时器、事件运用、JS动画、函数递归、无限滚动；
+无限滚动实现：包含图片的父级标签要有一个属性overflow:hidden 来隐藏超出自身尺寸的内容;有style:left通过控制left值来实现滚动; 图片列表中要在开始和结束位置添加两张相同的附属图，使图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用JavaScript实现焦点轮播图">
+<meta property="og:url" content="http://xuyanbo03.github.io/JavaScriptlunbo.html">
+<meta property="og:site_name" content="Awebone's Blog">
+<meta property="og:description" content="使用JavaScript实现焦点轮播图
+原理各大网站都使用焦点轮播图来展示自己的图片，如淘宝、京东等。
+
+焦点轮播图所用技能点：DOM操作、定时器、事件运用、JS动画、函数递归、无限滚动；
+无限滚动实现：包含图片的父级标签要有一个属性overflow:hidden 来隐藏超出自身尺寸的内容;有style:left通过控制left值来实现滚动; 图片列表中要在开始和结束位置添加两张相同的附属图，使图">
+<meta property="og:updated_time" content="2020-02-16T10:34:46.688Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用JavaScript实现焦点轮播图">
+<meta name="twitter:description" content="使用JavaScript实现焦点轮播图
+原理各大网站都使用焦点轮播图来展示自己的图片，如淘宝、京东等。
+
+焦点轮播图所用技能点：DOM操作、定时器、事件运用、JS动画、函数递归、无限滚动；
+无限滚动实现：包含图片的父级标签要有一个属性overflow:hidden 来隐藏超出自身尺寸的内容;有style:left通过控制left值来实现滚动; 图片列表中要在开始和结束位置添加两张相同的附属图，使图">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xuyanbo03.github.io/JavaScriptlunbo.html"/>
+
+
+
+
+
+
+    <meta name="description" content="大数据开发，算法研究者" />
+
+  <title> 使用JavaScript实现焦点轮播图 | Awebone's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Awebone's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <h1 class="site-subtitle" itemprop="description">见多方能识广，进而才可以融会贯通；取他人之所长，谦而才可以为我所用。</h1>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://xuyanbo03.github.io/JavaScriptlunbo.html">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Awebone">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/panda-bear.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Awebone's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Awebone's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                使用JavaScript实现焦点轮播图
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-29T00:00:00+08:00">
+                2016-12-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>&nbsp点击量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+		  
+		  
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="使用JavaScript实现焦点轮播图"><a href="#使用JavaScript实现焦点轮播图" class="headerlink" title="使用JavaScript实现焦点轮播图"></a>使用JavaScript实现焦点轮播图</h1><hr>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p><strong>各大网站都使用焦点轮播图来展示自己的图片，如淘宝、京东等。</strong></p>
+<ol>
+<li>焦点轮播图所用技能点：DOM操作、定时器、事件运用、JS动画、函数递归、无限滚动；</li>
+<li>无限滚动实现：包含图片的父级标签要有一个属性<code>overflow:hidden</code> 来隐藏超出自身尺寸的内容;有<code>style:left</code>通过控制left值来实现滚动; 图片列表中要在开始和结束位置添加两张相同的附属图，使图片实现无缝连接。</li>
+</ol>
+<a id="more"></a>
+<h2 id="使用html和css实现静态页面布局"><a href="#使用html和css实现静态页面布局" class="headerlink" title="使用html和css实现静态页面布局"></a>使用html和css实现静态页面布局</h2><ol>
+<li>父容器要承载图片、圆点下标、左右切换箭头，要让超出部分隐藏<code>overflow：hidden</code>、定位为<code>position：relative</code>；</li>
+<li>图片的div要添加定位：<code>position：absolute</code>让它基于父容器relative，<code>z-index：1</code>使图片堆叠在第一层上；</li>
+<li>圆点下标和左右切换箭头设置<code>z-index：2</code>，<code>position：absolute</code>，让其覆盖在图片上；</li>
+<li>左右切换箭头在初始状态下设置为隐藏<code>display：none</code>，鼠标移上图片时使其显示<code>display：block</code>，鼠标移到箭头上时改变透明度RGBA，使箭头颜色加深；</li>
+</ol>
+<p>附源码<br>HTML代码</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;焦点轮播图&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/焦点轮播图.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;container&quot;&gt;
+        &lt;div id=&quot;list&quot; style=&quot;left: -600px&quot;&gt;
+            &lt;img src=&quot;images/5.jpg&quot; alt=&quot;5&quot;&gt; &lt;!-- 附属图实现无缝的滚动 --&gt;
+            &lt;img src=&quot;images/1.jpg&quot; alt=&quot;1&quot;&gt;
+            &lt;img src=&quot;images/2.jpg&quot; alt=&quot;2&quot;&gt;
+            &lt;img src=&quot;images/3.jpg&quot; alt=&quot;3&quot;&gt;
+            &lt;img src=&quot;images/4.jpg&quot; alt=&quot;4&quot;&gt;
+            &lt;img src=&quot;images/5.jpg&quot; alt=&quot;5&quot;&gt;
+            &lt;img src=&quot;images/1.jpg&quot; alt=&quot;5&quot;&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;buttons&quot;&gt;
+            &lt;span index=&quot;1&quot; class=&quot;on&quot;&gt;&lt;/span&gt;
+            &lt;span index=&quot;2&quot;&gt;&lt;/span&gt;
+            &lt;span index=&quot;3&quot;&gt;&lt;/span&gt;
+            &lt;span index=&quot;4&quot;&gt;&lt;/span&gt;
+            &lt;span index=&quot;5&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;a href=&quot;javascript:;&quot; id=&quot;prev&quot; class=&quot;arrow&quot;&gt;&amp;lt;&lt;/a&gt;
+        &lt;a href=&quot;javascript:;&quot; id=&quot;next&quot; class=&quot;arrow&quot;&gt;&amp;gt;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;js/焦点轮播图.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>css代码</p>
+<pre><code>*{
+    margin: 0;
+    padding: 0;
+    text-decoration :none;
+}
+body{
+    padding: 20px;
+}
+#container{
+    width: 600px;
+    height: 400px;
+    position: relative;
+    border: 3px solid #333;
+    overflow: hidden;
+}
+#list{
+    height: 400px;
+    width: 4200px;
+    position: absolute;
+    z-index: 1;  /*设置元素的堆叠顺序*/
+}
+#list img{
+    float: left;
+}
+#buttons{
+    height: 10px;
+    width: 100px;
+    z-index: 2;
+    bottom: 20px;
+    left: 250px;
+    position: absolute;
+}
+#buttons span {
+    cursor: pointer; /*规定要显示的光标的类型（手指)*/
+    float: left;
+    border: 1px solid #fff;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #333;
+    margin-right: 5px;
+}
+#buttons .on {  
+    background: orangered;
+}
+
+.arrow {
+    cursor: pointer;
+    display: none; /*箭头隐藏*/
+    line-height: 39px;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    width: 40px; height: 40px;  
+    position: absolute;
+    z-index: 2;
+    top: 180px;
+    background-color: RGBA(0,0,0,.3); /*透明度设置*/
+    color: #fff;
+}
+.arrow:hover {
+    background-color: RGBA(0,0,0,.7);
+}
+#container:hover .arrow {
+    display: block; /*箭头显示*/
+}
+#prev {
+    left: 20px;
+}
+#next {
+    right: 20px;
+}
+</code></pre><h2 id="JS动画实现"><a href="#JS动画实现" class="headerlink" title="JS动画实现"></a>JS动画实现</h2><p><strong>箭头切换-&gt;无限滚动-&gt;按钮切换-&gt;延迟切换-&gt;自动播放</strong></p>
+<ol>
+<li>箭头切换<ul>
+<li>整个页面加载<code>window.onload</code>，获取元素</li>
+<li>通过ID名获取页面中的元素（父容器、承载图片容器、圆点列表、箭头），赋值给一个变量</li>
+<li>添加一个时间绑定，点击箭头时实现图片的切换</li>
+<li>当点击右箭头时，改变left的值，向左移动，要减去一张图的宽度</li>
+<li>获取图片容器的值，<code>list.style.left</code> = 自身的值再减去一张图片的宽度<br><strong>注意要把等号后面字符串使用<code>parseInt</code>函数转换为数字才可以进行减法，减去的图片宽度要加px单位</strong></li>
+<li>反方向同理，加上一张图片的宽度</li>
+<li>左右箭头的写法很相似，只是加减不一样，可以封装成一个函数，通过参数的正负值实现加减</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li>无限滚动：弥补左右键切换的空白<ul>
+<li>当前面的附属图比第一张大，最后一张附属图比最后一张小的时候，出现这两种情况时让它复位到真正的第一张或第五张图</li>
+<li>判断是否滚到了辅助图上，滚到了让它归位</li>
+<li>把常用的<code>list.style.left</code>，存到一个变量中，方便使用</li>
+<li>添加圆点的切换功能，创建一个变量来承载当前存储的第几张图片/显示第个圆点</li>
+<li>写一个函数，用来显示亮起小圆点的功能</li>
+<li>圆点是数组，所以创建的变量要减去1才能对应上要显示的圆点，让它亮起来添加class名<br><code>&lt;span index=&quot;1&quot; class=&quot;on&quot;&gt;</code></li>
+<li>再绑定事件中左箭头index要加一，右箭头要减一，调用圆点函数让它点击时显示，每次点击箭头的时候都要改变index的值，使它对应到正确的图片上，调用showButton亮起对应的圆点</li>
+<li>亮起自己的同时，让其他不亮，使用for循环，去掉所有的class，然后break退出循环，不再继续遍历元素节点</li>
+<li>箭头点击时，当圆点index大于5时，让它归位为1，小于1时，归位为5，不到5时加1</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li><p>圆点按钮切换</p>
+<ul>
+<li>通过for循环遍历圆点，添加点击事件</li>
+<li>点击按钮时，取到index值，就可以知道当前点击的是第几个按钮，要显示第几张图片</li>
+<li>通过DOM2级方法<code>getAttribute（）</code>获取到自定义（或自带）属性，为了计算再转换为数字<code>var myIndex = parseInt(this.getAttribute(&#39;index&#39;));</code></li>
+<li>通过新的值减去旧的值获取偏移量<code>var offset = -600 * (myIndex - index);</code></li>
+<li>写一个判断，当这张图片是打开状态的，就什么都不做，用class=on来判断是否打开，return跳出，后面的代码不会再执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">if (animated) &#123;</div><div class="line">	return;</div><div class="line">&#125;</div><div class="line">if (this.className == &apos;on&apos;) &#123;</div><div class="line">     return;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>动画函数</p>
+<ul>
+<li>图片在一定时间内进行位移，要判断是否达到目标值，没有达到还要继续做位移</li>
+<li>声明一个变量用offset总共的偏移量除以次数（位移总时间time除以位移间隔时间inteval),求出每次移动多少<code>var speed = offset / (time / inteval);</code></li>
+<li>判断speed小于0并且left值是否大于目标值newLeft或speed大于0并且left值小于目标值，这两种情况让它做位移<code>speed &gt; 0 &amp;&amp; parseInt(list.style.left) &lt; left) || (speed &lt; 0 &amp;&amp; parseInt(list.style.left) &gt; left</code></li>
+<li>在判断中放入定时器setTimeout<br><em>一个函数不停的在一定的条件之后调用自身这种做法叫做递归</em></li>
+<li>优化：声明一个变量，作为动画是否在运行的依据，开始状态为false表示没有运行<code>var animated = false; //优化</code></li>
+</ul>
+</li>
+<li><p>自动播放：</p>
+<ul>
+<li>鼠标移开时自动播放，鼠标移上去时停止，通过定时器<code>setTimeout</code>和<code>clearTimeout</code>来实现的</li>
+<li>设置定时器，让它隔几秒切换一次，相当于3秒钟调一次next.onclick（右箭头）事件</li>
+<li>自动切换需要写两个函数来控制自动切换，声明一个变量来存放定时器不给任何值</li>
+<li>鼠标移开时定时器执行，移上时清除定时器执行，要给整个容器加一个鼠标移入移开事件</li>
+<li>鼠标不做任何事情时让它自动播放，调用函数</li>
+</ul>
+</li>
+</ol>
+<p>附源码</p>
+<pre><code>window.onload = function() {
+    var container = document.getElementById(&apos;container&apos;);
+    var list = document.getElementById(&apos;list&apos;);
+    var buttons = document.getElementById(&apos;buttons&apos;).getElementsByTagName(&apos;span&apos;);
+    var prev = document.getElementById(&apos;prev&apos;);
+    var next = document.getElementById(&apos;next&apos;);
+    var index = 1; //索引
+    var len = 5;
+    var animated = false; //优化
+    var interval = 3000; //时间间隔
+    var timer;
+
+    function showButton() {
+        for (var i = 0; i &lt; buttons.length; i++) {
+            if (buttons[i].className == &apos;on&apos;) {
+                buttons[i].className = &apos;&apos;;
+                break;
+            }
+        }
+        buttons[index - 1].className = &apos;on&apos;;
+    } //按钮切换
+
+    next.onclick = function() {
+        if (animated) {
+            return;
+        }
+        if (index == 5) {
+            index = 1;
+        } else {
+            index += 1;
+        }
+        animate(-600);
+        showButton();
+    }//右切换
+    prev.onclick = function() {
+        if (animated) {
+            return;
+        }
+        if (index == 1) {
+            index = 5;
+        } else {
+            index -= 1;
+        }
+        animate(600);
+        showButton();
+    }//左切换
+
+    function play() {
+        timer = setTimeout(function() {
+            next.onclick();
+            play();
+        }, interval);
+    }
+
+    function stop() {
+        clearTimeout(timer);
+    }
+
+    for (var i = 0; i &lt; buttons.length; i++) {
+        buttons[i].onclick = function() {
+            if (animated) {
+                return;
+            }
+            if (this.className == &apos;on&apos;) {
+                return;
+            }
+            var myIndex = parseInt(this.getAttribute(&apos;index&apos;));
+            var offset = -600 * (myIndex - index);
+            animate(offset);
+            index = myIndex;
+            showButton();
+        }
+    }
+
+    function animate(offset) {
+        if (offset == 0) {
+            return;
+        }
+        animated = true;
+        var time = 300; //时间
+        var inteval = 10; //时间间隔
+        var speed = offset / (time / inteval); //速度
+        var left = parseInt(list.style.left) + offset; //改变值来实现滚动
+
+        var go = function() {
+                if ((speed &gt; 0 &amp;&amp; parseInt(list.style.left) &lt; left) || (speed &lt; 0 &amp;&amp; parseInt(list.style.left) &gt; left)) {
+                    list.style.left = parseInt(list.style.left) + speed + &apos;px&apos;;
+                    setTimeout(go, inteval);
+                } else {
+                    list.style.left = left + &apos;px&apos;;
+                    if (left &gt; -200) {
+                        list.style.left = -600 * len + &apos;px&apos;;
+                    }
+                    if (left &lt; (-600 * len)) {
+                        list.style.left = &apos;-600px&apos;;
+                    }
+                    animated = false;
+                }
+            } //自动滚动
+        go();
+    }
+
+    container.onmouseover = stop();
+    container.onmouseout = play();
+
+    play();
+}
+</code></pre><p>##总结##</p>
+<p>焦点轮播图的实现需要耐心分析原理，掌握焦点轮播图所需的技能点，从而通过代码实现。</p>
+<p>先写出静态页面html+css，注意属性值的设置。再用js一步一步写出箭头切换、按钮切换的函数，学会设置和清除定时器、递归调用函数，实现自动滚动播放。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/html/" rel="tag"># html</a>
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hello-world.html" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/renshengjingjie.html" rel="prev" title="人生的境界">
+                人生的境界 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/panda-bear.jpg"
+               alt="Awebone" />
+          <p class="site-author-name" itemprop="name">Awebone</p>
+          <p class="site-description motion-element" itemprop="description">大数据开发，算法研究者</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xuyanbo03" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/xuyanbo03" title="GitHub" target="_blank">GitHub</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://segmentfault.com/u/awebone" title="Segmentfault" target="_blank">Segmentfault</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://gitee.com/awebone" title="码云" target="_blank">码云</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用JavaScript实现焦点轮播图"><span class="nav-number">1.</span> <span class="nav-text">使用JavaScript实现焦点轮播图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用html和css实现静态页面布局"><span class="nav-number">1.2.</span> <span class="nav-text">使用html和css实现静态页面布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS动画实现"><span class="nav-number">1.3.</span> <span class="nav-text">JS动画实现</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Awebone</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io" rel="external nofollow">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">
+    NexT.Muse
+  </a>
+</div>
+
+
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i> 访问用户：<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人</span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i> 访问次数：<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+  
+  
+</body>
+</html>
