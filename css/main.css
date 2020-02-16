@@ -497,8 +497,13 @@ pre,
   margin: 20px 0;
   padding: 0;
   font-size: 13px;
+<<<<<<< HEAD
   color: #c5c8c6;
   background: #1d1f21;
+=======
+  color: #eaeaea;
+  background: #000;
+>>>>>>> blog
   line-height: 1.6;
 }
 pre,
@@ -508,14 +513,23 @@ code {
 code {
   padding: 2px 4px;
   word-wrap: break-word;
+<<<<<<< HEAD
   color: #c5c8c6;
   background: #1d1f21;
+=======
+  color: #eaeaea;
+  background: #000;
+>>>>>>> blog
   border-radius: 3px;
   font-size: 13px;
 }
 pre code {
   padding: 0;
+<<<<<<< HEAD
   color: #c5c8c6;
+=======
+  color: #eaeaea;
+>>>>>>> blog
   background: none;
   text-shadow: none;
 }
@@ -538,7 +552,11 @@ pre code {
 }
 .highlight figcaption {
   font-size: 1em;
+<<<<<<< HEAD
   color: #c5c8c6;
+=======
+  color: #eaeaea;
+>>>>>>> blog
   line-height: 1em;
   margin-bottom: 1em;
 }
@@ -552,22 +570,39 @@ pre code {
 }
 .highlight figcaption a {
   float: right;
+<<<<<<< HEAD
   color: #c5c8c6;
 }
 .highlight figcaption a:hover {
   border-bottom-color: #c5c8c6;
+=======
+  color: #eaeaea;
+}
+.highlight figcaption a:hover {
+  border-bottom-color: #eaeaea;
+>>>>>>> blog
 }
 .highlight .gutter pre {
   padding-left: 10px;
   padding-right: 10px;
+<<<<<<< HEAD
   color: #888f96;
   text-align: right;
   background-color: #000;
+=======
+  color: #666;
+  text-align: right;
+  background-color: #292929;
+>>>>>>> blog
 }
 .highlight .code pre {
   padding-left: 10px;
   padding-right: 10px;
+<<<<<<< HEAD
   background-color: #1d1f21;
+=======
+  background-color: #000;
+>>>>>>> blog
 }
 .highlight .line {
   height: 20px;
@@ -591,7 +626,11 @@ pre .addition {
   background: #800000;
 }
 pre .meta {
+<<<<<<< HEAD
   color: #b294bb;
+=======
+  color: #c397d8;
+>>>>>>> blog
 }
 pre .comment {
   color: #969896;
@@ -608,7 +647,11 @@ pre .html .doctype,
 pre .css .id,
 pre .css .class,
 pre .css .pseudo {
+<<<<<<< HEAD
   color: #c66;
+=======
+  color: #d54e53;
+>>>>>>> blog
 }
 pre .number,
 pre .preprocessor,
@@ -617,7 +660,11 @@ pre .literal,
 pre .params,
 pre .constant,
 pre .command {
+<<<<<<< HEAD
   color: #de935f;
+=======
+  color: #e78c45;
+>>>>>>> blog
 }
 pre .ruby .class .title,
 pre .css .rules .attribute,
@@ -630,11 +677,19 @@ pre .xml .cdata,
 pre .special,
 pre .number,
 pre .formula {
+<<<<<<< HEAD
   color: #b5bd68;
 }
 pre .title,
 pre .css .hexcolor {
   color: #8abeb7;
+=======
+  color: #b9ca4a;
+}
+pre .title,
+pre .css .hexcolor {
+  color: #70c0b1;
+>>>>>>> blog
 }
 pre .function,
 pre .python .decorator,
@@ -644,11 +699,19 @@ pre .ruby .title .keyword,
 pre .perl .sub,
 pre .javascript .title,
 pre .coffeescript .title {
+<<<<<<< HEAD
   color: #81a2be;
 }
 pre .keyword,
 pre .javascript .function {
   color: #b294bb;
+=======
+  color: #7aa6da;
+}
+pre .keyword,
+pre .javascript .function {
+  color: #c397d8;
+>>>>>>> blog
 }
 .full-image.full-image.full-image {
   border: none;
@@ -1702,7 +1765,11 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
+<<<<<<< HEAD
   background: #c9ff7c;
+=======
+  background: #bdff47;
+>>>>>>> blog
 }
 .links-of-blogroll {
   font-size: 13px;
