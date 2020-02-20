@@ -1743,7 +1743,7 @@
     <link href="http://xuyanbo03.github.io/MapReducelearn.html"/>
     <id>http://xuyanbo03.github.io/MapReducelearn.html</id>
     <published>2017-04-13T16:00:00.000Z</published>
-    <updated>2020-02-16T10:34:46.688Z</updated>
+    <updated>2020-02-20T15:45:09.363Z</updated>
     
     <content type="html"><![CDATA[<h1 id="MapReduce初探"><a href="#MapReduce初探" class="headerlink" title="MapReduce初探"></a>MapReduce初探</h1><p><strong>MapReduce是一个用于处理海量数据的分布式计算框架</strong></p>
 <p>MapReduce解决的问题：</p>
@@ -1760,7 +1760,7 @@
 <li>可扩展性</li>
 <li>并发处理</li>
 </ul>
-<p><img src="./HDFS.png" alt="Alt text"></p>
+<p><img src="images/mr-learn/HDFS.png" alt="Alt text"></p>
 <p>MapReduce思想：分治</p>
 <ul>
 <li>分解</li>
@@ -1773,20 +1773,20 @@
 <li><p>合：reduce</p>
 </li>
 </ul>
-<h1 id="MapReduce执行流程"><a href="#MapReduce执行流程" class="headerlink" title="MapReduce执行流程"></a>MapReduce执行流程</h1><p><img src="./MR1.png" alt="Alt text"></p>
-<p><img src="./MR2.png" alt="Alt text"></p>
-<p><img src="./MR3.png" alt="Alt text"></p>
-<p><img src="./MR4.png" alt="Alt text"></p>
-<p><img src="./MR5.png" alt="Alt text"></p>
-<p><img src="./MR6.png" alt="Alt text"></p>
-<p><img src="./MR7.png" alt="Alt text"></p>
-<p><img src="./MR8.png" alt="Alt text"></p>
-<p><img src="./MR9.png" alt="Alt text"></p>
-<p><img src="./MR10.png" alt="Alt text"></p>
-<p><img src="./MR11.png" alt="Alt text"></p>
-<p><img src="./MR12.png" alt="Alt text"></p>
-<p><img src="./MR13.png" alt="Alt text"></p>
-<p><img src="./MR14.png" alt="Alt text"></p>
+<h1 id="MapReduce执行流程"><a href="#MapReduce执行流程" class="headerlink" title="MapReduce执行流程"></a>MapReduce执行流程</h1><p><img src="images/mr-learn/MR1.png" alt="Alt text"></p>
+<p><img src="images/mr-learn/MR2.png" alt="Alt text"></p>
+<p><img src="images/mr-learn/MR3.png" alt="Alt text"></p>
+<p><img src="images/mr-learn/MR4.png" alt="Alt text"></p>
+<p><img src="images/mr-learn/MR5.png" alt="Alt text"></p>
+<p><img src="images/mr-learn/MR6.png" alt="Alt text"></p>
+<p><img src="images/mr-learn/MR7.png" alt="Alt text"></p>
+<p><img src="images/mr-learn/MR8.png" alt="Alt text"></p>
+<p><img src="images/mr-learn/MR9.png" alt="Alt text"></p>
+<p><img src="images/mr-learn/MR10.png" alt="Alt text"></p>
+<p><img src="images/mr-learn/MR11.png" alt="Alt text"></p>
+<p><img src="images/mr-learn/MR12.png" alt="Alt text"></p>
+<p><img src="images/mr-learn/MR13.png" alt="Alt text"></p>
+<p><img src="images/mr-learn/MR14.png" alt="Alt text"></p>
 <h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><h2 id="WordCount"><a href="#WordCount" class="headerlink" title="WordCount"></a>WordCount</h2><p><img src="./WordCount.png" alt="Alt text"></p>
 <h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><ul>
 <li>数据统计<ul>
