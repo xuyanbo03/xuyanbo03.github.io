@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://xuyanbo03.github.io/fcc-note-1.html</loc>
+    <lastmod>2020-02-22</lastmod>
+  </url>  <url>
+    <loc>http://xuyanbo03.github.io/mapreduce-note.html</loc>
+    <lastmod>2020-02-22</lastmod>
+  </url>  <url>
+    <loc>http://xuyanbo03.github.io/css-note.html</loc>
+    <lastmod>2020-02-22</lastmod>
+  </url>  <url>
+    <loc>http://xuyanbo03.github.io/css-3d.html</loc>
+    <lastmod>2020-02-22</lastmod>
+  </url>  <url>
+    <loc>http://xuyanbo03.github.io/enhance-efficiency.html</loc>
+    <lastmod>2020-02-22</lastmod>
+  </url>  <url>
+    <loc>http://xuyanbo03.github.io/google-hack.html</loc>
+    <lastmod>2020-02-22</lastmod>
+  </url>  <url>
+    <loc>http://xuyanbo03.github.io/hexo-blog-install.html</loc>
+    <lastmod>2020-02-22</lastmod>
+  </url>  <url>
+    <loc>http://xuyanbo03.github.io/html-store.html</loc>
+    <lastmod>2020-02-22</lastmod>
+  </url>  <url>
+    <loc>http://xuyanbo03.github.io/html-note.html</loc>
+    <lastmod>2020-02-22</lastmod>
+  </url>  <url>
+    <loc>http://xuyanbo03.github.io/js-lunbo.html</loc>
+    <lastmod>2020-02-22</lastmod>
+  </url>  <url>
+    <loc>http://xuyanbo03.github.io/js-algorithms-2.html</loc>
+    <lastmod>2020-02-22</lastmod>
+  </url>  <url>
+    <loc>http://xuyanbo03.github.io/js-algorithms-1.html</loc>
+    <lastmod>2020-02-22</lastmod>
+  </url>  <url>
+    <loc>http://xuyanbo03.github.io/js-chess.html</loc>
+    <lastmod>2020-02-22</lastmod>
+  </url>  <url>
+    <loc>http://xuyanbo03.github.io/mongo-note.html</loc>
+    <lastmod>2020-02-22</lastmod>
+  </url>  <url>
     <loc>http://xuyanbo03.github.io/seo-note.html</loc>
     <lastmod>2020-02-22</lastmod>
   </url>  <url>
@@ -10,13 +52,7 @@
     <loc>http://xuyanbo03.github.io/linux-question-solve.html</loc>
     <lastmod>2020-02-22</lastmod>
   </url>  <url>
-    <loc>http://xuyanbo03.github.io/mongo-note.html</loc>
-    <lastmod>2020-02-22</lastmod>
-  </url>  <url>
     <loc>http://xuyanbo03.github.io/setup.html</loc>
-    <lastmod>2020-02-22</lastmod>
-  </url>  <url>
-    <loc>http://xuyanbo03.github.io/hexo-blog-install.html</loc>
     <lastmod>2020-02-22</lastmod>
   </url>  <url>
     <loc>http://xuyanbo03.github.io/hello-world.html</loc>
@@ -25,58 +61,13 @@
     <loc>http://xuyanbo03.github.io/learn-method.html</loc>
     <lastmod>2020-02-22</lastmod>
   </url>  <url>
-    <loc>http://xuyanbo03.github.io/mapreduce-note.html</loc>
-    <lastmod>2020-02-22</lastmod>
-  </url>  <url>
-    <loc>http://xuyanbo03.github.io/enhance-efficiency.html</loc>
-    <lastmod>2020-02-22</lastmod>
-  </url>  <url>
-    <loc>http://xuyanbo03.github.io/jsawealgorithms3.html</loc>
-    <lastmod>2020-02-16</lastmod>
-  </url>  <url>
-    <loc>http://xuyanbo03.github.io/jsawealgorithms1.html</loc>
-    <lastmod>2020-02-16</lastmod>
-  </url>  <url>
-    <loc>http://xuyanbo03.github.io/es6learn1.html</loc>
-    <lastmod>2020-02-16</lastmod>
-  </url>  <url>
-    <loc>http://xuyanbo03.github.io/jsawealgorithms2.html</loc>
-    <lastmod>2020-02-16</lastmod>
-  </url>  <url>
-    <loc>http://xuyanbo03.github.io/HTMLlearn.html</loc>
-    <lastmod>2020-02-16</lastmod>
-  </url>  <url>
-    <loc>http://xuyanbo03.github.io/JavaScriptlunbo.html</loc>
-    <lastmod>2020-02-16</lastmod>
-  </url>  <url>
-    <loc>http://xuyanbo03.github.io/HTML5store.html</loc>
-    <lastmod>2020-02-16</lastmod>
-  </url>  <url>
-    <loc>http://xuyanbo03.github.io/JavaScriptAIchess1.html</loc>
-    <lastmod>2020-02-16</lastmod>
-  </url>  <url>
-    <loc>http://xuyanbo03.github.io/Googlehack.html</loc>
-    <lastmod>2020-02-16</lastmod>
-  </url>  <url>
-    <loc>http://xuyanbo03.github.io/CSSlearn.html</loc>
-    <lastmod>2020-02-16</lastmod>
-  </url>  <url>
-    <loc>http://xuyanbo03.github.io/FreeCodeCamplearn3.html</loc>
-    <lastmod>2020-02-16</lastmod>
-  </url>  <url>
     <loc>http://xuyanbo03.github.io/FreeCodeCamplearn4.html</loc>
     <lastmod>2020-02-16</lastmod>
   </url>  <url>
-    <loc>http://xuyanbo03.github.io/FreeCodeCamplearn1.html</loc>
-    <lastmod>2020-02-16</lastmod>
-  </url>  <url>
-    <loc>http://xuyanbo03.github.io/AlgorithmsJavaScriptlearn.html</loc>
-    <lastmod>2020-02-16</lastmod>
-  </url>  <url>
-    <loc>http://xuyanbo03.github.io/CSS3show3D.html</loc>
-    <lastmod>2020-02-16</lastmod>
-  </url>  <url>
     <loc>http://xuyanbo03.github.io/FreeCodeCamplearn2.html</loc>
+    <lastmod>2020-02-16</lastmod>
+  </url>  <url>
+    <loc>http://xuyanbo03.github.io/FreeCodeCamplearn3.html</loc>
     <lastmod>2020-02-16</lastmod>
   </url>
 </urlset>
