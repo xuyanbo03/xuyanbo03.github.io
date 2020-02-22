@@ -2,6 +2,104 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xuyanbo03.github.io/fcc-note-1.html</loc>
+    
+    <lastmod>2020-02-22T07:56:03.012Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xuyanbo03.github.io/mapreduce-note.html</loc>
+    
+    <lastmod>2020-02-22T07:49:19.642Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xuyanbo03.github.io/css-note.html</loc>
+    
+    <lastmod>2020-02-22T07:46:08.198Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xuyanbo03.github.io/css-3d.html</loc>
+    
+    <lastmod>2020-02-22T07:39:34.543Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xuyanbo03.github.io/enhance-efficiency.html</loc>
+    
+    <lastmod>2020-02-22T07:32:47.495Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xuyanbo03.github.io/google-hack.html</loc>
+    
+    <lastmod>2020-02-22T07:31:45.351Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xuyanbo03.github.io/hexo-blog-install.html</loc>
+    
+    <lastmod>2020-02-22T07:23:18.890Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xuyanbo03.github.io/html-store.html</loc>
+    
+    <lastmod>2020-02-22T07:22:26.465Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xuyanbo03.github.io/html-note.html</loc>
+    
+    <lastmod>2020-02-22T07:09:52.355Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xuyanbo03.github.io/js-lunbo.html</loc>
+    
+    <lastmod>2020-02-22T06:57:28.597Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xuyanbo03.github.io/js-algorithms-2.html</loc>
+    
+    <lastmod>2020-02-22T06:42:28.300Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xuyanbo03.github.io/js-algorithms-1.html</loc>
+    
+    <lastmod>2020-02-22T06:37:10.957Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xuyanbo03.github.io/js-chess.html</loc>
+    
+    <lastmod>2020-02-22T06:18:23.729Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xuyanbo03.github.io/mongo-note.html</loc>
+    
+    <lastmod>2020-02-22T06:00:54.991Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://xuyanbo03.github.io/seo-note.html</loc>
     
     <lastmod>2020-02-22T04:04:25.042Z</lastmod>
@@ -23,23 +121,9 @@
   </url>
   
   <url>
-    <loc>http://xuyanbo03.github.io/mongo-note.html</loc>
-    
-    <lastmod>2020-02-22T03:58:47.562Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://xuyanbo03.github.io/setup.html</loc>
     
     <lastmod>2020-02-22T03:52:07.935Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xuyanbo03.github.io/hexo-blog-install.html</loc>
-    
-    <lastmod>2020-02-22T03:46:14.543Z</lastmod>
     
   </url>
   
@@ -54,13 +138,6 @@
     <loc>http://xuyanbo03.github.io/learn-method.html</loc>
     
     <lastmod>2020-02-22T03:16:47.700Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xuyanbo03.github.io/mapreduce-note.html</loc>
-    
-    <lastmod>2020-02-22T03:12:29.020Z</lastmod>
     
   </url>
   
@@ -86,13 +163,6 @@
   </url>
   
   <url>
-    <loc>http://xuyanbo03.github.io/enhance-efficiency.html</loc>
-    
-    <lastmod>2020-02-22T02:40:15.469Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://xuyanbo03.github.io/categories/index.html</loc>
     
     <lastmod>2020-02-16T10:34:46.719Z</lastmod>
@@ -100,70 +170,14 @@
   </url>
   
   <url>
-    <loc>http://xuyanbo03.github.io/jsawealgorithms3.html</loc>
-    
-    <lastmod>2020-02-16T10:34:46.704Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xuyanbo03.github.io/jsawealgorithms1.html</loc>
-    
-    <lastmod>2020-02-16T10:34:46.704Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xuyanbo03.github.io/es6learn1.html</loc>
-    
-    <lastmod>2020-02-16T10:34:46.704Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xuyanbo03.github.io/jsawealgorithms2.html</loc>
-    
-    <lastmod>2020-02-16T10:34:46.704Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xuyanbo03.github.io/HTMLlearn.html</loc>
-    
-    <lastmod>2020-02-16T10:34:46.688Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xuyanbo03.github.io/JavaScriptlunbo.html</loc>
-    
-    <lastmod>2020-02-16T10:34:46.688Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xuyanbo03.github.io/HTML5store.html</loc>
-    
-    <lastmod>2020-02-16T10:34:46.688Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xuyanbo03.github.io/JavaScriptAIchess1.html</loc>
-    
-    <lastmod>2020-02-16T10:34:46.688Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xuyanbo03.github.io/Googlehack.html</loc>
+    <loc>http://xuyanbo03.github.io/FreeCodeCamplearn4.html</loc>
     
     <lastmod>2020-02-16T10:34:46.673Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://xuyanbo03.github.io/CSSlearn.html</loc>
+    <loc>http://xuyanbo03.github.io/FreeCodeCamplearn2.html</loc>
     
     <lastmod>2020-02-16T10:34:46.673Z</lastmod>
     
@@ -177,42 +191,7 @@
   </url>
   
   <url>
-    <loc>http://xuyanbo03.github.io/FreeCodeCamplearn4.html</loc>
-    
-    <lastmod>2020-02-16T10:34:46.673Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://xuyanbo03.github.io/404.html</loc>
-    
-    <lastmod>2020-02-16T10:34:46.673Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xuyanbo03.github.io/FreeCodeCamplearn1.html</loc>
-    
-    <lastmod>2020-02-16T10:34:46.673Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xuyanbo03.github.io/AlgorithmsJavaScriptlearn.html</loc>
-    
-    <lastmod>2020-02-16T10:34:46.673Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xuyanbo03.github.io/CSS3show3D.html</loc>
-    
-    <lastmod>2020-02-16T10:34:46.673Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xuyanbo03.github.io/FreeCodeCamplearn2.html</loc>
     
     <lastmod>2020-02-16T10:34:46.673Z</lastmod>
     
