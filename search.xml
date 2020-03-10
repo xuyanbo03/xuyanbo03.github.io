@@ -325,9 +325,9 @@
 <li><p>启动时会连到test数据库，并将数据库连接赋值给全局变量db</p>
 </li>
 <li><p>连接到不同的数据库或服务器</p>
-  <figure class="highlight arduino"><table><tbody><tr><td class="code"><pre><div class="line">   mongo --nodb</div><div class="line"><span class="built_in">connect</span>=<span class="keyword">new</span> Mongo(<span class="string">"host:27017"</span>)</div><div class="line">   db=<span class="built_in">connect</span>.getDB(<span class="string">"myDB"</span>)</div></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><div class="line">mongo --nodb</div><div class="line">connect=<span class="keyword">new</span> Mongo(<span class="string">"host:27017"</span>)</div><div class="line">db=connect.getDB(<span class="string">"myDB"</span>)</div></pre></td></tr></tbody></table></figure>
 <ul>
 <li><p>帮助</p>
 <ul>
@@ -1295,8 +1295,8 @@
       </categories>
       <tags>
         <tag>CSS</tag>
-        <tag>HTML</tag>
         <tag>JavaScript</tag>
+        <tag>HTML</tag>
         <tag>FreeCodeCamp</tag>
       </tags>
   </entry>
