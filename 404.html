@@ -6,7 +6,7 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-CN">
-<head>
+<head><link rel=manifest href=/manifest.json>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
@@ -73,6 +73,12 @@
   
 
   
+    
+      
+    
+
+    
+  
 
   
 
@@ -87,7 +93,7 @@
   
     
     
-    <link href="https://fonts.google.com//css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Comic Neue:300,300italic,400,400italic,700,700italic|Comic Neue:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -134,25 +140,25 @@
 
 
 
-<meta name="description" content="document.querySelectorAll(&apos;.github-emoji&apos;)
-          .forEach(el =&amp;gt; {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement(&apos;img&apos;);">
+<meta name="description" content="if (&apos;serviceWorker&apos; in navigator) {
+  navigator.serviceWorker.register(&apos;/sw.js?t=1583816510621&apos;)
+    .then(function () {console.log(&apos;ServiceWorker Register Successfully.&apos;)})
+    .catch(f">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Awebone's Blog">
 <meta property="og:url" content="http://xuyanbo03.github.io/404.html">
 <meta property="og:site_name" content="Awebone's Blog">
-<meta property="og:description" content="document.querySelectorAll(&apos;.github-emoji&apos;)
-          .forEach(el =&amp;gt; {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement(&apos;img&apos;);">
+<meta property="og:description" content="if (&apos;serviceWorker&apos; in navigator) {
+  navigator.serviceWorker.register(&apos;/sw.js?t=1583816510621&apos;)
+    .then(function () {console.log(&apos;ServiceWorker Register Successfully.&apos;)})
+    .catch(f">
 <meta property="og:updated_time" content="2020-02-16T10:34:46.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Awebone's Blog">
-<meta name="twitter:description" content="document.querySelectorAll(&apos;.github-emoji&apos;)
-          .forEach(el =&amp;gt; {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement(&apos;img&apos;);">
+<meta name="twitter:description" content="if (&apos;serviceWorker&apos; in navigator) {
+  navigator.serviceWorker.register(&apos;/sw.js?t=1583816510621&apos;)
+    .then(function () {console.log(&apos;ServiceWorker Register Successfully.&apos;)})
+    .catch(f">
 
 
 
@@ -162,7 +168,7 @@
     root: '/',
     scheme: 'Muse',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -387,7 +393,12 @@
         
           
         <script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8" homepageurl="http://xxyb.online" homepagename="�ҵĲ���"></script>
-    
+    <script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1583816510621')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script>
 
 <script>
         document.querySelectorAll('.github-emoji')
@@ -542,7 +553,7 @@
             <div class="links-of-blogroll motion-element links-of-blogroll-inline">
               <div class="links-of-blogroll-title">
                 <i class="fa  fa-fw fa-globe"></i>
-                Links
+                友链
               </div>
               <ul class="links-of-blogroll-list">
                 
@@ -605,6 +616,13 @@ show_date_time();
 
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -684,11 +702,6 @@ show_date_time();
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -1282,5 +1295,4 @@ show_date_time();
 
   
 
-</body>
-</html>
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

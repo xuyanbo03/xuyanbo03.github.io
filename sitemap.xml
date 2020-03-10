@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://xuyanbo03.github.io/top/index.html</loc>
+    <loc>http://xuyanbo03.github.io/manifest.json</loc>
     
-    <lastmod>2020-03-09T12:33:03.127Z</lastmod>
+    <lastmod>2020-03-10T03:41:30.756Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xuyanbo03.github.io/2017/07/mongo-note/</loc>
+    
+    <lastmod>2020-03-10T01:56:33.455Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://xuyanbo03.github.io/2017/09/mapreduce-note/</loc>
     
-    <lastmod>2020-03-09T12:30:53.457Z</lastmod>
+    <lastmod>2020-03-10T01:47:36.792Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xuyanbo03.github.io/top/index.html</loc>
+    
+    <lastmod>2020-03-09T12:33:03.127Z</lastmod>
     
   </url>
   
@@ -110,13 +124,6 @@
     <loc>http://xuyanbo03.github.io/2017/04/js-chess/</loc>
     
     <lastmod>2020-02-22T06:18:23.729Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xuyanbo03.github.io/2017/07/mongo-note/</loc>
-    
-    <lastmod>2020-02-22T06:00:54.991Z</lastmod>
     
   </url>
   

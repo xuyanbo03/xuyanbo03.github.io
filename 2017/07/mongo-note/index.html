@@ -6,7 +6,7 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-CN">
-<head>
+<head><link rel=manifest href=/manifest.json>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
@@ -73,6 +73,12 @@
   
 
   
+    
+      
+    
+
+    
+  
 
   
 
@@ -87,7 +93,7 @@
   
     
     
-    <link href="https://fonts.google.com//css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Comic Neue:300,300italic,400,400italic,700,700italic|Comic Neue:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -150,7 +156,7 @@ MongoDB是一个跨平台，面向文档的数据库，提供高性能，高可�
 基本概念
 数据库：数据库是一个集合的物理容器。每个数据库获取其自己设定在文件系统上的文件。一个单一的MongoDB服务器通常有多个数据库
 集合：集合是一组MongoDB的文件。它与一个RDBMS表是等效的。一个集合存在于数据库中。集合不强制执行">
-<meta property="og:updated_time" content="2020-02-22T06:00:54.991Z">
+<meta property="og:updated_time" content="2020-03-10T01:56:33.455Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB基础学习">
 <meta name="twitter:description" content="MongoDB基础学习
@@ -168,7 +174,7 @@ MongoDB是一个跨平台，面向文档的数据库，提供高性能，高可�
     root: '/',
     scheme: 'Muse',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -569,9 +575,9 @@ MongoDB是一个跨平台，面向文档的数据库，提供高性能，高可�
 <li><p>启动时会连到test数据库，并将数据库连接赋值给全局变量db</p>
 </li>
 <li><p>连接到不同的数据库或服务器</p>
-  <figure class="highlight arduino"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">   mongo --nodb</div><div class="line"><span class="built_in">connect</span>=<span class="keyword">new</span> Mongo(<span class="string">"host:27017"</span>)</div><div class="line">   db=<span class="built_in">connect</span>.getDB(<span class="string">"myDB"</span>)</div></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mongo --nodb</div><div class="line">connect=<span class="keyword">new</span> Mongo(<span class="string">"host:27017"</span>)</div><div class="line">db=connect.getDB(<span class="string">"myDB"</span>)</div></pre></td></tr></tbody></table></figure>
 <ul>
 <li><p>帮助</p>
 <ul>
@@ -710,11 +716,6 @@ MongoDB是一个跨平台，面向文档的数据库，提供高性能，高可�
       </div>
     
 
-    
-      <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/zfb.jpg" alt="Awebone 支付宝"/>
-        <p>支付宝</p>
-      </div>
     
 
     
@@ -922,7 +923,7 @@ MongoDB是一个跨平台，面向文档的数据库，提供高性能，高可�
             <div class="links-of-blogroll motion-element links-of-blogroll-inline">
               <div class="links-of-blogroll-title">
                 <i class="fa  fa-fw fa-globe"></i>
-                Links
+                友链
               </div>
               <ul class="links-of-blogroll-list">
                 
@@ -1002,6 +1003,13 @@ show_date_time();
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -1080,11 +1088,6 @@ show_date_time();
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -1695,5 +1698,9 @@ show_date_time();
 
   
 
-</body>
-</html>
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1583816510621')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
