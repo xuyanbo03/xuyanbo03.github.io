@@ -1,8 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ElasticSearch安装避坑</title>
+    <url>/posts/62e0a87a/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="ElasticSearch安装避坑"><a href="#ElasticSearch安装避坑" class="headerlink" title="ElasticSearch安装避坑"></a>ElasticSearch安装避坑</h1><p>本文使用Centos7安装ElasticSearch6.5.2，记录避坑指南。</p>
+<h2 id="升级内核"><a href="#升级内核" class="headerlink" title="升级内核"></a>升级内核</h2><p>通过命令查看内核：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><div class="line">uname -a</div><div class="line"># 3.10.0-327.el7.x86_64</div></pre></td></tr></tbody></table></figure>
+<p>Centos7自带的内核为3.10，但是ElasticSearch6.5.2要求系统内核必须在3.5以上，故升级内核，root用户下执行：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><div class="line"># 导入key</div><div class="line">rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org  </div><div class="line"># 安装elrepo的yum源</div><div class="line">rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm</div><div class="line"># 安装内核</div><div class="line">yum --enablerepo=elrepo-kernel install  kernel-ml-devel kernel-ml</div><div class="line"># 查看默认启动顺序</div><div class="line">awk -F\' '$1=="menuentry " {print $2}' /etc/grub2.cfg</div><div class="line"># 默认启动的顺序是从0开始，新内核是从头插入,选择0</div><div class="line">grub2-set-default 0</div></pre></td></tr></tbody></table></figure>
+<p>安装完毕后重启<code>reboot</code>生效</p>
+<p>查看内核为5.5.9：<code>Linux awebone.com 5.5.9-1.el7.elrepo.x86_64 #1 SMP Wed Mar 11 19:01:01 EDT 2020 x86_64 x86_64 x86_64 GNU/Linux</code></p>
+<p>如果遇到<code>curl 不兼容或不支持的协议版本</code>的问题，通过以下方法解决：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><div class="line">yum update -y nss curl libcurl</div></pre></td></tr></tbody></table></figure>
+<a id="more"></a>
+<h2 id="关闭防火墙和SELinux"><a href="#关闭防火墙和SELinux" class="headerlink" title="关闭防火墙和SELinux"></a>关闭防火墙和SELinux</h2><p>因为在本地虚拟机安装，关闭防火墙和SELinux，方便测试：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><div class="line"># 查看防火墙状态</div><div class="line">systemctl status firewalld</div><div class="line"># 关闭防火墙</div><div class="line">systemctl stop firewalld</div><div class="line"># 设置开机不启动</div><div class="line">sudo systemctl disable firewalld.service</div><div class="line"></div><div class="line"># 关闭SELinux</div><div class="line">setenforce 1</div><div class="line"># 查看SELinux状态</div><div class="line">getenforce</div></pre></td></tr></tbody></table></figure>
+<h2 id="安装JDK1-8和ElasticSearch"><a href="#安装JDK1-8和ElasticSearch" class="headerlink" title="安装JDK1.8和ElasticSearch"></a>安装JDK1.8和ElasticSearch</h2><p>通过官网下载安装包<code>elasticsearch-6.5.2.tar.gz</code>和<code>jdk-8u73-linux-x64.tar.gz</code></p>
+<h3 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h3><p>ES要求jdk需要为1.8版本以上，故删除自带的1.7：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><div class="line">rpm -qa |grep java</div><div class="line">sudo yum -y remove java*</div></pre></td></tr></tbody></table></figure>
+<p>解压jdk到apps目录下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><div class="line">tar -zxvf jdk-8u73-linux-x64.tar.gz -C ~/apps/</div></pre></td></tr></tbody></table></figure>
+<p>配置环境变量：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><div class="line">sudo vim /etc/profile</div><div class="line"></div><div class="line"># 在最后添加以下内容，目录改为自己的：</div><div class="line">JAVA_HOME=/home/xxx/apps/jdk1.8.0_73</div><div class="line">JRE_HOME=$JAVA_HOME/jre</div><div class="line">PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</div><div class="line">CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib</div><div class="line">export JAVA_HOME JRE_HOME PATH CLASSPATH</div></pre></td></tr></tbody></table></figure>
+<p>最后加载环境变量：<code>source /etc/profile</code></p>
+<p>查看JDK版本：<code>java -version</code></p>
+<p><img src="/images/es/es1.png" alt="es1"></p>
+<h3 id="安装ElasticSearch"><a href="#安装ElasticSearch" class="headerlink" title="安装ElasticSearch"></a>安装ElasticSearch</h3><p>注意：ES从2.X版本起，就不能再root用户下安装，故在普通用户下安装</p>
+<p>解压到apps目录下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><div class="line">tar -zxvf elasticsearch-6.5.2.tar.gz -C ~/apps/</div></pre></td></tr></tbody></table></figure>
+<p>配置环境变量：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><div class="line">vim ~/.bashrc </div><div class="line"></div><div class="line"># 在最后添加以下内容：</div><div class="line">ELASTICSEARCH_HOME=/home/linuxprobe/apps/elasticsearch-6.5.2</div><div class="line">export PATH=$PATH:$ELASTICSEARCH_HOME/bin</div></pre></td></tr></tbody></table></figure>
+<p>加载环境变量：<code>source ~/.bashrc</code></p>
+<p>进行ElasticSearch的配置，修改<code>$ELASTICSEARCH_HOME/conf/elasticsearch.yml</code>文件：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><div class="line">vim $ELASTICSEARCH_HOME/conf/elasticsearch.yml</div><div class="line"></div><div class="line"># 填入以下内容，目录改为自己的</div><div class="line">cluster.name: es</div><div class="line">node.name: hadoop</div><div class="line">path.data: /home/xxx/data/elastic（手动创建目录）</div><div class="line">path.logs: /home/xxx/logs/elastic（手动创建目录）</div><div class="line">network.host: 0.0.0.0</div><div class="line">http.port: 9200</div></pre></td></tr></tbody></table></figure>
+<p>启动：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><div class="line"># es后台启动，不加-d为前台启动</div><div class="line">elasticsearch -d</div></pre></td></tr></tbody></table></figure>
+<p>测试：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><div class="line"># 查看java进程状态</div><div class="line">jps</div><div class="line"></div><div class="line"># 查看服务状态</div><div class="line">curl -XGET http://localhost:9200</div></pre></td></tr></tbody></table></figure>
+<p><img src="/images/es/es2.png" alt="es2"></p>
+<p>通过网页查看：</p>
+<p><img src="/images/es/es3.png" alt="es3"></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>大数据</category>
+      </categories>
+      <tags>
+        <tag>ELK</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用JavaScript实现焦点轮播图</title>
-    <url>/2017/12/js-lunbo/</url>
+    <url>/posts/7a7093e6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="使用JavaScript实现焦点轮播图"><a href="#使用JavaScript实现焦点轮播图" class="headerlink" title="使用JavaScript实现焦点轮播图"></a>使用JavaScript实现焦点轮播图</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>各大网站都使用焦点轮播图来展示自己的图片，如淘宝、京东等。</p>
 <ol>
 <li>焦点轮播图所用技能点：DOM操作、定时器、事件运用、JS动画、函数递归、无限滚动；</li>
@@ -122,8 +188,96 @@
       </tags>
   </entry>
   <entry>
+    <title>HTML5音乐可视化</title>
+    <url>/posts/fd5cbc55/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="HTML5音乐可视化"><a href="#HTML5音乐可视化" class="headerlink" title="HTML5音乐可视化"></a>HTML5音乐可视化</h1><a id="more"></a><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>HTML5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac转Windows的拯救指南</title>
+    <url>/posts/143a0a72/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Mac转Windows的拯救指南"><a href="#Mac转Windows的拯救指南" class="headerlink" title="Mac转Windows的拯救指南"></a>Mac转Windows的拯救指南</h1><blockquote>
+<p>假期使用Mac开发，目前转Windows开发学习，体会了Mac上高效率的快捷键之后，感觉用鼠标点来点去很麻烦，将一些小工具使用，来提高效率。这只是给新手介绍，大神请绕过。</p>
+</blockquote>
+<p>下面开始介绍一些工具来拯救Mac党</p>
+<h3 id="1-Chocolatey"><a href="#1-Chocolatey" class="headerlink" title="1.Chocolatey"></a>1.Chocolatey</h3><p><a href="https://chocolatey.org/" target="_blank" rel="external">Chocolatey</a>是一个Windows上的包管理器，类似于linux上的yum和 apt-get。 你可以在其官方网站上查看具体的使用说明。一般的安装步骤应该是下面这样：</p>
+<p><strong>CMD</strong></p>
+<figure class="highlight cmd"><table><tbody><tr><td class="code"><pre><div class="line">@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object <span class="built_in">net</span>.webclient).DownloadString('https://chocolatey.org/install.ps1'))" &amp;&amp; <span class="built_in">SET</span> <span class="built_in">PATH</span>=<span class="variable">%PATH%</span>;<span class="variable">%ALLUSERSPROFILE%</span>\chocolatey\bin</div></pre></td></tr></tbody></table></figure>
+<p><strong>Powershell</strong></p>
+<figure class="highlight powershell"><table><tbody><tr><td class="code"><pre><div class="line"><span class="built_in">Set-ExecutionPolicy</span> Bypass; iex ((<span class="built_in">New-Object</span> System.Net.WebClient).DownloadString(<span class="string">'https://chocolatey.org/install.ps1'</span>))</div></pre></td></tr></tbody></table></figure>
+<p>一般来说，使用Chocolatey来安装软件的时候，需要以管理员的身份来运行命令提示符窗口。chocolatey的网站可能在国内访问困难，导致上述安装命令无法正常完成。请使用科学上网。</p>
+<a id="more"></a>
+<h3 id="2-Cmder-or-Powershell-or-Git"><a href="#2-Cmder-or-Powershell-or-Git" class="headerlink" title="2.Cmder or Powershell or Git"></a>2.Cmder or Powershell or Git</h3><p><a href="http://cmder.net/" target="_blank" rel="external">Cmder</a>是一个替代原机自带cmd的命令行，可以配置，有快捷键，常用的Tab补全，集成Git等。</p>
+<p><a href="https://docs.microsoft.com/en-us/powershell/" target="_blank" rel="external">Powershell</a>是微软公司开发的任务自动化和管理框架。功能强大，背后还有牛逼的老爹支持，命令与cmd有所不同，老司机可以玩玩。</p>
+<p><a href="https://git-scm.com/" target="_blank" rel="external">Git</a>是一个自由开源的版本控制工具，它在Windows下有相应的命令行工具，命令与linux命令相同，学习了linux，可以很快上手，对于前端来说，这个我觉得是比较方便的，但是，有时候也会抽风。</p>
+<h3 id="3-Listary-or-Wox"><a href="#3-Listary-or-Wox" class="headerlink" title="3.Listary or Wox"></a>3.Listary or Wox</h3><p><a href="http://www.listary.com/" target="_blank" rel="external">Listary</a>是一个文件浏览增强工具。和Mac下的Alfred工具差不多，个人使用free版本即可，自定义快捷键，笔记本可以脱离鼠标，直接使用键盘和触摸板。</p>
+<p><a href="http://www.getwox.com/" target="_blank" rel="external">Wox</a>是一个有效的搜索工具。</p>
+<ul>
+<li>可以文件和应用搜索</li>
+<li>有插件支持</li>
+<li>主题修改</li>
+<li>web快捷键快速查找，自定义搜索引擎</li>
+</ul>
+<h3 id="4-Total-Commander"><a href="#4-Total-Commander" class="headerlink" title="4.Total Commander"></a>4.Total Commander</h3><p><a href="https://www.ghisler.com/" target="_blank" rel="external">Total Commander</a>是一款应用于 Windows 平台的文件管理器 ，它包含两个并排的窗口，这种设计可以让用户方便地对不同位置的“文件或文件夹”进行操作，例如复制、移动、删除、比较等，相对 Windows 资源管理器而言方便很多，极大地提高了文件操作的效率，被广大软件爱好者亲切地简称为：TC 。</p>
+<p>它拥有文件快速预览、快速搜索、多标签、文件比较、批量重命名、FTP 客户端等诸多实用的功能，并可通过大量的插件进行个性化配置。</p>
+<p>官网介绍不是很详细，可查看维基百科的介绍，<a href="https://zh.wikipedia.org/wiki/Total_Commander" target="_blank" rel="external">TC</a>。</p>
+<h3 id="5-FastStone-Screen-Capture-or-Snipaste"><a href="#5-FastStone-Screen-Capture-or-Snipaste" class="headerlink" title="5.FastStone Screen Capture or Snipaste"></a>5.FastStone Screen Capture or Snipaste</h3><p><a href="http://www.faststone.org/FSCaptureDetail.htm" target="_blank" rel="external">FastStone Screen Capture</a>是一个轻量的截屏工具，很老但是很强大。</p>
+<p><a href="https://zh.snipaste.com/" target="_blank" rel="external">Snipaste</a>，免费，免安装，可定制。</p>
+<h3 id="6-NotePad"><a href="#6-NotePad" class="headerlink" title="6.NotePad++"></a>6.NotePad++</h3><p><a href="https://notepad-plus-plus.org/download/" target="_blank" rel="external">NotePad++</a>，替代记事本的轻量级记事本，原本的记事本会有很多弊病，编码格式不是UTF-8。NotePad++解决了这些麻烦，还可以自定义设置，完全变成编辑器，有提示。</p>
+<h3 id="7-Xshell"><a href="#7-Xshell" class="headerlink" title="7.Xshell"></a>7.Xshell</h3><p><a href="">Xshell</a>是一个强大的安全终端模拟软件，它支持SSH1, SSH2, 以及Microsoft Windows 平台的TELNET 协议。Xshell 通过互联网到远程主机的安全连接以及它创新性的设计和特色帮助用户在复杂的网络环境中享受他们的工作。 Xshell可以在Windows界面下用来访问远端不同系统下的服务器，从而比较好的达到远程控制终端的目的。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>Windons</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MapReduce初探</title>
-    <url>/2017/09/mapreduce-note/</url>
+    <url>/posts/e6939326/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="MapReduce初探"><a href="#MapReduce初探" class="headerlink" title="MapReduce初探"></a>MapReduce初探</h1><p><strong>MapReduce是一个用于处理海量数据的分布式计算框架</strong></p>
 <p>MapReduce解决的问题：</p>
 <ul>
@@ -237,13 +391,13 @@
   </entry>
   <entry>
     <title>数据结构与算法JavaScript学习(二)</title>
-    <url>/2017/07/js-algorithms-2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="数据结构与算法JavaScript学习-二"><a href="#数据结构与算法JavaScript学习-二" class="headerlink" title="数据结构与算法JavaScript学习(二)"></a>数据结构与算法JavaScript学习(二)</h1><h2 id="搜索算法"><a href="#搜索算法" class="headerlink" title="搜索算法"></a>搜索算法</h2><h3 id="顺序或线性搜索"><a href="#顺序或线性搜索" class="headerlink" title="顺序或线性搜索"></a>顺序或线性搜索</h3><a id="more"></a>
-<figure class="highlight js"><table><tbody><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ArrayList</span>(<span class="params"></span>)</span>{</div><div class="line">  <span class="keyword">var</span> array=[];</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.insert=<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>{</div><div class="line">    array.push(item);</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.toString=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">    <span class="keyword">return</span> array.join();</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="comment">//顺序搜索</span></div><div class="line">  <span class="keyword">this</span>.sequentialSearch=<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>{</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; array.length; i++) {</div><div class="line">      <span class="keyword">if</span> (item===array[i]) {</div><div class="line">        <span class="keyword">return</span> i;</div><div class="line">      }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">  };</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
-<h3 id="二分搜索"><a href="#二分搜索" class="headerlink" title="二分搜索"></a>二分搜索</h3><figure class="highlight js"><table><tbody><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ArrayList</span>(<span class="params"></span>)</span>{</div><div class="line">  <span class="keyword">var</span> array=[];</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.insert=<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>{</div><div class="line">    array.push(item);</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.toString=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">    <span class="keyword">return</span> array.join();</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="comment">//快速排序:分治递归</span></div><div class="line">  <span class="keyword">this</span>.quickSort=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">    quick(array,<span class="number">0</span>,array.length<span class="number">-1</span>);</div><div class="line">  };</div><div class="line">  <span class="comment">//快排</span></div><div class="line">  <span class="keyword">var</span> quick=<span class="function"><span class="keyword">function</span> (<span class="params">array,left,right</span>) </span>{</div><div class="line">    <span class="keyword">var</span> index;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (array.length&gt;<span class="number">1</span>) {</div><div class="line">      index=partition(array,left,right);</div><div class="line">      <span class="keyword">if</span> (left&lt;index<span class="number">-1</span>) {</div><div class="line">        quick(array,left,index<span class="number">-1</span>);</div><div class="line">      }</div><div class="line">      <span class="keyword">if</span> (index&lt;right) {</div><div class="line">        quick(array,index,right);</div><div class="line">      }</div><div class="line">    }</div><div class="line">  };</div><div class="line">  <span class="comment">//划分过程</span></div><div class="line">  <span class="keyword">var</span> partition=<span class="function"><span class="keyword">function</span>(<span class="params">array,left,right</span>)</span>{</div><div class="line">    <span class="keyword">var</span> pivot=array[<span class="built_in">Math</span>.floor((right+left)/<span class="number">2</span>)],i=left,j=right;<span class="comment">//选主元</span></div><div class="line"></div><div class="line">    <span class="keyword">while</span> (i&lt;=j) {</div><div class="line">      <span class="keyword">while</span> (array[i]&lt;pivot) {</div><div class="line">        i++;</div><div class="line">      }</div><div class="line">      <span class="keyword">while</span> (array[j]&gt;pivot) {</div><div class="line">        j--;</div><div class="line">      }</div><div class="line">      <span class="keyword">if</span> (i&lt;=j) {</div><div class="line">        swapQuickStort(array,i,j);</div><div class="line">        i++;</div><div class="line">        j--;</div><div class="line">      }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> i;</div><div class="line">  }；</div><div class="line">  <span class="comment">//交换数组元素</span></div><div class="line">  <span class="keyword">var</span> swapQuickStort=<span class="function"><span class="keyword">function</span> (<span class="params">array,index1,index2</span>) </span>{</div><div class="line">    <span class="keyword">var</span> aux=array[index1];</div><div class="line">    array[index1]=array[index2];</div><div class="line">    array[index2]=aux;</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="comment">//二分搜索</span></div><div class="line">  <span class="keyword">this</span>.binarySearch=<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>{</div><div class="line">    <span class="keyword">this</span>.quickSort();<span class="comment">//快速排序</span></div><div class="line"></div><div class="line">    <span class="keyword">var</span> low=<span class="number">0</span>,high=array.length<span class="number">-1</span>,mid,element;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (low&lt;=high) {</div><div class="line">      mid=<span class="built_in">Math</span>.floor((low+high)/<span class="number">2</span>);</div><div class="line">      element=array[mid];</div><div class="line"></div><div class="line">      <span class="keyword">if</span> (element&lt;item) {</div><div class="line">        low=mid+<span class="number">1</span>;</div><div class="line">      }<span class="keyword">else</span> <span class="keyword">if</span> (element&gt;item) {</div><div class="line">        high=mid<span class="number">-1</span>;</div><div class="line">      }<span class="keyword">else</span> {</div><div class="line">        <span class="keyword">return</span> mid;</div><div class="line">      }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">  };</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+    <url>/posts/db1de468/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="数据结构与算法JavaScript学习-二"><a href="#数据结构与算法JavaScript学习-二" class="headerlink" title="数据结构与算法JavaScript学习(二)"></a>数据结构与算法JavaScript学习(二)</h1><h2 id="搜索算法"><a href="#搜索算法" class="headerlink" title="搜索算法"></a>搜索算法</h2><h3 id="顺序或线性搜索"><a href="#顺序或线性搜索" class="headerlink" title="顺序或线性搜索"></a>顺序或线性搜索</h3><figure class="highlight js"><table><tbody><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ArrayList</span>(<span class="params"></span>)</span>{</div><div class="line">  <span class="keyword">var</span> array=[];</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.insert=<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>{</div><div class="line">    array.push(item);</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.toString=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">    <span class="keyword">return</span> array.join();</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="comment">//顺序搜索</span></div><div class="line">  <span class="keyword">this</span>.sequentialSearch=<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>{</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; array.length; i++) {</div><div class="line">      <span class="keyword">if</span> (item===array[i]) {</div><div class="line">        <span class="keyword">return</span> i;</div><div class="line">      }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">  };</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<a id="more"></a>
+<h3 id="二分搜索"><a href="#二分搜索" class="headerlink" title="二分搜索"></a>二分搜索</h3><figure class="highlight js"><table><tbody><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ArrayList</span>(<span class="params"></span>)</span>{</div><div class="line">  <span class="keyword">var</span> array=[];</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.insert=<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>{</div><div class="line">    array.push(item);</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.toString=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">    <span class="keyword">return</span> array.join();</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="comment">//快速排序:分治递归</span></div><div class="line">  <span class="keyword">this</span>.quickSort=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">    quick(array,<span class="number">0</span>,array.length<span class="number">-1</span>);</div><div class="line">  };</div><div class="line">  <span class="comment">//快排</span></div><div class="line">  <span class="keyword">var</span> quick=<span class="function"><span class="keyword">function</span> (<span class="params">array,left,right</span>) </span>{</div><div class="line">    <span class="keyword">var</span> index;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (array.length&gt;<span class="number">1</span>) {</div><div class="line">      index=partition(array,left,right);</div><div class="line">      <span class="keyword">if</span> (left&lt;index<span class="number">-1</span>) {</div><div class="line">        quick(array,left,index<span class="number">-1</span>);</div><div class="line">      }</div><div class="line">      <span class="keyword">if</span> (index&lt;right) {</div><div class="line">        quick(array,index,right);</div><div class="line">      }</div><div class="line">    }</div><div class="line">  };</div><div class="line">  <span class="comment">//划分过程</span></div><div class="line">  <span class="keyword">var</span> partition=<span class="function"><span class="keyword">function</span>(<span class="params">array,left,right</span>)</span>{</div><div class="line">    <span class="keyword">var</span> pivot=array[<span class="built_in">Math</span>.floor((right+left)/<span class="number">2</span>)],i=left,j=right;<span class="comment">//选主元</span></div><div class="line"></div><div class="line">    <span class="keyword">while</span> (i&lt;=j) {</div><div class="line">      <span class="keyword">while</span> (array[i]&lt;pivot) {</div><div class="line">        i++;</div><div class="line">      }</div><div class="line">      <span class="keyword">while</span> (array[j]&gt;pivot) {</div><div class="line">        j--;</div><div class="line">      }</div><div class="line">      <span class="keyword">if</span> (i&lt;=j) {</div><div class="line">        swapQuickStort(array,i,j);</div><div class="line">        i++;</div><div class="line">        j--;</div><div class="line">      }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> i;</div><div class="line">  };</div><div class="line">  <span class="comment">//交换数组元素</span></div><div class="line">  <span class="keyword">var</span> swapQuickStort=<span class="function"><span class="keyword">function</span> (<span class="params">array,index1,index2</span>) </span>{</div><div class="line">    <span class="keyword">var</span> aux=array[index1];</div><div class="line">    array[index1]=array[index2];</div><div class="line">    array[index2]=aux;</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="comment">//二分搜索</span></div><div class="line">  <span class="keyword">this</span>.binarySearch=<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>{</div><div class="line">    <span class="keyword">this</span>.quickSort();<span class="comment">//快速排序</span></div><div class="line"></div><div class="line">    <span class="keyword">var</span> low=<span class="number">0</span>,high=array.length<span class="number">-1</span>,mid,element;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (low&lt;=high) {</div><div class="line">      mid=<span class="built_in">Math</span>.floor((low+high)/<span class="number">2</span>);</div><div class="line">      element=array[mid];</div><div class="line"></div><div class="line">      <span class="keyword">if</span> (element&lt;item) {</div><div class="line">        low=mid+<span class="number">1</span>;</div><div class="line">      }<span class="keyword">else</span> <span class="keyword">if</span> (element&gt;item) {</div><div class="line">        high=mid<span class="number">-1</span>;</div><div class="line">      }<span class="keyword">else</span> {</div><div class="line">        <span class="keyword">return</span> mid;</div><div class="line">      }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">  };</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
 <h2 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h2><h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><div class="line"><span class="comment">//斐波那契数列:递归</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span>(<span class="params">num</span>) </span>{</div><div class="line">  <span class="keyword">if</span> (num===<span class="number">1</span>||num===<span class="number">2</span>) {</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">  }</div><div class="line"></div><div class="line">  <span class="keyword">return</span> fibonacci(num<span class="number">-1</span>)+fibonacci(num<span class="number">-2</span>);</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
 <h3 id="非递归"><a href="#非递归" class="headerlink" title="非递归"></a>非递归</h3><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><div class="line"><span class="comment">//斐波那契数列:非递归</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fib</span>(<span class="params">num</span>) </span>{</div><div class="line">  <span class="keyword">var</span> n1=<span class="number">1</span>,n2=<span class="number">1</span>,n=<span class="number">1</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">3</span>; i &lt;= num; i++) {</div><div class="line">    n=n1+n2;</div><div class="line">    n1=n2;</div><div class="line">    n2=n;</div><div class="line">  }</div><div class="line">  <span class="keyword">return</span> n;</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
-<h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><div class="line"><span class="comment">//动态规划：将大问题转化成小问题</span></div><div class="line"><span class="comment">//最少硬币找零问题:找到n所需的最小硬币数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dpMinCoinChange</span>(<span class="params">coins</span>) </span>{</div><div class="line">  <span class="keyword">var</span> coins=coins;</div><div class="line">  <span class="keyword">var</span> cache={};</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.makeChange=<span class="function"><span class="keyword">function</span> (<span class="params">amount</span>) </span>{</div><div class="line">    <span class="keyword">var</span> me=<span class="keyword">this</span>;</div><div class="line">    <span class="keyword">if</span> (!amount) {<span class="comment">//判断为正</span></div><div class="line">      <span class="keyword">return</span> [];</div><div class="line">    }</div><div class="line">    <span class="keyword">if</span> (cache[amount]) {<span class="comment">//判断是否有缓存</span></div><div class="line">      <span class="keyword">return</span> cache[amount];</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">var</span> min=[],newMin,newAmount;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; coins.length; i++) {<span class="comment">//对每个面额计算</span></div><div class="line">      <span class="keyword">var</span> coin=coins[i];</div><div class="line">      newAmount=amount-coin;</div><div class="line">      <span class="keyword">if</span> (newAmount&gt;=<span class="number">0</span>) {</div><div class="line">        newMin=me.makeChange(newAmount);</div><div class="line">      }</div><div class="line">      <span class="keyword">if</span> (newAmount&gt;=<span class="number">0</span> &amp;&amp; (newMin.length&lt;min.length<span class="number">-1</span> || !min.length) &amp;&amp; (newMin.length || !newAmount)) {</div><div class="line">        <span class="comment">//判断newAmount是否有效，最小硬币数是否最优，newMin和newAmount是否合理</span></div><div class="line">        min=[coin].concat(newMin);</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'new Min '</span>+min+ <span class="string">' for '</span>+amount);</div><div class="line">      }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> (cache[amount]=min);</div><div class="line">  }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><div class="line"><span class="comment">//动态规划：将大问题转化成小问题</span></div><div class="line"><span class="comment">//最少硬币找零问题:找到n所需的最小硬币数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dpMinCoinChange</span>(<span class="params">coins</span>) </span>{</div><div class="line">  <span class="keyword">var</span> coins=coins;</div><div class="line">  <span class="keyword">var</span> cache={};</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.makeChange=<span class="function"><span class="keyword">function</span> (<span class="params">amount</span>) </span>{</div><div class="line">    <span class="keyword">var</span> me=<span class="keyword">this</span>;</div><div class="line">    <span class="keyword">if</span> (!amount) {<span class="comment">//判断为正</span></div><div class="line">      <span class="keyword">return</span> [];</div><div class="line">    }</div><div class="line">    <span class="keyword">if</span> (cache[amount]) {<span class="comment">//判断是否有缓存</span></div><div class="line">      <span class="keyword">return</span> cache[amount];</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">var</span> min=[],newMin,newAmount;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; coins.length; i++) {<span class="comment">//对每个面额计算</span></div><div class="line">      <span class="keyword">var</span> coin=coins[i];</div><div class="line">      newAmount=amount-coin;</div><div class="line">      <span class="keyword">if</span> (newAmount&gt;=<span class="number">0</span>) {</div><div class="line">        newMin=me.makeChange(newAmount);</div><div class="line">      }</div><div class="line">      <span class="keyword">if</span> (newAmount&gt;=<span class="number">0</span> &amp;&amp; (newMin.length&lt;min.length<span class="number">-1</span> || !min.length) </div><div class="line">          &amp;&amp; (newMin.length || !newAmount)) {</div><div class="line">        <span class="comment">//判断newAmount是否有效，最小硬币数是否最优，newMin和newAmount是否合理</span></div><div class="line">        min=[coin].concat(newMin);</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'new Min '</span>+min+ <span class="string">' for '</span>+amount);</div><div class="line">      }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> (cache[amount]=min);</div><div class="line">  }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
 <h3 id="贪心策略"><a href="#贪心策略" class="headerlink" title="贪心策略"></a>贪心策略</h3><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><div class="line"><span class="comment">//贪心算法：近似求解，通过局部最优达到全局最优</span></div><div class="line"><span class="comment">//最少硬币找零问题:找到n所需的最小硬币数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">txMinCoinChange</span>(<span class="params">coins</span>)</span>{</div><div class="line">  <span class="keyword">var</span> coins=coins;</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.makeChange=<span class="function"><span class="keyword">function</span>(<span class="params">amount</span>)</span>{</div><div class="line">    <span class="keyword">var</span> change=[],total=<span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = coins.length; i &gt;= <span class="number">0</span>; i--) {<span class="comment">//对每个面额从大面额开始，从大到小依次</span></div><div class="line">      <span class="keyword">var</span> coin=coins[i];</div><div class="line">      <span class="keyword">while</span> (total+coin&lt;=amount) {</div><div class="line">        change.push(coin);</div><div class="line">        total+=coin;</div><div class="line">      }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> change;</div><div class="line">  }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -273,7 +427,7 @@
   </entry>
   <entry>
     <title>MongoDB基础学习</title>
-    <url>/2017/07/mongo-note/</url>
+    <url>/posts/8c3b0bac/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="MongoDB基础学习"><a href="#MongoDB基础学习" class="headerlink" title="MongoDB基础学习"></a>MongoDB基础学习</h1><blockquote>
 <p>MongoDB是一个跨平台，面向文档的数据库，提供高性能，高可用性和易于扩展，总结知识点分享给与我一样刚入门MongoDB的人。</p>
 </blockquote>
@@ -440,7 +594,7 @@
   </entry>
   <entry>
     <title>FreeCodeCamp学习笔记（二）</title>
-    <url>/2017/05/fcc-note-2/</url>
+    <url>/posts/e20ef482/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="FreeCodeCamp学习笔记（二）"><a href="#FreeCodeCamp学习笔记（二）" class="headerlink" title="FreeCodeCamp学习笔记（二）"></a>FreeCodeCamp学习笔记（二）</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="软件概念"><a href="#软件概念" class="headerlink" title="软件概念"></a>软件概念</h3><ul>
 <li>软件是程序或在硬件上运行的程序，写入硬件的代码，两种软件类型是操作系统和应用软件。</li>
 <li>有三个主要的操作系统：Windows，Mac和Linux。</li>
@@ -469,7 +623,7 @@
 <h3 id="联网"><a href="#联网" class="headerlink" title="联网"></a>联网</h3><ul>
 <li>路由器是连接不同的小范围网络的东西。</li>
 </ul>
-<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><div class="line">我想打个比方：我是一名教师，我在一所学校工作。</div><div class="line"></div><div class="line">假如说我有一个包，并且我需要把它送给我在民政事务处工作的人。</div><div class="line"></div><div class="line">我不知道她在哪里，我不知道她的办公室所在地，但我知道她的名字。</div><div class="line"></div><div class="line">我找我的秘书，像我的第一台路由器，我说<span class="string">"嘿，我需要找在民政事务处的某某，你能帮帮我吗？"</span>，她会说：<span class="string">"当然，我不知道她的办公室准确位置，但我知道，下一步，我可以找到她所在的区域。"</span></div><div class="line"></div><div class="line">于是，她继续并将其它发送至到民政事务处的秘书，下一个路由器。</div><div class="line"></div><div class="line">那秘书不知道我是谁或者我在哪里，但她看到包装上的名称，知道结束位置。</div><div class="line"></div><div class="line">我想要去表达的是每个路由器只需要知道自己的小网，就在它旁边的站点。</div><div class="line"></div><div class="line">它不必知道整个互联网，但只是它自己的连接。</div><div class="line"></div><div class="line">它可以获取信息并说，好吧，我不知道确切位置这回事，但我会在正确的方向传递下去吧。</div><div class="line"></div><div class="line">这就是它所需要做的事。</div></pre></td></tr></tbody></table></figure>
+<figure class="highlight 1c"><table><tbody><tr><td class="code"><pre><div class="line">我想打个比方：我是一名教师，我在一所学校工作。</div><div class="line"></div><div class="line">假如说我有一个包，并且我需要把它送给我在民政事务处工作的人。</div><div class="line"></div><div class="line">我不知道她在哪里，我不知道她的办公室所在地，但我知道她的名字。</div><div class="line"></div><div class="line">我找我的秘书，像我的第一台路由器，我说<span class="string">"嘿，我需要找在民政事务处的某某，你能帮帮我吗？"</span>，她会说：<span class="string">"当然，我不知道她的办公室准确位置，但我知道，下一步，我可以找到她所在的区域。"</span></div><div class="line"></div><div class="line">于是，她继续并将其它发送至到民政事务处的秘书，下一个路由器。</div><div class="line"></div><div class="line">那秘书不知道我是谁或者我在哪里，但她看到包装上的名称，知道结束位置。</div><div class="line"></div><div class="line">我想要去表达的是每个路由器只需要知道自己的小网，就在它旁边的站点。</div><div class="line"></div><div class="line">它不必知道整个互联网，但只是它自己的连接。</div><div class="line"></div><div class="line">它可以获取信息并说，好吧，我不知道确切位置这回事，但我会在正确的方向传递下去吧。</div><div class="line"></div><div class="line">这就是它所需要做的事。</div></pre></td></tr></tbody></table></figure>
 <ul>
 <li>路由器可以是不同的尺寸，不同容量，但他们做的是知道自己的邻居，获得信息，并传递向正确的方向。</li>
 <li>路由器甚至不必须有完整的包的信息。</li>
@@ -734,7 +888,7 @@
   </entry>
   <entry>
     <title>数据结构与算法JavaScript学习(一)</title>
-    <url>/2017/05/js-algorithms-1/</url>
+    <url>/posts/742c7f0a/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="数据结构与算法JavaScript学习-一"><a href="#数据结构与算法JavaScript学习-一" class="headerlink" title="数据结构与算法JavaScript学习(一)"></a>数据结构与算法JavaScript学习(一)</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="常用数组方法"><a href="#常用数组方法" class="headerlink" title="常用数组方法"></a>常用数组方法</h3><ul>
 <li><p>push方法，能把元素添加到数组的末尾</p>
 </li>
@@ -800,7 +954,7 @@
 <h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ArrayList</span>(<span class="params"></span>)</span>{</div><div class="line">  <span class="keyword">var</span> array=[];</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.insert=<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>{</div><div class="line">    array.push(item);</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.toString=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">    <span class="keyword">return</span> array.join();</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="comment">//交换两个数</span></div><div class="line">  <span class="keyword">var</span> swap=<span class="function"><span class="keyword">function</span>(<span class="params">index1,index2</span>)</span>{</div><div class="line">    <span class="keyword">var</span> aux=array[index1];</div><div class="line">    array[index1]=array[index2];</div><div class="line">    array[index2]=aux;</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.selectionSort=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">    <span class="keyword">var</span> length=array.length,indexMin;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;length<span class="number">-1</span>;i++){<span class="comment">//迭代数组</span></div><div class="line">      indexMin=i;<span class="comment">//数组第一个为最小值</span></div><div class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> j=i;j&lt;length;j++){<span class="comment">//从当前i至数组结束</span></div><div class="line">        <span class="keyword">if</span>(array[indexMin]&gt;array[j]){</div><div class="line">          indexMin=j;</div><div class="line">        }</div><div class="line">      }</div><div class="line">      <span class="keyword">if</span>(i!==indexMin){</div><div class="line">        swap(i,indexMin);</div><div class="line">      }</div><div class="line">    }</div><div class="line">  };</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
 <h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ArrayList</span>(<span class="params"></span>)</span>{</div><div class="line">  <span class="keyword">var</span> array=[];</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.insert=<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>{</div><div class="line">    array.push(item);</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.toString=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">    <span class="keyword">return</span> array.join();</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.insertionSort=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">    <span class="keyword">var</span> length=array.length,j,temp;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; length; i++) {<span class="comment">//迭代数组，默认第一项排序</span></div><div class="line">      j=i;<span class="comment">//初始化一个辅助变量</span></div><div class="line">      temp=array[i];</div><div class="line">      <span class="keyword">while</span> (j&gt;<span class="number">0</span>&amp;&amp;array[j<span class="number">-1</span>]&gt;temp) {<span class="comment">//找到位置，前面的值比此值大</span></div><div class="line">        array[j]=array[j<span class="number">-1</span>];<span class="comment">//交换</span></div><div class="line">        j--;<span class="comment">//j减少</span></div><div class="line">      }</div><div class="line">      array[j]=temp;<span class="comment">//赋值</span></div><div class="line">    }</div><div class="line">  };</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
 <h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ArrayList</span>(<span class="params"></span>)</span>{</div><div class="line">  <span class="keyword">var</span> array=[];</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.insert=<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>{</div><div class="line">    array.push(item);</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.toString=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">    <span class="keyword">return</span> array.join();</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="comment">//归并排序:分治递归算法</span></div><div class="line">  <span class="keyword">this</span>.mergeSort=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">    array=mergeSortRec(array);</div><div class="line">  };</div><div class="line">  <span class="comment">//将大数组分成小数组</span></div><div class="line">  <span class="keyword">var</span> mergeSortRec=<span class="function"><span class="keyword">function</span> (<span class="params">array</span>) </span>{</div><div class="line">    <span class="keyword">var</span> length=array.length;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (length===<span class="number">1</span>) {</div><div class="line">      <span class="keyword">return</span> array;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">var</span> mid=<span class="built_in">Math</span>.floor(length/<span class="number">2</span>),</div><div class="line">        left=array.slice(<span class="number">0</span>,mmid),</div><div class="line">        right=array.slice(mid,length);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> merge(mergeSortRec(left),mergeSortRec(right));</div><div class="line">  };</div><div class="line">  <span class="comment">//合并小数组</span></div><div class="line">  <span class="keyword">var</span> merge=<span class="function"><span class="keyword">function</span>(<span class="params">left,right</span>)</span>{</div><div class="line">    <span class="keyword">var</span> result=[],il=<span class="number">0</span>,ir=<span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (il&lt;left.length &amp;&amp; ir&lt;right.length) {</div><div class="line">      <span class="keyword">if</span> (left[il]&lt;right[ir]) {</div><div class="line">        result.push(left[il++]);</div><div class="line">      }<span class="keyword">else</span> {</div><div class="line">        result.push(right[ir++]);</div><div class="line">      }</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (il&lt;left.length) {</div><div class="line">      result.push(left[il++]);</div><div class="line">    }</div><div class="line">    <span class="keyword">while</span> (il&lt;right.length) {</div><div class="line">      result.push(right[ir++]);</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">  };</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
-<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ArrayList</span>(<span class="params"></span>)</span>{</div><div class="line">  <span class="keyword">var</span> array=[];</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.insert=<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>{</div><div class="line">    array.push(item);</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.toString=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">    <span class="keyword">return</span> array.join();</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="comment">//快速排序:分治递归</span></div><div class="line">  <span class="keyword">this</span>.quickSort=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">    quick(array,<span class="number">0</span>,array.length<span class="number">-1</span>);</div><div class="line">  };</div><div class="line">  <span class="comment">//快排</span></div><div class="line">  <span class="keyword">var</span> quick=<span class="function"><span class="keyword">function</span> (<span class="params">array,left,right</span>) </span>{</div><div class="line">    <span class="keyword">var</span> index;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (array.length&gt;<span class="number">1</span>) {</div><div class="line">      index=partition(array,left,right);</div><div class="line">      <span class="keyword">if</span> (left&lt;index<span class="number">-1</span>) {</div><div class="line">        quick(array,left,index<span class="number">-1</span>);</div><div class="line">      }</div><div class="line">      <span class="keyword">if</span> (index&lt;right) {</div><div class="line">        quick(array,index,right);</div><div class="line">      }</div><div class="line">    }</div><div class="line">  };</div><div class="line">  <span class="comment">//划分过程</span></div><div class="line">  <span class="keyword">var</span> partition=<span class="function"><span class="keyword">function</span>(<span class="params">array,left,right</span>)</span>{</div><div class="line">    <span class="keyword">var</span> pivot=array[<span class="built_in">Math</span>.floor((right+left)/<span class="number">2</span>)],i=left,j=right;<span class="comment">//选主元</span></div><div class="line"></div><div class="line">    <span class="keyword">while</span> (i&lt;=j) {</div><div class="line">      <span class="keyword">while</span> (array[i]&lt;pivot) {</div><div class="line">        i++;</div><div class="line">      }</div><div class="line">      <span class="keyword">while</span> (array[j]&gt;pivot) {</div><div class="line">        j--;</div><div class="line">      }</div><div class="line">      <span class="keyword">if</span> (i&lt;=j) {</div><div class="line">        swapQuickStort(array,i,j);</div><div class="line">        i++;</div><div class="line">        j--;</div><div class="line">      }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> i;</div><div class="line">  }；</div><div class="line">  <span class="comment">//交换数组元素</span></div><div class="line">  <span class="keyword">var</span> swapQuickStort=<span class="function"><span class="keyword">function</span> (<span class="params">array,index1,index2</span>) </span>{</div><div class="line">    <span class="keyword">var</span> aux=array[index1];</div><div class="line">    array[index1]=array[index2];</div><div class="line">    array[index2]=aux;</div><div class="line">  };</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ArrayList</span>(<span class="params"></span>)</span>{</div><div class="line">  <span class="keyword">var</span> array=[];</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.insert=<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>{</div><div class="line">    array.push(item);</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.toString=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">    <span class="keyword">return</span> array.join();</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="comment">//快速排序:分治递归</span></div><div class="line">  <span class="keyword">this</span>.quickSort=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">    quick(array,<span class="number">0</span>,array.length<span class="number">-1</span>);</div><div class="line">  };</div><div class="line">  <span class="comment">//快排</span></div><div class="line">  <span class="keyword">var</span> quick=<span class="function"><span class="keyword">function</span> (<span class="params">array,left,right</span>) </span>{</div><div class="line">    <span class="keyword">var</span> index;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (array.length&gt;<span class="number">1</span>) {</div><div class="line">      index=partition(array,left,right);</div><div class="line">      <span class="keyword">if</span> (left&lt;index<span class="number">-1</span>) {</div><div class="line">        quick(array,left,index<span class="number">-1</span>);</div><div class="line">      }</div><div class="line">      <span class="keyword">if</span> (index&lt;right) {</div><div class="line">        quick(array,index,right);</div><div class="line">      }</div><div class="line">    }</div><div class="line">  };</div><div class="line">  <span class="comment">//划分过程</span></div><div class="line">  <span class="keyword">var</span> partition=<span class="function"><span class="keyword">function</span>(<span class="params">array,left,right</span>)</span>{</div><div class="line">    <span class="keyword">var</span> pivot=array[<span class="built_in">Math</span>.floor((right+left)/<span class="number">2</span>)],i=left,j=right;<span class="comment">//选主元</span></div><div class="line"></div><div class="line">    <span class="keyword">while</span> (i&lt;=j) {</div><div class="line">      <span class="keyword">while</span> (array[i]&lt;pivot) {</div><div class="line">        i++;</div><div class="line">      }</div><div class="line">      <span class="keyword">while</span> (array[j]&gt;pivot) {</div><div class="line">        j--;</div><div class="line">      }</div><div class="line">      <span class="keyword">if</span> (i&lt;=j) {</div><div class="line">        swapQuickStort(array,i,j);</div><div class="line">        i++;</div><div class="line">        j--;</div><div class="line">      }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> i;</div><div class="line">  };</div><div class="line">  <span class="comment">//交换数组元素</span></div><div class="line">  <span class="keyword">var</span> swapQuickStort=<span class="function"><span class="keyword">function</span> (<span class="params">array,index1,index2</span>) </span>{</div><div class="line">    <span class="keyword">var</span> aux=array[index1];</div><div class="line">    array[index1]=array[index2];</div><div class="line">    array[index2]=aux;</div><div class="line">  };</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -829,10 +983,13 @@
   </entry>
   <entry>
     <title>使用JavaScript做一个AI五子棋</title>
-    <url>/2017/04/js-chess/</url>
+    <url>/posts/d24e8921/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="使用JavaScript做一个AI五子棋"><a href="#使用JavaScript做一个AI五子棋" class="headerlink" title="使用JavaScript做一个AI五子棋"></a>使用JavaScript做一个AI五子棋</h1><p><strong>实现步骤：</strong></p>
 <ol>
-<li>canvas画图</li>
+<li><p>搭建HTML、CSS、JS框架</p>
+</li>
+<li><p>canvas画图</p>
+</li>
 <li>js实现棋盘</li>
 <li>js实现棋子</li>
 <li>棋盘落子</li>
@@ -870,7 +1027,7 @@
   </entry>
   <entry>
     <title>HTML5存储初探</title>
-    <url>/2017/04/html-store/</url>
+    <url>/posts/bce46d0d/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="HTML5存储初探"><a href="#HTML5存储初探" class="headerlink" title="HTML5存储初探"></a>HTML5存储初探</h1><p><strong>常见存储：</strong></p>
 <ol>
 <li>Cookies</li>
@@ -1055,7 +1212,7 @@
   </entry>
   <entry>
     <title>FreeCodeCamp学习笔记(一)</title>
-    <url>/2017/04/fcc-note-1/</url>
+    <url>/posts/6bfb34d8/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="FreeCodeCamp学习笔记-一"><a href="#FreeCodeCamp学习笔记-一" class="headerlink" title="FreeCodeCamp学习笔记(一)"></a>FreeCodeCamp学习笔记(一)</h1><h2 id="HTML学习"><a href="#HTML学习" class="headerlink" title="HTML学习"></a>HTML学习</h2><ul>
 <li><p><code>a</code>标签用<code>#</code>做占位符</p>
 </li>
@@ -1302,7 +1459,7 @@
   </entry>
   <entry>
     <title>CSS3实现3D魔方</title>
-    <url>/2017/04/css-3d/</url>
+    <url>/posts/4370e84d/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="CSS3实现3D魔方"><a href="#CSS3实现3D魔方" class="headerlink" title="CSS3实现3D魔方"></a>CSS3实现3D魔方</h1><p><strong>实现思路</strong></p>
 <ul>
 <li><p>写出基础HTML框架</p>
@@ -1375,20 +1532,20 @@
   </entry>
   <entry>
     <title>kali linux 安装指南</title>
-    <url>/2017/04/kali-linux-install/</url>
+    <url>/posts/c1c013be/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="kali-linux-安装指南"><a href="#kali-linux-安装指南" class="headerlink" title="kali linux 安装指南"></a>kali linux 安装指南</h1><blockquote>
 <p>Kali Linux是基于Debian的Linux发行版， 设计用于数字取证和渗透测试。Kali Linux预装了许多渗透测试软件，包括nmap (端口扫描器)、Wireshark (数据包分析器)、John the Ripper (密码破解器),以及Aircrack-ng (一应用于对无线局域网进行渗透测试的软件).用户可通过硬盘、live CD或live USB运行Kali Linux。Metasploit的Metasploit Framework支持Kali Linux，Metasploit一套针对远程主机进行开发和执行Exploit代码的工具。<br>Kali Linux既有32位和64位的镜像。可用于x86 指令集。同时还有基于ARM架构的镜像，可用于树莓派和三星的ARM Chromebook. –[百度百科]</p>
 </blockquote>
 <a id="more"></a>
 <h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a href="https://www.kali.org/downloads/" target="_blank" rel="external">kali linux 官网</a></p>
-<h3 id="U盘刻录"><a href="#U盘刻录" class="headerlink" title="U盘刻录"></a>U盘刻录</h3><p>镜像刻录U盘工具：Win32 Disk Imager</p>
+<h3 id="U盘刻录"><a href="#U盘刻录" class="headerlink" title="U盘刻录"></a>U盘刻录</h3><p>镜像刻录U盘工具：<code>Win32 Disk Imager</code></p>
 <p>这个工具刻录的镜像比较完整，可直接用U盘启动，比软碟通要好。</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
 <li><p>刻录U盘后重启电脑，不需要用EasyBCD。</p>
 </li>
-<li><p>重启电脑后进入bios，选择U盘启动</p>
+<li><p>重启电脑后进入<code>bios</code>，选择U盘启动</p>
 </li>
-<li><p>进入镜像，选择Graphical install选项，当然选择install也是一样的</p>
+<li><p>进入镜像，选择<code>Graphical install</code>选项，当然选择install也是一样的</p>
 </li>
 <li><p>安装语言、地区、键盘</p>
 </li>
@@ -1396,7 +1553,7 @@
 </li>
 <li><p>网络设备固件缺失：直接选择否继续</p>
 </li>
-<li><p>设置主机名和密码：默认用户名：root 密码：toor</p>
+<li><p>设置主机名和密码：默认用户名：<code>root</code> 密码：<code>toor</code></p>
 </li>
 <li><p>磁盘分区（最重要一部分），这一部分是很重要的一步，一定要注意看清，选对，再操作。</p>
 <ul>
@@ -1404,20 +1561,20 @@
 <li>选择我们准备好要安装kali的那个分区</li>
 <li><p>分配分区:</p>
 <ul>
-<li>/boot:启动分区</li>
-<li>/ :根分区</li>
-<li>/home:用户目录</li>
-<li>/tmp:临时文件</li>
-<li>/usr:文件系统</li>
-<li>/var:可变数据目录</li>
-<li>/opt:附加应用程序</li>
-<li>swap:交换分区</li>
+<li><code>/boot</code>:启动分区</li>
+<li><code>/</code> :根分区</li>
+<li><code>/home</code>:用户目录</li>
+<li><code>/tmp</code>:临时文件</li>
+<li><code>/usr</code>:文件系统</li>
+<li><code>/var</code>:可变数据目录</li>
+<li><code>/opt</code>:附加应用程序</li>
+<li><code>swap</code>:交换分区</li>
 </ul>
-<p>一般分/boot、/、/home、swap</p>
+<p>一般分<code>/boot、/、/home、swap</code></p>
 <p>分区方案关键点：</p>
-<p>大数据库一般要加大/usr挂载点</p>
-<p>多用户、下载类、多存储文件等要加大/home挂载点</p>
-<p>文件小，用户多要注意/tmp和/var挂载点大小</p>
+<p>大数据库一般要加大<code>/usr</code>挂载点</p>
+<p>多用户、下载类、多存储文件等要加大<code>/home</code>挂载点</p>
+<p>文件小，用户多要注意<code>/tmp</code>和<code>/var</code>挂载点大小</p>
 </li>
 <li>选择“分区设定结束并将修改写入磁盘”继续</li>
 </ul>
@@ -1433,29 +1590,29 @@
 </ul>
 <h2 id="安装之后"><a href="#安装之后" class="headerlink" title="安装之后"></a>安装之后</h2><ul>
 <li><p>更新软件源</p>
-<p>修改sources.list文件：/etc/apt/sources.list</p>
+<p>修改<code>sources.list</code>文件：<code>/etc/apt/sources.list</code></p>
 <p>然后选择添加适合自己较快的源（可自由选择）</p>
 <p>保存之后：</p>
-<p>apt-get update      #刷新系统</p>
-<p>apt-get dist-upgrade         #安装更新</p>
+<p><code>apt-get update</code>      #刷新系统</p>
+<p><code>apt-get dist-upgrade</code>         #安装更新</p>
 </li>
 <li><p>kali-linux安装中文输入法</p>
-<p>apt-get install fcitx-table-wbpy ttf-wqy-microhei ttf-wqy-zenhei         #拼音五笔</p>
+<p><code>apt-get install fcitx-table-wbpy ttf-wqy-microhei ttf-wqy-zenhei</code>    #拼音五笔</p>
 </li>
 <li><p>安装gnome管理软件</p>
-<p>apt-get install gnome-tweak-tool</p>
+<p><code>apt-get install gnome-tweak-tool</code></p>
 </li>
 <li><p>安装新立德</p>
-<p>apt-get install synaptic</p>
+<p><code>apt-get install synaptic</code></p>
 </li>
 <li><p>安装解压缩软件</p>
-<p>apt-get install file-roller</p>
+<p><code>apt-get install file-roller</code></p>
 </li>
 <li><p>安装smplayer视频播放器</p>
-<p>apt-get install smplayer</p>
+<p><code>apt-get install smplayer</code></p>
 </li>
 <li><p>安装多窗口终端</p>
-<p>apt-get install terminator</p>
+<p><code>apt-get install terminator</code></p>
 </li>
 <li><p>安装VMware和VirtualBox</p>
 </li>
@@ -1493,7 +1650,7 @@
   </entry>
   <entry>
     <title>Google Hack</title>
-    <url>/2017/03/google-hack/</url>
+    <url>/posts/bb07c3a7/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Google-Hack"><a href="#Google-Hack" class="headerlink" title="Google Hack"></a>Google Hack</h1><blockquote>
 <p>这些命令在Google搜索引擎中才能使用</p>
 </blockquote>
@@ -1536,7 +1693,7 @@
   </entry>
   <entry>
     <title>CSS学习笔记</title>
-    <url>/2017/03/css-note/</url>
+    <url>/posts/948e1c93/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="CSS学习笔记"><a href="#CSS学习笔记" class="headerlink" title="CSS学习笔记"></a>CSS学习笔记</h1><h2 id="CSS-Positioning-定位"><a href="#CSS-Positioning-定位" class="headerlink" title="CSS Positioning(定位)"></a>CSS Positioning(定位)</h2><p>CSS定位属性允许你为一个元素定位。它也可以将一个元素放在另一个元素后面，并指定一个元素的内容太大时，应该发生什么。元素可以使用的顶部，底部，左侧和右侧属性定位。然而，这些属性无法工作，除非是先设定position属性。他们也有不同的工作方式，这取决于定位方法</p>
 <a id="more"></a>
 <h3 id="Static-定位"><a href="#Static-定位" class="headerlink" title="Static 定位"></a>Static 定位</h3><p>HTML元素的默认值，即没有定位，元素出现在正常的流中。</p>
@@ -1600,7 +1757,7 @@
   </entry>
   <entry>
     <title>HTML学习笔记</title>
-    <url>/2017/03/html-note/</url>
+    <url>/posts/13b6b7c2/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="HTML学习笔记"><a href="#HTML学习笔记" class="headerlink" title="HTML学习笔记"></a>HTML学习笔记</h1><h2 id="HTML结构及常用元素"><a href="#HTML结构及常用元素" class="headerlink" title="HTML结构及常用元素"></a>HTML结构及常用元素</h2><figure class="highlight html"><table><tbody><tr><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>文档标题<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">可见文本...</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></tbody></table></figure>
 <a id="more"></a>
 <figure class="highlight html"><table><tbody><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>最大的标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span> . . . <span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span> . . . <span class="tag">&lt;/<span class="name">h3</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span> . . . <span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">h5</span>&gt;</span> . . . <span class="tag">&lt;/<span class="name">h5</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">h6</span>&gt;</span>最小的标题<span class="tag">&lt;/<span class="name">h6</span>&gt;</span></div></pre></td></tr></tbody></table></figure>
@@ -1672,7 +1829,7 @@
   </entry>
   <entry>
     <title>SEO学习笔记</title>
-    <url>/2017/03/seo-note/</url>
+    <url>/posts/6021eb27/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="SEO学习笔记"><a href="#SEO学习笔记" class="headerlink" title="SEO学习笔记"></a>SEO学习笔记</h1><blockquote>
 <p>搜索引擎工作原理</p>
 </blockquote>
@@ -1756,7 +1913,7 @@
   </entry>
   <entry>
     <title>提升效率</title>
-    <url>/2017/03/enhance-efficiency/</url>
+    <url>/posts/8786024c/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="提升效率"><a href="#提升效率" class="headerlink" title="提升效率"></a>提升效率</h1><blockquote>
 <p>在前进的路上，放弃那些次要的、可有可无的东西，获取真正重要、有意义的价值，让自己更加认同自己的付出和努力方向，这才是时间管理的本质和最大意义所在。</p>
 </blockquote>
@@ -1814,7 +1971,7 @@
   </entry>
   <entry>
     <title>学习新技术建议</title>
-    <url>/2017/03/learn-method/</url>
+    <url>/posts/a5b005af/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="学习新技术建议"><a href="#学习新技术建议" class="headerlink" title="学习新技术建议"></a>学习新技术建议</h1><blockquote>
 <p>我们生活在一个振奋人心的时代。我们可以越来越方便廉价地获得大量学习资源。这些资源的传播载体由最初的教室被变成了博客，技术论坛等。坐拥如此众多的学习资源，我们没有任何理由不去好好利用。随之而来的问题便是如何在这知识的海洋中选择自己的前进方向。<br>尽管我的建议主要涉及的是软件开发方面，但是这些原则在其他领域也同样适用。</p>
 </blockquote>
@@ -1908,7 +2065,7 @@
   </entry>
   <entry>
     <title>关于Linux问题的解决办法</title>
-    <url>/2017/03/linux-question-solve/</url>
+    <url>/posts/cf0c10bf/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="关于Linux问题的解决办法"><a href="#关于Linux问题的解决办法" class="headerlink" title="关于Linux问题的解决办法"></a>关于Linux问题的解决办法</h1><blockquote>
 <p>我安装win10和Debian系的linux双系统，以这个双系统为基础，解决linux问题。</p>
 </blockquote>
@@ -1993,7 +2150,7 @@
   </entry>
   <entry>
     <title>格局</title>
-    <url>/2017/02/setup/</url>
+    <url>/posts/e913391a/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="格局"><a href="#格局" class="headerlink" title="格局"></a>格局</h1><p>格局就是指一个人的眼光、胸襟、胆识、心理等要素的内在布局。</p>
 <p>如果把人生当做一盘棋，那么人生的结局就由这盘棋的格局决定。想要赢得人生这盘棋的胜利，关键在于把握住棋局。</p>
 <p>一个人的格局大小与否说实话是很难定义的，但是一个人是否拥有广阔胸襟却对自己以及周围的人影响很大。</p>
@@ -2095,7 +2252,7 @@
   </entry>
   <entry>
     <title>用GitHub和hexo搭建个人主站</title>
-    <url>/2017/02/hexo-blog-install/</url>
+    <url>/posts/a79c8cf7/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="用GitHub和hexo搭建个人主站"><a href="#用GitHub和hexo搭建个人主站" class="headerlink" title="用GitHub和hexo搭建个人主站"></a>用GitHub和hexo搭建个人主站</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为一个程序员，拥有一个自己的博客，平时记录一下，分享点技术文章，是很有必要的。建立博客的通常渠道包括：</p>
 <ol>
 <li>在博客平台上注册，比如 博客园、CSDN、新浪博客 等。</li>
@@ -2248,7 +2405,7 @@ INFOHexois running at http://0.0.0.0:4000/.PressCtrl+C to stop.
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/2016/12/hello-world/</url>
+    <url>/posts/4a17b156/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <a id="more"></a>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></tbody></table></figure>
