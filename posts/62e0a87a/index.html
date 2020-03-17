@@ -117,7 +117,7 @@
 
 
 
-  <meta name="keywords" content="Awebone,blog,博客,大数据" />
+  <meta name="keywords" content="ELK," />
 
 
 
@@ -130,15 +130,32 @@
 
 
 
-<meta name="description" content="Python开发，大数据开发，算法研究者">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Awebone's Blog">
-<meta property="og:url" content="http://www.awebone.com/tags/MapReduce/index.html">
+<meta name="description" content="ElasticSearch安装避坑本文使用Centos7安装ElasticSearch6.5.2，记录避坑指南。
+升级内核通过命令查看内核：
+12uname -a# 3.10.0-327.el7.x86_64
+Centos7自带的内核为3.10，但是ElasticSearch6.5.2要求系统内核必须在3.5以上，故升级内核，root用户下执行：
+12345678910# 导入keyrpm --i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ElasticSearch安装避坑">
+<meta property="og:url" content="http://www.awebone.com/posts/62e0a87a/index.html">
 <meta property="og:site_name" content="Awebone's Blog">
-<meta property="og:description" content="Python开发，大数据开发，算法研究者">
+<meta property="og:description" content="ElasticSearch安装避坑本文使用Centos7安装ElasticSearch6.5.2，记录避坑指南。
+升级内核通过命令查看内核：
+12uname -a# 3.10.0-327.el7.x86_64
+Centos7自带的内核为3.10，但是ElasticSearch6.5.2要求系统内核必须在3.5以上，故升级内核，root用户下执行：
+12345678910# 导入keyrpm --i">
+<meta property="og:image" content="http://www.awebone.com/images/es/es1.png">
+<meta property="og:image" content="http://www.awebone.com/images/es/es2.png">
+<meta property="og:image" content="http://www.awebone.com/images/es/es3.png">
+<meta property="og:updated_time" content="2020-03-17T08:22:11.467Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Awebone's Blog">
-<meta name="twitter:description" content="Python开发，大数据开发，算法研究者">
+<meta name="twitter:title" content="ElasticSearch安装避坑">
+<meta name="twitter:description" content="ElasticSearch安装避坑本文使用Centos7安装ElasticSearch6.5.2，记录避坑指南。
+升级内核通过命令查看内核：
+12uname -a# 3.10.0-327.el7.x86_64
+Centos7自带的内核为3.10，但是ElasticSearch6.5.2要求系统内核必须在3.5以上，故升级内核，root用户下执行：
+12345678910# 导入keyrpm --i">
+<meta name="twitter:image" content="http://www.awebone.com/images/es/es1.png">
 
 
 
@@ -168,13 +185,13 @@
 
 
 
-  <link rel="canonical" href="http://www.awebone.com/tags/MapReduce/"/>
+  <link rel="canonical" href="http://www.awebone.com/posts/62e0a87a/"/>
 
 
 
 
 
-  <title>标签: MapReduce | Awebone's Blog</title>
+  <title>ElasticSearch安装避坑 | Awebone's Blog</title>
   
 
 
@@ -193,7 +210,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/xuyanbo03" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 
@@ -352,66 +369,330 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>MapReduce<small>标签</small>
-        </h2>
-      </div>
-
-      
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.awebone.com/posts/62e0a87a/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Awebone">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/icons/icon-144x144.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Awebone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/posts/e6939326/" itemprop="url">
-              
-                <span itemprop="name">MapReduce初探</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">ElasticSearch安装避坑</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-14T00:00:00+08:00"
-              content="2017-09-14" >
-          09-14
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-17T15:00:00+08:00">
+                2020-03-17
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/大数据/" itemprop="url" rel="index">
+                    <span itemprop="name">大数据</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/posts/62e0a87a/" class="leancloud_visitors" data-flag-title="ElasticSearch安装避坑">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  660
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ElasticSearch安装避坑"><a href="#ElasticSearch安装避坑" class="headerlink" title="ElasticSearch安装避坑"></a>ElasticSearch安装避坑</h1><p>本文使用Centos7安装ElasticSearch6.5.2，记录避坑指南。</p>
+<h2 id="升级内核"><a href="#升级内核" class="headerlink" title="升级内核"></a>升级内核</h2><p>通过命令查看内核：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">uname -a</div><div class="line"># 3.10.0-327.el7.x86_64</div></pre></td></tr></tbody></table></figure>
+<p>Centos7自带的内核为3.10，但是ElasticSearch6.5.2要求系统内核必须在3.5以上，故升级内核，root用户下执行：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># 导入key</div><div class="line">rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org  </div><div class="line"># 安装elrepo的yum源</div><div class="line">rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm</div><div class="line"># 安装内核</div><div class="line">yum --enablerepo=elrepo-kernel install  kernel-ml-devel kernel-ml</div><div class="line"># 查看默认启动顺序</div><div class="line">awk -F\' '$1=="menuentry " {print $2}' /etc/grub2.cfg</div><div class="line"># 默认启动的顺序是从0开始，新内核是从头插入,选择0</div><div class="line">grub2-set-default 0</div></pre></td></tr></tbody></table></figure>
+<p>安装完毕后重启<code>reboot</code>生效</p>
+<p>查看内核为5.5.9：<code>Linux awebone.com 5.5.9-1.el7.elrepo.x86_64 #1 SMP Wed Mar 11 19:01:01 EDT 2020 x86_64 x86_64 x86_64 GNU/Linux</code></p>
+<p>如果遇到<code>curl 不兼容或不支持的协议版本</code>的问题，通过以下方法解决：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum update -y nss curl libcurl</div></pre></td></tr></tbody></table></figure>
+<a id="more"></a>
+<h2 id="关闭防火墙和SELinux"><a href="#关闭防火墙和SELinux" class="headerlink" title="关闭防火墙和SELinux"></a>关闭防火墙和SELinux</h2><p>因为在本地虚拟机安装，关闭防火墙和SELinux，方便测试：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># 查看防火墙状态</div><div class="line">systemctl status firewalld</div><div class="line"># 关闭防火墙</div><div class="line">systemctl stop firewalld</div><div class="line"># 设置开机不启动</div><div class="line">sudo systemctl disable firewalld.service</div><div class="line"></div><div class="line"># 关闭SELinux</div><div class="line">setenforce 1</div><div class="line"># 查看SELinux状态</div><div class="line">getenforce</div></pre></td></tr></tbody></table></figure>
+<h2 id="安装JDK1-8和ElasticSearch"><a href="#安装JDK1-8和ElasticSearch" class="headerlink" title="安装JDK1.8和ElasticSearch"></a>安装JDK1.8和ElasticSearch</h2><p>通过官网下载安装包<code>elasticsearch-6.5.2.tar.gz</code>和<code>jdk-8u73-linux-x64.tar.gz</code></p>
+<h3 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h3><p>ES要求jdk需要为1.8版本以上，故删除自带的1.7：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rpm -qa |grep java</div><div class="line">sudo yum -y remove java*</div></pre></td></tr></tbody></table></figure>
+<p>解压jdk到apps目录下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf jdk-8u73-linux-x64.tar.gz -C ~/apps/</div></pre></td></tr></tbody></table></figure>
+<p>配置环境变量：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/profile</div><div class="line"></div><div class="line"># 在最后添加以下内容，目录改为自己的：</div><div class="line">JAVA_HOME=/home/xxx/apps/jdk1.8.0_73</div><div class="line">JRE_HOME=$JAVA_HOME/jre</div><div class="line">PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</div><div class="line">CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib</div><div class="line">export JAVA_HOME JRE_HOME PATH CLASSPATH</div></pre></td></tr></tbody></table></figure>
+<p>最后加载环境变量：<code>source /etc/profile</code></p>
+<p>查看JDK版本：<code>java -version</code></p>
+<p><img src="/images/es/es1.png" alt="es1"></p>
+<h3 id="安装ElasticSearch"><a href="#安装ElasticSearch" class="headerlink" title="安装ElasticSearch"></a>安装ElasticSearch</h3><p>注意：ES从2.X版本起，就不能再root用户下安装，故在普通用户下安装</p>
+<p>解压到apps目录下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf elasticsearch-6.5.2.tar.gz -C ~/apps/</div></pre></td></tr></tbody></table></figure>
+<p>配置环境变量：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vim ~/.bashrc </div><div class="line"></div><div class="line"># 在最后添加以下内容：</div><div class="line">ELASTICSEARCH_HOME=/home/linuxprobe/apps/elasticsearch-6.5.2</div><div class="line">export PATH=$PATH:$ELASTICSEARCH_HOME/bin</div></pre></td></tr></tbody></table></figure>
+<p>加载环境变量：<code>source ~/.bashrc</code></p>
+<p>进行ElasticSearch的配置，修改<code>$ELASTICSEARCH_HOME/conf/elasticsearch.yml</code>文件：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">vim $ELASTICSEARCH_HOME/conf/elasticsearch.yml</div><div class="line"></div><div class="line"># 填入以下内容，目录改为自己的</div><div class="line">cluster.name: es</div><div class="line">node.name: hadoop</div><div class="line">path.data: /home/xxx/data/elastic（手动创建目录）</div><div class="line">path.logs: /home/xxx/logs/elastic（手动创建目录）</div><div class="line">network.host: 0.0.0.0</div><div class="line">http.port: 9200</div></pre></td></tr></tbody></table></figure>
+<p>启动：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># es后台启动，不加-d为前台启动</div><div class="line">elasticsearch -d</div></pre></td></tr></tbody></table></figure>
+<p>测试：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 查看java进程状态</div><div class="line">jps</div><div class="line"></div><div class="line"># 查看服务状态</div><div class="line">curl -XGET http://localhost:9200</div></pre></td></tr></tbody></table></figure>
+<p><img src="/images/es/es2.png" alt="es2"></p>
+<p>通过网页查看：</p>
+<p><img src="/images/es/es3.png" alt="es3"></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/posts/62e0a87a/">ElasticSearch安装避坑</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Awebone 的个人博客">Awebone</a></p>
+  <p><span>发布时间:</span>2020年03月17日 - 15:03</p>
+  <p><span>最后更新:</span>2020年03月17日 - 16:03</p>
+  <p><span>原始链接:</span><a href="/posts/62e0a87a/" title="ElasticSearch安装避坑">http://www.awebone.com/posts/62e0a87a/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.awebone.com/posts/62e0a87a/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
 
       
     </div>
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wepay.svg" alt="Awebone 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ELK/" rel="tag"><i class="fa fa-tag"></i> ELK</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/7a7093e6/" rel="next" title="使用JavaScript实现焦点轮播图">
+                <i class="fa fa-chevron-left"></i> 使用JavaScript实现焦点轮播图
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -419,6 +700,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -441,8 +726,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -599,6 +893,22 @@ show_date_time();
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ElasticSearch安装避坑"><span class="nav-number">1.</span> <span class="nav-text">ElasticSearch安装避坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#升级内核"><span class="nav-number">1.1.</span> <span class="nav-text">升级内核</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关闭防火墙和SELinux"><span class="nav-number">1.2.</span> <span class="nav-text">关闭防火墙和SELinux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装JDK1-8和ElasticSearch"><span class="nav-number">1.3.</span> <span class="nav-text">安装JDK1.8和ElasticSearch</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装JDK"><span class="nav-number">1.3.1.</span> <span class="nav-text">安装JDK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装ElasticSearch"><span class="nav-number">1.3.2.</span> <span class="nav-text">安装ElasticSearch</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -773,7 +1083,9 @@ show_date_time();
   
 
   
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
 
 
   
@@ -1271,26 +1583,6 @@ show_date_time();
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
