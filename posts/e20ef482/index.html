@@ -545,7 +545,7 @@ CDN
 <h3 id="联网"><a href="#联网" class="headerlink" title="联网"></a>联网</h3><ul>
 <li>路由器是连接不同的小范围网络的东西。</li>
 </ul>
-<figure class="highlight 1c"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">我想打个比方：我是一名教师，我在一所学校工作。</div><div class="line"></div><div class="line">假如说我有一个包，并且我需要把它送给我在民政事务处工作的人。</div><div class="line"></div><div class="line">我不知道她在哪里，我不知道她的办公室所在地，但我知道她的名字。</div><div class="line"></div><div class="line">我找我的秘书，像我的第一台路由器，我说<span class="string">"嘿，我需要找在民政事务处的某某，你能帮帮我吗？"</span>，她会说：<span class="string">"当然，我不知道她的办公室准确位置，但我知道，下一步，我可以找到她所在的区域。"</span></div><div class="line"></div><div class="line">于是，她继续并将其它发送至到民政事务处的秘书，下一个路由器。</div><div class="line"></div><div class="line">那秘书不知道我是谁或者我在哪里，但她看到包装上的名称，知道结束位置。</div><div class="line"></div><div class="line">我想要去表达的是每个路由器只需要知道自己的小网，就在它旁边的站点。</div><div class="line"></div><div class="line">它不必知道整个互联网，但只是它自己的连接。</div><div class="line"></div><div class="line">它可以获取信息并说，好吧，我不知道确切位置这回事，但我会在正确的方向传递下去吧。</div><div class="line"></div><div class="line">这就是它所需要做的事。</div></pre></td></tr></tbody></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">我想打个比方：我是一名教师，我在一所学校工作。</div><div class="line"></div><div class="line">假如说我有一个包，并且我需要把它送给我在民政事务处工作的人。</div><div class="line"></div><div class="line">我不知道她在哪里，我不知道她的办公室所在地，但我知道她的名字。</div><div class="line"></div><div class="line">我找我的秘书，像我的第一台路由器，我说"嘿，我需要找在民政事务处的某某，你能帮帮我吗？"，她会说："当然，我不知道她的办公室准确位置，但我知道，下一步，我可以找到她所在的区域。"</div><div class="line"></div><div class="line">于是，她继续并将其它发送至到民政事务处的秘书，下一个路由器。</div><div class="line"></div><div class="line">那秘书不知道我是谁或者我在哪里，但她看到包装上的名称，知道结束位置。</div><div class="line"></div><div class="line">我想要去表达的是每个路由器只需要知道自己的小网，就在它旁边的站点。</div><div class="line"></div><div class="line">它不必知道整个互联网，但只是它自己的连接。</div><div class="line"></div><div class="line">它可以获取信息并说，好吧，我不知道确切位置这回事，但我会在正确的方向传递下去吧。</div><div class="line"></div><div class="line">这就是它所需要做的事。</div></pre></td></tr></tbody></table></figure>
 <ul>
 <li>路由器可以是不同的尺寸，不同容量，但他们做的是知道自己的邻居，获得信息，并传递向正确的方向。</li>
 <li>路由器甚至不必须有完整的包的信息。</li>
@@ -755,7 +755,7 @@ CDN
 <li>当你讨论大0符号,通常指的是最坏的情况。</li>
 <li>作为一个经验法则,任何用N ^ 2或其他指数对于多个用户的网站来说都不是好的算法。</li>
 </ul>
-<figure class="highlight stylus"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">O</span><span class="params">(<span class="number">1</span>)</span></span>——确定一个数字是奇数或偶数。O(<span class="number">1</span>)是一个静态的时间常量,不管有多少信息或有多少用户它都是一样的不改变。</div><div class="line"></div><div class="line"><span class="function"><span class="title">O</span><span class="params">(log N)</span></span>——发现一个字在字典里(使用二分法检索)。二分法检索是一个典型的“分而治之”的算法。</div><div class="line"></div><div class="line"><span class="function"><span class="title">O</span><span class="params">(N)</span></span>——看一本书</div><div class="line"></div><div class="line"><span class="function"><span class="title">O</span><span class="params">(N log N)</span></span>——排序一副扑克牌(使用归并排序)</div><div class="line"></div><div class="line"><span class="function"><span class="title">O</span><span class="params">(N ^ <span class="number">2</span>)</span></span>——在你购物车上检查你的购物清单的每一样东西</div><div class="line"></div><div class="line"><span class="function"><span class="title">O</span><span class="params">(∞)</span></span>-掷硬币,直到它落在头上</div></pre></td></tr></tbody></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">O(1)——确定一个数字是奇数或偶数。O(1)是一个静态的时间常量,不管有多少信息或有多少用户它都是一样的不改变。</div><div class="line"></div><div class="line">O(log N)——发现一个字在字典里(使用二分法检索)。二分法检索是一个典型的“分而治之”的算法。</div><div class="line"></div><div class="line">O(N)——看一本书</div><div class="line"></div><div class="line">O(N log N)——排序一副扑克牌(使用归并排序)</div><div class="line"></div><div class="line">O(N ^ 2)——在你购物车上检查你的购物清单的每一样东西</div><div class="line"></div><div class="line">O(∞)-掷硬币,直到它落在头上</div></pre></td></tr></tbody></table></figure>
 <h2 id="计算机安全"><a href="#计算机安全" class="headerlink" title="计算机安全"></a>计算机安全</h2><h3 id="针对密码的字典攻击"><a href="#针对密码的字典攻击" class="headerlink" title="针对密码的字典攻击"></a>针对密码的字典攻击</h3><ul>
 <li>当创建您的密码，有些网站需要极其特殊和复杂的密码，这实际上是一个也不必要的。</li>
 <li>他们想要保护你不受字典攻击的攻击。</li>
@@ -961,7 +961,7 @@ CDN
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -972,7 +972,7 @@ CDN
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -983,7 +983,7 @@ CDN
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1152,7 +1152,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">33.5k</span>
+    <span title="Site words total count">37.8k</span>
   
 -->
 </div>
@@ -1169,7 +1169,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共33.5k字&nbsp;|&nbsp;</span>
+  <span class="post-count">博客全站共37.8k字&nbsp;|&nbsp;</span>
 </div>
 
 <div class="powered-by">
@@ -1797,7 +1797,7 @@ show_date_time();
   
 
 <script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1584433341032')
+  navigator.serviceWorker.register('/sw.js?t=1585151038492')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }
