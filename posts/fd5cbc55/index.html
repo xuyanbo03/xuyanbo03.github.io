@@ -130,16 +130,22 @@
 
 
 
-<meta name="description" content="HTML5音乐可视化">
+<meta name="description" content="HTML5音频解析与可视化基本结构使用express 框架搭建后台基本结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTML5音乐可视化">
+<meta property="og:title" content="HTML5音频解析与可视化">
 <meta property="og:url" content="http://www.awebone.com/posts/fd5cbc55/index.html">
 <meta property="og:site_name" content="Awebone's Blog">
-<meta property="og:description" content="HTML5音乐可视化">
-<meta property="og:updated_time" content="2020-03-14T08:20:17.892Z">
+<meta property="og:description" content="HTML5音频解析与可视化基本结构使用express 框架搭建后台基本结构">
+<meta property="og:image" content="http://www.awebone.com/images/h5-audio/1.webAudio-API.jpg">
+<meta property="og:image" content="http://www.awebone.com/images/h5-audio/2.AudioContext.jpg">
+<meta property="og:image" content="http://www.awebone.com/images/h5-audio/3.GainNode.jpg">
+<meta property="og:image" content="http://www.awebone.com/images/h5-audio/4.AudioBufferSourceNode.jpg">
+<meta property="og:image" content="http://www.awebone.com/images/h5-audio/5.AnalyserNode.jpg">
+<meta property="og:updated_time" content="2020-03-21T06:54:19.249Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTML5音乐可视化">
-<meta name="twitter:description" content="HTML5音乐可视化">
+<meta name="twitter:title" content="HTML5音频解析与可视化">
+<meta name="twitter:description" content="HTML5音频解析与可视化基本结构使用express 框架搭建后台基本结构">
+<meta name="twitter:image" content="http://www.awebone.com/images/h5-audio/1.webAudio-API.jpg">
 
 
 
@@ -175,7 +181,7 @@
 
 
 
-  <title>HTML5音乐可视化 | Awebone's Blog</title>
+  <title>HTML5音频解析与可视化 | Awebone's Blog</title>
   
 
 
@@ -384,7 +390,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">HTML5音乐可视化</h2>
+          <h2 class="post-title" itemprop="name headline">HTML5音频解析与可视化</h2>
         
 
         <div class="post-meta">
@@ -436,7 +442,7 @@
 
           
           
-             <span id="/posts/fd5cbc55/" class="leancloud_visitors" data-flag-title="HTML5音乐可视化">
+             <span id="/posts/fd5cbc55/" class="leancloud_visitors" data-flag-title="HTML5音频解析与可视化">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -462,7 +468,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  6
+                  421
                 </span>
               
 
@@ -478,7 +484,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -499,7 +505,35 @@
       
 
       
-        <h1 id="HTML5音乐可视化"><a href="#HTML5音乐可视化" class="headerlink" title="HTML5音乐可视化"></a>HTML5音乐可视化</h1><a id="more"></a><script>
+        <h1 id="HTML5音频解析与可视化"><a href="#HTML5音频解析与可视化" class="headerlink" title="HTML5音频解析与可视化"></a>HTML5音频解析与可视化</h1><h2 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h2><p>使用express 框架搭建后台基本结构</p>
+<a id="more"></a>
+<h2 id="加载音乐并用ajax请求资源"><a href="#加载音乐并用ajax请求资源" class="headerlink" title="加载音乐并用ajax请求资源"></a>加载音乐并用ajax请求资源</h2><p><strong>加载音乐文件：</strong></p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> lis = $(<span class="string">"#list li"</span>);</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; list.length; i++) {</div><div class="line">    lis[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; lis.length; j++) {</div><div class="line">            lis[j].className = <span class="string">""</span>;</div><div class="line">        }</div><div class="line">        <span class="keyword">this</span>.className = <span class="string">"selected"</span>;</div><div class="line">        load(<span class="string">"/media/"</span> + <span class="keyword">this</span>.title);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<p><strong>ajax加载资源</strong></p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()；</div><div class="line">xhr.abort();</div><div class="line">xhr.open(<span class="string">"GET"</span>, url);</div><div class="line">xhr.responseType = <span class="string">"arraybuffer"</span>;</div><div class="line">xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{}；</div><div class="line">xhr.send();</div></pre></td></tr></tbody></table></figure>
+<h2 id="Web-Audio-Api-关系图"><a href="#Web-Audio-Api-关系图" class="headerlink" title="Web Audio Api 关系图"></a>Web Audio Api 关系图</h2><p><img src="/images/h5-audio/1.webAudio-API.jpg" alt="1.webAudio-API"></p>
+<h2 id="使用AudioContext解码"><a href="#使用AudioContext解码" class="headerlink" title="使用AudioContext解码"></a>使用AudioContext解码</h2><p><img src="/images/h5-audio/2.AudioContext.jpg" alt="2.AudioContext"></p>
+<p><strong>实现：</strong></p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ac = <span class="keyword">new</span>(<span class="built_in">window</span>.AudioContext || <span class="built_in">window</span>.webkitAudioContext)();</div><div class="line">ac.decodeAudioData(xhr.response, <span class="function"><span class="keyword">function</span>(<span class="params">buffer</span>) </span>{</div><div class="line">    <span class="keyword">if</span> (n != count) <span class="keyword">return</span>;</div><div class="line">    <span class="keyword">var</span> bufferSource = ac.createBufferSource();</div><div class="line">    bufferSource.buffer = buffer;</div><div class="line">    bufferSource.connect(gainNode);</div><div class="line">    <span class="comment">//bufferSource.connect(ac.destination);</span></div><div class="line">    bufferSource[bufferSource.start ? <span class="string">"start"</span> : <span class="string">"noteOn"</span>](<span class="number">0</span>);</div><div class="line">    suurce = bufferSource;</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<h2 id="使用gainNode调节音量"><a href="#使用gainNode调节音量" class="headerlink" title="使用gainNode调节音量"></a>使用gainNode调节音量</h2><p><img src="/images/h5-audio/3.GainNode.jpg" alt="3.GainNode"></p>
+<p><strong>实现：</strong></p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gainNode = ac[ac.createGain ? <span class="string">"createGain"</span> : <span class="string">"createGainNode"</span>]();</div><div class="line">gainNode.connect(ac.destination);</div></pre></td></tr></tbody></table></figure>
+<h2 id="bufferSource连接gainNode"><a href="#bufferSource连接gainNode" class="headerlink" title="bufferSource连接gainNode"></a>bufferSource连接gainNode</h2><p><img src="/images/h5-audio/4.AudioBufferSourceNode.jpg" alt="4.AudioBufferSourceNode"></p>
+<p><strong>实现：</strong></p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">bufferSource.connect(gainNode);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeVolume</span>(<span class="params">percent</span>) </span>{</div><div class="line">    gainNode.gain.value = percent * percent;</div><div class="line">}</div><div class="line"></div><div class="line">$(<span class="string">"#volume"</span>)[<span class="number">0</span>].onchange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</div><div class="line">    changeVolume(<span class="keyword">this</span>.value / <span class="keyword">this</span>.max);</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<h2 id="音乐播放逻辑问题"><a href="#音乐播放逻辑问题" class="headerlink" title="音乐播放逻辑问题"></a>音乐播放逻辑问题</h2><p><strong>实现：</strong></p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//音乐资源加载</span></div><div class="line"><span class="keyword">var</span> source = <span class="literal">null</span>;</div><div class="line"></div><div class="line"><span class="comment">//计数器</span></div><div class="line"><span class="keyword">var</span> count = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> n = ++count;</div><div class="line"></div><div class="line">source &amp;&amp; source[source.stop ? <span class="string">"stop"</span> : <span class="string">"noteOff"</span>](); <span class="comment">//默认为0</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> (n != count) <span class="keyword">return</span>;</div></pre></td></tr></tbody></table></figure>
+<h2 id="分析音频资源"><a href="#分析音频资源" class="headerlink" title="分析音频资源"></a>分析音频资源</h2><blockquote>
+<p><a href="https://www.imooc.com/video/6028" target="_blank" rel="external">参考链接</a></p>
+</blockquote>
+<p><img src="/images/h5-audio/5.AnalyserNode.jpg" alt="5.AnalyserNode"></p>
+<p><strong>实现：</strong></p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> analyser=ac.createAnalyser();</div><div class="line">analyser.fftSize=<span class="number">512</span>;</div><div class="line">analyser.connect(gainNode);</div><div class="line"></div><div class="line"><span class="comment">//bufferSource连接analyser</span></div><div class="line">bufferSource.connect(analyser);</div></pre></td></tr></tbody></table></figure>
+<p><strong>时时分析</strong></p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">visualizer</span>(<span class="params"></span>)</span>{</div><div class="line">	<span class="keyword">var</span> arr=<span class="keyword">new</span> <span class="built_in">Uint8Array</span>(analyser.frequencyBinCount);</div><div class="line">    requestAnimationFrame=<span class="built_in">window</span>.requestAnimationFrame||<span class="built_in">window</span>.webkitRequestAnimationFrame||<span class="built_in">window</span>.mozRequestAnimationFrame;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">v</span>(<span class="params"></span>)</span>{</div><div class="line">	    analyser.getByteFrequencyData(arr);</div><div class="line">    }</div><div class="line">    requestAnimationFrame(v);</div><div class="line">}</div><div class="line"></div><div class="line">visualizer();</div></pre></td></tr></tbody></table></figure>
+<h2 id="音乐数据可视化"><a href="#音乐数据可视化" class="headerlink" title="音乐数据可视化"></a>音乐数据可视化</h2><p><strong>使用canvas画图进行可视化</strong></p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//canvas画图（柱状）</span></div><div class="line"><span class="keyword">var</span> box = $(<span class="string">"#box"</span>)[<span class="number">0</span>];</div><div class="line"><span class="keyword">var</span> height, width;</div><div class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">"canvas"</span>);</div><div class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">"2d"</span>);</div><div class="line">box.appendChild(canvas);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">resize</span>(<span class="params"></span>) </span>{</div><div class="line">    height = box.clientHeight;</div><div class="line">    width = box.clientWidth;</div><div class="line">    canvas.height = height;</div><div class="line">    canvas.width = width;</div><div class="line">    <span class="keyword">var</span> line = ctx.createLinearGradient(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, height);</div><div class="line">    line.addColorStop(<span class="number">0</span>, <span class="string">"red"</span>);</div><div class="line">    line.addColorStop(<span class="number">0.5</span>, <span class="string">"yello"</span>);</div><div class="line">    line.addColorStop(<span class="number">1</span>, <span class="string">"green"</span>);</div><div class="line">    ctx.fillstyle = line;</div><div class="line">}</div><div class="line">resize();</div><div class="line"><span class="built_in">window</span>.onresize = resize;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params">arr</span>) </span>{</div><div class="line">	ctx.clearRect(<span class="number">0</span>,<span class="number">0</span>,width,height);</div><div class="line">    <span class="keyword">var</span> w = width / size;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; size; i++) {</div><div class="line">        <span class="keyword">var</span> h = arr[i] / <span class="number">256</span> * height;</div><div class="line">        ctx.fillRect(w * i, height - h, w * <span class="number">0.6</span>, h);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -538,11 +572,11 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/posts/fd5cbc55/">HTML5音乐可视化</a></p>
+  <p><span>本文标题:</span><a href="/posts/fd5cbc55/">HTML5音频解析与可视化</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Awebone 的个人博客">Awebone</a></p>
   <p><span>发布时间:</span>2017年10月25日 - 00:10</p>
-  <p><span>最后更新:</span>2020年03月14日 - 16:03</p>
-  <p><span>原始链接:</span><a href="/posts/fd5cbc55/" title="HTML5音乐可视化">http://www.awebone.com/posts/fd5cbc55/</a>
+  <p><span>最后更新:</span>2020年03月21日 - 14:03</p>
+  <p><span>原始链接:</span><a href="/posts/fd5cbc55/" title="HTML5音频解析与可视化">http://www.awebone.com/posts/fd5cbc55/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.awebone.com/posts/fd5cbc55/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
@@ -706,7 +740,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -717,7 +751,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -728,7 +762,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -854,7 +888,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML5音乐可视化"><span class="nav-number">1.</span> <span class="nav-text">HTML5音乐可视化</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML5音频解析与可视化"><span class="nav-number">1.</span> <span class="nav-text">HTML5音频解析与可视化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本结构"><span class="nav-number">1.1.</span> <span class="nav-text">基本结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加载音乐并用ajax请求资源"><span class="nav-number">1.2.</span> <span class="nav-text">加载音乐并用ajax请求资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Audio-Api-关系图"><span class="nav-number">1.3.</span> <span class="nav-text">Web Audio Api 关系图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用AudioContext解码"><span class="nav-number">1.4.</span> <span class="nav-text">使用AudioContext解码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用gainNode调节音量"><span class="nav-number">1.5.</span> <span class="nav-text">使用gainNode调节音量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bufferSource连接gainNode"><span class="nav-number">1.6.</span> <span class="nav-text">bufferSource连接gainNode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#音乐播放逻辑问题"><span class="nav-number">1.7.</span> <span class="nav-text">音乐播放逻辑问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析音频资源"><span class="nav-number">1.8.</span> <span class="nav-text">分析音频资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#音乐数据可视化"><span class="nav-number">1.9.</span> <span class="nav-text">音乐数据可视化</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -886,8 +920,10 @@ show_date_time();
   <span class="with-love" id="heart">
     <i class="fa fa-heart aria-hidden="true"></i>
   </span>
+  <span class="author" itemprop="copyrightHolder">Awebone.com&nbsp;版权所有</span>
+  <!--
   <span class="author" itemprop="copyrightHolder">Awebone</span>
-
+  -->
 <!--
   
     <span class="post-meta-divider">|</span>
@@ -897,7 +933,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">33.5k</span>
+    <span title="Site words total count">37.8k</span>
   
 -->
 </div>
@@ -914,7 +950,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共33.5k字&nbsp;|&nbsp;</span>
+  <span class="post-count">博客全站共37.8k字&nbsp;|&nbsp;</span>
 </div>
 
 <div class="powered-by">
@@ -935,6 +971,10 @@ show_date_time();
       <div class="weixin-description">微信扫一扫，订阅本博客</div>
     </div>
   </div>
+</div>
+
+<div>
+  <span>ICP证：<a href="http://www.beian.miit.gov.cn">蒙ICP备20000954号</a></span>
 </div>
         
 
@@ -1542,7 +1582,7 @@ show_date_time();
   
 
 <script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1584433341032')
+  navigator.serviceWorker.register('/sw.js?t=1585539037733')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }

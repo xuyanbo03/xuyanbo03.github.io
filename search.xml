@@ -1,6 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>算法学习</title>
+    <url>/posts/800507c2/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="算法学习"><a href="#算法学习" class="headerlink" title="算法学习"></a>算法学习</h1><p>数组和链表</p>
+<a id="more"></a>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585056480939.png" alt="1585056480939" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585056511253.png" alt="1585056511253" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585056580300.png" alt="1585056580300" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585056748131.png" alt="1585056748131" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585056889761.png" alt="1585056889761" style="zoom:50%;"><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585056969448.png" alt="1585056969448"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585056969448.png" alt="1585056969448" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585057395924.png" alt="1585057395924" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585057420437.png" alt="1585057420437" style="zoom:50%;"></p>
+<p>堆栈和队列</p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585057557427.png" alt="1585057557427" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585057617265.png" alt="1585057617265"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585057698739.png" alt="1585057698739" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585058301980.png" alt="1585058301980" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585058723214.png" alt="1585058723214" style="zoom:50%;"></p>
+<p>优先队列</p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585058974694.png" alt="1585058974694" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585059046220.png" alt="1585059046220" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585059134581.png" alt="1585059134581"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585059585150.png" alt="1585059585150" style="zoom:50%;"><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585061195273.png" alt="1585061195273"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585061195273.png" alt="1585061195273" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585061254454.png" alt="1585061254454" style="zoom:50%;"></p>
+<p>Map和set</p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585061567210.png" alt="1585061567210" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585061666508.png" alt="1585061666508" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585061724790.png" alt="1585061724790" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585061856478.png" alt="1585061856478" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585061932568.png" alt="1585061932568" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585062074692.png" alt="1585062074692" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585062360667.png" alt="1585062360667" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585062384433.png" alt="1585062384433" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585062402857.png" alt="1585062402857" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585062640205.png" alt="1585062640205" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585063037475.png" alt="1585063037475" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585063051531.png" alt="1585063051531" style="zoom:50%;"></p>
+<p><img src="C:\Users\Awebone\AppData\Roaming\Typora\typora-user-images\1585063206975.png" alt="1585063206975" style="zoom:50%;"></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java单例模式</title>
+    <url>/posts/86ceb8f1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Java单例模式"><a href="#Java单例模式" class="headerlink" title="Java单例模式"></a>Java单例模式</h1><h2 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h2><p>在初次调用静态方法getSingleton，才会初始化signleton实例。</p>
+<p><strong>双重检查模式实现</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singletom</span> </span>{</div><div class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singletom singletom;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singletom</span><span class="params">()</span></span>{}</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singletom <span class="title">getSingleton</span><span class="params">()</span></span>{</div><div class="line">        <span class="keyword">if</span> (singletom == <span class="keyword">null</span>){</div><div class="line">            <span class="keyword">synchronized</span> (Singletom.class){</div><div class="line">                <span class="keyword">if</span> (singletom == <span class="keyword">null</span>){</div><div class="line">                    singletom = <span class="keyword">new</span> Singletom();</div><div class="line">                }</div><div class="line">            }</div><div class="line">        }</div><div class="line">        <span class="keyword">return</span> singletom;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<ul>
+<li><p>实现了延迟初始化，只有在初次调用静态方法getSingleton，才会初始化signleton实例。</p>
+</li>
+<li><p>性能优化，同步会造成性能下降，在同步前通过判读singleton是否初始化，减少不必要的同步开销。</p>
+</li>
+<li><p>线程安全，同步创建Singleton对象，同时注意到静态变量singleton使用volatile修饰，避免JVM进行优化重排序。</p>
+</li>
+</ul>
+<a id="more"></a>
+<p><strong>静态内部类实现</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singletom</span> </span>{</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singletom</span><span class="params">()</span></span>{}</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singletom <span class="title">getSingleton</span><span class="params">()</span></span>{</div><div class="line">        <span class="keyword">return</span> Inner.instance;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>{</div><div class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singletom instance = <span class="keyword">new</span> Singletom();</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<ul>
+<li>代码简洁，和双重检查模式对比，静态内部类单例实现清晰明了。</li>
+</ul>
+<ul>
+<li><p>延迟初始化，调用getSingleton才初始化Singleton对象。</p>
+</li>
+<li><p>线程安全，JVM在执行类的初始化阶段，会获得一个可以同步多个线程对同一个类的初始化的锁。</p>
+</li>
+</ul>
+<h2 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h2><p>直接初始化signleton实例，直接获取实例，没有延迟初始化。</p>
+<p><strong>多线程安全实现</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singletom</span> </span>{</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singletom instance = <span class="keyword">new</span> Singletom();</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singletom</span><span class="params">()</span></span>{}</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singletom <span class="title">getSingleton</span><span class="params">()</span></span>{</div><div class="line">        <span class="keyword">return</span> instance;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ElasticSearch安装避坑</title>
     <url>/posts/62e0a87a/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="ElasticSearch安装避坑"><a href="#ElasticSearch安装避坑" class="headerlink" title="ElasticSearch安装避坑"></a>ElasticSearch安装避坑</h1><p>本文使用Centos7安装ElasticSearch6.5.2，记录避坑指南。</p>
@@ -64,6 +187,171 @@
       </categories>
       <tags>
         <tag>ELK</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL基本使用</title>
+    <url>/posts/75c6e52f/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="MySQL基本使用"><a href="#MySQL基本使用" class="headerlink" title="MySQL基本使用"></a>MySQL基本使用</h1><h2 id="修改mysql提示符"><a href="#修改mysql提示符" class="headerlink" title="修改mysql提示符"></a>修改mysql提示符</h2><p><strong>修改提示符的两种方式：</strong></p>
+<ol>
+<li>连接客户端时通过参数指定：shell&gt;mysql -uroot -proot –prompt 提示符</li>
+<li>连接上客户端后，通过prompt修改：mysql&gt;prompt 提示符</li>
+</ol>
+<p><strong>修改参数：</strong></p>
+<p><code>\D</code> 完整日期<br><code>\d</code> 数据库<br>还可以搭配一起<code>+</code>符号<br><code>\h</code> 服务器<br><code>\u</code> 用户</p>
+<a id="more"></a>
+<h2 id="mysql常用命令"><a href="#mysql常用命令" class="headerlink" title="mysql常用命令"></a>mysql常用命令</h2><p><strong>系统查看：</strong></p>
+<p><code>VERSION();</code> 当前数据库版本<br><code>NOW();</code>当前系统时间<br><code>USER();</code> 当前登录的用户</p>
+<p><strong>mysql语句的规范：</strong></p>
+<ol>
+<li>关键字与函数名称全部大写</li>
+<li>数据库名称、表名称、字段名称全部小写</li>
+<li>SQL语句必须以分号结尾</li>
+</ol>
+<h2 id="数据库相关语句"><a href="#数据库相关语句" class="headerlink" title="数据库相关语句"></a>数据库相关语句</h2><blockquote>
+<p>成功安装后默认会带4个数据库；{}代表必选项；”|”代表从这里面做选择；中括号[]代表有或没有都可以，可选项。</p>
+</blockquote>
+<ul>
+<li><p>查看所有数据库</p>
+<p><code>SHOW DATABASES;</code></p>
+</li>
+<li><p>查看所有警告</p>
+<p><code>SHOW WARNINGS;</code></p>
+</li>
+<li><p>查看数据库创建时的信息</p>
+<p><code>SHOW CREATE DATABASE db_name（数据库名）;</code></p>
+</li>
+<li><p>新建数据库</p>
+<p><code>CREATE {DATABASE|SCHERMA}[IF NOT EXISTS] db_name [DEFAULT] CHARACTER SET = charset_name</code></p>
+<p>如：新建数据库并设置格式</p>
+<p><code>CREATE DATABASE IF NOT EXISTS db_name [DEFAULT] （default可省略）CHARACTER SET utf-8（格式，默认utf-8，可以改为任意的）；</code></p>
+</li>
+<li><p>修改数据库</p>
+<p><code>ALTER {DATABASE|SCHEMA}[db_name][DEFAULT] CHARACTER SET charset_name;</code></p>
+<p>如果需要修改编码格式，可写：</p>
+<p><code>ALTER DATABASE db_name CHARACTER SET = uft8;</code></p>
+</li>
+<li><p>删除数据库</p>
+<p><code>DROP {DATABASE|SCHEMA}[IF EXISTS] db_name;</code></p>
+</li>
+</ul>
+<h2 id="表相关语句"><a href="#表相关语句" class="headerlink" title="表相关语句"></a>表相关语句</h2><ul>
+<li><p>打开某个数据库</p>
+<p><code>USE db_name;</code></p>
+</li>
+<li><p>查看用户当前所打开的数据库</p>
+<p><code>SELECT DATABASE();</code></p>
+</li>
+<li><p>创建数据表（如果数据表已存在，加上<code>if not exists</code>，系统将不提示错误，否则会提示错误）</p>
+<p><code>CREATE TABLE[IF NOT EXISTS] table_name(colume_name data_type);</code></p>
+<p>列名称：经过分析得到</p>
+<p>数据类型：整型，浮点型等</p>
+<p>注意：逗号是两个字段之间的分隔符，最后一个字段不需要加逗号。</p>
+<p>例子：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="code"><pre><div class="line"><span class="comment">/*打开要创建表的数据库*/</span></div><div class="line"><span class="keyword">USE</span> 数据库名;</div><div class="line"></div><div class="line"><span class="comment">/*在打开的数据库中创建表*/</span></div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tb1(</div><div class="line">    username <span class="built_in">VARCHAR</span>(<span class="number">20</span>), </div><div class="line">    age TINYINT <span class="keyword">UNSIGNED</span>,</div><div class="line">    salary <span class="built_in">FLOAT</span>(<span class="number">8</span>,<span class="number">2</span>) <span class="keyword">UNSIGNED</span></div><div class="line">);</div></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>显示当前数据库的表</p>
+<p><code>SHOW TABLES;</code></p>
+</li>
+<li><p>显示mysql库中的表</p>
+<p><code>SHOW TABLES FROM mysql;</code></p>
+<p>注：但是并没有改变当前数据库，只是显示了一次其他数据库的列表</p>
+</li>
+<li><p>查看数据表结构</p>
+<p><code>SHOW COLUMNS FROM table_name;</code></p>
+</li>
+<li><p>插入数据</p>
+<p><code>INSERT [INTO] tb_name（表名) [col_name,....](表里的哪几列要赋值，可省略) VALUES(val,...)（值是多少）</code></p>
+<p>如果省略列的名称，必须给所有字段赋值，否则会报错。</p>
+</li>
+<li><p>查询全表</p>
+<p><code>SELECT * FROM tb1;</code></p>
+</li>
+</ul>
+<h2 id="创建表时需要注意的字段控制"><a href="#创建表时需要注意的字段控制" class="headerlink" title="创建表时需要注意的字段控制"></a>创建表时需要注意的字段控制</h2><p><strong>字段是否为空</strong></p>
+<p><code>NULL</code>：字段值可为空</p>
+<p><code>NOT NULL</code>：字段值不为空</p>
+<p>同一个字段不可能既为NULL，又为NOT NULL</p>
+<p>在创建数据表的时候，如果字段值可为空，可以写NULL，也可省略，不写的话默认为空，如果为空可赋值也可不赋值</p>
+<figure class="highlight sql"><table><tbody><tr><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tb2(</div><div class="line">    username <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">UNSIGNED</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">    age TINYINT <span class="keyword">UNSIGNED</span> <span class="literal">NULL</span></div><div class="line">);</div></pre></td></tr></tbody></table></figure>
+<p><strong>字段是否自增</strong></p>
+<p>字段为数值型时可为整数或浮点数，为浮点数时小数位必须要为0，如：<code>FLOAT (7,0)</code></p>
+<p><code>AUTO_INCREMENT</code>：自动编号，必须与主键组合使用，否则会报错，默认情况下，起始值为1，每次的增量为1，保证记录唯一性</p>
+<p><code>AUTO_INCREMENT</code>必须和<code>PRIMARY KEY</code> 一起使用，每次自增1，可不进行赋值</p>
+<p>而<code>PRIMARY KEY</code> 可以不和<code>AUTO_INCREMENT</code>一起使用，可以被赋值但是不允许有相同值的出现</p>
+<figure class="highlight sql"><table><tbody><tr><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tb3(</div><div class="line">    <span class="keyword">id</span> <span class="built_in">SMALLINT</span> <span class="keyword">UNSIGNED</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</div><div class="line">    username <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">UNSIGNED</span> <span class="keyword">NOT</span> <span class="literal">NULL</span></div><div class="line">);</div></pre></td></tr></tbody></table></figure>
+<p><strong>字段是否唯一</strong></p>
+<p><code>unique key</code>：唯一约束</p>
+<p>唯一约束可以保证记录的唯一性</p>
+<p>唯一约束的字段可以为空值（null），即使存储多个值，最终保留的空值也只有一个，故可以保证唯一性。</p>
+<p>每张数据表可以存在多个唯一约束，可以存在多个空值null，primary key就只有1个。</p>
+<p>唯一约束添加语句：<code>username varchar(20) not null unique key</code></p>
+<p>达到的效果就是如果插入语句有相同的字段，那么会约束它，只能保证数据唯一性。</p>
+<p><strong><code>primary key</code>与<code>unique key</code>的区别</strong></p>
+<p><code>primary key</code>与<code>unique key</code>都是唯一性约束，但二者有很大的区别：</p>
+<ol>
+<li>作为<code>primary key</code>的1个或多个列必须为<code>NOT NULL</code>，而<code>unique key</code>约束的列可以为<code>null</code>，这是<code>primary key</code>与<code>unique key</code>最大的区别。</li>
+<li>一个表只能有一个<code>primary key</code>(单列或多列，多列主键叫联合主键)，但可以有多个<code>unique key</code>。</li>
+</ol>
+<p><strong>默认值设置</strong></p>
+<p>default 设置：当插入记录时，如果没有明确为字段赋值，则自动赋予默认值</p>
+<p><code>sex enum('1','2','3') default '3'</code></p>
+<p>这个语句要达成的效果就是性别提供三个选项：1男，2女，3保密，那么如果数据插入没有添加性别，那么默认为3选项</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p><strong>字符型</strong></p>
+<p><img src="/images/mysql/mysql_char.jpg" alt="mysql_char"></p>
+<p><strong>整型</strong></p>
+<p><img src="/images/mysql/mysql_int.jpg" alt="mysql_int"></p>
+<p><strong>浮点型</strong></p>
+<p><img src="/images/mysql/mysql_float.jpg" alt="mysql_float"></p>
+<p><strong>日期时间型</strong></p>
+<p><img src="/images/mysql/mysql_data.jpg" alt="mysql_data"></p>
+<p>数据表操作：插入几录 查找记录<br>记录操作：创建数据表 约束的使用</p>
+<p>create table table_name 创建数据表<br>show columns from table_name查看数据表结构<br>select*from table_name数据查找，验证数据是否成功写入。</p>
+<p>auto_increment必须要和主键一起使用 但是主键可以不和auto_increment一起使用 不一起使用时主键可以自主赋值<br>PRIMARY KEY 主键约束 一张表只能有一个主键约束<br>Unique key 唯一约束 一个表可以有多个Unique约束<br>default 默认约束</p>
+<p>具有外键列的表称为子表；子表所参照的表称为父表<br>1.父表和子表必须使用相同的存储引擎，而且禁止使用临时表<br>2.数据表的存储引擎只能为InnoDB<br>3.外键列和参照列必须具有相似的数据类型，其中数字的长度或是否有符号位必须相同；而字符的长度则可以不同<br>4.外键列和参照列必须创建索引，如果参照列不存在索引的话，mysql将自动创建索引；如果外键列没有索引，mysql将不会自动创建索引（此处根据语音修改，与PPT内容不一致——经查，mysql5.5以上的版本不会自动创建外键索引，但根据实际情况，创建外建索引很有必要。）</p>
+<p>表级约束：约束只针对某一字段<br>列级约束：约束针对两个及两个以上字段<br>FOREIGN KEY（外键约束）:保持数据的一致性，完整性。实现数据表的一对一，一对多的关系。<br>1，父表（子表所参照的表）和子表（具有外键列的表）必须使用相同的存储引擎，而且禁止使用临时表。<br>2，数据表的存储引擎只能为InnoDB（可在my.ini查看修改。5.7版本my.ini地址：C:\ProgramData\MySQL\MySQL Server 5.7\my.ini）。<br>3，外键列（曾经加过foreign关键词的那一列）和参照列（外键列所参照的那列）必须具有相似的数据类型(字符，整型，日期时间等）。其中数字的长度或是否有符号位（如整型有无符号(unsigned)和有符号(signed)两种类型;）必须相同；而字符的长度则可以不同。比如说父表里面有一个参数id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,子表里面就要写作pid SMALLINT UNSIGNED(符号位和数据类型要相似)<br>4，外键列和参照列必须创建索引。如果外键列不存在索引的话，MySQL将自动创建索引。<br>FOREIGN KEY (pid)REFERENCES 父表名(id)<br>也就是users表中有两个索引（id pid）<br>外键列：pid （可自定义）<br>参照列：id  （可自定义）<br>SHOW INDEXES FROM table_name查看索引<br>SHOW INDEXES FROM table_name\G;以网格方式来查看索引</p>
+<p>外键约束的参照操作：<br>在实际的项目开发中，为避免受引擎限制，通常使用逻辑外键约束，而不使用此物理的外键约束（按照外键的定义来设计数据表，但不使用FOREIGN KEY）。<br>1.CASCADE从父表删除或更新时自动删除或更新子表中的匹配行<br>2.SET NULL从父表删除或更新行时，设置子表中的外键列为NULL。如果使用该选项，必须保证子表列没有指定NOT NULL<br>3.RESTRICT拒绝对父表的删除或更新操作<br>4.NO ACTION标准的SQL关键字，在mysql中与RESTRICT作用相同</p>
+<p>对于一个列所创建的约束，称之为列级约束。<br>而对于两个或两个以上的列所创建的约束，我们称之为表级约束。<br>列级约束在使用时，既可以在列定义的时候声明，也可以在列定义以后声明，而表级的约束只能在列定义以后来声明。<br>在实际开发中，用列级约束比较多，表级约束很少用，<br>在所有的约束中，并不是说每种约束都存在着表级或列级约束，其中，NOT NULL 非空约束，DEFAULT约束这两种约束就不存在表级约束，它们只有列级约束，而对于其他的三种，像主键，唯一，外键，它们都可以存在表级和列级约束。</p>
+<p>删除列：ALTER TABLE tb1_name DROP[COLUMN] col_name;<br>添加多列：ALTER TABLE tb1_name ADD[COLUMN] (col_name column_definition,…);<br>添加单列：ALTER TABLE tb1_name ADD[COLUMN] col_name column_definition [FIRST|AFTER col_name];<br>删除记录：DELETE FROM province WHERE id=3;<br>验证表中是否有相应的记录：SELECT * FROM province;<br>显示索引：SHOW INDEXES FROM province;SHOW INDEXES FROM province\G;(以网格呈现)<br>打开数据表test：USE test;<br>查看创建命令：SHOW CREATE TABLE province;<br>查看数据表结构：SHOW COLUMNS FROM tb3;<br>插入记录：INSERT [INTO] tb1_name [(col_name,…)] VALUES (val,…);<br>查看数据表列表：SHOW TABLES [FROM db_name] [LIKE ‘pattern’|WHERE expr];<br>添加的单列将他至于那一列后面语句：after 后面跟要添加其下的列名<br>alter table users1 add 要添加的列名 varchar(32) not null after 列名；<br>将添加的单列位于所有列之前：first<br>alter table users1 add 要添加的列名和属性 first；<br>多个操作可以同时操作，用逗号分开</p>
+<p>增加一行<br>ALTER TABLE tb_name ADD age SMALLINT UNSIGNED NOT NULL;<br>添加主键约束（只能添加一个）<br>ALTER TABLE tbl_name ADD [CONSTRAINT [symbol自定义的约束的名称]] PRIMARY KEY [index_type] (index_col_name,…)<br>ALTER TABLE tb_1 ADD PRIMARY KEY(id);<br>添加唯一约束（可以添加多个）<br>ALTER TABLE tbl_name ADD [CONSTRAINT [symbol]] UNIQUE [index_type] (index_col_name,…)<br>ALTER TABLE tb_1 ADD UNIQUE (username);<br>添加外键约束<br>ALTER TABLE tbl_name ADD [CONSTRAINT [symbol]] FOREIGN KEY [index_type] (index_col_name,…)<br>reference_definition<br>例：ALTER TABLE t3 ADD FOREIGN KEY (age)REFERENCES t2(age);<br>添加/删除默认约束<br>ALTER TABLE tbl_name ALTER [COLUMN] col_name SET DAFAULT literal（比如age里面可设置为10，20 |DROP DEFAULT<br>例：ALTER TABLE user2 ALTER age SET DEFAULT 15;<br>ALTER TABLE user2 ALTER age DROP DEFAULT;</p>
+<p>查索引是SHOW INDEX<br>查约束是SHOW INDEXES<br>约束和索引， 前者是用来检查数据的正确性，后者用来实现数据查询的优化，目的不同。<br>唯一性约束与唯一索引有所不同：<br>（1）.创建唯一约束会在Oracle中创建一个Constraint，同时也会创建一个该约束对应的唯一索引。<br>（2）.创建唯一索引只会创建一个唯一索引，不会创建Constraint。<br>也就是说其实唯一约束是通过创建唯一索引来实现的。<br>在删除时这两者也有一定的区别：<br>删除唯一约束时可以只删除约束而不删除对应的索引，所以对应的列还是必须唯一的，<br>而删除了唯一索引的话就可以插入不唯一的值。<br>删除唯一约束:ALTER TABLE table_name DROP INDEX 数据名；<br>PRIMARY KEY 和 KEY 的区别：<br>主键一定是唯一性索引，唯一性索引并不一定就是主键<br>一个表中可以有多个唯一性索引，但只能有一个主键<br>主键列不允许空值，而唯一性索引列允许空值<br>删除主键约束：alter table user2 drop primary key;<br>不用选择字段 因为一张表有也只有一个主键。<br>删除外键约束：alter table 数据表名 drop foreign key user_ibfk_1;<br>在删除之前要先找到外键名 需用show create table 数据表名；来查看</p>
+<p>1.修改列定义<br>用关键字ALTER TABLE..MODIFY<br>ALTER TABLE tbl_name MODIFY [COLUMN] col_name column_definition [FIRST |AFTER col_name];<br>ALTER TABLE users2 MODIFY id SMALLINT UNSIGNED NOT NULL FIRST; //将id字段的位置提到第一列<br>SHOW COLUMNS FROM users2;<br>ALTER TABLE users2 MODIFY id TINYINT UNSIGNED NOT NULL; //修改数据类型,需注意数据丢失的问题</p>
+<p>2.修改列名称,用CHANGE方法可以同时修改列名称和列定义.<br>用关键字ALTER..CHANGE<br>ALTER TABLE tbl_name CHANGE [COLUMN] col_name new_col_name column_definition [FIRST|AFTER col_name];<br>ALTER TABLE users2 CHANGE pid p_id TINYINT UNSIGNED; //修改列名称</p>
+<p>3.更换数据表名<br>用关键字ALTER..RENAME<br>修改一个表的表名(方法1)<br>ALTER TABLE users2 RENAME person;<br>修改一个表的表名(方法2)<br>用关键字RENAME..TO<br>RENAME TABLE users5 TO users2;<br>一次修改多个表的表名,操作间用逗号隔开.<br>RENAME TABLE users5 TO users2,users3 TO users4;<br>应该少使用数据表的列名及表名的更名。</p>
+<ol>
+<li>创建表：<br>create table user(<pre><code>id smallint primary key not null auto_increment,
+name varchar(20),
+age smallint
+</code></pre>);</li>
+<li>show create table user;  查看创建表信息<br>show tables; 显示当前数据库所有的表<br>show columns from user;  显示列属性  或 discribe user;<br>show indexes from user \G;  显示所有的索引，“\G” 表示按列显示</li>
+<li>drop table user1;  删除表</li>
+<li>表添加一列： alter table user add age tinyint<br>表删除一列： alter table user drop age;</li>
+<li>添加主键约束：alter table user2 add primary key (id);<br>删除主键约束：alter table user2 drop primary key;<br>添加唯一约束： alter table user2 add unique key uni_key (name);<br>删除唯一约束： drop index uni_key on user2;<br>添加外键约束：alter table user2 add foreign key (age) references user(id);<br>添加默认约束：alter table user2 alter age set default 20;<br>删除默认约束：alter table user2 alter age drop default;<br>修改列属性：alter table user2 modify name varchar(30);<br>修改列名：alter table user2 change age age1 tinyint not null;<br>修改表名：alter tabler user2 rename user3  或者  rename table user3 to user2;<br>注：尽量不要修改列名和表名</li>
+</ol>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>大数据</category>
+      </categories>
+      <tags>
+        <tag>MySQl</tag>
       </tags>
   </entry>
   <entry>
@@ -188,9 +476,37 @@
       </tags>
   </entry>
   <entry>
-    <title>HTML5音乐可视化</title>
+    <title>HTML5音频解析与可视化</title>
     <url>/posts/fd5cbc55/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="HTML5音乐可视化"><a href="#HTML5音乐可视化" class="headerlink" title="HTML5音乐可视化"></a>HTML5音乐可视化</h1><a id="more"></a><script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="HTML5音频解析与可视化"><a href="#HTML5音频解析与可视化" class="headerlink" title="HTML5音频解析与可视化"></a>HTML5音频解析与可视化</h1><h2 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h2><p>使用express 框架搭建后台基本结构</p>
+<a id="more"></a>
+<h2 id="加载音乐并用ajax请求资源"><a href="#加载音乐并用ajax请求资源" class="headerlink" title="加载音乐并用ajax请求资源"></a>加载音乐并用ajax请求资源</h2><p><strong>加载音乐文件：</strong></p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> lis = $(<span class="string">"#list li"</span>);</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; list.length; i++) {</div><div class="line">    lis[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; lis.length; j++) {</div><div class="line">            lis[j].className = <span class="string">""</span>;</div><div class="line">        }</div><div class="line">        <span class="keyword">this</span>.className = <span class="string">"selected"</span>;</div><div class="line">        load(<span class="string">"/media/"</span> + <span class="keyword">this</span>.title);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<p><strong>ajax加载资源</strong></p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()；</div><div class="line">xhr.abort();</div><div class="line">xhr.open(<span class="string">"GET"</span>, url);</div><div class="line">xhr.responseType = <span class="string">"arraybuffer"</span>;</div><div class="line">xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{}；</div><div class="line">xhr.send();</div></pre></td></tr></tbody></table></figure>
+<h2 id="Web-Audio-Api-关系图"><a href="#Web-Audio-Api-关系图" class="headerlink" title="Web Audio Api 关系图"></a>Web Audio Api 关系图</h2><p><img src="/images/h5-audio/1.webAudio-API.jpg" alt="1.webAudio-API"></p>
+<h2 id="使用AudioContext解码"><a href="#使用AudioContext解码" class="headerlink" title="使用AudioContext解码"></a>使用AudioContext解码</h2><p><img src="/images/h5-audio/2.AudioContext.jpg" alt="2.AudioContext"></p>
+<p><strong>实现：</strong></p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> ac = <span class="keyword">new</span>(<span class="built_in">window</span>.AudioContext || <span class="built_in">window</span>.webkitAudioContext)();</div><div class="line">ac.decodeAudioData(xhr.response, <span class="function"><span class="keyword">function</span>(<span class="params">buffer</span>) </span>{</div><div class="line">    <span class="keyword">if</span> (n != count) <span class="keyword">return</span>;</div><div class="line">    <span class="keyword">var</span> bufferSource = ac.createBufferSource();</div><div class="line">    bufferSource.buffer = buffer;</div><div class="line">    bufferSource.connect(gainNode);</div><div class="line">    <span class="comment">//bufferSource.connect(ac.destination);</span></div><div class="line">    bufferSource[bufferSource.start ? <span class="string">"start"</span> : <span class="string">"noteOn"</span>](<span class="number">0</span>);</div><div class="line">    suurce = bufferSource;</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<h2 id="使用gainNode调节音量"><a href="#使用gainNode调节音量" class="headerlink" title="使用gainNode调节音量"></a>使用gainNode调节音量</h2><p><img src="/images/h5-audio/3.GainNode.jpg" alt="3.GainNode"></p>
+<p><strong>实现：</strong></p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> gainNode = ac[ac.createGain ? <span class="string">"createGain"</span> : <span class="string">"createGainNode"</span>]();</div><div class="line">gainNode.connect(ac.destination);</div></pre></td></tr></tbody></table></figure>
+<h2 id="bufferSource连接gainNode"><a href="#bufferSource连接gainNode" class="headerlink" title="bufferSource连接gainNode"></a>bufferSource连接gainNode</h2><p><img src="/images/h5-audio/4.AudioBufferSourceNode.jpg" alt="4.AudioBufferSourceNode"></p>
+<p><strong>实现：</strong></p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><div class="line">bufferSource.connect(gainNode);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeVolume</span>(<span class="params">percent</span>) </span>{</div><div class="line">    gainNode.gain.value = percent * percent;</div><div class="line">}</div><div class="line"></div><div class="line">$(<span class="string">"#volume"</span>)[<span class="number">0</span>].onchange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</div><div class="line">    changeVolume(<span class="keyword">this</span>.value / <span class="keyword">this</span>.max);</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<h2 id="音乐播放逻辑问题"><a href="#音乐播放逻辑问题" class="headerlink" title="音乐播放逻辑问题"></a>音乐播放逻辑问题</h2><p><strong>实现：</strong></p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><div class="line"><span class="comment">//音乐资源加载</span></div><div class="line"><span class="keyword">var</span> source = <span class="literal">null</span>;</div><div class="line"></div><div class="line"><span class="comment">//计数器</span></div><div class="line"><span class="keyword">var</span> count = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> n = ++count;</div><div class="line"></div><div class="line">source &amp;&amp; source[source.stop ? <span class="string">"stop"</span> : <span class="string">"noteOff"</span>](); <span class="comment">//默认为0</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> (n != count) <span class="keyword">return</span>;</div></pre></td></tr></tbody></table></figure>
+<h2 id="分析音频资源"><a href="#分析音频资源" class="headerlink" title="分析音频资源"></a>分析音频资源</h2><blockquote>
+<p><a href="https://www.imooc.com/video/6028" target="_blank" rel="external">参考链接</a></p>
+</blockquote>
+<p><img src="/images/h5-audio/5.AnalyserNode.jpg" alt="5.AnalyserNode"></p>
+<p><strong>实现：</strong></p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> analyser=ac.createAnalyser();</div><div class="line">analyser.fftSize=<span class="number">512</span>;</div><div class="line">analyser.connect(gainNode);</div><div class="line"></div><div class="line"><span class="comment">//bufferSource连接analyser</span></div><div class="line">bufferSource.connect(analyser);</div></pre></td></tr></tbody></table></figure>
+<p><strong>时时分析</strong></p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">visualizer</span>(<span class="params"></span>)</span>{</div><div class="line">	<span class="keyword">var</span> arr=<span class="keyword">new</span> <span class="built_in">Uint8Array</span>(analyser.frequencyBinCount);</div><div class="line">    requestAnimationFrame=<span class="built_in">window</span>.requestAnimationFrame||<span class="built_in">window</span>.webkitRequestAnimationFrame||<span class="built_in">window</span>.mozRequestAnimationFrame;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">v</span>(<span class="params"></span>)</span>{</div><div class="line">	    analyser.getByteFrequencyData(arr);</div><div class="line">    }</div><div class="line">    requestAnimationFrame(v);</div><div class="line">}</div><div class="line"></div><div class="line">visualizer();</div></pre></td></tr></tbody></table></figure>
+<h2 id="音乐数据可视化"><a href="#音乐数据可视化" class="headerlink" title="音乐数据可视化"></a>音乐数据可视化</h2><p><strong>使用canvas画图进行可视化</strong></p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><div class="line"><span class="comment">//canvas画图（柱状）</span></div><div class="line"><span class="keyword">var</span> box = $(<span class="string">"#box"</span>)[<span class="number">0</span>];</div><div class="line"><span class="keyword">var</span> height, width;</div><div class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">"canvas"</span>);</div><div class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">"2d"</span>);</div><div class="line">box.appendChild(canvas);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">resize</span>(<span class="params"></span>) </span>{</div><div class="line">    height = box.clientHeight;</div><div class="line">    width = box.clientWidth;</div><div class="line">    canvas.height = height;</div><div class="line">    canvas.width = width;</div><div class="line">    <span class="keyword">var</span> line = ctx.createLinearGradient(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, height);</div><div class="line">    line.addColorStop(<span class="number">0</span>, <span class="string">"red"</span>);</div><div class="line">    line.addColorStop(<span class="number">0.5</span>, <span class="string">"yello"</span>);</div><div class="line">    line.addColorStop(<span class="number">1</span>, <span class="string">"green"</span>);</div><div class="line">    ctx.fillstyle = line;</div><div class="line">}</div><div class="line">resize();</div><div class="line"><span class="built_in">window</span>.onresize = resize;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params">arr</span>) </span>{</div><div class="line">	ctx.clearRect(<span class="number">0</span>,<span class="number">0</span>,width,height);</div><div class="line">    <span class="keyword">var</span> w = width / size;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; size; i++) {</div><div class="line">        <span class="keyword">var</span> h = arr[i] / <span class="number">256</span> * height;</div><div class="line">        ctx.fillRect(w * i, height - h, w * <span class="number">0.6</span>, h);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -623,7 +939,7 @@
 <h3 id="联网"><a href="#联网" class="headerlink" title="联网"></a>联网</h3><ul>
 <li>路由器是连接不同的小范围网络的东西。</li>
 </ul>
-<figure class="highlight 1c"><table><tbody><tr><td class="code"><pre><div class="line">我想打个比方：我是一名教师，我在一所学校工作。</div><div class="line"></div><div class="line">假如说我有一个包，并且我需要把它送给我在民政事务处工作的人。</div><div class="line"></div><div class="line">我不知道她在哪里，我不知道她的办公室所在地，但我知道她的名字。</div><div class="line"></div><div class="line">我找我的秘书，像我的第一台路由器，我说<span class="string">"嘿，我需要找在民政事务处的某某，你能帮帮我吗？"</span>，她会说：<span class="string">"当然，我不知道她的办公室准确位置，但我知道，下一步，我可以找到她所在的区域。"</span></div><div class="line"></div><div class="line">于是，她继续并将其它发送至到民政事务处的秘书，下一个路由器。</div><div class="line"></div><div class="line">那秘书不知道我是谁或者我在哪里，但她看到包装上的名称，知道结束位置。</div><div class="line"></div><div class="line">我想要去表达的是每个路由器只需要知道自己的小网，就在它旁边的站点。</div><div class="line"></div><div class="line">它不必知道整个互联网，但只是它自己的连接。</div><div class="line"></div><div class="line">它可以获取信息并说，好吧，我不知道确切位置这回事，但我会在正确的方向传递下去吧。</div><div class="line"></div><div class="line">这就是它所需要做的事。</div></pre></td></tr></tbody></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><div class="line">我想打个比方：我是一名教师，我在一所学校工作。</div><div class="line"></div><div class="line">假如说我有一个包，并且我需要把它送给我在民政事务处工作的人。</div><div class="line"></div><div class="line">我不知道她在哪里，我不知道她的办公室所在地，但我知道她的名字。</div><div class="line"></div><div class="line">我找我的秘书，像我的第一台路由器，我说"嘿，我需要找在民政事务处的某某，你能帮帮我吗？"，她会说："当然，我不知道她的办公室准确位置，但我知道，下一步，我可以找到她所在的区域。"</div><div class="line"></div><div class="line">于是，她继续并将其它发送至到民政事务处的秘书，下一个路由器。</div><div class="line"></div><div class="line">那秘书不知道我是谁或者我在哪里，但她看到包装上的名称，知道结束位置。</div><div class="line"></div><div class="line">我想要去表达的是每个路由器只需要知道自己的小网，就在它旁边的站点。</div><div class="line"></div><div class="line">它不必知道整个互联网，但只是它自己的连接。</div><div class="line"></div><div class="line">它可以获取信息并说，好吧，我不知道确切位置这回事，但我会在正确的方向传递下去吧。</div><div class="line"></div><div class="line">这就是它所需要做的事。</div></pre></td></tr></tbody></table></figure>
 <ul>
 <li>路由器可以是不同的尺寸，不同容量，但他们做的是知道自己的邻居，获得信息，并传递向正确的方向。</li>
 <li>路由器甚至不必须有完整的包的信息。</li>
@@ -833,7 +1149,7 @@
 <li>当你讨论大0符号,通常指的是最坏的情况。</li>
 <li>作为一个经验法则,任何用N ^ 2或其他指数对于多个用户的网站来说都不是好的算法。</li>
 </ul>
-<figure class="highlight stylus"><table><tbody><tr><td class="code"><pre><div class="line"><span class="function"><span class="title">O</span><span class="params">(<span class="number">1</span>)</span></span>——确定一个数字是奇数或偶数。O(<span class="number">1</span>)是一个静态的时间常量,不管有多少信息或有多少用户它都是一样的不改变。</div><div class="line"></div><div class="line"><span class="function"><span class="title">O</span><span class="params">(log N)</span></span>——发现一个字在字典里(使用二分法检索)。二分法检索是一个典型的“分而治之”的算法。</div><div class="line"></div><div class="line"><span class="function"><span class="title">O</span><span class="params">(N)</span></span>——看一本书</div><div class="line"></div><div class="line"><span class="function"><span class="title">O</span><span class="params">(N log N)</span></span>——排序一副扑克牌(使用归并排序)</div><div class="line"></div><div class="line"><span class="function"><span class="title">O</span><span class="params">(N ^ <span class="number">2</span>)</span></span>——在你购物车上检查你的购物清单的每一样东西</div><div class="line"></div><div class="line"><span class="function"><span class="title">O</span><span class="params">(∞)</span></span>-掷硬币,直到它落在头上</div></pre></td></tr></tbody></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><div class="line">O(1)——确定一个数字是奇数或偶数。O(1)是一个静态的时间常量,不管有多少信息或有多少用户它都是一样的不改变。</div><div class="line"></div><div class="line">O(log N)——发现一个字在字典里(使用二分法检索)。二分法检索是一个典型的“分而治之”的算法。</div><div class="line"></div><div class="line">O(N)——看一本书</div><div class="line"></div><div class="line">O(N log N)——排序一副扑克牌(使用归并排序)</div><div class="line"></div><div class="line">O(N ^ 2)——在你购物车上检查你的购物清单的每一样东西</div><div class="line"></div><div class="line">O(∞)-掷硬币,直到它落在头上</div></pre></td></tr></tbody></table></figure>
 <h2 id="计算机安全"><a href="#计算机安全" class="headerlink" title="计算机安全"></a>计算机安全</h2><h3 id="针对密码的字典攻击"><a href="#针对密码的字典攻击" class="headerlink" title="针对密码的字典攻击"></a>针对密码的字典攻击</h3><ul>
 <li>当创建您的密码，有些网站需要极其特殊和复杂的密码，这实际上是一个也不必要的。</li>
 <li>他们想要保护你不受字典攻击的攻击。</li>
@@ -1064,7 +1380,7 @@
 </blockquote>
 <ul>
 <li><p>常用属性和方法：</p>
-<figure class="highlight less"><table><tbody><tr><td class="code"><pre><div class="line"><span class="selector-tag">localStorage</span><span class="selector-class">.key</span>(i)</div><div class="line"><span class="selector-class">.length</span></div><div class="line"><span class="selector-class">.getItem</span>(<span class="string">"&lt;key&gt;"</span>)</div><div class="line"><span class="selector-class">.setItem</span>(<span class="string">"&lt;key&gt;"</span>,<span class="string">"&lt;value&gt;"</span>)</div><div class="line"><span class="selector-class">.removeItem</span>(<span class="string">"&lt;key&gt;"</span>)</div><div class="line"><span class="selector-class">.clear</span>()</div></pre></td></tr></tbody></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><div class="line">localStorage.key(i)</div><div class="line">.length</div><div class="line">.getItem("&lt;key&gt;")</div><div class="line">.setItem("&lt;key&gt;","&lt;value&gt;")</div><div class="line">.removeItem("&lt;key&gt;")</div><div class="line">.clear()</div></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>使用注意事项：</p>
 <ul>

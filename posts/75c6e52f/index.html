@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><link rel=manifest href=/manifest.json>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#fff">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="true" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Comic Neue:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/icon-72x72.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/icon-72x72.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#fff">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+  <meta name="keywords" content="MySQl," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Awebone's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="MySQL基本使用修改mysql提示符修改提示符的两种方式：
+
+连接客户端时通过参数指定：shell&amp;gt;mysql -uroot -proot –prompt 提示符
+连接上客户端后，通过prompt修改：mysql&amp;gt;prompt 提示符
+
+修改参数：
+\D 完整日期\d 数据库还可以搭配一起+符号\h 服务器\u 用户">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL基本使用">
+<meta property="og:url" content="http://www.awebone.com/posts/75c6e52f/index.html">
+<meta property="og:site_name" content="Awebone's Blog">
+<meta property="og:description" content="MySQL基本使用修改mysql提示符修改提示符的两种方式：
+
+连接客户端时通过参数指定：shell&amp;gt;mysql -uroot -proot –prompt 提示符
+连接上客户端后，通过prompt修改：mysql&amp;gt;prompt 提示符
+
+修改参数：
+\D 完整日期\d 数据库还可以搭配一起+符号\h 服务器\u 用户">
+<meta property="og:image" content="http://www.awebone.com/images/mysql/mysql_char.jpg">
+<meta property="og:image" content="http://www.awebone.com/images/mysql/mysql_int.jpg">
+<meta property="og:image" content="http://www.awebone.com/images/mysql/mysql_float.jpg">
+<meta property="og:image" content="http://www.awebone.com/images/mysql/mysql_data.jpg">
+<meta property="og:updated_time" content="2020-03-25T15:43:30.864Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL基本使用">
+<meta name="twitter:description" content="MySQL基本使用修改mysql提示符修改提示符的两种方式：
+
+连接客户端时通过参数指定：shell&amp;gt;mysql -uroot -proot –prompt 提示符
+连接上客户端后，通过prompt修改：mysql&amp;gt;prompt 提示符
+
+修改参数：
+\D 完整日期\d 数据库还可以搭配一起+符号\h 服务器\u 用户">
+<meta name="twitter:image" content="http://www.awebone.com/images/mysql/mysql_char.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.awebone.com/posts/75c6e52f/"/>
+
+
+
+
+
+  <title>MySQL基本使用 | Awebone's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/xuyanbo03" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Awebone's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">见多方能识广，进而才可以融会贯通；取他人之所长，谦而才可以为我所用。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-top">
+          <a href="/top/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-signal"></i> <br />
+            
+            阅读排行
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.awebone.com/posts/75c6e52f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Awebone">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/icons/icon-144x144.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Awebone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">MySQL基本使用</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-17T15:00:00+08:00">
+                2019-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/大数据/" itemprop="url" rel="index">
+                    <span itemprop="name">大数据</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/posts/75c6e52f/" class="leancloud_visitors" data-flag-title="MySQL基本使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,527
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="MySQL基本使用"><a href="#MySQL基本使用" class="headerlink" title="MySQL基本使用"></a>MySQL基本使用</h1><h2 id="修改mysql提示符"><a href="#修改mysql提示符" class="headerlink" title="修改mysql提示符"></a>修改mysql提示符</h2><p><strong>修改提示符的两种方式：</strong></p>
+<ol>
+<li>连接客户端时通过参数指定：shell&gt;mysql -uroot -proot –prompt 提示符</li>
+<li>连接上客户端后，通过prompt修改：mysql&gt;prompt 提示符</li>
+</ol>
+<p><strong>修改参数：</strong></p>
+<p><code>\D</code> 完整日期<br><code>\d</code> 数据库<br>还可以搭配一起<code>+</code>符号<br><code>\h</code> 服务器<br><code>\u</code> 用户</p>
+<a id="more"></a>
+<h2 id="mysql常用命令"><a href="#mysql常用命令" class="headerlink" title="mysql常用命令"></a>mysql常用命令</h2><p><strong>系统查看：</strong></p>
+<p><code>VERSION();</code> 当前数据库版本<br><code>NOW();</code>当前系统时间<br><code>USER();</code> 当前登录的用户</p>
+<p><strong>mysql语句的规范：</strong></p>
+<ol>
+<li>关键字与函数名称全部大写</li>
+<li>数据库名称、表名称、字段名称全部小写</li>
+<li>SQL语句必须以分号结尾</li>
+</ol>
+<h2 id="数据库相关语句"><a href="#数据库相关语句" class="headerlink" title="数据库相关语句"></a>数据库相关语句</h2><blockquote>
+<p>成功安装后默认会带4个数据库；{}代表必选项；”|”代表从这里面做选择；中括号[]代表有或没有都可以，可选项。</p>
+</blockquote>
+<ul>
+<li><p>查看所有数据库</p>
+<p><code>SHOW DATABASES;</code></p>
+</li>
+<li><p>查看所有警告</p>
+<p><code>SHOW WARNINGS;</code></p>
+</li>
+<li><p>查看数据库创建时的信息</p>
+<p><code>SHOW CREATE DATABASE db_name（数据库名）;</code></p>
+</li>
+<li><p>新建数据库</p>
+<p><code>CREATE {DATABASE|SCHERMA}[IF NOT EXISTS] db_name [DEFAULT] CHARACTER SET = charset_name</code></p>
+<p>如：新建数据库并设置格式</p>
+<p><code>CREATE DATABASE IF NOT EXISTS db_name [DEFAULT] （default可省略）CHARACTER SET utf-8（格式，默认utf-8，可以改为任意的）；</code></p>
+</li>
+<li><p>修改数据库</p>
+<p><code>ALTER {DATABASE|SCHEMA}[db_name][DEFAULT] CHARACTER SET charset_name;</code></p>
+<p>如果需要修改编码格式，可写：</p>
+<p><code>ALTER DATABASE db_name CHARACTER SET = uft8;</code></p>
+</li>
+<li><p>删除数据库</p>
+<p><code>DROP {DATABASE|SCHEMA}[IF EXISTS] db_name;</code></p>
+</li>
+</ul>
+<h2 id="表相关语句"><a href="#表相关语句" class="headerlink" title="表相关语句"></a>表相关语句</h2><ul>
+<li><p>打开某个数据库</p>
+<p><code>USE db_name;</code></p>
+</li>
+<li><p>查看用户当前所打开的数据库</p>
+<p><code>SELECT DATABASE();</code></p>
+</li>
+<li><p>创建数据表（如果数据表已存在，加上<code>if not exists</code>，系统将不提示错误，否则会提示错误）</p>
+<p><code>CREATE TABLE[IF NOT EXISTS] table_name(colume_name data_type);</code></p>
+<p>列名称：经过分析得到</p>
+<p>数据类型：整型，浮点型等</p>
+<p>注意：逗号是两个字段之间的分隔符，最后一个字段不需要加逗号。</p>
+<p>例子：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*打开要创建表的数据库*/</span></div><div class="line"><span class="keyword">USE</span> 数据库名;</div><div class="line"></div><div class="line"><span class="comment">/*在打开的数据库中创建表*/</span></div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tb1(</div><div class="line">    username <span class="built_in">VARCHAR</span>(<span class="number">20</span>), </div><div class="line">    age TINYINT <span class="keyword">UNSIGNED</span>,</div><div class="line">    salary <span class="built_in">FLOAT</span>(<span class="number">8</span>,<span class="number">2</span>) <span class="keyword">UNSIGNED</span></div><div class="line">);</div></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>显示当前数据库的表</p>
+<p><code>SHOW TABLES;</code></p>
+</li>
+<li><p>显示mysql库中的表</p>
+<p><code>SHOW TABLES FROM mysql;</code></p>
+<p>注：但是并没有改变当前数据库，只是显示了一次其他数据库的列表</p>
+</li>
+<li><p>查看数据表结构</p>
+<p><code>SHOW COLUMNS FROM table_name;</code></p>
+</li>
+<li><p>插入数据</p>
+<p><code>INSERT [INTO] tb_name（表名) [col_name,....](表里的哪几列要赋值，可省略) VALUES(val,...)（值是多少）</code></p>
+<p>如果省略列的名称，必须给所有字段赋值，否则会报错。</p>
+</li>
+<li><p>查询全表</p>
+<p><code>SELECT * FROM tb1;</code></p>
+</li>
+</ul>
+<h2 id="创建表时需要注意的字段控制"><a href="#创建表时需要注意的字段控制" class="headerlink" title="创建表时需要注意的字段控制"></a>创建表时需要注意的字段控制</h2><p><strong>字段是否为空</strong></p>
+<p><code>NULL</code>：字段值可为空</p>
+<p><code>NOT NULL</code>：字段值不为空</p>
+<p>同一个字段不可能既为NULL，又为NOT NULL</p>
+<p>在创建数据表的时候，如果字段值可为空，可以写NULL，也可省略，不写的话默认为空，如果为空可赋值也可不赋值</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tb2(</div><div class="line">    username <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">UNSIGNED</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">    age TINYINT <span class="keyword">UNSIGNED</span> <span class="literal">NULL</span></div><div class="line">);</div></pre></td></tr></tbody></table></figure>
+<p><strong>字段是否自增</strong></p>
+<p>字段为数值型时可为整数或浮点数，为浮点数时小数位必须要为0，如：<code>FLOAT (7,0)</code></p>
+<p><code>AUTO_INCREMENT</code>：自动编号，必须与主键组合使用，否则会报错，默认情况下，起始值为1，每次的增量为1，保证记录唯一性</p>
+<p><code>AUTO_INCREMENT</code>必须和<code>PRIMARY KEY</code> 一起使用，每次自增1，可不进行赋值</p>
+<p>而<code>PRIMARY KEY</code> 可以不和<code>AUTO_INCREMENT</code>一起使用，可以被赋值但是不允许有相同值的出现</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tb3(</div><div class="line">    <span class="keyword">id</span> <span class="built_in">SMALLINT</span> <span class="keyword">UNSIGNED</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</div><div class="line">    username <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">UNSIGNED</span> <span class="keyword">NOT</span> <span class="literal">NULL</span></div><div class="line">);</div></pre></td></tr></tbody></table></figure>
+<p><strong>字段是否唯一</strong></p>
+<p><code>unique key</code>：唯一约束</p>
+<p>唯一约束可以保证记录的唯一性</p>
+<p>唯一约束的字段可以为空值（null），即使存储多个值，最终保留的空值也只有一个，故可以保证唯一性。</p>
+<p>每张数据表可以存在多个唯一约束，可以存在多个空值null，primary key就只有1个。</p>
+<p>唯一约束添加语句：<code>username varchar(20) not null unique key</code></p>
+<p>达到的效果就是如果插入语句有相同的字段，那么会约束它，只能保证数据唯一性。</p>
+<p><strong><code>primary key</code>与<code>unique key</code>的区别</strong></p>
+<p><code>primary key</code>与<code>unique key</code>都是唯一性约束，但二者有很大的区别：</p>
+<ol>
+<li>作为<code>primary key</code>的1个或多个列必须为<code>NOT NULL</code>，而<code>unique key</code>约束的列可以为<code>null</code>，这是<code>primary key</code>与<code>unique key</code>最大的区别。</li>
+<li>一个表只能有一个<code>primary key</code>(单列或多列，多列主键叫联合主键)，但可以有多个<code>unique key</code>。</li>
+</ol>
+<p><strong>默认值设置</strong></p>
+<p>default 设置：当插入记录时，如果没有明确为字段赋值，则自动赋予默认值</p>
+<p><code>sex enum('1','2','3') default '3'</code></p>
+<p>这个语句要达成的效果就是性别提供三个选项：1男，2女，3保密，那么如果数据插入没有添加性别，那么默认为3选项</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p><strong>字符型</strong></p>
+<p><img src="/images/mysql/mysql_char.jpg" alt="mysql_char"></p>
+<p><strong>整型</strong></p>
+<p><img src="/images/mysql/mysql_int.jpg" alt="mysql_int"></p>
+<p><strong>浮点型</strong></p>
+<p><img src="/images/mysql/mysql_float.jpg" alt="mysql_float"></p>
+<p><strong>日期时间型</strong></p>
+<p><img src="/images/mysql/mysql_data.jpg" alt="mysql_data"></p>
+<p>数据表操作：插入几录 查找记录<br>记录操作：创建数据表 约束的使用</p>
+<p>create table table_name 创建数据表<br>show columns from table_name查看数据表结构<br>select*from table_name数据查找，验证数据是否成功写入。</p>
+<p>auto_increment必须要和主键一起使用 但是主键可以不和auto_increment一起使用 不一起使用时主键可以自主赋值<br>PRIMARY KEY 主键约束 一张表只能有一个主键约束<br>Unique key 唯一约束 一个表可以有多个Unique约束<br>default 默认约束</p>
+<p>具有外键列的表称为子表；子表所参照的表称为父表<br>1.父表和子表必须使用相同的存储引擎，而且禁止使用临时表<br>2.数据表的存储引擎只能为InnoDB<br>3.外键列和参照列必须具有相似的数据类型，其中数字的长度或是否有符号位必须相同；而字符的长度则可以不同<br>4.外键列和参照列必须创建索引，如果参照列不存在索引的话，mysql将自动创建索引；如果外键列没有索引，mysql将不会自动创建索引（此处根据语音修改，与PPT内容不一致——经查，mysql5.5以上的版本不会自动创建外键索引，但根据实际情况，创建外建索引很有必要。）</p>
+<p>表级约束：约束只针对某一字段<br>列级约束：约束针对两个及两个以上字段<br>FOREIGN KEY（外键约束）:保持数据的一致性，完整性。实现数据表的一对一，一对多的关系。<br>1，父表（子表所参照的表）和子表（具有外键列的表）必须使用相同的存储引擎，而且禁止使用临时表。<br>2，数据表的存储引擎只能为InnoDB（可在my.ini查看修改。5.7版本my.ini地址：C:\ProgramData\MySQL\MySQL Server 5.7\my.ini）。<br>3，外键列（曾经加过foreign关键词的那一列）和参照列（外键列所参照的那列）必须具有相似的数据类型(字符，整型，日期时间等）。其中数字的长度或是否有符号位（如整型有无符号(unsigned)和有符号(signed)两种类型;）必须相同；而字符的长度则可以不同。比如说父表里面有一个参数id SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,子表里面就要写作pid SMALLINT UNSIGNED(符号位和数据类型要相似)<br>4，外键列和参照列必须创建索引。如果外键列不存在索引的话，MySQL将自动创建索引。<br>FOREIGN KEY (pid)REFERENCES 父表名(id)<br>也就是users表中有两个索引（id pid）<br>外键列：pid （可自定义）<br>参照列：id  （可自定义）<br>SHOW INDEXES FROM table_name查看索引<br>SHOW INDEXES FROM table_name\G;以网格方式来查看索引</p>
+<p>外键约束的参照操作：<br>在实际的项目开发中，为避免受引擎限制，通常使用逻辑外键约束，而不使用此物理的外键约束（按照外键的定义来设计数据表，但不使用FOREIGN KEY）。<br>1.CASCADE从父表删除或更新时自动删除或更新子表中的匹配行<br>2.SET NULL从父表删除或更新行时，设置子表中的外键列为NULL。如果使用该选项，必须保证子表列没有指定NOT NULL<br>3.RESTRICT拒绝对父表的删除或更新操作<br>4.NO ACTION标准的SQL关键字，在mysql中与RESTRICT作用相同</p>
+<p>对于一个列所创建的约束，称之为列级约束。<br>而对于两个或两个以上的列所创建的约束，我们称之为表级约束。<br>列级约束在使用时，既可以在列定义的时候声明，也可以在列定义以后声明，而表级的约束只能在列定义以后来声明。<br>在实际开发中，用列级约束比较多，表级约束很少用，<br>在所有的约束中，并不是说每种约束都存在着表级或列级约束，其中，NOT NULL 非空约束，DEFAULT约束这两种约束就不存在表级约束，它们只有列级约束，而对于其他的三种，像主键，唯一，外键，它们都可以存在表级和列级约束。</p>
+<p>删除列：ALTER TABLE tb1_name DROP[COLUMN] col_name;<br>添加多列：ALTER TABLE tb1_name ADD[COLUMN] (col_name column_definition,…);<br>添加单列：ALTER TABLE tb1_name ADD[COLUMN] col_name column_definition [FIRST|AFTER col_name];<br>删除记录：DELETE FROM province WHERE id=3;<br>验证表中是否有相应的记录：SELECT * FROM province;<br>显示索引：SHOW INDEXES FROM province;SHOW INDEXES FROM province\G;(以网格呈现)<br>打开数据表test：USE test;<br>查看创建命令：SHOW CREATE TABLE province;<br>查看数据表结构：SHOW COLUMNS FROM tb3;<br>插入记录：INSERT [INTO] tb1_name [(col_name,…)] VALUES (val,…);<br>查看数据表列表：SHOW TABLES [FROM db_name] [LIKE ‘pattern’|WHERE expr];<br>添加的单列将他至于那一列后面语句：after 后面跟要添加其下的列名<br>alter table users1 add 要添加的列名 varchar(32) not null after 列名；<br>将添加的单列位于所有列之前：first<br>alter table users1 add 要添加的列名和属性 first；<br>多个操作可以同时操作，用逗号分开</p>
+<p>增加一行<br>ALTER TABLE tb_name ADD age SMALLINT UNSIGNED NOT NULL;<br>添加主键约束（只能添加一个）<br>ALTER TABLE tbl_name ADD [CONSTRAINT [symbol自定义的约束的名称]] PRIMARY KEY [index_type] (index_col_name,…)<br>ALTER TABLE tb_1 ADD PRIMARY KEY(id);<br>添加唯一约束（可以添加多个）<br>ALTER TABLE tbl_name ADD [CONSTRAINT [symbol]] UNIQUE [index_type] (index_col_name,…)<br>ALTER TABLE tb_1 ADD UNIQUE (username);<br>添加外键约束<br>ALTER TABLE tbl_name ADD [CONSTRAINT [symbol]] FOREIGN KEY [index_type] (index_col_name,…)<br>reference_definition<br>例：ALTER TABLE t3 ADD FOREIGN KEY (age)REFERENCES t2(age);<br>添加/删除默认约束<br>ALTER TABLE tbl_name ALTER [COLUMN] col_name SET DAFAULT literal（比如age里面可设置为10，20 |DROP DEFAULT<br>例：ALTER TABLE user2 ALTER age SET DEFAULT 15;<br>ALTER TABLE user2 ALTER age DROP DEFAULT;</p>
+<p>查索引是SHOW INDEX<br>查约束是SHOW INDEXES<br>约束和索引， 前者是用来检查数据的正确性，后者用来实现数据查询的优化，目的不同。<br>唯一性约束与唯一索引有所不同：<br>（1）.创建唯一约束会在Oracle中创建一个Constraint，同时也会创建一个该约束对应的唯一索引。<br>（2）.创建唯一索引只会创建一个唯一索引，不会创建Constraint。<br>也就是说其实唯一约束是通过创建唯一索引来实现的。<br>在删除时这两者也有一定的区别：<br>删除唯一约束时可以只删除约束而不删除对应的索引，所以对应的列还是必须唯一的，<br>而删除了唯一索引的话就可以插入不唯一的值。<br>删除唯一约束:ALTER TABLE table_name DROP INDEX 数据名；<br>PRIMARY KEY 和 KEY 的区别：<br>主键一定是唯一性索引，唯一性索引并不一定就是主键<br>一个表中可以有多个唯一性索引，但只能有一个主键<br>主键列不允许空值，而唯一性索引列允许空值<br>删除主键约束：alter table user2 drop primary key;<br>不用选择字段 因为一张表有也只有一个主键。<br>删除外键约束：alter table 数据表名 drop foreign key user_ibfk_1;<br>在删除之前要先找到外键名 需用show create table 数据表名；来查看</p>
+<p>1.修改列定义<br>用关键字ALTER TABLE..MODIFY<br>ALTER TABLE tbl_name MODIFY [COLUMN] col_name column_definition [FIRST |AFTER col_name];<br>ALTER TABLE users2 MODIFY id SMALLINT UNSIGNED NOT NULL FIRST; //将id字段的位置提到第一列<br>SHOW COLUMNS FROM users2;<br>ALTER TABLE users2 MODIFY id TINYINT UNSIGNED NOT NULL; //修改数据类型,需注意数据丢失的问题</p>
+<p>2.修改列名称,用CHANGE方法可以同时修改列名称和列定义.<br>用关键字ALTER..CHANGE<br>ALTER TABLE tbl_name CHANGE [COLUMN] col_name new_col_name column_definition [FIRST|AFTER col_name];<br>ALTER TABLE users2 CHANGE pid p_id TINYINT UNSIGNED; //修改列名称</p>
+<p>3.更换数据表名<br>用关键字ALTER..RENAME<br>修改一个表的表名(方法1)<br>ALTER TABLE users2 RENAME person;<br>修改一个表的表名(方法2)<br>用关键字RENAME..TO<br>RENAME TABLE users5 TO users2;<br>一次修改多个表的表名,操作间用逗号隔开.<br>RENAME TABLE users5 TO users2,users3 TO users4;<br>应该少使用数据表的列名及表名的更名。</p>
+<ol>
+<li>创建表：<br>create table user(<pre><code>id smallint primary key not null auto_increment,
+name varchar(20),
+age smallint
+</code></pre>);</li>
+<li>show create table user;  查看创建表信息<br>show tables; 显示当前数据库所有的表<br>show columns from user;  显示列属性  或 discribe user;<br>show indexes from user \G;  显示所有的索引，“\G” 表示按列显示</li>
+<li>drop table user1;  删除表</li>
+<li>表添加一列： alter table user add age tinyint<br>表删除一列： alter table user drop age;</li>
+<li>添加主键约束：alter table user2 add primary key (id);<br>删除主键约束：alter table user2 drop primary key;<br>添加唯一约束： alter table user2 add unique key uni_key (name);<br>删除唯一约束： drop index uni_key on user2;<br>添加外键约束：alter table user2 add foreign key (age) references user(id);<br>添加默认约束：alter table user2 alter age set default 20;<br>删除默认约束：alter table user2 alter age drop default;<br>修改列属性：alter table user2 modify name varchar(30);<br>修改列名：alter table user2 change age age1 tinyint not null;<br>修改表名：alter tabler user2 rename user3  或者  rename table user3 to user2;<br>注：尽量不要修改列名和表名</li>
+</ol>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/posts/75c6e52f/">MySQL基本使用</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Awebone 的个人博客">Awebone</a></p>
+  <p><span>发布时间:</span>2019年03月17日 - 15:03</p>
+  <p><span>最后更新:</span>2020年03月25日 - 23:03</p>
+  <p><span>原始链接:</span><a href="/posts/75c6e52f/" title="MySQL基本使用">http://www.awebone.com/posts/75c6e52f/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.awebone.com/posts/75c6e52f/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
+      
+    </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wepay.svg" alt="Awebone 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQl/" rel="tag"><i class="fa fa-tag"></i> MySQl</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/7a7093e6/" rel="next" title="使用JavaScript实现焦点轮播图">
+                <i class="fa fa-chevron-left"></i> 使用JavaScript实现焦点轮播图
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/62e0a87a/" rel="prev" title="ElasticSearch安装避坑">
+                ElasticSearch安装避坑 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/icons/icon-144x144.png"
+                alt="Awebone" />
+            
+              <p class="site-author-name" itemprop="name">Awebone</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xuyanbo03" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com/u/awebone" target="_blank" title="Segmentfault">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>Segmentfault</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/awebone" target="_blank" title="码云">
+                      
+                        <i class="fa fa-fw fa-spinner"></i>码云</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="xuyanbo03@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://juejin.im/user/57f916bf128fe100545db838" title="掘金" target="_blank">掘金</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://my.oschina.net/xxyb" title="开源中国" target="_blank">开源中国</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.gitmemory.com/xuyanbo03" title="gitmemory" target="_blank">gitmemory</a>
+                  </li>
+                
+              </ul>
+              
+<div id="days"></div>
+<script>
+function show_date_time(){
+    window.setTimeout("show_date_time()", 1000);
+    BirthDay=new Date("12/09/2016 15:13:14");
+    today=new Date();
+    timeold=(today.getTime()-BirthDay.getTime());
+    sectimeold=timeold/1000
+    secondsold=Math.floor(sectimeold);
+    msPerDay=24*60*60*1000
+    e_daysold=timeold/msPerDay
+    daysold=Math.floor(e_daysold);
+    e_hrsold=(e_daysold-daysold)*24;
+    hrsold=setzero(Math.floor(e_hrsold));
+    e_minsold=(e_hrsold-hrsold)*60;
+    minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+    seconds=setzero(Math.floor((e_minsold-minsold)*60));
+    document.getElementById('days').innerHTML="已运行 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
+}
+function setzero(i) {
+    if (i<10) {
+        i="0" + i
+    };
+    return i;
+}
+show_date_time();
+</script>
+
+<style>
+#days {
+    display: block;
+    color: rgb(7, 179, 155);
+    font-size: 13px;
+    margin-top: 15px;
+}
+</style>
+            </div>
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL基本使用"><span class="nav-number">1.</span> <span class="nav-text">MySQL基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改mysql提示符"><span class="nav-number">1.1.</span> <span class="nav-text">修改mysql提示符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql常用命令"><span class="nav-number">1.2.</span> <span class="nav-text">mysql常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库相关语句"><span class="nav-number">1.3.</span> <span class="nav-text">数据库相关语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表相关语句"><span class="nav-number">1.4.</span> <span class="nav-text">表相关语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建表时需要注意的字段控制"><span class="nav-number">1.5.</span> <span class="nav-text">创建表时需要注意的字段控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">1.6.</span> <span class="nav-text">数据类型</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+<div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart aria-hidden="true"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Awebone.com&nbsp;版权所有</span>
+  <!--
+  <span class="author" itemprop="copyrightHolder">Awebone</span>
+  -->
+<!--
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">37.8k</span>
+  
+-->
+</div>
+
+<!--
+
+
+
+
+
+-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共37.8k字&nbsp;|&nbsp;</span>
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>人&nbsp;|&nbsp;
+</span>
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+</div>
+
+<div class="weixin-box">
+  <div class="weixin-menu">
+    <div class="weixin-hover">
+      <div class="weixin-description">微信扫一扫，订阅本博客</div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <span>ICP证：<a href="http://www.beian.miit.gov.cn">蒙ICP备20000954号</a></span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("LSAm57bISKEqVJ5qzIteKcXP-gzGzoHsz", "8IMLXHLadeWT8gK336u2foXT");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+<script>if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js?t=1585539037733')
+    .then(function () {console.log('ServiceWorker Register Successfully.')})
+    .catch(function (e) {console.error(e)});
+}
+</script><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
