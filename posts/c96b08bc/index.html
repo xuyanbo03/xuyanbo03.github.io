@@ -142,7 +142,7 @@
 <meta property="og:image" content="https://www.awebone.com/images/transformer/clip_image008.jpg">
 <meta property="og:image" content="https://www.awebone.com/images/transformer/clip_image010.jpg">
 <meta property="og:image" content="https://www.awebone.com/images/transformer/clip_image012.jpg">
-<meta property="og:updated_time" content="2020-06-06T16:08:43.786Z">
+<meta property="og:updated_time" content="2020-06-06T16:28:38.735Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Transformer模型详解">
 <meta name="twitter:description" content="Transformer模型详解机器翻译发展变化趋势机器翻译（MT）是借机器之力，自动地将一种自然语言文本（源语言）翻译成另一种自然语言文本（目标语言）。使用机器做翻译的思想最早由 Warren Weaver 于 1949 年提出，在很长一段时间里（20 世纪 50 年代到 80 年代），机器翻译都是通过研究源语言与目标语言的语言学信息来做的，也就是基于词典和语法生成翻译，这被称为基于规则的机器翻译">
@@ -516,21 +516,21 @@
 <h2 id="Transform模型原理"><a href="#Transform模型原理" class="headerlink" title="Transform模型原理"></a>Transform模型原理</h2><p>Transformer 模型的核心思想是自注意力机制（self-attention），能注意输入序列的不同位置以计算该序列的表示的能力。Transformer 是多层自注意力层组成的堆栈。</p>
 <p>Transformer 模型与标准的具有注意力机制的序列到序列模型遵循相同的一般模式。输入语句经过 N 个编码器层，为序列中的每个词/标记生成一个输出，解码器关注编码器的输出以及它自身的输入（自注意力）来预测下一个词。</p>
 <p>其模型架构图如下：</p>
-<p><img src="images/transformer/clip_image002.png" alt="img"></p>
+<p><img src="/images/transformer/clip_image002.png" alt="img"></p>
 <p>Transformer 使用的注意力函数有三个输入：Q（请求（query））、K（主键（key））、V（数值（value））。点积注意力被缩小了深度的平方根倍，这样做是因为对于较大的深度值，点积的大小会增大，从而推动 softmax 函数往仅有很小的梯度的方向靠拢，导致了一种很硬的softmax。</p>
 <p>例如，假设 Q 和 K 的均值为0，方差为1。它们的矩阵乘积将有均值为0，方差为 dk。因此，dk 的平方根被用于缩放（而非其他数值），因为，Q 和 K 的矩阵乘积的均值本应该为 0，方差本应该为1，这样会获得一个更平缓的 softmax。</p>
 <p>遮挡（mask）与 -1e9（接近于负无穷）相乘，这样做是因为遮挡与缩放的 Q 和 K 的矩阵乘积相加，并在 softmax 之前立即应用，目标是将这些单元归零，因为 softmax 的较大负数输入在输出中接近于零。当 softmax 在 K 上进行归一化后，它的值决定了分配到 Q 的重要程度。输出表示注意力权重和 V（数值）向量的乘积。这确保了要关注的词保持原样，而无关的词将被清除掉。</p>
 <p>其公式和架构图如下：</p>
-<p><img src="images/transformer/clip_image004.jpg" alt="img"></p>
-<p><img src="images/transformer/clip_image006.jpg" alt="img"></p>
+<p><img src="/images/transformer/clip_image004.jpg" alt="img"></p>
+<p><img src="/images/transformer/clip_image006.jpg" alt="img"></p>
 <p>多头注意力由四部分组成：线性层并分拆成多头、按比缩放的点积注意力、多头及联、最后一层线性层。</p>
 <p>每个多头注意力块有三个输入：Q（请求）、K（主键）、V（数值）。这些输入经过线性层，并分拆成多头。Q、K、和V被拆分到了多个头，而非单个的注意力头，因为多头允许模型共同注意来自不同表示空间的不同位置的信息。在分拆后，每个头部的维度减少，因此总的计算成本与有着全部维度的单个注意力头相同。将上面定义的缩放点积注意力函数应用于每个头（进行了广播以提高效率），然后将每个头的注意力输出连接起来，并放入最后的 Dense 层，最终输出注意力权重和输出。其公式和架构图如下：</p>
-<p><img src="images/transformer/clip_image008.jpg" alt="img"></p>
-<p><img src="images/transformer/clip_image010.jpg" alt="img"></p>
+<p><img src="/images/transformer/clip_image008.jpg" alt="img"></p>
+<p><img src="/images/transformer/clip_image010.jpg" alt="img"></p>
 <p>因为该模型并不包括任何的循环或卷积，所以模型添加了位置编码，为模型提供一些关于单词在句子中相对位置的信息。</p>
 <p>位置编码向量被加到嵌入向量中，嵌入表示一个 d 维空间的标记，在 d 维空间中有着相似含义的标记会离彼此更近。但是，嵌入并没有对在一句话中的词的相对位置进行编码。因此，当加上位置编码后，词将基于它们含义的相似度以及它们在句子中的位置，在 d 维空间中离彼此更近。</p>
 <p>这里采用正弦余弦的位置编码方式，其公式如下：</p>
-<p><img src="images/transformer/clip_image012.jpg" alt="img"></p>
+<p><img src="/images/transformer/clip_image012.jpg" alt="img"></p>
 <p>在进行预测时，采用强制教学（teacher force），即上一步的输出当做下一步的输入，逐步预测出整个序列。</p>
 <h2 id="Transform模型优缺点"><a href="#Transform模型优缺点" class="headerlink" title="Transform模型优缺点"></a>Transform模型优缺点</h2><p>一个 Transformer 模型用自注意力层而非 RNNs 或 CNNs 来处理变长的输入。这种通用架构有一系列的优势：</p>
 <p>（1）它不对数据间的时间/空间关系做任何假设，这是处理一组对象的理想选择。</p>
@@ -1586,8 +1586,9 @@ show_date_time();
   
 
 <script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1591459733464')
+  navigator.serviceWorker.register('/sw.js?t=1591460930329')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }
-</script><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
+</script></body>
+</html>
