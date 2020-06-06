@@ -563,6 +563,204 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.awebone.com/posts/440e5582/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Awebone">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/icons/icon-144x144.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Awebone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/440e5582/" itemprop="url">高可用HBase搭建全流程</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-06T15:00:00+08:00">
+                2020-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/大数据/" itemprop="url" rel="index">
+                    <span itemprop="name">大数据</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/posts/440e5582/" class="leancloud_visitors" data-flag-title="高可用HBase搭建全流程">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,590
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="高可用HBase搭建全流程"><a href="#高可用HBase搭建全流程" class="headerlink" title="高可用HBase搭建全流程"></a>高可用HBase搭建全流程</h1><h2 id="系统描述"><a href="#系统描述" class="headerlink" title="系统描述"></a>系统描述</h2><h3 id="系统介绍"><a href="#系统介绍" class="headerlink" title="系统介绍"></a>系统介绍</h3><p>系统基于ZooKeeper搭建Hadoop HA集群，在高可用分布式HDFS文件系统的基础上，搭建高可用分布式HBase数据库集群。</p>
+<p>ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是 Google Chubby一个开源的实现。它提供了简单原始的功能，分布式应用可以基于它实现更高级的服务，比如分布式同步，配置管理，集群管理，命名管理，队列管理。使用文件系统目录树作为数据模型。</p>
+<p>Hadoop分布式集群采用主从架构，在Hadoop HA集群中，ZooKeeper用来解决SPOF单点故障问题。如果active namenod宕机，就从剩下的standby namenodes中选举出来一个新的active namenode，并且做到瞬时切换，使得在需求增长的前提下，分布式集群仍然可以向外提供服务。同样的，分布式HBase数据库也采用主从架构，在master server宕机的情况下，瞬时切换到backup master，使得HBase高可用。分布式HBase数据库的底层存储采用HDFS文件系统。</p>
+
+          
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/posts/440e5582/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.awebone.com/posts/1d6a9c79/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2150,216 +2348,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.awebone.com/posts/143a0a72/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Awebone">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/icons/icon-144x144.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Awebone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/143a0a72/" itemprop="url">Mac转Windows的拯救指南</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-13T00:00:00+08:00">
-                2017-10-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/posts/143a0a72/" class="leancloud_visitors" data-flag-title="Mac转Windows的拯救指南">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-                 <span>℃</span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  913
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Mac转Windows的拯救指南"><a href="#Mac转Windows的拯救指南" class="headerlink" title="Mac转Windows的拯救指南"></a>Mac转Windows的拯救指南</h1><blockquote>
-<p>假期使用Mac开发，目前转Windows开发学习，体会了Mac上高效率的快捷键之后，感觉用鼠标点来点去很麻烦，将一些小工具使用，来提高效率。这只是给新手介绍，大神请绕过。</p>
-</blockquote>
-<p>下面开始介绍一些工具来拯救Mac党</p>
-<h3 id="1-Chocolatey"><a href="#1-Chocolatey" class="headerlink" title="1.Chocolatey"></a>1.Chocolatey</h3><p><a href="https://chocolatey.org/">Chocolatey</a>是一个Windows上的包管理器，类似于linux上的yum和 apt-get。 你可以在其官方网站上查看具体的使用说明。一般的安装步骤应该是下面这样：</p>
-<p><strong>CMD</strong></p>
-<figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object <span class="built_in">net</span>.webclient).DownloadString('https://chocolatey.org/install.ps1'))" &amp;&amp; <span class="built_in">SET</span> <span class="built_in">PATH</span>=<span class="variable">%PATH%</span>;<span class="variable">%ALLUSERSPROFILE%</span>\chocolatey\bin</div></pre></td></tr></tbody></table></figure>
-<p><strong>Powershell</strong></p>
-<figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Set-ExecutionPolicy</span> Bypass; iex ((<span class="built_in">New-Object</span> System.Net.WebClient).DownloadString(<span class="string">'https://chocolatey.org/install.ps1'</span>))</div></pre></td></tr></tbody></table></figure>
-<p>一般来说，使用Chocolatey来安装软件的时候，需要以管理员的身份来运行命令提示符窗口。chocolatey的网站可能在国内访问困难，导致上述安装命令无法正常完成。请使用科学上网。</p>
-
-          
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/posts/143a0a72/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2411,7 +2404,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2588,7 +2581,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">42.2k</span>
+    <span title="Site words total count">44.8k</span>
   
 -->
 </div>
@@ -2605,7 +2598,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共42.2k字&nbsp;|&nbsp;</span>
+  <span class="post-count">博客全站共44.8k字&nbsp;|&nbsp;</span>
 </div>
 
 <div class="powered-by">
@@ -3253,9 +3246,8 @@ show_date_time();
   
 
 <script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1591460930329')
+  navigator.serviceWorker.register('/sw.js?t=1591462863882')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }
-</script></body>
-</html>
+</script><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
