@@ -142,7 +142,7 @@ conda环境创建conda镜像设置通过修改用户目录下的 .condarc 文件
 
 conda环境创建conda镜像设置通过修改用户目录下的 .condarc 文件。Windows 用户无法直接创建名为 .condarc 的文件，可先执行 conda config --set show_channel_urls yes 生成该文件之后再修改
 1234567891011121314151617channels:  - default">
-<meta property="og:updated_time" content="2020-07-11T15:59:07.273Z">
+<meta property="og:updated_time" content="2020-07-11T16:09:39.744Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Conda搭建Ray集群">
 <meta name="twitter:description" content="本文使用MiniConda搭建Ray集群环境
@@ -517,6 +517,7 @@ conda环境创建conda镜像设置通过修改用户目录下的 .condarc 文件
 <p>运行 <code>conda clean -i</code> 清除索引缓存，保证用的是镜像站提供的索引。</p>
 <h2 id="环境创建"><a href="#环境创建" class="headerlink" title="环境创建"></a>环境创建</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">conda create -n ray python=3.6</div><div class="line">conda activate ray <span class="comment">#开启ray环境</span></div><div class="line">conda deactivate <span class="comment">#关闭环境</span></div><div class="line">conda env list <span class="comment">#显示所有的虚拟环境</span></div><div class="line">conda info --envs <span class="comment">#显示所有的虚拟环境</span></div></pre></td></tr></tbody></table></figure>
 <a id="more"></a>
+<p><br></p>
 <h1 id="Ray安装"><a href="#Ray安装" class="headerlink" title="Ray安装"></a>Ray安装</h1><h2 id="pip镜像设置"><a href="#pip镜像设置" class="headerlink" title="pip镜像设置"></a>pip镜像设置</h2><h3 id="临时使用"><a href="#临时使用" class="headerlink" title="临时使用"></a>临时使用</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package</div></pre></td></tr></tbody></table></figure>
 <p>注意，<code>simple</code> 不能少, 是 <code>https</code> 而不是 <code>http</code></p>
 <h3 id="设为默认"><a href="#设为默认" class="headerlink" title="设为默认"></a>设为默认</h3><p>升级 pip 到最新的版本 (&gt;=10.0.0) 后进行配置：</p>
@@ -524,8 +525,11 @@ conda环境创建conda镜像设置通过修改用户目录下的 .condarc 文件
 <p>如果您到 pip 默认源的网络连接较差，临时使用本镜像站来升级 pip：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U</div></pre></td></tr></tbody></table></figure>
 <h2 id="ray安装"><a href="#ray安装" class="headerlink" title="ray安装"></a>ray安装</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">pip install ray <span class="comment"># ray安装</span></div><div class="line">pip install ray[tune] ray[rllib] <span class="comment"># ray组件安装</span></div><div class="line">pip install tensorflow <span class="comment"># tf cpu安装</span></div><div class="line">conda install pytorch torchvision cudatoolkit=10.2 -c pytorch <span class="comment"># pytorch gpu安装</span></div></pre></td></tr></tbody></table></figure>
+<p><br></p>
 <h1 id="多kernel安装"><a href="#多kernel安装" class="headerlink" title="多kernel安装"></a>多kernel安装</h1><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pip install ipykernel</div><div class="line">python -m ipykernel install --name ray</div></pre></td></tr></tbody></table></figure>
+<p><br></p>
 <h1 id="jupyter-lab启动"><a href="#jupyter-lab启动" class="headerlink" title="jupyter lab启动"></a>jupyter lab启动</h1><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jupyter lab</div></pre></td></tr></tbody></table></figure>
+<p><br></p>
 <h1 id="Ray启动"><a href="#Ray启动" class="headerlink" title="Ray启动"></a>Ray启动</h1><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ray start --head --port=6379 <span class="comment"># 启动head节点</span></div><div class="line">ray start --address 192.168.xxx.xxx:6379 <span class="comment"># 向集群添加节点</span></div><div class="line">python xxx.py <span class="comment"># 运行</span></div></pre></td></tr></tbody></table></figure>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -569,7 +573,7 @@ conda环境创建conda镜像设置通过修改用户目录下的 .condarc 文件
   <p><span>本文标题:</span><a href="/posts/1fad2db9/">Conda搭建Ray集群</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Awebone 的个人博客">Awebone</a></p>
   <p><span>发布时间:</span>2020年07月10日 - 15:07</p>
-  <p><span>最后更新:</span>2020年07月11日 - 23:07</p>
+  <p><span>最后更新:</span>2020年07月12日 - 00:07</p>
   <p><span>原始链接:</span><a href="/posts/1fad2db9/" title="Conda搭建Ray集群">https://www.awebone.com/posts/1fad2db9/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://www.awebone.com/posts/1fad2db9/"  aria-label="复制成功！"></i></span>
   </p>
@@ -1576,7 +1580,7 @@ show_date_time();
   
 
 <script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1594483316279')
+  navigator.serviceWorker.register('/sw.js?t=1594483790008')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }
