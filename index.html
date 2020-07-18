@@ -367,6 +367,713 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.awebone.com/posts/742c7f0a/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Awebone">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/icons/icon-144x144.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Awebone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/742c7f0a/" itemprop="url">数据结构与算法JavaScript版(一)</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-18T15:00:00+08:00">
+                2020-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/posts/742c7f0a/" class="leancloud_visitors" data-flag-title="数据结构与算法JavaScript版(一)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,528
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>本文使用JavaScript实现基础数据结构：数组、链表、栈、队列、树</p>
+</blockquote>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><ul>
+<li>在数组的<strong>末尾插入/删除</strong>、<strong>更新</strong>、<strong>获取</strong>某个位置的元素，都是 O(1) 的时间复杂度</li>
+<li>在数组的任何其它地方<strong>插入/删除</strong>元素，都是 O(n) 的时间复杂度</li>
+<li>空间复杂度：O(n)</li>
+</ul>
+<h2 id="数组创建"><a href="#数组创建" class="headerlink" title="数组创建"></a>数组创建</h2><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(element0, element1, ..., elementN);</div><div class="line"><span class="keyword">var</span> arr = <span class="built_in">Array</span>(element0, element1, ..., elementN);</div><div class="line"><span class="keyword">var</span> arr = [element0, element1, ..., elementN];</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(arrayLength);</div><div class="line"><span class="keyword">var</span> arr = <span class="built_in">Array</span>(arrayLength);</div></pre></td></tr></tbody></table></figure>
+<h2 id="常用数组方法"><a href="#常用数组方法" class="headerlink" title="常用数组方法"></a>常用数组方法</h2><h3 id="增加与删除"><a href="#增加与删除" class="headerlink" title="增加与删除"></a>增加与删除</h3><ul>
+<li><p><code>push()</code>：在数组末尾添加一个或多个元素，并返回数组操作后的长度</p>
+</li>
+<li><p><code>unshift()</code>：在数组开头添加一个或多个元素，并返回数组的新长度</p>
+</li>
+<li><p><code>pop()</code>：从数组移出最后一个元素，并返回该元素</p>
+</li>
+<li><p><code>shift()</code>：从数组移出第一个元素，并返回该元素</p>
+</li>
+<li><p><code>splice(start_index, upto_index)</code>从数组提取一个片段，并作为一个新数组返回</p>
+</li>
+<li><p><code>splice(index, count_to_remove, addElement1, addElement2, ...)</code>从数组移出一些元素，（可选）并替换它们</p>
+<p><code>number.splice(2,2)</code>删除从数组索引2开始2个元素</p>
+<p><code>number.splice(2,0,1,2,3)</code>从数组索引5开始增加3个元素2,3,4</p>
+</li>
+</ul>
+<p><img src="/images/js数据结构与算法1/1595052302829.png" alt="1595052302829"></p>
+
+          
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/posts/742c7f0a/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.awebone.com/posts/db1de468/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Awebone">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/icons/icon-144x144.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Awebone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/db1de468/" itemprop="url">数据结构与算法JavaScript版(二)</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-18T15:00:00+08:00">
+                2020-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/posts/db1de468/" class="leancloud_visitors" data-flag-title="数据结构与算法JavaScript版(二)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,358
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>本文使用JavaScript实现基础排序算法和搜索算法</p>
+</blockquote>
+<h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><p><img src="/images/js数据结构与算法2/1595068515953.png" alt="1595068515953"></p>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>工作原理：冒泡排序是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果它们的顺序错误就把它们交换过来。</p>
+<p>算法描述：</p>
+<ol>
+<li>比较相邻的元素，如果第一个比第二个大，就交换它们两个</li>
+<li>对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对，这样在最后的元素应该会是最大的数</li>
+<li>针对所有的元素重复以上的步骤，除了最后一个</li>
+<li>重复步骤1~3，直到排序完成。</li>
+</ol>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">arr</span>)</span>{</div><div class="line">    <span class="keyword">var</span> len = arr.length;</div><div class="line">    <span class="keyword">if</span> (len === <span class="number">0</span>){</div><div class="line">        <span class="keyword">return</span> [];</div><div class="line">    }</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++) {</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; len - i; j++){</div><div class="line">            <span class="keyword">if</span>(arr[j - <span class="number">1</span>] &gt; arr[j]){</div><div class="line">                <span class="keyword">var</span> tmp = arr[j - <span class="number">1</span>];</div><div class="line">                arr[j - <span class="number">1</span>] = arr[j];</div><div class="line">                arr[j] = tmp;</div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> arr;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">5</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">7</span>]</div><div class="line"><span class="built_in">console</span>.log(bubbleSort(arr))</div></pre></td></tr></tbody></table></figure>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>工作原理：首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
+<p>算法描述如下：</p>
+<ol>
+<li>初始状态：无序区为R[1..n]，有序区为空；</li>
+<li>第i趟排序(i=1,2,3…n-1)开始时，当前有序区和无序区分别为R[1..i-1]和R(i..n）。该趟排序从当前无序区中-选出关键字最小的记录 R[k]，将它与无序区的第1个记录R交换，使R[1..i]和R[i+1..n)分别变为记录个数增加1个的新有序区和记录个数减少1个的新无序区；</li>
+<li>n-1趟结束，数组有序化了</li>
+</ol>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectionSort</span>(<span class="params">arr</span>) </span>{</div><div class="line">    <span class="keyword">var</span> len = arr.length;</div><div class="line">    <span class="keyword">var</span> minIndex, temp;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) {</div><div class="line">        minIndex = i;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = i + <span class="number">1</span>; j &lt; len; j++) {</div><div class="line">            <span class="keyword">if</span> (arr[j] &lt; arr[minIndex]) {     <span class="comment">//寻找最小的数</span></div><div class="line">                minIndex = j;                 <span class="comment">//将最小数的索引保存</span></div><div class="line">            }</div><div class="line">        }</div><div class="line">        temp = arr[i];</div><div class="line">        arr[i] = arr[minIndex];</div><div class="line">        arr[minIndex] = temp;</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> arr;</div><div class="line">}</div><div class="line"><span class="keyword">var</span> arr=[<span class="number">3</span>,<span class="number">44</span>,<span class="number">38</span>,<span class="number">5</span>,<span class="number">47</span>,<span class="number">15</span>,<span class="number">36</span>,<span class="number">26</span>,<span class="number">27</span>,<span class="number">2</span>,<span class="number">46</span>,<span class="number">4</span>,<span class="number">19</span>,<span class="number">50</span>,<span class="number">48</span>];</div><div class="line"><span class="built_in">console</span>.log(selectionSort(arr));</div></pre></td></tr></tbody></table></figure>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>工作原理：通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。插入排序在实现上，通常采用in-place排序（即只需用到O(1)的额外空间的排序），因而在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。</p>
+<p>算法描述：</p>
+<ol>
+<li>从第一个元素开始，该元素可以认为已经被排序；</li>
+<li>取出下一个元素，在已经排序的元素序列中从后向前扫描；</li>
+<li>如果该元素（已排序）大于新元素，将该元素移到下一位置；</li>
+<li>重复步骤3，直到找到已排序的元素小于或者等于新元素的位置；</li>
+<li>将新元素插入到该位置后；</li>
+<li>重复步骤2~5</li>
+</ol>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertionSort</span>(<span class="params">array</span>) </span>{</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(array).slice(<span class="number">8</span>, <span class="number">-1</span>) === <span class="string">'Array'</span>) {</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; array.length; i++) {</div><div class="line">            <span class="keyword">var</span> key = array[i];</div><div class="line">            <span class="keyword">var</span> j = i - <span class="number">1</span>;</div><div class="line">            <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; array[j] &gt; key) {</div><div class="line">                array[j + <span class="number">1</span>] = array[j];</div><div class="line">                j--;</div><div class="line">            }</div><div class="line">            array[j + <span class="number">1</span>] = key;</div><div class="line">        }</div><div class="line">        <span class="keyword">return</span> array;</div><div class="line">    } <span class="keyword">else</span> {</div><div class="line">        <span class="keyword">return</span> <span class="string">'array is not an Array!'</span>;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<p><strong>改进插入排序：</strong> 查找插入位置时使用二分查找的方式</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">binaryInsertionSort</span>(<span class="params">array</span>) </span>{</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(array).slice(<span class="number">8</span>, <span class="number">-1</span>) === <span class="string">'Array'</span>) {</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; array.length; i++) {</div><div class="line">            <span class="keyword">var</span> key = array[i], left = <span class="number">0</span>, right = i - <span class="number">1</span>;</div><div class="line">            <span class="keyword">while</span> (left &lt;= right) {</div><div class="line">                <span class="keyword">var</span> middle = <span class="built_in">parseInt</span>((left + right) / <span class="number">2</span>);</div><div class="line">                <span class="keyword">if</span> (key &lt; array[middle]) {</div><div class="line">                    right = middle - <span class="number">1</span>;</div><div class="line">                } <span class="keyword">else</span> {</div><div class="line">                    left = middle + <span class="number">1</span>;</div><div class="line">                }</div><div class="line">            }</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> j = i - <span class="number">1</span>; j &gt;= left; j--) {</div><div class="line">                array[j + <span class="number">1</span>] = array[j];</div><div class="line">            }</div><div class="line">            array[left] = key;</div><div class="line">        }</div><div class="line">        <span class="keyword">return</span> array;</div><div class="line">    } <span class="keyword">else</span> {</div><div class="line">        <span class="keyword">return</span> <span class="string">'array is not an Array!'</span>;</div><div class="line">    }</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr=[<span class="number">3</span>,<span class="number">44</span>,<span class="number">38</span>,<span class="number">5</span>,<span class="number">47</span>,<span class="number">15</span>,<span class="number">36</span>,<span class="number">26</span>,<span class="number">27</span>,<span class="number">2</span>,<span class="number">46</span>,<span class="number">4</span>,<span class="number">19</span>,<span class="number">50</span>,<span class="number">48</span>];</div><div class="line"><span class="built_in">console</span>.log(binaryInsertionSort(arr));</div></pre></td></tr></tbody></table></figure>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>工作原理：归并排序是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。归并排序是一种稳定的排序方法。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为2-路归并。</p>
+<p>算法描述：</p>
+<ol>
+<li>把长度为n的输入序列分成两个长度为n/2的子序列；</li>
+<li>对这两个子序列分别采用归并排序；</li>
+<li>将两个排序好的子序列合并成一个最终的排序序列</li>
+</ol>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mergeSort</span>(<span class="params">arr</span>) </span>{  <span class="comment">//采用自上而下的递归方法</span></div><div class="line">    <span class="keyword">var</span> len = arr.length;</div><div class="line">    <span class="keyword">if</span>(len &lt; <span class="number">2</span>) {</div><div class="line">        <span class="keyword">return</span> arr;</div><div class="line">    }</div><div class="line">    <span class="keyword">var</span> middle = <span class="built_in">Math</span>.floor(len / <span class="number">2</span>),</div><div class="line">        left = arr.slice(<span class="number">0</span>, middle),</div><div class="line">        right = arr.slice(middle);</div><div class="line">    <span class="keyword">return</span> merge(mergeSort(left), mergeSort(right));</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">merge</span>(<span class="params">left, right</span>)</span>{</div><div class="line">    <span class="keyword">var</span> result = [];</div><div class="line">    <span class="keyword">while</span> (left.length &amp;&amp; right.length) {</div><div class="line">        <span class="keyword">if</span> (left[<span class="number">0</span>] &lt;= right[<span class="number">0</span>]) {</div><div class="line">            result.push(left.shift());</div><div class="line">        } <span class="keyword">else</span> {</div><div class="line">            result.push(right.shift());</div><div class="line">        }</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (left.length)</div><div class="line">        result.push(left.shift());</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (right.length)</div><div class="line">        result.push(right.shift());</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr=[<span class="number">3</span>,<span class="number">44</span>,<span class="number">38</span>,<span class="number">5</span>,<span class="number">47</span>,<span class="number">15</span>,<span class="number">36</span>,<span class="number">26</span>,<span class="number">27</span>,<span class="number">2</span>,<span class="number">46</span>,<span class="number">4</span>,<span class="number">19</span>,<span class="number">50</span>,<span class="number">48</span>];</div><div class="line"><span class="built_in">console</span>.log(mergeSort(arr));</div></pre></td></tr></tbody></table></figure>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>工作原理：通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。</p>
+<p>算法描述：</p>
+<ol>
+<li>从数列中挑出一个元素，称为 “基准”（pivot）；</li>
+<li>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；</li>
+<li>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序</li>
+</ol>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span>(<span class="params">array, left, right</span>) </span>{</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(array).slice(<span class="number">8</span>, <span class="number">-1</span>) === <span class="string">'Array'</span> &amp;&amp; <span class="keyword">typeof</span> left === <span class="string">'number'</span> &amp;&amp; <span class="keyword">typeof</span> right === <span class="string">'number'</span>) {</div><div class="line">        <span class="keyword">if</span> (left &lt; right) {</div><div class="line">            <span class="keyword">var</span> x = array[right], i = left - <span class="number">1</span>, temp;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> j = left; j &lt;= right; j++) {</div><div class="line">                <span class="keyword">if</span> (array[j] &lt;= x) {</div><div class="line">                    i++;</div><div class="line">                    temp = array[i];</div><div class="line">                    array[i] = array[j];</div><div class="line">                    array[j] = temp;</div><div class="line">                }</div><div class="line">            }</div><div class="line">            quickSort(array, left, i - <span class="number">1</span>);</div><div class="line">            quickSort(array, i + <span class="number">1</span>, right);</div><div class="line">        }</div><div class="line">        <span class="keyword">return</span> array;</div><div class="line">    } <span class="keyword">else</span> {</div><div class="line">        <span class="keyword">return</span> <span class="string">'array is not an Array or left or right is not a number!'</span>;</div><div class="line">    }</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">//更好理解的方法</span></div><div class="line"><span class="keyword">var</span> quickSort2 = <span class="function"><span class="keyword">function</span>(<span class="params">arr</span>) </span>{</div><div class="line">    <span class="keyword">if</span> (arr.length &lt;= <span class="number">1</span>)</div><div class="line">        <span class="keyword">return</span> arr;</div><div class="line">    <span class="keyword">var</span> pivotIndex = <span class="built_in">Math</span>.floor(arr.length / <span class="number">2</span>);</div><div class="line">    <span class="keyword">var</span> pivot = arr.splice(pivotIndex, <span class="number">1</span>)[<span class="number">0</span>];</div><div class="line">    <span class="keyword">var</span> left = [];</div><div class="line">    <span class="keyword">var</span> right = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++){</div><div class="line">        <span class="keyword">if</span> (arr[i] &lt; pivot) {</div><div class="line">            left.push(arr[i]);</div><div class="line">        } <span class="keyword">else</span> {</div><div class="line">            right.push(arr[i]);</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> quickSort2(left).concat([pivot], quickSort2(right));</div><div class="line">};</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr=[<span class="number">3</span>,<span class="number">44</span>,<span class="number">38</span>,<span class="number">5</span>,<span class="number">47</span>,<span class="number">15</span>,<span class="number">36</span>,<span class="number">26</span>,<span class="number">27</span>,<span class="number">2</span>,<span class="number">46</span>,<span class="number">4</span>,<span class="number">19</span>,<span class="number">50</span>,<span class="number">48</span>];</div><div class="line"><span class="built_in">console</span>.log(quickSort(arr,<span class="number">0</span>,arr.length<span class="number">-1</span>));</div><div class="line"><span class="built_in">console</span>.log(quickSort2(arr));</div></pre></td></tr></tbody></table></figure>
+<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><p>堆排序（Heapsort）：利用堆这种数据结构所设计的一种排序算法。堆是一个近似完全二叉树的结构，并同时满足堆积的性质：即子结点的键值或索引总是小于（或者大于）它的父节点。</p>
+<p>算法描述：</p>
+<ol>
+<li>将初始待排序关键字序列(R1,R2….Rn)构建成大顶堆，此堆为初始的无序区；</li>
+<li>将堆顶元素R[1]与最后一个元素R[n]交换，此时得到新的无序区(R1,R2,……Rn-1)和新的有序区(Rn),且满足R[1,2…n-1]&lt;=R[n]；</li>
+<li>由于交换后新的堆顶R[1]可能违反堆的性质，因此需要对当前无序区(R1,R2,……Rn-1)调整为新堆，然后再次将R[1]与无序区最后一个元素交换，得到新的无序区(R1,R2….Rn-2)和新的有序区(Rn-1,Rn)。不断重复此过程直到有序区的元素个数为n-1，则整个排序过程完成</li>
+</ol>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">heapSort</span>(<span class="params">array</span>) </span>{</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(array).slice(<span class="number">8</span>, <span class="number">-1</span>) === <span class="string">'Array'</span>) {</div><div class="line">        <span class="comment">//建堆</span></div><div class="line">        <span class="keyword">var</span> heapSize = array.length, temp;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="built_in">Math</span>.floor(heapSize / <span class="number">2</span>) - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) {</div><div class="line">            heapify(array, i, heapSize);</div><div class="line">        }</div><div class="line"></div><div class="line">        <span class="comment">//堆排序</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = heapSize - <span class="number">1</span>; j &gt;= <span class="number">1</span>; j--) {</div><div class="line">            temp = array[<span class="number">0</span>];</div><div class="line">            array[<span class="number">0</span>] = array[j];</div><div class="line">            array[j] = temp;</div><div class="line">            heapify(array, <span class="number">0</span>, --heapSize);</div><div class="line">        }</div><div class="line">        <span class="keyword">return</span> array;</div><div class="line">    } <span class="keyword">else</span> {</div><div class="line">        <span class="keyword">return</span> <span class="string">'array is not an Array!'</span>;</div><div class="line">    }</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">heapify</span>(<span class="params">arr, x, len</span>) </span>{</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(arr).slice(<span class="number">8</span>, <span class="number">-1</span>) === <span class="string">'Array'</span> &amp;&amp; <span class="keyword">typeof</span> x === <span class="string">'number'</span>) {</div><div class="line">        <span class="keyword">var</span> l = <span class="number">2</span> * x + <span class="number">1</span>, r = <span class="number">2</span> * x + <span class="number">2</span>, largest = x, temp;</div><div class="line">        <span class="keyword">if</span> (l &lt; len &amp;&amp; arr[l] &gt; arr[largest]) {</div><div class="line">            largest = l;</div><div class="line">        }</div><div class="line">        <span class="keyword">if</span> (r &lt; len &amp;&amp; arr[r] &gt; arr[largest]) {</div><div class="line">            largest = r;</div><div class="line">        }</div><div class="line">        <span class="keyword">if</span> (largest != x) {</div><div class="line">            temp = arr[x];</div><div class="line">            arr[x] = arr[largest];</div><div class="line">            arr[largest] = temp;</div><div class="line">            heapify(arr, largest, len);</div><div class="line">        }</div><div class="line">    } <span class="keyword">else</span> {</div><div class="line">        <span class="keyword">return</span> <span class="string">'arr is not an Array or x is not a number!'</span>;</div><div class="line">    }</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr=[<span class="number">91</span>,<span class="number">60</span>,<span class="number">96</span>,<span class="number">13</span>,<span class="number">35</span>,<span class="number">65</span>,<span class="number">46</span>,<span class="number">65</span>,<span class="number">10</span>,<span class="number">30</span>,<span class="number">20</span>,<span class="number">31</span>,<span class="number">77</span>,<span class="number">81</span>,<span class="number">22</span>];</div><div class="line"><span class="built_in">console</span>.log(heapSort(arr));</div></pre></td></tr></tbody></table></figure>
+<p><br></p>
+<h1 id="搜索算法"><a href="#搜索算法" class="headerlink" title="搜索算法"></a>搜索算法</h1><h2 id="顺序或线性搜索"><a href="#顺序或线性搜索" class="headerlink" title="顺序或线性搜索"></a>顺序或线性搜索</h2><p>最简单的搜索</p>
+<p>工作原理：从左往右遍历寻找，返回索引</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sequentialSearch</span>(<span class="params">array, item</span>)</span>{</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; array.length; i++) {</div><div class="line">        <span class="keyword">if</span> (item === array[i]) {</div><div class="line">            <span class="keyword">return</span> i;</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr=[<span class="number">91</span>,<span class="number">60</span>,<span class="number">96</span>,<span class="number">13</span>,<span class="number">35</span>,<span class="number">65</span>,<span class="number">46</span>,<span class="number">65</span>,<span class="number">10</span>,<span class="number">30</span>,<span class="number">20</span>,<span class="number">31</span>,<span class="number">77</span>,<span class="number">81</span>,<span class="number">22</span>];</div><div class="line"><span class="built_in">console</span>.log(sequentialSearch(arr, <span class="number">91</span>));</div></pre></td></tr></tbody></table></figure>
+<h2 id="二分搜索"><a href="#二分搜索" class="headerlink" title="二分搜索"></a>二分搜索</h2><p>二分查找的前提为：数组、有序。逻辑为：优先和数组的中间元素比较，如果等于中间元素，则直接返回。如果不等于则取半继续查找。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//递归</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">binarySearch</span>(<span class="params">arr, item, left, right</span>) </span>{</div><div class="line">    <span class="keyword">if</span> (left &gt; right)</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    <span class="keyword">var</span> start = left || <span class="number">0</span>;</div><div class="line">    <span class="keyword">var</span> end = right || arr.length - <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> mid = <span class="built_in">parseInt</span>(start + (end - start) / <span class="number">2</span>);</div><div class="line">    <span class="keyword">if</span>(item == arr[mid]){</div><div class="line">        <span class="keyword">return</span> mid;</div><div class="line">    }<span class="keyword">else</span> <span class="keyword">if</span>(item &gt; arr[mid]){</div><div class="line">        <span class="keyword">return</span> binarySearch(arr, item, mid + <span class="number">1</span>, end);</div><div class="line">    }<span class="keyword">else</span>{</div><div class="line">        <span class="keyword">return</span> binarySearch(arr, item, start, mid - <span class="number">1</span>);</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">//非递归</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">binarySearch2</span>(<span class="params">arr, item</span>) </span>{</div><div class="line">    <span class="keyword">var</span> left = <span class="number">0</span>;</div><div class="line">    <span class="keyword">var</span> right = arr.length - <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (left &lt;= right){</div><div class="line">        <span class="keyword">var</span> mid = <span class="built_in">parseInt</span>(left + (right - left) / <span class="number">2</span>);</div><div class="line">        <span class="keyword">if</span>(item == arr[mid]){</div><div class="line">            <span class="keyword">return</span> mid;</div><div class="line">        }<span class="keyword">else</span> <span class="keyword">if</span>(item &gt; arr[mid]){</div><div class="line">            left = mid + <span class="number">1</span>;</div><div class="line">        }<span class="keyword">else</span>{</div><div class="line">            right = mid - <span class="number">1</span>;</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr=[<span class="number">13</span>,<span class="number">35</span>,<span class="number">46</span>,<span class="number">65</span>,<span class="number">77</span>,<span class="number">81</span>];</div><div class="line"><span class="built_in">console</span>.log(binarySearch(arr, <span class="number">35</span>));</div><div class="line"><span class="built_in">console</span>.log(binarySearch2(arr, <span class="number">35</span>));</div></pre></td></tr></tbody></table></figure>
+<p><br></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://juejin.im/post/57dcd394a22b9d00610c5ec8" target="_blank" rel="external">https://juejin.im/post/57dcd394a22b9d00610c5ec8</a></p>
+<p><a href="https://www.jianshu.com/p/eef65b21ace0" target="_blank" rel="external">https://www.jianshu.com/p/eef65b21ace0</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.awebone.com/posts/db1de468/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Awebone">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/icons/icon-144x144.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Awebone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/db1de468/" itemprop="url">数据结构与算法JavaScript版(三)</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-18T15:00:00+08:00">
+                2020-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/posts/db1de468/" class="leancloud_visitors" data-flag-title="数据结构与算法JavaScript版(三)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  339
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>本文使用JavaScript实现一些常用的算法思想</p>
+</blockquote>
+<h1 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h1><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//斐波那契数列:递归</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span>(<span class="params">num</span>) </span>{</div><div class="line">  <span class="keyword">if</span> (num===<span class="number">1</span>||num===<span class="number">2</span>) {</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">  }</div><div class="line"></div><div class="line">  <span class="keyword">return</span> fibonacci(num<span class="number">-1</span>)+fibonacci(num<span class="number">-2</span>);</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<h2 id="非递归"><a href="#非递归" class="headerlink" title="非递归"></a>非递归</h2><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//斐波那契数列:非递归</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fib</span>(<span class="params">num</span>) </span>{</div><div class="line">  <span class="keyword">var</span> n1=<span class="number">1</span>,n2=<span class="number">1</span>,n=<span class="number">1</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">3</span>; i &lt;= num; i++) {</div><div class="line">    n=n1+n2;</div><div class="line">    n1=n2;</div><div class="line">    n2=n;</div><div class="line">  }</div><div class="line">  <span class="keyword">return</span> n;</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//动态规划：将大问题转化成小问题</span></div><div class="line"><span class="comment">//最少硬币找零问题:找到n所需的最小硬币数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dpMinCoinChange</span>(<span class="params">coins</span>) </span>{</div><div class="line">  <span class="keyword">var</span> coins=coins;</div><div class="line">  <span class="keyword">var</span> cache={};</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.makeChange=<span class="function"><span class="keyword">function</span> (<span class="params">amount</span>) </span>{</div><div class="line">    <span class="keyword">var</span> me=<span class="keyword">this</span>;</div><div class="line">    <span class="keyword">if</span> (!amount) {<span class="comment">//判断为正</span></div><div class="line">      <span class="keyword">return</span> [];</div><div class="line">    }</div><div class="line">    <span class="keyword">if</span> (cache[amount]) {<span class="comment">//判断是否有缓存</span></div><div class="line">      <span class="keyword">return</span> cache[amount];</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">var</span> min=[],newMin,newAmount;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; coins.length; i++) {<span class="comment">//对每个面额计算</span></div><div class="line">      <span class="keyword">var</span> coin=coins[i];</div><div class="line">      newAmount=amount-coin;</div><div class="line">      <span class="keyword">if</span> (newAmount&gt;=<span class="number">0</span>) {</div><div class="line">        newMin=me.makeChange(newAmount);</div><div class="line">      }</div><div class="line">      <span class="keyword">if</span> (newAmount&gt;=<span class="number">0</span> &amp;&amp; (newMin.length&lt;min.length<span class="number">-1</span> || !min.length) </div><div class="line">          &amp;&amp; (newMin.length || !newAmount)) {</div><div class="line">        <span class="comment">//判断newAmount是否有效，最小硬币数是否最优，newMin和newAmount是否合理</span></div><div class="line">        min=[coin].concat(newMin);</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'new Min '</span>+min+ <span class="string">' for '</span>+amount);</div><div class="line">      }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> (cache[amount]=min);</div><div class="line">  }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<h2 id="贪心策略"><a href="#贪心策略" class="headerlink" title="贪心策略"></a>贪心策略</h2><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//贪心算法：近似求解，通过局部最优达到全局最优</span></div><div class="line"><span class="comment">//最少硬币找零问题:找到n所需的最小硬币数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">txMinCoinChange</span>(<span class="params">coins</span>)</span>{</div><div class="line">  <span class="keyword">var</span> coins=coins;</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.makeChange=<span class="function"><span class="keyword">function</span>(<span class="params">amount</span>)</span>{</div><div class="line">    <span class="keyword">var</span> change=[],total=<span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = coins.length; i &gt;= <span class="number">0</span>; i--) {<span class="comment">//对每个面额从大面额开始，从大到小依次</span></div><div class="line">      <span class="keyword">var</span> coin=coins[i];</div><div class="line">      <span class="keyword">while</span> (total+coin&lt;=amount) {</div><div class="line">        change.push(coin);</div><div class="line">        total+=coin;</div><div class="line">      }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> change;</div><div class="line">  }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.awebone.com/posts/101d1957/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -506,7 +1213,7 @@
 <p>本文使用Docker中Ubuntu16.04镜像，搭建MiniConda环境，在conda之上搭建Ray集群环境</p>
 </blockquote>
 <h1 id="Docker镜像构建"><a href="#Docker镜像构建" class="headerlink" title="Docker镜像构建"></a>Docker镜像构建</h1><p><strong>编写Dockerfile文件，构建镜像，换源为阿里云：</strong></p>
-<figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">FROM</span> ubuntu:<span class="number">16.04</span></div><div class="line"></div><div class="line"><span class="keyword">RUN</span> mv /etc/apt/sources.list.d /etc/apt/sources.list.d.bak</div><div class="line"></div><div class="line"><span class="keyword">RUN</span> mv /etc/apt/sources.list /etc/apt/sources.list.bak &amp;&amp; \</div><div class="line">    echo "deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted" &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    echo "deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted multiverse universe" &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    echo "deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted" &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    echo "deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted multiverse universe" &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    echo "deb http://mirrors.aliyun.com/ubuntu/ xenial universe" &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    echo "deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe" &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    echo "deb http://mirrors.aliyun.com/ubuntu/ xenial multiverse" &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    echo "deb http://mirrors.aliyun.com/ubuntu/ xenial-updates multiverse" &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    echo "deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse" &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    echo "deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse" &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    echo "deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted" &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    echo "deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted multiverse universe" &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    echo "deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe" &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    echo "deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse" &gt;&gt;/etc/apt/sources.list</div><div class="line"></div><div class="line"><span class="keyword">RUN</span> apt update</div></pre></td></tr></tbody></table></figure>
+<figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">FROM</span> ubuntu:<span class="number">16.04</span></div><div class="line"></div><div class="line"><span class="keyword">RUN</span><span class="bash"> mv /etc/apt/sources.list.d /etc/apt/sources.list.d.bak</span></div><div class="line"></div><div class="line"><span class="keyword">RUN</span><span class="bash"> mv /etc/apt/sources.list /etc/apt/sources.list.bak &amp;&amp; \</span></div><div class="line">    <span class="built_in">echo</span> <span class="string">"deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted"</span> &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    <span class="built_in">echo</span> <span class="string">"deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted multiverse universe"</span> &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    <span class="built_in">echo</span> <span class="string">"deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted"</span> &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    <span class="built_in">echo</span> <span class="string">"deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted multiverse universe"</span> &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    <span class="built_in">echo</span> <span class="string">"deb http://mirrors.aliyun.com/ubuntu/ xenial universe"</span> &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    <span class="built_in">echo</span> <span class="string">"deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe"</span> &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    <span class="built_in">echo</span> <span class="string">"deb http://mirrors.aliyun.com/ubuntu/ xenial multiverse"</span> &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    <span class="built_in">echo</span> <span class="string">"deb http://mirrors.aliyun.com/ubuntu/ xenial-updates multiverse"</span> &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    <span class="built_in">echo</span> <span class="string">"deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse"</span> &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    <span class="built_in">echo</span> <span class="string">"deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse"</span> &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    <span class="built_in">echo</span> <span class="string">"deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted"</span> &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    <span class="built_in">echo</span> <span class="string">"deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted multiverse universe"</span> &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    <span class="built_in">echo</span> <span class="string">"deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe"</span> &gt;&gt;/etc/apt/sources.list &amp;&amp; \</div><div class="line">    <span class="built_in">echo</span> <span class="string">"deb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse"</span> &gt;&gt;/etc/apt/sources.list</div><div class="line"></div><div class="line"><span class="keyword">RUN</span><span class="bash"> apt update</span></div></pre></td></tr></tbody></table></figure>
 <p><strong>将Dockerfile文件放在用户目录下，运行下面命令构建镜像：</strong></p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker build -t awebone/ubuntu16.04 .</div><div class="line"></div><div class="line">docker image ls <span class="_">-a</span> <span class="comment"># 查看镜像</span></div></pre></td></tr></tbody></table></figure>
 
@@ -1078,7 +1785,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,591
+                  2,582
                 </span>
               
 
@@ -1116,7 +1823,7 @@
 
       
         
-          <h1 id="高可用HBase搭建全流程"><a href="#高可用HBase搭建全流程" class="headerlink" title="高可用HBase搭建全流程"></a>高可用HBase搭建全流程</h1><h2 id="系统描述"><a href="#系统描述" class="headerlink" title="系统描述"></a>系统描述</h2><h3 id="系统介绍"><a href="#系统介绍" class="headerlink" title="系统介绍"></a>系统介绍</h3><p>系统基于ZooKeeper搭建Hadoop HA集群，在高可用分布式HDFS文件系统的基础上，搭建高可用分布式HBase数据库集群。</p>
+          <h1 id="系统描述"><a href="#系统描述" class="headerlink" title="系统描述"></a>系统描述</h1><h2 id="系统介绍"><a href="#系统介绍" class="headerlink" title="系统介绍"></a>系统介绍</h2><p>系统基于ZooKeeper搭建Hadoop HA集群，在高可用分布式HDFS文件系统的基础上，搭建高可用分布式HBase数据库集群。</p>
 <p>ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是 Google Chubby一个开源的实现。它提供了简单原始的功能，分布式应用可以基于它实现更高级的服务，比如分布式同步，配置管理，集群管理，命名管理，队列管理。使用文件系统目录树作为数据模型。</p>
 <p>Hadoop分布式集群采用主从架构，在Hadoop HA集群中，ZooKeeper用来解决SPOF单点故障问题。如果active namenod宕机，就从剩下的standby namenodes中选举出来一个新的active namenode，并且做到瞬时切换，使得在需求增长的前提下，分布式集群仍然可以向外提供服务。同样的，分布式HBase数据库也采用主从架构，在master server宕机的情况下，瞬时切换到backup master，使得HBase高可用。分布式HBase数据库的底层存储采用HDFS文件系统。</p>
 
@@ -1276,7 +1983,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,366
+                  2,361
                 </span>
               
 
@@ -1314,7 +2021,7 @@
 
       
         
-          <h1 id="Transformer模型详解"><a href="#Transformer模型详解" class="headerlink" title="Transformer模型详解"></a>Transformer模型详解</h1><h2 id="机器翻译发展变化趋势"><a href="#机器翻译发展变化趋势" class="headerlink" title="机器翻译发展变化趋势"></a>机器翻译发展变化趋势</h2><p>机器翻译（MT）是借机器之力，自动地将一种自然语言文本（源语言）翻译成另一种自然语言文本（目标语言）。使用机器做翻译的思想最早由 Warren Weaver 于 1949 年提出，在很长一段时间里（20 世纪 50 年代到 80 年代），机器翻译都是通过研究源语言与目标语言的语言学信息来做的，也就是基于词典和语法生成翻译，这被称为基于规则的机器翻译（RBMT）。随着统计学的发展，研究者开始将统计模型应用于机器翻译，这种方法是基于对双语文本语料库的分析来生成翻译结果。这种方法被称为统计机器翻译（SMT），它的表现比 RBMT 更好，并且在 1980 年代到 2000 年代之间主宰了这一领域。1997 年，Ramon Neco 和 Mikel Forcada 提出了使用编码器-解码器结构做机器翻译的想法。几年之后的 2003 年，蒙特利尔大学 Yoshua Bengio 领导的一个研究团队开发了一个基于神经网络的语言模型，改善了传统 SMT 模型的数据稀疏性问题。他们的研究工作为未来神经网络在机器翻译上的应用奠定了基础。</p>
+          <h1 id="机器翻译发展变化趋势"><a href="#机器翻译发展变化趋势" class="headerlink" title="机器翻译发展变化趋势"></a>机器翻译发展变化趋势</h1><p>机器翻译（MT）是借机器之力，自动地将一种自然语言文本（源语言）翻译成另一种自然语言文本（目标语言）。使用机器做翻译的思想最早由 Warren Weaver 于 1949 年提出，在很长一段时间里（20 世纪 50 年代到 80 年代），机器翻译都是通过研究源语言与目标语言的语言学信息来做的，也就是基于词典和语法生成翻译，这被称为基于规则的机器翻译（RBMT）。随着统计学的发展，研究者开始将统计模型应用于机器翻译，这种方法是基于对双语文本语料库的分析来生成翻译结果。这种方法被称为统计机器翻译（SMT），它的表现比 RBMT 更好，并且在 1980 年代到 2000 年代之间主宰了这一领域。1997 年，Ramon Neco 和 Mikel Forcada 提出了使用编码器-解码器结构做机器翻译的想法。几年之后的 2003 年，蒙特利尔大学 Yoshua Bengio 领导的一个研究团队开发了一个基于神经网络的语言模型，改善了传统 SMT 模型的数据稀疏性问题。他们的研究工作为未来神经网络在机器翻译上的应用奠定了基础。</p>
 
           
 
@@ -1472,7 +2179,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  701
+                  696
                 </span>
               
 
@@ -1510,8 +2217,10 @@
 
       
         
-          <h1 id="Hadoop面经总结"><a href="#Hadoop面经总结" class="headerlink" title="Hadoop面经总结"></a>Hadoop面经总结</h1><p>本文主要收集大数据Hadoop相关知识点总结。</p>
-<h2 id="HDFS总结"><a href="#HDFS总结" class="headerlink" title="HDFS总结"></a>HDFS总结</h2><h3 id="介绍一下HDFS的NameNode和DataNode"><a href="#介绍一下HDFS的NameNode和DataNode" class="headerlink" title="介绍一下HDFS的NameNode和DataNode"></a>介绍一下HDFS的NameNode和DataNode</h3><p>主节点NameNode：掌管文件系统目录树，处理客户端读写请求，负责管理整个文件系统的元数据，负责维持文件的副本数量</p>
+          <blockquote>
+<p>本文主要收集大数据Hadoop相关知识点总结。</p>
+</blockquote>
+<h1 id="HDFS总结"><a href="#HDFS总结" class="headerlink" title="HDFS总结"></a>HDFS总结</h1><h2 id="介绍一下HDFS的NameNode和DataNode"><a href="#介绍一下HDFS的NameNode和DataNode" class="headerlink" title="介绍一下HDFS的NameNode和DataNode"></a>介绍一下HDFS的NameNode和DataNode</h2><p>主节点NameNode：掌管文件系统目录树，处理客户端读写请求，负责管理整个文件系统的元数据，负责维持文件的副本数量</p>
 <p>SecondaryNameNode：主要是给NameNode分担压力，把NN的fsimage和edit log做定期融合，融合后传给NN，以确保备份到的元数据是最新的，是冷备。</p>
 <p>从节点DataNode：存储整个集群所有数据块，处理真正的数据读写，通过心跳信息定期地向NameNode汇报自身保存的文件块信息</p>
 
@@ -1520,202 +2229,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/posts/1d6a9c79/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.awebone.com/posts/e3c0f347/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Awebone">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/icons/icon-144x144.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Awebone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/e3c0f347/" itemprop="url">常用排序算法总结</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-29T15:00:00+08:00">
-                2020-03-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/posts/e3c0f347/" class="leancloud_visitors" data-flag-title="常用排序算法总结">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-                 <span>℃</span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  21
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="常用排序算法总结"><a href="#常用排序算法总结" class="headerlink" title="常用排序算法总结"></a>常用排序算法总结</h1><p>本文对常用排序算法进行总结。</p>
-
-          
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/posts/e3c0f347/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1867,7 +2380,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,321
+                  1,312
                 </span>
               
 
@@ -1905,424 +2418,28 @@
 
       
         
-          <h1 id="多种计算引擎实现WordCount"><a href="#多种计算引擎实现WordCount" class="headerlink" title="多种计算引擎实现WordCount"></a>多种计算引擎实现WordCount</h1><p>本文使用多种计算引擎实现词频统计。</p>
-<h2 id="MapReduce实现"><a href="#MapReduce实现" class="headerlink" title="MapReduce实现"></a>MapReduce实现</h2><p>编写MapReduce程序分成三部分：<code>Mapper</code>、<code>Reducer</code>、<code>Driver</code></p>
-
-          
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/posts/dd22b276/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.awebone.com/posts/86ceb8f1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Awebone">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/icons/icon-144x144.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Awebone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/86ceb8f1/" itemprop="url">Java单例模式</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-20T15:00:00+08:00">
-                2020-03-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/posts/86ceb8f1/" class="leancloud_visitors" data-flag-title="Java单例模式">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-                 <span>℃</span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  322
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Java单例模式"><a href="#Java单例模式" class="headerlink" title="Java单例模式"></a>Java单例模式</h1><h2 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h2><p>在初次调用静态方法getSingleton，才会初始化signleton实例。</p>
-<p><strong>双重检查模式实现</strong></p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singletom</span> </span>{</div><div class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singletom singletom;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singletom</span><span class="params">()</span></span>{}</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singletom <span class="title">getSingleton</span><span class="params">()</span></span>{</div><div class="line">        <span class="keyword">if</span> (singletom == <span class="keyword">null</span>){</div><div class="line">            <span class="keyword">synchronized</span> (Singletom.class){</div><div class="line">                <span class="keyword">if</span> (singletom == <span class="keyword">null</span>){</div><div class="line">                    singletom = <span class="keyword">new</span> Singletom();</div><div class="line">                }</div><div class="line">            }</div><div class="line">        }</div><div class="line">        <span class="keyword">return</span> singletom;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+          <blockquote>
+<p>本文使用多种计算引擎实现词频统计</p>
+</blockquote>
+<h1 id="MapReduce实现"><a href="#MapReduce实现" class="headerlink" title="MapReduce实现"></a>MapReduce实现</h1><p>编写MapReduce程序分成三部分：<code>Mapper</code>、<code>Reducer</code>、<code>Driver</code></p>
+<p><strong>业务逻辑</strong></p>
+<ol>
+<li><code>MapTask</code>阶段处理每个数据分块的单词统计分析，每遇到一个单词，将其转换为一个<code>k-v</code>对，如<code>&lt;hello, 1&gt;</code>的形式，发送给<code>ReduceTask</code>进行汇总</li>
+<li><code>ReduceTask</code>阶段接受<code>MapTask</code>的结果，做汇总计数</li>
+</ol>
+<p><strong>Mapper接受的四个泛型</strong></p>
 <ul>
-<li><p>实现了延迟初始化，只有在初次调用静态方法getSingleton，才会初始化signleton实例。</p>
-</li>
-<li><p>性能优化，同步会造成性能下降，在同步前通过判读singleton是否初始化，减少不必要的同步开销。</p>
-</li>
-<li><p>线程安全，同步创建Singleton对象，同时注意到静态变量singleton使用volatile修饰，避免JVM进行优化重排序。</p>
-</li>
+<li><code>KEYIN</code>：输入的键的类型，在这里指的是每一行起始的偏移量</li>
+<li><code>VALUEIN</code>：输入的值的类型，在这里指的是一行的内容</li>
+<li><code>KEYOUT</code>：输出的键的类型，这里指的是单词，允许重复的</li>
+<li><code>VALUEOUT</code>：输出的值的类型</li>
 </ul>
 
           
 
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/posts/86ceb8f1/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.awebone.com/posts/62e0a87a/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Awebone">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/icons/icon-144x144.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Awebone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/62e0a87a/" itemprop="url">ElasticSearch安装避坑</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-17T15:00:00+08:00">
-                2020-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/大数据/" itemprop="url" rel="index">
-                    <span itemprop="name">大数据</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/posts/62e0a87a/" class="leancloud_visitors" data-flag-title="ElasticSearch安装避坑">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-                 <span>℃</span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  660
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="ElasticSearch安装避坑"><a href="#ElasticSearch安装避坑" class="headerlink" title="ElasticSearch安装避坑"></a>ElasticSearch安装避坑</h1><p>本文使用Centos7安装ElasticSearch6.5.2，记录避坑指南。</p>
-<h2 id="升级内核"><a href="#升级内核" class="headerlink" title="升级内核"></a>升级内核</h2><p>通过命令查看内核：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">uname -a</div><div class="line"># 3.10.0-327.el7.x86_64</div></pre></td></tr></tbody></table></figure>
-<p>Centos7自带的内核为3.10，但是ElasticSearch6.5.2要求系统内核必须在3.5以上，故升级内核，root用户下执行：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># 导入key</div><div class="line">rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org  </div><div class="line"># 安装elrepo的yum源</div><div class="line">rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm</div><div class="line"># 安装内核</div><div class="line">yum --enablerepo=elrepo-kernel install  kernel-ml-devel kernel-ml</div><div class="line"># 查看默认启动顺序</div><div class="line">awk -F\' '$1=="menuentry " {print $2}' /etc/grub2.cfg</div><div class="line"># 默认启动的顺序是从0开始，新内核是从头插入,选择0</div><div class="line">grub2-set-default 0</div></pre></td></tr></tbody></table></figure>
-<p>安装完毕后重启<code>reboot</code>生效</p>
-<p>查看内核为5.5.9：<code>Linux awebone.com 5.5.9-1.el7.elrepo.x86_64 #1 SMP Wed Mar 11 19:01:01 EDT 2020 x86_64 x86_64 x86_64 GNU/Linux</code></p>
-<p>如果遇到<code>curl 不兼容或不支持的协议版本</code>的问题，通过以下方法解决：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum update -y nss curl libcurl</div></pre></td></tr></tbody></table></figure>
-
-          
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/posts/62e0a87a/" rel="contents">
+            <a class="btn" href="/posts/dd22b276/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2431,7 +2548,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2597,7 +2714,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">47.4k</span>
+    <span title="Site words total count">50.5k</span>
   
 -->
 </div>
@@ -2614,7 +2731,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共47.4k字&nbsp;|&nbsp;</span>
+  <span class="post-count">博客全站共50.5k字&nbsp;|&nbsp;</span>
 </div>
 
 <div class="powered-by">
@@ -3262,7 +3379,7 @@ show_date_time();
   
 
 <script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1594708847114')
+  navigator.serviceWorker.register('/sw.js?t=1595076725192')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }

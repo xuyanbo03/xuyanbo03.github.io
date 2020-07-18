@@ -130,8 +130,7 @@
 
 
 
-<meta name="description" content="使用JavaScript做一个AI五子棋实现步骤：
-
+<meta name="description" content="实现步骤
 搭建HTML、CSS、JS框架
 
 canvas画图
@@ -140,11 +139,10 @@ js实现棋盘
 js实现棋子
 棋盘落子">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用JavaScript做一个AI五子棋">
+<meta property="og:title" content="使用JavaScript实现AI五子棋">
 <meta property="og:url" content="https://www.awebone.com/posts/d24e8921/index.html">
 <meta property="og:site_name" content="Awebone's Blog">
-<meta property="og:description" content="使用JavaScript做一个AI五子棋实现步骤：
-
+<meta property="og:description" content="实现步骤
 搭建HTML、CSS、JS框架
 
 canvas画图
@@ -152,11 +150,10 @@ canvas画图
 js实现棋盘
 js实现棋子
 棋盘落子">
-<meta property="og:updated_time" content="2020-03-31T13:40:59.973Z">
+<meta property="og:updated_time" content="2020-07-18T08:19:36.367Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用JavaScript做一个AI五子棋">
-<meta name="twitter:description" content="使用JavaScript做一个AI五子棋实现步骤：
-
+<meta name="twitter:title" content="使用JavaScript实现AI五子棋">
+<meta name="twitter:description" content="实现步骤
 搭建HTML、CSS、JS框架
 
 canvas画图
@@ -199,7 +196,7 @@ js实现棋子
 
 
 
-  <title>使用JavaScript做一个AI五子棋 | Awebone's Blog</title>
+  <title>使用JavaScript实现AI五子棋 | Awebone's Blog</title>
   
 
 
@@ -408,7 +405,7 @@ js实现棋子
 
         
         
-          <h2 class="post-title" itemprop="name headline">使用JavaScript做一个AI五子棋</h2>
+          <h2 class="post-title" itemprop="name headline">使用JavaScript实现AI五子棋</h2>
         
 
         <div class="post-meta">
@@ -460,7 +457,7 @@ js实现棋子
 
           
           
-             <span id="/posts/d24e8921/" class="leancloud_visitors" data-flag-title="使用JavaScript做一个AI五子棋">
+             <span id="/posts/d24e8921/" class="leancloud_visitors" data-flag-title="使用JavaScript实现AI五子棋">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -486,7 +483,7 @@ js实现棋子
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  302
+                  293
                 </span>
               
 
@@ -523,8 +520,7 @@ js实现棋子
       
 
       
-        <h1 id="使用JavaScript做一个AI五子棋"><a href="#使用JavaScript做一个AI五子棋" class="headerlink" title="使用JavaScript做一个AI五子棋"></a>使用JavaScript做一个AI五子棋</h1><p><strong>实现步骤：</strong></p>
-<ol>
+        <h1 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h1><ol>
 <li><p>搭建HTML、CSS、JS框架</p>
 </li>
 <li><p>canvas画图</p>
@@ -534,10 +530,14 @@ js实现棋子
 <li>棋盘落子</li>
 </ol>
 <a id="more"></a>
-<h2 id="canvas画图"><a href="#canvas画图" class="headerlink" title="canvas画图"></a>canvas画图</h2><figure class="highlight"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;canvas id="chess" width="450px" height="450px"&gt;&lt;/canvas&gt;</div><div class="line"></div><div class="line">canvas {</div><div class="line">    display: block;</div><div class="line">    margin: 50px auto;</div><div class="line">    box-shadow: -2px -2px 2px #efefef, 5px 5px 5px #b9b9b9;</div><div class="line">}</div><div class="line"></div><div class="line">var chess = document.getElementById('chess');</div><div class="line">var context = chess.getContext('2d');</div></pre></td></tr></tbody></table></figure>
-<h2 id="js实现棋盘"><a href="#js实现棋盘" class="headerlink" title="js实现棋盘"></a>js实现棋盘</h2><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawChessBoard = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) {</div><div class="line">        context.moveTo(<span class="number">15</span> + i * <span class="number">30</span>, <span class="number">15</span>);</div><div class="line">        context.lineTo(<span class="number">15</span> + i * <span class="number">30</span>, <span class="number">435</span>);</div><div class="line">        context.stroke();</div><div class="line">        context.moveTo(<span class="number">15</span>, <span class="number">15</span> + i * <span class="number">30</span>);</div><div class="line">        context.lineTo(<span class="number">435</span>, <span class="number">15</span> + i * <span class="number">30</span>);</div><div class="line">        context.stroke();</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
-<h2 id="js实现棋子"><a href="#js实现棋子" class="headerlink" title="js实现棋子"></a>js实现棋子</h2><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> oneStep = <span class="function"><span class="keyword">function</span>(<span class="params">i, j, me</span>) </span>{</div><div class="line">	<span class="comment">//画圆</span></div><div class="line">    context.beginPath();</div><div class="line">    context.arc(<span class="number">15</span> + i * <span class="number">30</span>, <span class="number">15</span> + j * <span class="number">30</span>, <span class="number">13</span>, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI);</div><div class="line">    context.closePath();</div><div class="line"></div><div class="line">    <span class="comment">//渐变</span></div><div class="line">    <span class="keyword">var</span> gradient = context.createRadialGradient(<span class="number">15</span> + i * <span class="number">30</span> + <span class="number">2</span>, <span class="number">15</span> + j * <span class="number">30</span> - <span class="number">2</span>, <span class="number">13</span>, <span class="number">15</span> + i * <span class="number">30</span> + <span class="number">2</span>, <span class="number">15</span> + j * <span class="number">30</span> - <span class="number">2</span>, <span class="number">0</span>);</div><div class="line">    <span class="keyword">if</span> (me) {</div><div class="line">    	gradient.addColorStop(<span class="number">0</span>, <span class="string">"#0a0a0a"</span>);</div><div class="line">    	gradient.addColorStop(<span class="number">1</span>, <span class="string">"#636766"</span>);</div><div class="line">    }<span class="keyword">else</span>{</div><div class="line">    	gradient.addColorStop(<span class="number">0</span>, <span class="string">"#d1d1d1"</span>);</div><div class="line">    	gradient.addColorStop(<span class="number">1</span>, <span class="string">"#f9f9f9"</span>);</div><div class="line">    }</div><div class="line"></div><div class="line">    context.fillStyle = gradient;</div><div class="line">    context.fill();</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
-<h2 id="落子"><a href="#落子" class="headerlink" title="落子"></a>落子</h2><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">chess.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>{</div><div class="line">    <span class="keyword">var</span> x = e.offsetX;</div><div class="line">    <span class="keyword">var</span> y = e.offsetY;</div><div class="line"></div><div class="line">    <span class="comment">//向下取整算出索引</span></div><div class="line">    <span class="keyword">var</span> i = <span class="built_in">Math</span>.floor(x / <span class="number">30</span>);</div><div class="line">    <span class="keyword">var</span> j = <span class="built_in">Math</span>.floor(y / <span class="number">30</span>);</div><div class="line">    <span class="keyword">if</span> (chessBoard[i][j]==<span class="number">0</span>) {</div><div class="line">    	oneStep(i, j, me);</div><div class="line">    	<span class="keyword">if</span> (me) {</div><div class="line">    		chessBoard[i][j]==<span class="number">1</span>;</div><div class="line">    	}<span class="keyword">else</span>{</div><div class="line">    		chessBoard[i][j]==<span class="number">2</span>;</div><div class="line">    	}</div><div class="line"></div><div class="line">    	<span class="comment">//me轮流取反</span></div><div class="line">    	me = !me;</div><div class="line">    }</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">//默认黑子</span></div><div class="line"><span class="keyword">var</span> me = <span class="literal">true</span>;</div><div class="line"></div><div class="line"><span class="comment">//存储棋盘落子情况</span></div><div class="line"><span class="keyword">var</span> chessBoard=[];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) {</div><div class="line">	chessBoard[i]=[];</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; i &lt; <span class="number">15</span>; j++) {</div><div class="line">		chessBoard[i][j]=<span class="number">0</span>;</div><div class="line">	}</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<p><br></p>
+<h1 id="canvas画图"><a href="#canvas画图" class="headerlink" title="canvas画图"></a>canvas画图</h1><figure class="highlight"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;canvas id="chess" width="450px" height="450px"&gt;&lt;/canvas&gt;</div><div class="line"></div><div class="line">canvas {</div><div class="line">    display: block;</div><div class="line">    margin: 50px auto;</div><div class="line">    box-shadow: -2px -2px 2px #efefef, 5px 5px 5px #b9b9b9;</div><div class="line">}</div><div class="line"></div><div class="line">var chess = document.getElementById('chess');</div><div class="line">var context = chess.getContext('2d');</div></pre></td></tr></tbody></table></figure>
+<p><br></p>
+<h1 id="js实现棋盘"><a href="#js实现棋盘" class="headerlink" title="js实现棋盘"></a>js实现棋盘</h1><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawChessBoard = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) {</div><div class="line">        context.moveTo(<span class="number">15</span> + i * <span class="number">30</span>, <span class="number">15</span>);</div><div class="line">        context.lineTo(<span class="number">15</span> + i * <span class="number">30</span>, <span class="number">435</span>);</div><div class="line">        context.stroke();</div><div class="line">        context.moveTo(<span class="number">15</span>, <span class="number">15</span> + i * <span class="number">30</span>);</div><div class="line">        context.lineTo(<span class="number">435</span>, <span class="number">15</span> + i * <span class="number">30</span>);</div><div class="line">        context.stroke();</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<p><br></p>
+<h1 id="js实现棋子"><a href="#js实现棋子" class="headerlink" title="js实现棋子"></a>js实现棋子</h1><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> oneStep = <span class="function"><span class="keyword">function</span>(<span class="params">i, j, me</span>) </span>{</div><div class="line">	<span class="comment">//画圆</span></div><div class="line">    context.beginPath();</div><div class="line">    context.arc(<span class="number">15</span> + i * <span class="number">30</span>, <span class="number">15</span> + j * <span class="number">30</span>, <span class="number">13</span>, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI);</div><div class="line">    context.closePath();</div><div class="line"></div><div class="line">    <span class="comment">//渐变</span></div><div class="line">    <span class="keyword">var</span> gradient = context.createRadialGradient(<span class="number">15</span> + i * <span class="number">30</span> + <span class="number">2</span>, <span class="number">15</span> + j * <span class="number">30</span> - <span class="number">2</span>, <span class="number">13</span>, <span class="number">15</span> + i * <span class="number">30</span> + <span class="number">2</span>, <span class="number">15</span> + j * <span class="number">30</span> - <span class="number">2</span>, <span class="number">0</span>);</div><div class="line">    <span class="keyword">if</span> (me) {</div><div class="line">    	gradient.addColorStop(<span class="number">0</span>, <span class="string">"#0a0a0a"</span>);</div><div class="line">    	gradient.addColorStop(<span class="number">1</span>, <span class="string">"#636766"</span>);</div><div class="line">    }<span class="keyword">else</span>{</div><div class="line">    	gradient.addColorStop(<span class="number">0</span>, <span class="string">"#d1d1d1"</span>);</div><div class="line">    	gradient.addColorStop(<span class="number">1</span>, <span class="string">"#f9f9f9"</span>);</div><div class="line">    }</div><div class="line"></div><div class="line">    context.fillStyle = gradient;</div><div class="line">    context.fill();</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<p><br></p>
+<h1 id="落子"><a href="#落子" class="headerlink" title="落子"></a>落子</h1><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">chess.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>{</div><div class="line">    <span class="keyword">var</span> x = e.offsetX;</div><div class="line">    <span class="keyword">var</span> y = e.offsetY;</div><div class="line"></div><div class="line">    <span class="comment">//向下取整算出索引</span></div><div class="line">    <span class="keyword">var</span> i = <span class="built_in">Math</span>.floor(x / <span class="number">30</span>);</div><div class="line">    <span class="keyword">var</span> j = <span class="built_in">Math</span>.floor(y / <span class="number">30</span>);</div><div class="line">    <span class="keyword">if</span> (chessBoard[i][j]==<span class="number">0</span>) {</div><div class="line">    	oneStep(i, j, me);</div><div class="line">    	<span class="keyword">if</span> (me) {</div><div class="line">    		chessBoard[i][j]==<span class="number">1</span>;</div><div class="line">    	}<span class="keyword">else</span>{</div><div class="line">    		chessBoard[i][j]==<span class="number">2</span>;</div><div class="line">    	}</div><div class="line"></div><div class="line">    	<span class="comment">//me轮流取反</span></div><div class="line">    	me = !me;</div><div class="line">    }</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">//默认黑子</span></div><div class="line"><span class="keyword">var</span> me = <span class="literal">true</span>;</div><div class="line"></div><div class="line"><span class="comment">//存储棋盘落子情况</span></div><div class="line"><span class="keyword">var</span> chessBoard=[];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) {</div><div class="line">	chessBoard[i]=[];</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; i &lt; <span class="number">15</span>; j++) {</div><div class="line">		chessBoard[i][j]=<span class="number">0</span>;</div><div class="line">	}</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -571,6 +571,35 @@ js实现棋子
     
 </div>
         
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/posts/d24e8921/">使用JavaScript实现AI五子棋</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Awebone 的个人博客">Awebone</a></p>
+  <p><span>发布时间:</span>2017年04月27日 - 00:04</p>
+  <p><span>最后更新:</span>2020年07月18日 - 16:07</p>
+  <p><span>原始链接:</span><a href="/posts/d24e8921/" title="使用JavaScript实现AI五子棋">https://www.awebone.com/posts/d24e8921/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://www.awebone.com/posts/d24e8921/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
       
     </div>
 
@@ -631,8 +660,8 @@ js实现棋子
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/742c7f0a/" rel="prev" title="数据结构与算法JavaScript学习(一)">
-                数据结构与算法JavaScript学习(一) <i class="fa fa-chevron-right"></i>
+              <a href="/posts/e20ef482/" rel="prev" title="FreeCodeCamp学习笔记（二）">
+                FreeCodeCamp学习笔记（二） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -727,7 +756,7 @@ js实现棋子
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -864,7 +893,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用JavaScript做一个AI五子棋"><span class="nav-number">1.</span> <span class="nav-text">使用JavaScript做一个AI五子棋</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#canvas画图"><span class="nav-number">1.1.</span> <span class="nav-text">canvas画图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js实现棋盘"><span class="nav-number">1.2.</span> <span class="nav-text">js实现棋盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js实现棋子"><span class="nav-number">1.3.</span> <span class="nav-text">js实现棋子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#落子"><span class="nav-number">1.4.</span> <span class="nav-text">落子</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#实现步骤"><span class="nav-number">1.</span> <span class="nav-text">实现步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#canvas画图"><span class="nav-number">2.</span> <span class="nav-text">canvas画图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#js实现棋盘"><span class="nav-number">3.</span> <span class="nav-text">js实现棋盘</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#js实现棋子"><span class="nav-number">4.</span> <span class="nav-text">js实现棋子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#落子"><span class="nav-number">5.</span> <span class="nav-text">落子</span></a></li></ol></div>
             
 
           </div>
@@ -909,7 +938,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">47.4k</span>
+    <span title="Site words total count">50.5k</span>
   
 -->
 </div>
@@ -926,7 +955,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共47.4k字&nbsp;|&nbsp;</span>
+  <span class="post-count">博客全站共50.5k字&nbsp;|&nbsp;</span>
 </div>
 
 <div class="powered-by">
@@ -1558,7 +1587,7 @@ show_date_time();
   
 
 <script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1594708847114')
+  navigator.serviceWorker.register('/sw.js?t=1595076725192')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }

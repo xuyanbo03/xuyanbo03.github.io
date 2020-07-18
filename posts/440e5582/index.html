@@ -130,14 +130,14 @@
 
 
 
-<meta name="description" content="高可用HBase搭建全流程系统描述系统介绍系统基于ZooKeeper搭建Hadoop HA集群，在高可用分布式HDFS文件系统的基础上，搭建高可用分布式HBase数据库集群。
-ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是 Google Chubby一个开源的实现。它提供了简单原始的功能，分布式应用可以基于它实现更高级的服务，比如分布式同步，配置管理，集群管理，命名管理，队">
+<meta name="description" content="系统描述系统介绍系统基于ZooKeeper搭建Hadoop HA集群，在高可用分布式HDFS文件系统的基础上，搭建高可用分布式HBase数据库集群。
+ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是 Google Chubby一个开源的实现。它提供了简单原始的功能，分布式应用可以基于它实现更高级的服务，比如分布式同步，配置管理，集群管理，命名管理，队列管理。使用文件系统目录树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高可用HBase搭建全流程">
 <meta property="og:url" content="https://www.awebone.com/posts/440e5582/index.html">
 <meta property="og:site_name" content="Awebone's Blog">
-<meta property="og:description" content="高可用HBase搭建全流程系统描述系统介绍系统基于ZooKeeper搭建Hadoop HA集群，在高可用分布式HDFS文件系统的基础上，搭建高可用分布式HBase数据库集群。
-ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是 Google Chubby一个开源的实现。它提供了简单原始的功能，分布式应用可以基于它实现更高级的服务，比如分布式同步，配置管理，集群管理，命名管理，队">
+<meta property="og:description" content="系统描述系统介绍系统基于ZooKeeper搭建Hadoop HA集群，在高可用分布式HDFS文件系统的基础上，搭建高可用分布式HBase数据库集群。
+ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是 Google Chubby一个开源的实现。它提供了简单原始的功能，分布式应用可以基于它实现更高级的服务，比如分布式同步，配置管理，集群管理，命名管理，队列管理。使用文件系统目录树">
 <meta property="og:image" content="https://www.awebone.com/images/HBase-HA/clip_image002-1591461382734.jpg">
 <meta property="og:image" content="https://www.awebone.com/images/HBase-HA/clip_image004-1591461382734.jpg">
 <meta property="og:image" content="https://www.awebone.com/images/HBase-HA/clip_image006-1591461382734.jpg">
@@ -154,11 +154,11 @@ ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服�
 <meta property="og:image" content="https://www.awebone.com/images/HBase-HA/clip_image028-1591461382735.jpg">
 <meta property="og:image" content="https://www.awebone.com/images/HBase-HA/clip_image030-1591461382735.jpg">
 <meta property="og:image" content="https://www.awebone.com/images/HBase-HA/clip_image032-1591461382735.jpg">
-<meta property="og:updated_time" content="2020-06-07T03:31:48.025Z">
+<meta property="og:updated_time" content="2020-07-18T08:26:40.961Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高可用HBase搭建全流程">
-<meta name="twitter:description" content="高可用HBase搭建全流程系统描述系统介绍系统基于ZooKeeper搭建Hadoop HA集群，在高可用分布式HDFS文件系统的基础上，搭建高可用分布式HBase数据库集群。
-ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是 Google Chubby一个开源的实现。它提供了简单原始的功能，分布式应用可以基于它实现更高级的服务，比如分布式同步，配置管理，集群管理，命名管理，队">
+<meta name="twitter:description" content="系统描述系统介绍系统基于ZooKeeper搭建Hadoop HA集群，在高可用分布式HDFS文件系统的基础上，搭建高可用分布式HBase数据库集群。
+ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是 Google Chubby一个开源的实现。它提供了简单原始的功能，分布式应用可以基于它实现更高级的服务，比如分布式同步，配置管理，集群管理，命名管理，队列管理。使用文件系统目录树">
 <meta name="twitter:image" content="https://www.awebone.com/images/HBase-HA/clip_image002-1591461382734.jpg">
 
 
@@ -482,7 +482,7 @@ ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服�
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,591
+                  2,582
                 </span>
               
 
@@ -519,16 +519,16 @@ ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服�
       
 
       
-        <h1 id="高可用HBase搭建全流程"><a href="#高可用HBase搭建全流程" class="headerlink" title="高可用HBase搭建全流程"></a>高可用HBase搭建全流程</h1><h2 id="系统描述"><a href="#系统描述" class="headerlink" title="系统描述"></a>系统描述</h2><h3 id="系统介绍"><a href="#系统介绍" class="headerlink" title="系统介绍"></a>系统介绍</h3><p>系统基于ZooKeeper搭建Hadoop HA集群，在高可用分布式HDFS文件系统的基础上，搭建高可用分布式HBase数据库集群。</p>
+        <h1 id="系统描述"><a href="#系统描述" class="headerlink" title="系统描述"></a>系统描述</h1><h2 id="系统介绍"><a href="#系统介绍" class="headerlink" title="系统介绍"></a>系统介绍</h2><p>系统基于ZooKeeper搭建Hadoop HA集群，在高可用分布式HDFS文件系统的基础上，搭建高可用分布式HBase数据库集群。</p>
 <p>ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是 Google Chubby一个开源的实现。它提供了简单原始的功能，分布式应用可以基于它实现更高级的服务，比如分布式同步，配置管理，集群管理，命名管理，队列管理。使用文件系统目录树作为数据模型。</p>
 <p>Hadoop分布式集群采用主从架构，在Hadoop HA集群中，ZooKeeper用来解决SPOF单点故障问题。如果active namenod宕机，就从剩下的standby namenodes中选举出来一个新的active namenode，并且做到瞬时切换，使得在需求增长的前提下，分布式集群仍然可以向外提供服务。同样的，分布式HBase数据库也采用主从架构，在master server宕机的情况下，瞬时切换到backup master，使得HBase高可用。分布式HBase数据库的底层存储采用HDFS文件系统。</p>
 <a id="more"></a>
-<h3 id="环境要求和版本选择"><a href="#环境要求和版本选择" class="headerlink" title="环境要求和版本选择"></a>环境要求和版本选择</h3><p>（1）四台Linux服务器，分别为Hadoop01、Hadoop02、Hadoop03、Hadoop04，采用Centos 6.8版本；</p>
+<h2 id="环境要求和版本选择"><a href="#环境要求和版本选择" class="headerlink" title="环境要求和版本选择"></a>环境要求和版本选择</h2><p>（1）四台Linux服务器，分别为Hadoop01、Hadoop02、Hadoop03、Hadoop04，采用Centos 6.8版本；</p>
 <p>（2）Java采用JDK 1.8版本；</p>
 <p>（3）ZooKeeper 采用 3.4.10版本；</p>
 <p>（4）Hadoop 采用2.7.6版本；</p>
 <p>（5）HBase采用 1.2.6版本；</p>
-<h3 id="集群规划和架构设计"><a href="#集群规划和架构设计" class="headerlink" title="集群规划和架构设计"></a>集群规划和架构设计</h3><p>Hadoop和HBase均采用主从架构模式，其系统内部均使用自己提供的负载均衡器。系统的集群规划如下表所示。</p>
+<h2 id="集群规划和架构设计"><a href="#集群规划和架构设计" class="headerlink" title="集群规划和架构设计"></a>集群规划和架构设计</h2><p>Hadoop和HBase均采用主从架构模式，其系统内部均使用自己提供的负载均衡器。系统的集群规划如下表所示。</p>
 <table>
 <thead>
 <tr>
@@ -612,8 +612,9 @@ ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服�
 </tr>
 </tbody>
 </table>
-<h2 id="系统搭建"><a href="#系统搭建" class="headerlink" title="系统搭建"></a>系统搭建</h2><h3 id="ZooKeeper集群安装"><a href="#ZooKeeper集群安装" class="headerlink" title="ZooKeeper集群安装"></a>ZooKeeper集群安装</h3><h4 id="配置安排"><a href="#配置安排" class="headerlink" title="配置安排"></a>配置安排</h4><p>安装ZooKeeper集群时需要注意集群的节点个数必须是奇数，因为奇数个数是为了方便进行选举leader。这里将Hadoop01、Hadoop02、Hadoop03和Hadoop04均作为ZooKeeper集群的节点，但是将Hadoop04节点中的角色固定设置为observer，observer其实跟follower类似，只不过是为了给ZooKeeper进行扩充之使用，不会改变原来集群的主从所属关系，仅仅只是接受请求，然后进行处理，没有投票的权利，也没有被选举成为leader的权利。</p>
-<h4 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h4><ol>
+<p> <br></p>
+<h1 id="系统搭建"><a href="#系统搭建" class="headerlink" title="系统搭建"></a>系统搭建</h1><h2 id="ZooKeeper集群安装"><a href="#ZooKeeper集群安装" class="headerlink" title="ZooKeeper集群安装"></a>ZooKeeper集群安装</h2><h3 id="配置安排"><a href="#配置安排" class="headerlink" title="配置安排"></a>配置安排</h3><p>安装ZooKeeper集群时需要注意集群的节点个数必须是奇数，因为奇数个数是为了方便进行选举leader。这里将Hadoop01、Hadoop02、Hadoop03和Hadoop04均作为ZooKeeper集群的节点，但是将Hadoop04节点中的角色固定设置为observer，observer其实跟follower类似，只不过是为了给ZooKeeper进行扩充之使用，不会改变原来集群的主从所属关系，仅仅只是接受请求，然后进行处理，没有投票的权利，也没有被选举成为leader的权利。</p>
+<h3 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h3><ol>
 <li><p>获取安装包 <code>zookeeper-3.4.10.tar.gz</code></p>
 </li>
 <li><p>解压</p>
@@ -635,9 +636,10 @@ ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服�
 <p>客户端连接：<code>zkCli.sh -server hostname:2181</code></p>
 </li>
 </ol>
-<h3 id="Hadoop-HA集群安装"><a href="#Hadoop-HA集群安装" class="headerlink" title="Hadoop HA集群安装"></a>Hadoop HA集群安装</h3><h4 id="HA设计和配置安排"><a href="#HA设计和配置安排" class="headerlink" title="HA设计和配置安排"></a>HA设计和配置安排</h4><p>使用共享存储和ZooKeeper实现Hadoop HA。这里将Hadoop01作为NameNode的active节点，将Hadoop02作为NameNode的standby节点，Hadoop02是Hadoop01的热备，NameNode的元数据都存储在qjournal日志系统这个共享存储中，Hadoop01、Hadoop02、Hadoop03、Hadoop04都作为DataNode的节点，定时向NameNode发送报告和心跳。ZooKeeper中的zkfc进程监控NameNode的情况，当NameNode active节点失去心跳，即宕机时，自动切换，将standby节点激活，实现Hadoop集群的高可用。</p>
+<p><br></p>
+<h2 id="Hadoop-HA集群安装"><a href="#Hadoop-HA集群安装" class="headerlink" title="Hadoop HA集群安装"></a>Hadoop HA集群安装</h2><h3 id="HA设计和配置安排"><a href="#HA设计和配置安排" class="headerlink" title="HA设计和配置安排"></a>HA设计和配置安排</h3><p>使用共享存储和ZooKeeper实现Hadoop HA。这里将Hadoop01作为NameNode的active节点，将Hadoop02作为NameNode的standby节点，Hadoop02是Hadoop01的热备，NameNode的元数据都存储在qjournal日志系统这个共享存储中，Hadoop01、Hadoop02、Hadoop03、Hadoop04都作为DataNode的节点，定时向NameNode发送报告和心跳。ZooKeeper中的zkfc进程监控NameNode的情况，当NameNode active节点失去心跳，即宕机时，自动切换，将standby节点激活，实现Hadoop集群的高可用。</p>
 <p><img src="/images/HBase-HA/clip_image002-1591461382734.jpg" alt="img"></p>
-<h4 id="配置步骤-1"><a href="#配置步骤-1" class="headerlink" title="配置步骤"></a>配置步骤</h4><ol>
+<h3 id="配置步骤-1"><a href="#配置步骤-1" class="headerlink" title="配置步骤"></a>配置步骤</h3><ol>
 <li><p>获取安装包<code>hadoop-2.7.6.tar.gz</code></p>
 </li>
 <li><p>解压</p>
@@ -677,8 +679,9 @@ ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服�
 <p>启动mr历史服务器：<code>mr-jobhistory-daemon.sh start historyserver</code></p>
 </li>
 </ol>
-<h3 id="HBase-HA集群安装"><a href="#HBase-HA集群安装" class="headerlink" title="HBase HA集群安装"></a>HBase HA集群安装</h3><h4 id="配置安排-1"><a href="#配置安排-1" class="headerlink" title="配置安排"></a>配置安排</h4><p>HBase分布式数据库底层数据存储采用刚刚搭建的HDFS分布式文件系统，使用ZooKeeper来作为HMaster和Backup HMaster的协调，在HMaster失去心跳宕机时，Backup HMaster自动切换成active状态，实现高可用分布式数据库。这里将Hadoop01和Hadoop04作为HMaster节点，将Hadoop01、Hadoop02、Hadoop03、Hadoop04作为HRegionServer节点。</p>
-<h4 id="配置步骤-2"><a href="#配置步骤-2" class="headerlink" title="配置步骤"></a>配置步骤</h4><ol>
+<p><br></p>
+<h2 id="HBase-HA集群安装"><a href="#HBase-HA集群安装" class="headerlink" title="HBase HA集群安装"></a>HBase HA集群安装</h2><h3 id="配置安排-1"><a href="#配置安排-1" class="headerlink" title="配置安排"></a>配置安排</h3><p>HBase分布式数据库底层数据存储采用刚刚搭建的HDFS分布式文件系统，使用ZooKeeper来作为HMaster和Backup HMaster的协调，在HMaster失去心跳宕机时，Backup HMaster自动切换成active状态，实现高可用分布式数据库。这里将Hadoop01和Hadoop04作为HMaster节点，将Hadoop01、Hadoop02、Hadoop03、Hadoop04作为HRegionServer节点。</p>
+<h3 id="配置步骤-2"><a href="#配置步骤-2" class="headerlink" title="配置步骤"></a>配置步骤</h3><ol>
 <li><p>安装包<code>hbase-1.2.6.tar.gz</code></p>
 </li>
 <li><p>解压</p>
@@ -711,17 +714,18 @@ ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服�
 <p><code>start-hbase.sh</code></p>
 </li>
 </ol>
-<h2 id="系统测试与结果展示"><a href="#系统测试与结果展示" class="headerlink" title="系统测试与结果展示"></a>系统测试与结果展示</h2><h3 id="系统测试"><a href="#系统测试" class="headerlink" title="系统测试"></a>系统测试</h3><p>在四台机器上运行<code>jps</code>命令，查看相关进程是否启动。</p>
+<p><br></p>
+<h1 id="系统测试与结果展示"><a href="#系统测试与结果展示" class="headerlink" title="系统测试与结果展示"></a>系统测试与结果展示</h1><h2 id="系统测试"><a href="#系统测试" class="headerlink" title="系统测试"></a>系统测试</h2><p>在四台机器上运行<code>jps</code>命令，查看相关进程是否启动。</p>
 <p><img src="/images/HBase-HA/clip_image004-1591461382734.jpg" alt="img"></p>
 <p><img src="/images/HBase-HA/clip_image006-1591461382734.jpg" alt="img"></p>
 <p><img src="/images/HBase-HA/clip_image008-1591461382734.jpg" alt="img"></p>
 <p><img src="/images/HBase-HA/clip_image010-1591461382734.jpg" alt="img"></p>
-<h3 id="ZooKeeper状态查看"><a href="#ZooKeeper状态查看" class="headerlink" title="ZooKeeper状态查看"></a>ZooKeeper状态查看</h3><p>在四台机器上使用<code>zkServer.sh status</code>命令查看ZooKeeper的状态。</p>
+<h2 id="ZooKeeper状态查看"><a href="#ZooKeeper状态查看" class="headerlink" title="ZooKeeper状态查看"></a>ZooKeeper状态查看</h2><p>在四台机器上使用<code>zkServer.sh status</code>命令查看ZooKeeper的状态。</p>
 <p><img src="/images/HBase-HA/clip_image012-1591461382734.jpg" alt="img"></p>
 <p><img src="/images/HBase-HA/clip_image014-1591461382734.jpg" alt="img"></p>
 <p><img src="/images/HBase-HA/clip_image016-1591461382735.jpg" alt="img"></p>
 <p><img src="/images/HBase-HA/clip_image018-1591461382735.jpg" alt="img"></p>
-<h3 id="Hadoop-HA展示"><a href="#Hadoop-HA展示" class="headerlink" title="Hadoop HA展示"></a>Hadoop HA展示</h3><p>HDFS启动过程：</p>
+<h2 id="Hadoop-HA展示"><a href="#Hadoop-HA展示" class="headerlink" title="Hadoop HA展示"></a>Hadoop HA展示</h2><p>HDFS启动过程：</p>
 <p><img src="/images/HBase-HA/clip_image020-1591461382735.jpg" alt="img"></p>
 <p>YARN启动过程：</p>
 <p><img src="/images/HBase-HA/clip_image022-1591461382735.jpg" alt="img"></p>
@@ -729,13 +733,14 @@ ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服�
 <p><img src="/images/HBase-HA/clip_image024-1591461382735.jpg" alt="img"></p>
 <p>Web页面查看：</p>
 <p><img src="/images/HBase-HA/clip_image026-1591461382735.jpg" alt="img"></p>
-<h3 id="HBase-HA展示"><a href="#HBase-HA展示" class="headerlink" title="HBase HA展示"></a>HBase HA展示</h3><p>HBase启动过程：</p>
+<h2 id="HBase-HA展示"><a href="#HBase-HA展示" class="headerlink" title="HBase HA展示"></a>HBase HA展示</h2><p>HBase启动过程：</p>
 <p><img src="/images/HBase-HA/clip_image028-1591461382735.jpg" alt="img"></p>
 <p>Web页面查看：</p>
 <p><img src="/images/HBase-HA/clip_image030-1591461382735.jpg" alt="img"></p>
 <p>HBase底层存储情况：</p>
 <p><img src="/images/HBase-HA/clip_image032-1591461382735.jpg" alt="img"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>系统根据需求，进行架构设计，确定一主多从的架构，接着根据系统环境和版本兼容性的选择，确定最终系统中安装包的版本，然后在仅有的四台服务器上进行集群规划，尽量使得各个节点负载均衡。</p>
+<p> <br></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>系统根据需求，进行架构设计，确定一主多从的架构，接着根据系统环境和版本兼容性的选择，确定最终系统中安装包的版本，然后在仅有的四台服务器上进行集群规划，尽量使得各个节点负载均衡。</p>
 <p>通过搭建ZooKeeper分布式集群，以感知服务器上下线，接着基于ZooKeeper搭建Hadoop HA集群，保证HDFS文件系统高可用，再在高可用分布式HDFS文件系统的基础上搭建高可用分布式HBase数据库，完整实现这个过程，学习到分布式系统中关于数据一致性的知识，在系统中，均可保证最终一致性。掌握了ZooKeeper、Hadoop、HBase高可用集群的搭建部署，学习了在分布式文件系统HDFS之上，数据库的应用场景。</p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -779,7 +784,7 @@ ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服�
   <p><span>本文标题:</span><a href="/posts/440e5582/">高可用HBase搭建全流程</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Awebone 的个人博客">Awebone</a></p>
   <p><span>发布时间:</span>2020年06月06日 - 15:06</p>
-  <p><span>最后更新:</span>2020年06月07日 - 11:06</p>
+  <p><span>最后更新:</span>2020年07月18日 - 16:07</p>
   <p><span>原始链接:</span><a href="/posts/440e5582/" title="高可用HBase搭建全流程">https://www.awebone.com/posts/440e5582/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://www.awebone.com/posts/440e5582/"  aria-label="复制成功！"></i></span>
   </p>
@@ -957,7 +962,7 @@ ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服�
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1094,7 +1099,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#高可用HBase搭建全流程"><span class="nav-number">1.</span> <span class="nav-text">高可用HBase搭建全流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#系统描述"><span class="nav-number">1.1.</span> <span class="nav-text">系统描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系统介绍"><span class="nav-number">1.1.1.</span> <span class="nav-text">系统介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境要求和版本选择"><span class="nav-number">1.1.2.</span> <span class="nav-text">环境要求和版本选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群规划和架构设计"><span class="nav-number">1.1.3.</span> <span class="nav-text">集群规划和架构设计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统搭建"><span class="nav-number">1.2.</span> <span class="nav-text">系统搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ZooKeeper集群安装"><span class="nav-number">1.2.1.</span> <span class="nav-text">ZooKeeper集群安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置安排"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">配置安排</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置步骤"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">配置步骤</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hadoop-HA集群安装"><span class="nav-number">1.2.2.</span> <span class="nav-text">Hadoop HA集群安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HA设计和配置安排"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">HA设计和配置安排</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置步骤-1"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">配置步骤</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HBase-HA集群安装"><span class="nav-number">1.2.3.</span> <span class="nav-text">HBase HA集群安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置安排-1"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">配置安排</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置步骤-2"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">配置步骤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统测试与结果展示"><span class="nav-number">1.3.</span> <span class="nav-text">系统测试与结果展示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系统测试"><span class="nav-number">1.3.1.</span> <span class="nav-text">系统测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZooKeeper状态查看"><span class="nav-number">1.3.2.</span> <span class="nav-text">ZooKeeper状态查看</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hadoop-HA展示"><span class="nav-number">1.3.3.</span> <span class="nav-text">Hadoop HA展示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HBase-HA展示"><span class="nav-number">1.3.4.</span> <span class="nav-text">HBase HA展示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#系统描述"><span class="nav-number">1.</span> <span class="nav-text">系统描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#系统介绍"><span class="nav-number">1.1.</span> <span class="nav-text">系统介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境要求和版本选择"><span class="nav-number">1.2.</span> <span class="nav-text">环境要求和版本选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集群规划和架构设计"><span class="nav-number">1.3.</span> <span class="nav-text">集群规划和架构设计</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系统搭建"><span class="nav-number">2.</span> <span class="nav-text">系统搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ZooKeeper集群安装"><span class="nav-number">2.1.</span> <span class="nav-text">ZooKeeper集群安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置安排"><span class="nav-number">2.1.1.</span> <span class="nav-text">配置安排</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置步骤"><span class="nav-number">2.1.2.</span> <span class="nav-text">配置步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hadoop-HA集群安装"><span class="nav-number">2.2.</span> <span class="nav-text">Hadoop HA集群安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HA设计和配置安排"><span class="nav-number">2.2.1.</span> <span class="nav-text">HA设计和配置安排</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置步骤-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">配置步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase-HA集群安装"><span class="nav-number">2.3.</span> <span class="nav-text">HBase HA集群安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置安排-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">配置安排</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置步骤-2"><span class="nav-number">2.3.2.</span> <span class="nav-text">配置步骤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系统测试与结果展示"><span class="nav-number">3.</span> <span class="nav-text">系统测试与结果展示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#系统测试"><span class="nav-number">3.1.</span> <span class="nav-text">系统测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ZooKeeper状态查看"><span class="nav-number">3.2.</span> <span class="nav-text">ZooKeeper状态查看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hadoop-HA展示"><span class="nav-number">3.3.</span> <span class="nav-text">Hadoop HA展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HBase-HA展示"><span class="nav-number">3.4.</span> <span class="nav-text">HBase HA展示</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -1139,7 +1144,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">47.4k</span>
+    <span title="Site words total count">50.5k</span>
   
 -->
 </div>
@@ -1156,7 +1161,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共47.4k字&nbsp;|&nbsp;</span>
+  <span class="post-count">博客全站共50.5k字&nbsp;|&nbsp;</span>
 </div>
 
 <div class="powered-by">
@@ -1788,7 +1793,7 @@ show_date_time();
   
 
 <script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1594708847114')
+  navigator.serviceWorker.register('/sw.js?t=1595076725192')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }

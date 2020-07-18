@@ -130,22 +130,22 @@
 
 
 
-<meta name="description" content="Transformer模型详解机器翻译发展变化趋势机器翻译（MT）是借机器之力，自动地将一种自然语言文本（源语言）翻译成另一种自然语言文本（目标语言）。使用机器做翻译的思想最早由 Warren Weaver 于 1949 年提出，在很长一段时间里（20 世纪 50 年代到 80 年代），机器翻译都是通过研究源语言与目标语言的语言学信息来做的，也就是基于词典和语法生成翻译，这被称为基于规则的机器翻译">
+<meta name="description" content="机器翻译发展变化趋势机器翻译（MT）是借机器之力，自动地将一种自然语言文本（源语言）翻译成另一种自然语言文本（目标语言）。使用机器做翻译的思想最早由 Warren Weaver 于 1949 年提出，在很长一段时间里（20 世纪 50 年代到 80 年代），机器翻译都是通过研究源语言与目标语言的语言学信息来做的，也就是基于词典和语法生成翻译，这被称为基于规则的机器翻译（RBMT）。随着统计学的发展">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Transformer模型详解">
 <meta property="og:url" content="https://www.awebone.com/posts/c96b08bc/index.html">
 <meta property="og:site_name" content="Awebone's Blog">
-<meta property="og:description" content="Transformer模型详解机器翻译发展变化趋势机器翻译（MT）是借机器之力，自动地将一种自然语言文本（源语言）翻译成另一种自然语言文本（目标语言）。使用机器做翻译的思想最早由 Warren Weaver 于 1949 年提出，在很长一段时间里（20 世纪 50 年代到 80 年代），机器翻译都是通过研究源语言与目标语言的语言学信息来做的，也就是基于词典和语法生成翻译，这被称为基于规则的机器翻译">
+<meta property="og:description" content="机器翻译发展变化趋势机器翻译（MT）是借机器之力，自动地将一种自然语言文本（源语言）翻译成另一种自然语言文本（目标语言）。使用机器做翻译的思想最早由 Warren Weaver 于 1949 年提出，在很长一段时间里（20 世纪 50 年代到 80 年代），机器翻译都是通过研究源语言与目标语言的语言学信息来做的，也就是基于词典和语法生成翻译，这被称为基于规则的机器翻译（RBMT）。随着统计学的发展">
 <meta property="og:image" content="https://www.awebone.com/images/transformer/clip_image002.png">
 <meta property="og:image" content="https://www.awebone.com/images/transformer/clip_image004.jpg">
 <meta property="og:image" content="https://www.awebone.com/images/transformer/clip_image006.jpg">
 <meta property="og:image" content="https://www.awebone.com/images/transformer/clip_image008.jpg">
 <meta property="og:image" content="https://www.awebone.com/images/transformer/clip_image010.jpg">
 <meta property="og:image" content="https://www.awebone.com/images/transformer/clip_image012.jpg">
-<meta property="og:updated_time" content="2020-06-06T16:28:38.735Z">
+<meta property="og:updated_time" content="2020-07-18T08:35:52.574Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Transformer模型详解">
-<meta name="twitter:description" content="Transformer模型详解机器翻译发展变化趋势机器翻译（MT）是借机器之力，自动地将一种自然语言文本（源语言）翻译成另一种自然语言文本（目标语言）。使用机器做翻译的思想最早由 Warren Weaver 于 1949 年提出，在很长一段时间里（20 世纪 50 年代到 80 年代），机器翻译都是通过研究源语言与目标语言的语言学信息来做的，也就是基于词典和语法生成翻译，这被称为基于规则的机器翻译">
+<meta name="twitter:description" content="机器翻译发展变化趋势机器翻译（MT）是借机器之力，自动地将一种自然语言文本（源语言）翻译成另一种自然语言文本（目标语言）。使用机器做翻译的思想最早由 Warren Weaver 于 1949 年提出，在很长一段时间里（20 世纪 50 年代到 80 年代），机器翻译都是通过研究源语言与目标语言的语言学信息来做的，也就是基于词典和语法生成翻译，这被称为基于规则的机器翻译（RBMT）。随着统计学的发展">
 <meta name="twitter:image" content="https://www.awebone.com/images/transformer/clip_image002.png">
 
 
@@ -469,7 +469,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,366
+                  2,361
                 </span>
               
 
@@ -506,14 +506,15 @@
       
 
       
-        <h1 id="Transformer模型详解"><a href="#Transformer模型详解" class="headerlink" title="Transformer模型详解"></a>Transformer模型详解</h1><h2 id="机器翻译发展变化趋势"><a href="#机器翻译发展变化趋势" class="headerlink" title="机器翻译发展变化趋势"></a>机器翻译发展变化趋势</h2><p>机器翻译（MT）是借机器之力，自动地将一种自然语言文本（源语言）翻译成另一种自然语言文本（目标语言）。使用机器做翻译的思想最早由 Warren Weaver 于 1949 年提出，在很长一段时间里（20 世纪 50 年代到 80 年代），机器翻译都是通过研究源语言与目标语言的语言学信息来做的，也就是基于词典和语法生成翻译，这被称为基于规则的机器翻译（RBMT）。随着统计学的发展，研究者开始将统计模型应用于机器翻译，这种方法是基于对双语文本语料库的分析来生成翻译结果。这种方法被称为统计机器翻译（SMT），它的表现比 RBMT 更好，并且在 1980 年代到 2000 年代之间主宰了这一领域。1997 年，Ramon Neco 和 Mikel Forcada 提出了使用编码器-解码器结构做机器翻译的想法。几年之后的 2003 年，蒙特利尔大学 Yoshua Bengio 领导的一个研究团队开发了一个基于神经网络的语言模型，改善了传统 SMT 模型的数据稀疏性问题。他们的研究工作为未来神经网络在机器翻译上的应用奠定了基础。</p>
+        <h1 id="机器翻译发展变化趋势"><a href="#机器翻译发展变化趋势" class="headerlink" title="机器翻译发展变化趋势"></a>机器翻译发展变化趋势</h1><p>机器翻译（MT）是借机器之力，自动地将一种自然语言文本（源语言）翻译成另一种自然语言文本（目标语言）。使用机器做翻译的思想最早由 Warren Weaver 于 1949 年提出，在很长一段时间里（20 世纪 50 年代到 80 年代），机器翻译都是通过研究源语言与目标语言的语言学信息来做的，也就是基于词典和语法生成翻译，这被称为基于规则的机器翻译（RBMT）。随着统计学的发展，研究者开始将统计模型应用于机器翻译，这种方法是基于对双语文本语料库的分析来生成翻译结果。这种方法被称为统计机器翻译（SMT），它的表现比 RBMT 更好，并且在 1980 年代到 2000 年代之间主宰了这一领域。1997 年，Ramon Neco 和 Mikel Forcada 提出了使用编码器-解码器结构做机器翻译的想法。几年之后的 2003 年，蒙特利尔大学 Yoshua Bengio 领导的一个研究团队开发了一个基于神经网络的语言模型，改善了传统 SMT 模型的数据稀疏性问题。他们的研究工作为未来神经网络在机器翻译上的应用奠定了基础。</p>
 <a id="more"></a>
 <p>2013 年，Nal Kalchbrenner 和 Phil Blunsom 提出了一种用于机器翻译的新型端到端编码器-解码器结构。该模型可以使用卷积神经网络（CNN）将给定的一段源文本编码成一个连续的向量，然后再使用循环神经网络（RNN）作为解码器将该状态向量转换成目标语言。他们的研究成果可以说是神经机器翻译（NMT）的诞生，神经机器翻译是一种使用深度学习神经网络获取自然语言之间的映射关系的方法。NMT 的非线性映射不同于线性的 SMT 模型，而且是使用了连接编码器和解码器的状态向量来描述语义的等价关系。此外，RNN 应该还能得到无限长句子背后的信息，从而解决所谓的长距离重新排序（long distance reordering）问题。但是，梯度爆炸或者消失问题让 RNN 实际上难以处理长距依存（long distance dependency），因此，NMT 模型一开始的表现并不好。</p>
 <p>一年后的 2014 年，Sutskever et al. 和 Cho et al. 开发了一种名叫序列到序列（seq2seq）学习的方法，可以将 RNN 既用于编码器也用于解码器，并且还为 NMT 引入了长短时记忆（LSTM，是一种 RNN）。在门机制（gate mechanism）的帮助下，允许在 LSTM 中删除和更新明确的记忆，梯度爆炸/消失问题得到了控制，从而让模型可以远远更好地获取句子中的长距依存。</p>
 <p>LSTM 的引入解决了长距离重新排序问题，同时将 NMT 的主要难题变成了固定长度向量（fixed-length vector）问题，不管源句子的长度几何，这个神经网络都需要将其压缩成一个固定长度的向量，这会在解码过程中带来更大的复杂性和不确定性，尤其是当源句子很长时。</p>
 <p>自 2014 年 Yoshua Bengio 的团队为 NMT 引入了注意力（attention）机制之后，固定长度向量问题也开始得到解决。注意力机制最早是由 DeepMind 为图像分类提出的，这让神经网络在执行预测任务时可以更多关注输入中的相关部分，更少关注不相关的部分。当解码器生成一个用于构成目标句子的词时，源句子中仅有少部分是相关的。因此，可以应用一个基于内容的注意力机制来根据源句子动态地生成一个加权的语境向量（context vector），然后网络会根据这个语境向量而不是某个固定长度的向量来预测词。自那以后，NMT 的表现得到了显著提升，注意力编码器-解码器网络已经成为了 NMT 领域当前最佳的模型。</p>
 <p>Transformer模型是在注意力机制上的进一步改进，不仅在Encoder-Decoder之间有注意力机制，其Encoder和Decoder自身也有自注意力机制（self-attention），即能注意输入序列的不同位置以计算该序列的表示的能力。</p>
-<h2 id="Transform模型原理"><a href="#Transform模型原理" class="headerlink" title="Transform模型原理"></a>Transform模型原理</h2><p>Transformer 模型的核心思想是自注意力机制（self-attention），能注意输入序列的不同位置以计算该序列的表示的能力。Transformer 是多层自注意力层组成的堆栈。</p>
+<p><br></p>
+<h1 id="Transform模型原理"><a href="#Transform模型原理" class="headerlink" title="Transform模型原理"></a>Transform模型原理</h1><p>Transformer 模型的核心思想是自注意力机制（self-attention），能注意输入序列的不同位置以计算该序列的表示的能力。Transformer 是多层自注意力层组成的堆栈。</p>
 <p>Transformer 模型与标准的具有注意力机制的序列到序列模型遵循相同的一般模式。输入语句经过 N 个编码器层，为序列中的每个词/标记生成一个输出，解码器关注编码器的输出以及它自身的输入（自注意力）来预测下一个词。</p>
 <p>其模型架构图如下：</p>
 <p><img src="/images/transformer/clip_image002.png" alt="img"></p>
@@ -532,7 +533,8 @@
 <p>这里采用正弦余弦的位置编码方式，其公式如下：</p>
 <p><img src="/images/transformer/clip_image012.jpg" alt="img"></p>
 <p>在进行预测时，采用强制教学（teacher force），即上一步的输出当做下一步的输入，逐步预测出整个序列。</p>
-<h2 id="Transform模型优缺点"><a href="#Transform模型优缺点" class="headerlink" title="Transform模型优缺点"></a>Transform模型优缺点</h2><p>一个 Transformer 模型用自注意力层而非 RNNs 或 CNNs 来处理变长的输入。这种通用架构有一系列的优势：</p>
+<p><br></p>
+<h1 id="Transform模型优缺点"><a href="#Transform模型优缺点" class="headerlink" title="Transform模型优缺点"></a>Transform模型优缺点</h1><p>一个 Transformer 模型用自注意力层而非 RNNs 或 CNNs 来处理变长的输入。这种通用架构有一系列的优势：</p>
 <p>（1）它不对数据间的时间/空间关系做任何假设，这是处理一组对象的理想选择。</p>
 <p>（2）层输出可以并行计算，而非像 RNN 这样的序列计算。</p>
 <p>（3）远距离项可以影响彼此的输出，而无需经过许多 RNN 步骤或卷积层（4）它能学习长距离的依赖。在许多序列任务中，这是一项挑战。</p>
@@ -581,7 +583,7 @@
   <p><span>本文标题:</span><a href="/posts/c96b08bc/">Transformer模型详解</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Awebone 的个人博客">Awebone</a></p>
   <p><span>发布时间:</span>2020年06月06日 - 15:06</p>
-  <p><span>最后更新:</span>2020年06月07日 - 00:06</p>
+  <p><span>最后更新:</span>2020年07月18日 - 16:07</p>
   <p><span>原始链接:</span><a href="/posts/c96b08bc/" title="Transformer模型详解">https://www.awebone.com/posts/c96b08bc/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://www.awebone.com/posts/c96b08bc/"  aria-label="复制成功！"></i></span>
   </p>
@@ -759,7 +761,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -896,7 +898,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Transformer模型详解"><span class="nav-number">1.</span> <span class="nav-text">Transformer模型详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#机器翻译发展变化趋势"><span class="nav-number">1.1.</span> <span class="nav-text">机器翻译发展变化趋势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transform模型原理"><span class="nav-number">1.2.</span> <span class="nav-text">Transform模型原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transform模型优缺点"><span class="nav-number">1.3.</span> <span class="nav-text">Transform模型优缺点</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#机器翻译发展变化趋势"><span class="nav-number">1.</span> <span class="nav-text">机器翻译发展变化趋势</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Transform模型原理"><span class="nav-number">2.</span> <span class="nav-text">Transform模型原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Transform模型优缺点"><span class="nav-number">3.</span> <span class="nav-text">Transform模型优缺点</span></a></li></ol></div>
             
 
           </div>
@@ -941,7 +943,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">47.4k</span>
+    <span title="Site words total count">50.5k</span>
   
 -->
 </div>
@@ -958,7 +960,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共47.4k字&nbsp;|&nbsp;</span>
+  <span class="post-count">博客全站共50.5k字&nbsp;|&nbsp;</span>
 </div>
 
 <div class="powered-by">
@@ -1590,7 +1592,7 @@ show_date_time();
   
 
 <script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1594708847114')
+  navigator.serviceWorker.register('/sw.js?t=1595076725192')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }

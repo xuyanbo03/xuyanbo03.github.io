@@ -367,6 +367,418 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.awebone.com/posts/86ceb8f1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Awebone">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/icons/icon-144x144.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Awebone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/86ceb8f1/" itemprop="url">Java单例模式</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-20T15:00:00+08:00">
+                2020-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/posts/86ceb8f1/" class="leancloud_visitors" data-flag-title="Java单例模式">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  317
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h1><p>在初次调用静态方法getSingleton，才会初始化signleton实例。</p>
+<p><strong>双重检查模式实现</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singletom</span> </span>{</div><div class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singletom singletom;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singletom</span><span class="params">()</span></span>{}</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singletom <span class="title">getSingleton</span><span class="params">()</span></span>{</div><div class="line">        <span class="keyword">if</span> (singletom == <span class="keyword">null</span>){</div><div class="line">            <span class="keyword">synchronized</span> (Singletom.class){</div><div class="line">                <span class="keyword">if</span> (singletom == <span class="keyword">null</span>){</div><div class="line">                    singletom = <span class="keyword">new</span> Singletom();</div><div class="line">                }</div><div class="line">            }</div><div class="line">        }</div><div class="line">        <span class="keyword">return</span> singletom;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<ul>
+<li><p>实现了延迟初始化，只有在初次调用静态方法getSingleton，才会初始化signleton实例。</p>
+</li>
+<li><p>性能优化，同步会造成性能下降，在同步前通过判读singleton是否初始化，减少不必要的同步开销。</p>
+</li>
+<li><p>线程安全，同步创建Singleton对象，同时注意到静态变量singleton使用volatile修饰，避免JVM进行优化重排序。</p>
+</li>
+</ul>
+
+          
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/posts/86ceb8f1/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.awebone.com/posts/62e0a87a/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Awebone">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/icons/icon-144x144.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Awebone's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/62e0a87a/" itemprop="url">ElasticSearch安装避坑</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-17T15:00:00+08:00">
+                2020-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/大数据/" itemprop="url" rel="index">
+                    <span itemprop="name">大数据</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/posts/62e0a87a/" class="leancloud_visitors" data-flag-title="ElasticSearch安装避坑">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  655
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>本文使用Centos7安装ElasticSearch6.5.2，记录避坑指南。</p>
+</blockquote>
+<h1 id="升级内核"><a href="#升级内核" class="headerlink" title="升级内核"></a>升级内核</h1><p>通过命令查看内核：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">uname -a</div><div class="line"># 3.10.0-327.el7.x86_64</div></pre></td></tr></tbody></table></figure>
+<p>Centos7自带的内核为3.10，但是ElasticSearch6.5.2要求系统内核必须在3.5以上，故升级内核，root用户下执行：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># 导入key</div><div class="line">rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org  </div><div class="line"># 安装elrepo的yum源</div><div class="line">rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm</div><div class="line"># 安装内核</div><div class="line">yum --enablerepo=elrepo-kernel install  kernel-ml-devel kernel-ml</div><div class="line"># 查看默认启动顺序</div><div class="line">awk -F\' '$1=="menuentry " {print $2}' /etc/grub2.cfg</div><div class="line"># 默认启动的顺序是从0开始，新内核是从头插入,选择0</div><div class="line">grub2-set-default 0</div></pre></td></tr></tbody></table></figure>
+<p>安装完毕后重启<code>reboot</code>生效</p>
+<p>查看内核为5.5.9：<code>Linux awebone.com 5.5.9-1.el7.elrepo.x86_64 #1 SMP Wed Mar 11 19:01:01 EDT 2020 x86_64 x86_64 x86_64 GNU/Linux</code></p>
+<p>如果遇到<code>curl 不兼容或不支持的协议版本</code>的问题，通过以下方法解决：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum update -y nss curl libcurl</div></pre></td></tr></tbody></table></figure>
+
+          
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/posts/62e0a87a/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.awebone.com/posts/75c6e52f/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -623,8 +1035,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
-                    <span itemprop="name">web前端</span>
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
                   </a>
                 </span>
 
@@ -666,7 +1078,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,128
+                  2,118
                 </span>
               
 
@@ -704,7 +1116,7 @@
 
       
         
-          <h1 id="使用JavaScript实现焦点轮播图"><a href="#使用JavaScript实现焦点轮播图" class="headerlink" title="使用JavaScript实现焦点轮播图"></a>使用JavaScript实现焦点轮播图</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>各大网站都使用焦点轮播图来展示自己的图片，如淘宝、京东等。</p>
+          <h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>各大网站都使用焦点轮播图来展示自己的图片，如淘宝、京东等。</p>
 <ol>
 <li>焦点轮播图所用技能点：DOM操作、定时器、事件运用、JS动画、函数递归、无限滚动；</li>
 <li>无限滚动实现：包含图片的父级标签要有一个属性<code>overflow:hidden</code> 来隐藏超出自身尺寸的内容;有<code>style:left</code>通过控制left值来实现滚动; 图片列表中要在开始和结束位置添加两张相同的附属图，使图片实现无缝连接。</li>
@@ -1373,202 +1785,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.awebone.com/posts/db1de468/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Awebone">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/icons/icon-144x144.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Awebone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/db1de468/" itemprop="url">数据结构与算法JavaScript学习(二)</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-05T00:00:00+08:00">
-                2017-07-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
-                    <span itemprop="name">web前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/posts/db1de468/" class="leancloud_visitors" data-flag-title="数据结构与算法JavaScript学习(二)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-                 <span>℃</span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  586
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="数据结构与算法JavaScript学习-二"><a href="#数据结构与算法JavaScript学习-二" class="headerlink" title="数据结构与算法JavaScript学习(二)"></a>数据结构与算法JavaScript学习(二)</h1><h2 id="搜索算法"><a href="#搜索算法" class="headerlink" title="搜索算法"></a>搜索算法</h2><h3 id="顺序或线性搜索"><a href="#顺序或线性搜索" class="headerlink" title="顺序或线性搜索"></a>顺序或线性搜索</h3><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ArrayList</span>(<span class="params"></span>)</span>{</div><div class="line">  <span class="keyword">var</span> array=[];</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.insert=<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>{</div><div class="line">    array.push(item);</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.toString=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">    <span class="keyword">return</span> array.join();</div><div class="line">  };</div><div class="line"></div><div class="line">  <span class="comment">//顺序搜索</span></div><div class="line">  <span class="keyword">this</span>.sequentialSearch=<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>{</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; array.length; i++) {</div><div class="line">      <span class="keyword">if</span> (item===array[i]) {</div><div class="line">        <span class="keyword">return</span> i;</div><div class="line">      }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">  };</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
-
-          
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/posts/db1de468/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.awebone.com/posts/8c3b0bac/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1666,7 +1882,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,361
+                  1,356
                 </span>
               
 
@@ -1704,13 +1920,19 @@
 
       
         
-          <h1 id="MongoDB基础学习"><a href="#MongoDB基础学习" class="headerlink" title="MongoDB基础学习"></a>MongoDB基础学习</h1><blockquote>
+          <blockquote>
 <p>MongoDB是一个跨平台，面向文档的数据库，提供高性能，高可用性和易于扩展，总结知识点分享给与我一样刚入门MongoDB的人。</p>
 </blockquote>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><ul>
 <li>数据库：数据库是一个集合的物理容器。每个数据库获取其自己设定在文件系统上的文件。一个单一的MongoDB服务器通常有多个数据库</li>
 <li>集合：集合是一组MongoDB的文件。它与一个RDBMS表是等效的。一个集合存在于数据库中。集合不强制执行模式。集合中的文档可以有不同的字段。</li>
-<li>文档：文档是一组键值对。文档具有动态模式。动态模式是指，在同一个集合的文件不必具有相同一组集合的文档字段或结构，并且相同的字段可以保持不同类型的数据。</li>
+<li><p>文档：文档是一组键值对。文档具有动态模式。动态模式是指，在同一个集合的文件不必具有相同一组集合的文档字段或结构，并且相同的字段可以保持不同类型的数据。</p>
+</li>
+<li><p>文档是MongoDB中数据的基本单元</p>
+</li>
+<li>在MongoDB中，一个MongoDB实例可以承载多个数据库，每个数据库拥有0或多个集合，一个集合拥有多个文档</li>
+<li>在同一个MongoDB服务器上存放多个应用那个程序或用户的数据，需要使用不同的数据库</li>
+<li>使用BSON格式</li>
 </ul>
 
           
@@ -1982,215 +2204,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.awebone.com/posts/742c7f0a/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Awebone">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/icons/icon-144x144.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Awebone's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/742c7f0a/" itemprop="url">数据结构与算法JavaScript学习(一)</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-10T00:00:00+08:00">
-                2017-05-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
-                    <span itemprop="name">web前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/posts/742c7f0a/" class="leancloud_visitors" data-flag-title="数据结构与算法JavaScript学习(一)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-                 <span>℃</span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,417
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  7
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="数据结构与算法JavaScript学习-一"><a href="#数据结构与算法JavaScript学习-一" class="headerlink" title="数据结构与算法JavaScript学习(一)"></a>数据结构与算法JavaScript学习(一)</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="常用数组方法"><a href="#常用数组方法" class="headerlink" title="常用数组方法"></a>常用数组方法</h3><ul>
-<li><p>push方法，能把元素添加到数组的末尾</p>
-</li>
-<li><p>unshift方法，可直接把数值插入到数组首位</p>
-</li>
-<li><p>pop方法，删除数组里靠后的元素</p>
-</li>
-<li><p>shift方法，删除数组的第一个元素</p>
-</li>
-<li><p>splice方法，通过指定位置/索引，删除或增加相应位置和数量的元素</p>
-<p><code>number.splice(5,3)</code>删除从数组索引5开始3个元素</p>
-<p><code>number.splice(5,0,2,3,4)</code>从数组索引5开始增加3个元素2,3,4</p>
-</li>
-</ul>
-
-          
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/posts/742c7f0a/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.awebone.com/posts/d24e8921/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2210,7 +2223,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/d24e8921/" itemprop="url">使用JavaScript做一个AI五子棋</a></h2>
+                <a class="post-title-link" href="/posts/d24e8921/" itemprop="url">使用JavaScript实现AI五子棋</a></h2>
         
 
         <div class="post-meta">
@@ -2262,7 +2275,7 @@
 
           
           
-             <span id="/posts/d24e8921/" class="leancloud_visitors" data-flag-title="使用JavaScript做一个AI五子棋">
+             <span id="/posts/d24e8921/" class="leancloud_visitors" data-flag-title="使用JavaScript实现AI五子棋">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2288,7 +2301,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  302
+                  293
                 </span>
               
 
@@ -2326,8 +2339,7 @@
 
       
         
-          <h1 id="使用JavaScript做一个AI五子棋"><a href="#使用JavaScript做一个AI五子棋" class="headerlink" title="使用JavaScript做一个AI五子棋"></a>使用JavaScript做一个AI五子棋</h1><p><strong>实现步骤：</strong></p>
-<ol>
+          <h1 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h1><ol>
 <li><p>搭建HTML、CSS、JS框架</p>
 </li>
 <li><p>canvas画图</p>
@@ -2450,7 +2462,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2616,7 +2628,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">47.4k</span>
+    <span title="Site words total count">50.5k</span>
   
 -->
 </div>
@@ -2633,7 +2645,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共47.4k字&nbsp;|&nbsp;</span>
+  <span class="post-count">博客全站共50.5k字&nbsp;|&nbsp;</span>
 </div>
 
 <div class="powered-by">
@@ -3281,7 +3293,7 @@ show_date_time();
   
 
 <script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1594708847114')
+  navigator.serviceWorker.register('/sw.js?t=1595076725192')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }

@@ -130,22 +130,22 @@
 
 
 
-<meta name="description" content="Java单例模式懒汉式在初次调用静态方法getSingleton，才会初始化signleton实例。
+<meta name="description" content="懒汉式在初次调用静态方法getSingleton，才会初始化signleton实例。
 双重检查模式实现
-123456789101112131415public class Singletom {    private volatile static Singletom singletom;    private Singletom(){}        public static">
+123456789101112131415public class Singletom {    private volatile static Singletom singletom;    private Singletom(){}        public static Singleto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java单例模式">
 <meta property="og:url" content="https://www.awebone.com/posts/86ceb8f1/index.html">
 <meta property="og:site_name" content="Awebone's Blog">
-<meta property="og:description" content="Java单例模式懒汉式在初次调用静态方法getSingleton，才会初始化signleton实例。
+<meta property="og:description" content="懒汉式在初次调用静态方法getSingleton，才会初始化signleton实例。
 双重检查模式实现
-123456789101112131415public class Singletom {    private volatile static Singletom singletom;    private Singletom(){}        public static">
-<meta property="og:updated_time" content="2020-03-25T15:38:54.377Z">
+123456789101112131415public class Singletom {    private volatile static Singletom singletom;    private Singletom(){}        public static Singleto">
+<meta property="og:updated_time" content="2020-07-18T08:27:19.647Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java单例模式">
-<meta name="twitter:description" content="Java单例模式懒汉式在初次调用静态方法getSingleton，才会初始化signleton实例。
+<meta name="twitter:description" content="懒汉式在初次调用静态方法getSingleton，才会初始化signleton实例。
 双重检查模式实现
-123456789101112131415public class Singletom {    private volatile static Singletom singletom;    private Singletom(){}        public static">
+123456789101112131415public class Singletom {    private volatile static Singletom singletom;    private Singletom(){}        public static Singleto">
 
 
 
@@ -468,7 +468,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  322
+                  317
                 </span>
               
 
@@ -505,7 +505,7 @@
       
 
       
-        <h1 id="Java单例模式"><a href="#Java单例模式" class="headerlink" title="Java单例模式"></a>Java单例模式</h1><h2 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h2><p>在初次调用静态方法getSingleton，才会初始化signleton实例。</p>
+        <h1 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h1><p>在初次调用静态方法getSingleton，才会初始化signleton实例。</p>
 <p><strong>双重检查模式实现</strong></p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singletom</span> </span>{</div><div class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singletom singletom;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singletom</span><span class="params">()</span></span>{}</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singletom <span class="title">getSingleton</span><span class="params">()</span></span>{</div><div class="line">        <span class="keyword">if</span> (singletom == <span class="keyword">null</span>){</div><div class="line">            <span class="keyword">synchronized</span> (Singletom.class){</div><div class="line">                <span class="keyword">if</span> (singletom == <span class="keyword">null</span>){</div><div class="line">                    singletom = <span class="keyword">new</span> Singletom();</div><div class="line">                }</div><div class="line">            }</div><div class="line">        }</div><div class="line">        <span class="keyword">return</span> singletom;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
 <ul>
@@ -528,7 +528,8 @@
 <li><p>线程安全，JVM在执行类的初始化阶段，会获得一个可以同步多个线程对同一个类的初始化的锁。</p>
 </li>
 </ul>
-<h2 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h2><p>直接初始化signleton实例，直接获取实例，没有延迟初始化。</p>
+<p><br></p>
+<h1 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h1><p>直接初始化signleton实例，直接获取实例，没有延迟初始化。</p>
 <p><strong>多线程安全实现</strong></p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singletom</span> </span>{</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singletom instance = <span class="keyword">new</span> Singletom();</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singletom</span><span class="params">()</span></span>{}</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singletom <span class="title">getSingleton</span><span class="params">()</span></span>{</div><div class="line">        <span class="keyword">return</span> instance;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
 <script>
@@ -573,7 +574,7 @@
   <p><span>本文标题:</span><a href="/posts/86ceb8f1/">Java单例模式</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Awebone 的个人博客">Awebone</a></p>
   <p><span>发布时间:</span>2020年03月20日 - 15:03</p>
-  <p><span>最后更新:</span>2020年03月25日 - 23:03</p>
+  <p><span>最后更新:</span>2020年07月18日 - 16:07</p>
   <p><span>原始链接:</span><a href="/posts/86ceb8f1/" title="Java单例模式">https://www.awebone.com/posts/86ceb8f1/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://www.awebone.com/posts/86ceb8f1/"  aria-label="复制成功！"></i></span>
   </p>
@@ -751,7 +752,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -888,7 +889,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java单例模式"><span class="nav-number">1.</span> <span class="nav-text">Java单例模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#懒汉式"><span class="nav-number">1.1.</span> <span class="nav-text">懒汉式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#饿汉式"><span class="nav-number">1.2.</span> <span class="nav-text">饿汉式</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#懒汉式"><span class="nav-number">1.</span> <span class="nav-text">懒汉式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#饿汉式"><span class="nav-number">2.</span> <span class="nav-text">饿汉式</span></a></li></ol></div>
             
 
           </div>
@@ -933,7 +934,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">47.4k</span>
+    <span title="Site words total count">50.5k</span>
   
 -->
 </div>
@@ -950,7 +951,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共47.4k字&nbsp;|&nbsp;</span>
+  <span class="post-count">博客全站共50.5k字&nbsp;|&nbsp;</span>
 </div>
 
 <div class="powered-by">
@@ -1582,7 +1583,7 @@ show_date_time();
   
 
 <script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1594708847114')
+  navigator.serviceWorker.register('/sw.js?t=1595076725192')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }
