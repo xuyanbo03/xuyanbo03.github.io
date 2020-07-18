@@ -130,31 +130,34 @@
 
 
 
-<meta name="description" content="ElasticSearch安装避坑本文使用Centos7安装ElasticSearch6.5.2，记录避坑指南。
+<meta name="description" content="本文使用Centos7安装ElasticSearch6.5.2，记录避坑指南。
+
 升级内核通过命令查看内核：
 12uname -a# 3.10.0-327.el7.x86_64
 Centos7自带的内核为3.10，但是ElasticSearch6.5.2要求系统内核必须在3.5以上，故升级内核，root用户下执行：
-12345678910# 导入keyrpm --i">
+12345678910# 导入keyrpm --import https://w">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ElasticSearch安装避坑">
 <meta property="og:url" content="https://www.awebone.com/posts/62e0a87a/index.html">
 <meta property="og:site_name" content="Awebone's Blog">
-<meta property="og:description" content="ElasticSearch安装避坑本文使用Centos7安装ElasticSearch6.5.2，记录避坑指南。
+<meta property="og:description" content="本文使用Centos7安装ElasticSearch6.5.2，记录避坑指南。
+
 升级内核通过命令查看内核：
 12uname -a# 3.10.0-327.el7.x86_64
 Centos7自带的内核为3.10，但是ElasticSearch6.5.2要求系统内核必须在3.5以上，故升级内核，root用户下执行：
-12345678910# 导入keyrpm --i">
+12345678910# 导入keyrpm --import https://w">
 <meta property="og:image" content="https://www.awebone.com/images/es/es1.png">
 <meta property="og:image" content="https://www.awebone.com/images/es/es2.png">
 <meta property="og:image" content="https://www.awebone.com/images/es/es3.png">
-<meta property="og:updated_time" content="2020-03-17T08:22:11.467Z">
+<meta property="og:updated_time" content="2020-07-18T08:23:21.523Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ElasticSearch安装避坑">
-<meta name="twitter:description" content="ElasticSearch安装避坑本文使用Centos7安装ElasticSearch6.5.2，记录避坑指南。
+<meta name="twitter:description" content="本文使用Centos7安装ElasticSearch6.5.2，记录避坑指南。
+
 升级内核通过命令查看内核：
 12uname -a# 3.10.0-327.el7.x86_64
 Centos7自带的内核为3.10，但是ElasticSearch6.5.2要求系统内核必须在3.5以上，故升级内核，root用户下执行：
-12345678910# 导入keyrpm --i">
+12345678910# 导入keyrpm --import https://w">
 <meta name="twitter:image" content="https://www.awebone.com/images/es/es1.png">
 
 
@@ -478,7 +481,7 @@ Centos7自带的内核为3.10，但是ElasticSearch6.5.2要求系统内核必须
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  660
+                  655
                 </span>
               
 
@@ -515,8 +518,10 @@ Centos7自带的内核为3.10，但是ElasticSearch6.5.2要求系统内核必须
       
 
       
-        <h1 id="ElasticSearch安装避坑"><a href="#ElasticSearch安装避坑" class="headerlink" title="ElasticSearch安装避坑"></a>ElasticSearch安装避坑</h1><p>本文使用Centos7安装ElasticSearch6.5.2，记录避坑指南。</p>
-<h2 id="升级内核"><a href="#升级内核" class="headerlink" title="升级内核"></a>升级内核</h2><p>通过命令查看内核：</p>
+        <blockquote>
+<p>本文使用Centos7安装ElasticSearch6.5.2，记录避坑指南。</p>
+</blockquote>
+<h1 id="升级内核"><a href="#升级内核" class="headerlink" title="升级内核"></a>升级内核</h1><p>通过命令查看内核：</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">uname -a</div><div class="line"># 3.10.0-327.el7.x86_64</div></pre></td></tr></tbody></table></figure>
 <p>Centos7自带的内核为3.10，但是ElasticSearch6.5.2要求系统内核必须在3.5以上，故升级内核，root用户下执行：</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># 导入key</div><div class="line">rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org  </div><div class="line"># 安装elrepo的yum源</div><div class="line">rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm</div><div class="line"># 安装内核</div><div class="line">yum --enablerepo=elrepo-kernel install  kernel-ml-devel kernel-ml</div><div class="line"># 查看默认启动顺序</div><div class="line">awk -F\' '$1=="menuentry " {print $2}' /etc/grub2.cfg</div><div class="line"># 默认启动的顺序是从0开始，新内核是从头插入,选择0</div><div class="line">grub2-set-default 0</div></pre></td></tr></tbody></table></figure>
@@ -525,10 +530,12 @@ Centos7自带的内核为3.10，但是ElasticSearch6.5.2要求系统内核必须
 <p>如果遇到<code>curl 不兼容或不支持的协议版本</code>的问题，通过以下方法解决：</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum update -y nss curl libcurl</div></pre></td></tr></tbody></table></figure>
 <a id="more"></a>
-<h2 id="关闭防火墙和SELinux"><a href="#关闭防火墙和SELinux" class="headerlink" title="关闭防火墙和SELinux"></a>关闭防火墙和SELinux</h2><p>因为在本地虚拟机安装，关闭防火墙和SELinux，方便测试：</p>
+<p><br></p>
+<h1 id="关闭防火墙和SELinux"><a href="#关闭防火墙和SELinux" class="headerlink" title="关闭防火墙和SELinux"></a>关闭防火墙和SELinux</h1><p>因为在本地虚拟机安装，关闭防火墙和SELinux，方便测试：</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># 查看防火墙状态</div><div class="line">systemctl status firewalld</div><div class="line"># 关闭防火墙</div><div class="line">systemctl stop firewalld</div><div class="line"># 设置开机不启动</div><div class="line">sudo systemctl disable firewalld.service</div><div class="line"></div><div class="line"># 关闭SELinux</div><div class="line">setenforce 1</div><div class="line"># 查看SELinux状态</div><div class="line">getenforce</div></pre></td></tr></tbody></table></figure>
-<h2 id="安装JDK1-8和ElasticSearch"><a href="#安装JDK1-8和ElasticSearch" class="headerlink" title="安装JDK1.8和ElasticSearch"></a>安装JDK1.8和ElasticSearch</h2><p>通过官网下载安装包<code>elasticsearch-6.5.2.tar.gz</code>和<code>jdk-8u73-linux-x64.tar.gz</code></p>
-<h3 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h3><p>ES要求jdk需要为1.8版本以上，故删除自带的1.7：</p>
+<p><br></p>
+<h1 id="安装JDK1-8和ElasticSearch"><a href="#安装JDK1-8和ElasticSearch" class="headerlink" title="安装JDK1.8和ElasticSearch"></a>安装JDK1.8和ElasticSearch</h1><p>通过官网下载安装包<code>elasticsearch-6.5.2.tar.gz</code>和<code>jdk-8u73-linux-x64.tar.gz</code></p>
+<h2 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h2><p>ES要求jdk需要为1.8版本以上，故删除自带的1.7：</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rpm -qa |grep java</div><div class="line">sudo yum -y remove java*</div></pre></td></tr></tbody></table></figure>
 <p>解压jdk到apps目录下：</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf jdk-8u73-linux-x64.tar.gz -C ~/apps/</div></pre></td></tr></tbody></table></figure>
@@ -537,7 +544,7 @@ Centos7自带的内核为3.10，但是ElasticSearch6.5.2要求系统内核必须
 <p>最后加载环境变量：<code>source /etc/profile</code></p>
 <p>查看JDK版本：<code>java -version</code></p>
 <p><img src="/images/es/es1.png" alt="es1"></p>
-<h3 id="安装ElasticSearch"><a href="#安装ElasticSearch" class="headerlink" title="安装ElasticSearch"></a>安装ElasticSearch</h3><p>注意：ES从2.X版本起，就不能再root用户下安装，故在普通用户下安装</p>
+<h2 id="安装ElasticSearch"><a href="#安装ElasticSearch" class="headerlink" title="安装ElasticSearch"></a>安装ElasticSearch</h2><p>注意：ES从2.X版本起，就不能再root用户下安装，故在普通用户下安装</p>
 <p>解压到apps目录下：</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf elasticsearch-6.5.2.tar.gz -C ~/apps/</div></pre></td></tr></tbody></table></figure>
 <p>配置环境变量：</p>
@@ -594,7 +601,7 @@ Centos7自带的内核为3.10，但是ElasticSearch6.5.2要求系统内核必须
   <p><span>本文标题:</span><a href="/posts/62e0a87a/">ElasticSearch安装避坑</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Awebone 的个人博客">Awebone</a></p>
   <p><span>发布时间:</span>2020年03月17日 - 15:03</p>
-  <p><span>最后更新:</span>2020年03月17日 - 16:03</p>
+  <p><span>最后更新:</span>2020年07月18日 - 16:07</p>
   <p><span>原始链接:</span><a href="/posts/62e0a87a/" title="ElasticSearch安装避坑">https://www.awebone.com/posts/62e0a87a/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://www.awebone.com/posts/62e0a87a/"  aria-label="复制成功！"></i></span>
   </p>
@@ -770,7 +777,7 @@ Centos7自带的内核为3.10，但是ElasticSearch6.5.2要求系统内核必须
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -907,7 +914,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ElasticSearch安装避坑"><span class="nav-number">1.</span> <span class="nav-text">ElasticSearch安装避坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#升级内核"><span class="nav-number">1.1.</span> <span class="nav-text">升级内核</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关闭防火墙和SELinux"><span class="nav-number">1.2.</span> <span class="nav-text">关闭防火墙和SELinux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装JDK1-8和ElasticSearch"><span class="nav-number">1.3.</span> <span class="nav-text">安装JDK1.8和ElasticSearch</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装JDK"><span class="nav-number">1.3.1.</span> <span class="nav-text">安装JDK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装ElasticSearch"><span class="nav-number">1.3.2.</span> <span class="nav-text">安装ElasticSearch</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#升级内核"><span class="nav-number">1.</span> <span class="nav-text">升级内核</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关闭防火墙和SELinux"><span class="nav-number">2.</span> <span class="nav-text">关闭防火墙和SELinux</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装JDK1-8和ElasticSearch"><span class="nav-number">3.</span> <span class="nav-text">安装JDK1.8和ElasticSearch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装JDK"><span class="nav-number">3.1.</span> <span class="nav-text">安装JDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装ElasticSearch"><span class="nav-number">3.2.</span> <span class="nav-text">安装ElasticSearch</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -952,7 +959,7 @@ show_date_time();
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">47.4k</span>
+    <span title="Site words total count">50.5k</span>
   
 -->
 </div>
@@ -969,7 +976,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共47.4k字&nbsp;|&nbsp;</span>
+  <span class="post-count">博客全站共50.5k字&nbsp;|&nbsp;</span>
 </div>
 
 <div class="powered-by">
@@ -1601,7 +1608,7 @@ show_date_time();
   
 
 <script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1594708847114')
+  navigator.serviceWorker.register('/sw.js?t=1595077201973')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }
