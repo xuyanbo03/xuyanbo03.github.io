@@ -163,7 +163,7 @@
 <meta property="og:image" content="https://www.awebone.com/images/js数据结构与算法1/1595064780983.png">
 <meta property="og:image" content="https://www.awebone.com/images/js数据结构与算法1/1595064910440.png">
 <meta property="og:image" content="https://www.awebone.com/images/js数据结构与算法1/1595064937011.png">
-<meta property="og:updated_time" content="2020-07-18T12:49:39.378Z">
+<meta property="og:updated_time" content="2020-07-18T12:58:51.723Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法JavaScript版(一)">
 <meta name="twitter:description" content="本文使用JavaScript实现基础数据结构：数组、链表、栈、队列、树
@@ -543,6 +543,7 @@
 <li>空间复杂度：O(n)</li>
 </ul>
 <h2 id="数组创建"><a href="#数组创建" class="headerlink" title="数组创建"></a>数组创建</h2><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(element0, element1, ..., elementN);</div><div class="line"><span class="keyword">var</span> arr = <span class="built_in">Array</span>(element0, element1, ..., elementN);</div><div class="line"><span class="keyword">var</span> arr = [element0, element1, ..., elementN];</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(arrayLength);</div><div class="line"><span class="keyword">var</span> arr = <span class="built_in">Array</span>(arrayLength);</div></pre></td></tr></tbody></table></figure>
+<a id="more"></a>
 <h2 id="常用数组方法"><a href="#常用数组方法" class="headerlink" title="常用数组方法"></a>常用数组方法</h2><h3 id="增加与删除"><a href="#增加与删除" class="headerlink" title="增加与删除"></a>增加与删除</h3><ul>
 <li><p><code>push()</code>：在数组末尾添加一个或多个元素，并返回数组操作后的长度</p>
 </li>
@@ -560,7 +561,6 @@
 </li>
 </ul>
 <p><img src="/images/js数据结构与算法1/1595052302829.png" alt="1595052302829"></p>
-<a id="more"></a>
 <h3 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h3><ul>
 <li><code>concat()</code>：连接两个数组并返回一个新的数组</li>
 </ul>
@@ -660,6 +660,7 @@
 <li>获得<strong>当前队列长度</strong>：<strong>(rear - front + length) % length</strong></li>
 <li>使用循环队列的方法，由于入队和出队操作都是直接通过索引访问列表，所以时间复杂度都是 O(1)</li>
 </ul>
+<p><br></p>
 <h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><ul>
 <li>结点、父结点、子结点、兄弟结点</li>
 <li>层数、深度、高度、结点的度：结点的子树个数</li>
@@ -670,6 +671,7 @@
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//节点</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeNode</span>(<span class="params">val</span>) </span>{</div><div class="line">    <span class="keyword">this</span>.val = val;   <span class="comment">//当前节点的元素</span></div><div class="line">    <span class="keyword">this</span>.left = <span class="literal">null</span>;         <span class="comment">//左节点链接</span></div><div class="line">    <span class="keyword">this</span>.right = <span class="literal">null</span>;         <span class="comment">//右节点链接</span></div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">//前序遍历</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">preorder</span>(<span class="params">root</span>) </span>{</div><div class="line">    <span class="keyword">if</span>(root === <span class="literal">null</span>){</div><div class="line">        <span class="keyword">return</span> [];</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> [root.val] + preorder(root.left) + preorder(root.right);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">//中序遍历</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">inorder</span>(<span class="params">root</span>) </span>{</div><div class="line">    <span class="keyword">if</span>(root === <span class="literal">null</span>){</div><div class="line">        <span class="keyword">return</span> [];</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> inorder(root.left) + [root.val] + inorder(root.right);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">//后序遍历</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">postorder</span>(<span class="params">root</span>) </span>{</div><div class="line">    <span class="keyword">if</span>(root === <span class="literal">null</span>){</div><div class="line">        <span class="keyword">return</span> [];</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> postorder(root.left) + postorder(root.right) + [root.val];</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">//层次遍历</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">levelorder</span>(<span class="params">root</span>) </span>{</div><div class="line">    <span class="keyword">if</span>(root === <span class="literal">null</span>){</div><div class="line">        <span class="keyword">return</span> [];</div><div class="line">    }</div><div class="line">    <span class="keyword">var</span> res = [];</div><div class="line">    <span class="keyword">var</span> nodequeue = [root];</div><div class="line">    <span class="keyword">while</span> (nodequeue){</div><div class="line">        root = nodequeue.shift();</div><div class="line">        res.push(root.val)</div><div class="line">        <span class="keyword">if</span> (root.left){</div><div class="line">            nodequeue.push(root.left);</div><div class="line">        }</div><div class="line">        <span class="keyword">if</span> (root.right){</div><div class="line">            nodequeue.push(root.right);</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
 <p><strong>用例测试：</strong></p>
 <figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">a1 = treeNode(<span class="number">1</span>)</div><div class="line">a2 = treeNode(<span class="number">2</span>)</div><div class="line">a3 = treeNode(<span class="number">3</span>)</div><div class="line">a4 = treeNode(<span class="number">4</span>)</div><div class="line">a5 = treeNode(<span class="number">5</span>)</div><div class="line">a6 = treeNode(<span class="number">6</span>)</div><div class="line"></div><div class="line">a1.left = a2</div><div class="line">a1.right = a3</div><div class="line">a2.left = a4</div><div class="line">a2.right = a5</div><div class="line">a3.right = a6</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"PreOrder: "</span>, preorder(a1))</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"InOrder: "</span>, inorder(a1))</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"PostOrder: "</span>, postorder(a1))</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"LevelOrder: "</span>, levelorder(a1))</div></pre></td></tr></tbody></table></figure>
+<p><br></p>
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Indexed_collections" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Indexed_collections</a></p>
 <p><a href="https://github.com/wolverinn/Iridescent/blob/master/Data%20Structure.md" target="_blank" rel="external">https://github.com/wolverinn/Iridescent/blob/master/Data%20Structure.md</a></p>
 <p><a href="https://github.com/wolverinn/Iridescent/blob/master/Data%20Structure%20code%20complete.ipynb" target="_blank" rel="external">https://github.com/wolverinn/Iridescent/blob/master/Data%20Structure%20code%20complete.ipynb</a></p>
@@ -786,8 +788,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/db1de468/" rel="next" title="数据结构与算法JavaScript版(二)">
-                <i class="fa fa-chevron-left"></i> 数据结构与算法JavaScript版(二)
+              <a href="/posts/db1de468/" rel="next" title="数据结构与算法JavaScript版(三)">
+                <i class="fa fa-chevron-left"></i> 数据结构与算法JavaScript版(三)
               </a>
             
           </div>
@@ -795,6 +797,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/db1de468/" rel="prev" title="数据结构与算法JavaScript版(二)">
+                数据结构与算法JavaScript版(二) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -1719,7 +1725,7 @@ show_date_time();
   
 
 <script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1595076725192')
+  navigator.serviceWorker.register('/sw.js?t=1595077201973')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }

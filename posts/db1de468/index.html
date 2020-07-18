@@ -132,23 +132,20 @@
 
 <meta name="description" content="本文使用JavaScript实现一些常用的算法思想
 
-算法思想递归12345678//斐波那契数列:递归function fibonacci(num) {  if (num===1||num===2) {    return 1;  }  return fibonacci(num-1)+fibonacci(num-2);}
-非递归12345678910//斐波那契数列:非递归function f">
+算法思想递归12345678//斐波那契数列:递归function fibonacci(num) {  if (num===1||num===2) {    return 1;  }  return fibonacci(num-1)+fibonacci(num-2);}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构与算法JavaScript版(三)">
 <meta property="og:url" content="https://www.awebone.com/posts/db1de468/index.html">
 <meta property="og:site_name" content="Awebone's Blog">
 <meta property="og:description" content="本文使用JavaScript实现一些常用的算法思想
 
-算法思想递归12345678//斐波那契数列:递归function fibonacci(num) {  if (num===1||num===2) {    return 1;  }  return fibonacci(num-1)+fibonacci(num-2);}
-非递归12345678910//斐波那契数列:非递归function f">
-<meta property="og:updated_time" content="2020-07-18T12:47:30.119Z">
+算法思想递归12345678//斐波那契数列:递归function fibonacci(num) {  if (num===1||num===2) {    return 1;  }  return fibonacci(num-1)+fibonacci(num-2);}">
+<meta property="og:updated_time" content="2020-07-18T12:59:35.505Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法JavaScript版(三)">
 <meta name="twitter:description" content="本文使用JavaScript实现一些常用的算法思想
 
-算法思想递归12345678//斐波那契数列:递归function fibonacci(num) {  if (num===1||num===2) {    return 1;  }  return fibonacci(num-1)+fibonacci(num-2);}
-非递归12345678910//斐波那契数列:非递归function f">
+算法思想递归12345678//斐波那契数列:递归function fibonacci(num) {  if (num===1||num===2) {    return 1;  }  return fibonacci(num-1)+fibonacci(num-2);}">
 
 
 
@@ -512,6 +509,7 @@
 <p>本文使用JavaScript实现一些常用的算法思想</p>
 </blockquote>
 <h1 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h1><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//斐波那契数列:递归</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fibonacci</span>(<span class="params">num</span>) </span>{</div><div class="line">  <span class="keyword">if</span> (num===<span class="number">1</span>||num===<span class="number">2</span>) {</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">  }</div><div class="line"></div><div class="line">  <span class="keyword">return</span> fibonacci(num<span class="number">-1</span>)+fibonacci(num<span class="number">-2</span>);</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
+<a id="more"></a>
 <h2 id="非递归"><a href="#非递归" class="headerlink" title="非递归"></a>非递归</h2><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//斐波那契数列:非递归</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fib</span>(<span class="params">num</span>) </span>{</div><div class="line">  <span class="keyword">var</span> n1=<span class="number">1</span>,n2=<span class="number">1</span>,n=<span class="number">1</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">3</span>; i &lt;= num; i++) {</div><div class="line">    n=n1+n2;</div><div class="line">    n1=n2;</div><div class="line">    n2=n;</div><div class="line">  }</div><div class="line">  <span class="keyword">return</span> n;</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
 <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//动态规划：将大问题转化成小问题</span></div><div class="line"><span class="comment">//最少硬币找零问题:找到n所需的最小硬币数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dpMinCoinChange</span>(<span class="params">coins</span>) </span>{</div><div class="line">  <span class="keyword">var</span> coins=coins;</div><div class="line">  <span class="keyword">var</span> cache={};</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.makeChange=<span class="function"><span class="keyword">function</span> (<span class="params">amount</span>) </span>{</div><div class="line">    <span class="keyword">var</span> me=<span class="keyword">this</span>;</div><div class="line">    <span class="keyword">if</span> (!amount) {<span class="comment">//判断为正</span></div><div class="line">      <span class="keyword">return</span> [];</div><div class="line">    }</div><div class="line">    <span class="keyword">if</span> (cache[amount]) {<span class="comment">//判断是否有缓存</span></div><div class="line">      <span class="keyword">return</span> cache[amount];</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">var</span> min=[],newMin,newAmount;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; coins.length; i++) {<span class="comment">//对每个面额计算</span></div><div class="line">      <span class="keyword">var</span> coin=coins[i];</div><div class="line">      newAmount=amount-coin;</div><div class="line">      <span class="keyword">if</span> (newAmount&gt;=<span class="number">0</span>) {</div><div class="line">        newMin=me.makeChange(newAmount);</div><div class="line">      }</div><div class="line">      <span class="keyword">if</span> (newAmount&gt;=<span class="number">0</span> &amp;&amp; (newMin.length&lt;min.length<span class="number">-1</span> || !min.length) </div><div class="line">          &amp;&amp; (newMin.length || !newAmount)) {</div><div class="line">        <span class="comment">//判断newAmount是否有效，最小硬币数是否最优，newMin和newAmount是否合理</span></div><div class="line">        min=[coin].concat(newMin);</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'new Min '</span>+min+ <span class="string">' for '</span>+amount);</div><div class="line">      }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> (cache[amount]=min);</div><div class="line">  }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
 <h2 id="贪心策略"><a href="#贪心策略" class="headerlink" title="贪心策略"></a>贪心策略</h2><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//贪心算法：近似求解，通过局部最优达到全局最优</span></div><div class="line"><span class="comment">//最少硬币找零问题:找到n所需的最小硬币数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">txMinCoinChange</span>(<span class="params">coins</span>)</span>{</div><div class="line">  <span class="keyword">var</span> coins=coins;</div><div class="line"></div><div class="line">  <span class="keyword">this</span>.makeChange=<span class="function"><span class="keyword">function</span>(<span class="params">amount</span>)</span>{</div><div class="line">    <span class="keyword">var</span> change=[],total=<span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = coins.length; i &gt;= <span class="number">0</span>; i--) {<span class="comment">//对每个面额从大面额开始，从大到小依次</span></div><div class="line">      <span class="keyword">var</span> coin=coins[i];</div><div class="line">      <span class="keyword">while</span> (total+coin&lt;=amount) {</div><div class="line">        change.push(coin);</div><div class="line">        total+=coin;</div><div class="line">      }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> change;</div><div class="line">  }</div><div class="line">}</div></pre></td></tr></tbody></table></figure>
@@ -637,8 +635,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/db1de468/" rel="prev" title="数据结构与算法JavaScript版(二)">
-                数据结构与算法JavaScript版(二) <i class="fa fa-chevron-right"></i>
+              <a href="/posts/742c7f0a/" rel="prev" title="数据结构与算法JavaScript版(一)">
+                数据结构与算法JavaScript版(一) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1564,7 +1562,7 @@ show_date_time();
   
 
 <script>if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?t=1595076725192')
+  navigator.serviceWorker.register('/sw.js?t=1595077201973')
     .then(function () {console.log('ServiceWorker Register Successfully.')})
     .catch(function (e) {console.error(e)});
 }
