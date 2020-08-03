@@ -1,6 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Docker和K8S容器监控</title>
+    <url>/posts/194a5065/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>本文记录Docker容器和K8S集群中一些监控命令。</p>
+</blockquote>
+<h1 id="Docker基本监控"><a href="#Docker基本监控" class="headerlink" title="Docker基本监控"></a>Docker基本监控</h1><p><strong>自带常用命令</strong></p>
+<ul>
+<li><code>docker ps -a</code>：查看进程</li>
+<li><code>docker top 容器id</code>：查看容器资源利用</li>
+<li><code>docker status</code>：实时查看容器资源</li>
+</ul>
+<p><strong>图形化工具weavescope</strong></p>
+<p>部署</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><div class="line">sudo curl -L git.io/scope -o /usr/<span class="built_in">local</span>/bin/scope</div><div class="line">sudo chmod +x /usr/<span class="built_in">local</span>/bin/scope</div><div class="line">scope launch 本机ip</div></pre></td></tr></tbody></table></figure>
+<a id="more"></a>
+<p><br></p>
+<h1 id="K8S监控"><a href="#K8S监控" class="headerlink" title="K8S监控"></a>K8S监控</h1><h2 id="计算资源分析与监控工具：heapster-dashboard-grafana"><a href="#计算资源分析与监控工具：heapster-dashboard-grafana" class="headerlink" title="计算资源分析与监控工具：heapster + dashboard + grafana"></a>计算资源分析与监控工具：heapster + dashboard + grafana</h2><p>部署：下载heapster 包，进入deploy目录，修改相关yaml文件，启动。</p>
+<h2 id="集群自动伸缩设置"><a href="#集群自动伸缩设置" class="headerlink" title="集群自动伸缩设置"></a>集群自动伸缩设置</h2><p>集群cpu或内存达到一定峰值，自动扩容pod</p>
+<p><img src="../images/Docker和K8S容器监控/1596177920787.png" alt="1596177920787"></p>
+<p>启用heapster，然后在集群启动时获取cpu利用率等情况，运行以下命令：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><div class="line">minikube addons <span class="built_in">enable</span> heapster</div><div class="line">minikube addons list</div><div class="line">minikube start --extra-config=controller-manager.HorizontalPodAutoscalerUseRESTClients=<span class="literal">false</span></div></pre></td></tr></tbody></table></figure>
+<p><img src="../images/Docker和K8S容器监控/1596179129619.png" alt="1596179129619"></p>
+<p>然后按照官方文档设置水平扩展，cpu利用率超过50%即扩展，机器最少1台，最多10台</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><div class="line">kubectl run php-apache --image=k8s.gcr.io/hpa-example --requests=cpu=200m --expose --port=80</div><div class="line">kubectl autoscale deployment php-apache --cpu-percent=50 --min=1 --max=10</div><div class="line">kubectl get deployment php-apache</div><div class="line">kubectl get horizontalpodautoscaler</div></pre></td></tr></tbody></table></figure>
+<p><br></p>
+<h2 id="log采集和展示：ELK-Fluentd"><a href="#log采集和展示：ELK-Fluentd" class="headerlink" title="log采集和展示：ELK+Fluentd"></a>log采集和展示：ELK+Fluentd</h2><p>部署</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><div class="line">kubectl get node</div><div class="line">kubectl label node --all beta.kubernetes.io/fluentd-ds-ready=<span class="literal">true</span></div><div class="line">kubectl create <span class="_">-f</span> logging/</div><div class="line">kubectl get svc --namespace=kube-system</div></pre></td></tr></tbody></table></figure>
+<p><br></p>
+<h2 id="K8S集群监控方案：婆罗米修斯Prometheus"><a href="#K8S集群监控方案：婆罗米修斯Prometheus" class="headerlink" title="K8S集群监控方案：婆罗米修斯Prometheus"></a>K8S集群监控方案：婆罗米修斯Prometheus</h2><p>部署</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><div class="line">kubectl get node</div><div class="line">kubectl create <span class="_">-f</span> prometheus/</div><div class="line">kubectl get svc</div><div class="line">kubectl get pod -o wide</div></pre></td></tr></tbody></table></figure>
+<p><br></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据结构与算法JavaScript版(二)</title>
     <url>/posts/db1de468/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
