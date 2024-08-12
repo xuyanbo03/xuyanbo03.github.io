@@ -14,7 +14,7 @@
 
 ## 博客简介
 
-博客主页：[https://www.awebone.com](https://www.awebone.com)
+博客主页：[https://xuyanbo03.github.io](https://xuyanbo03.github.io/)
 
 **本博客使用Hexo搭建，使用next主题**，主要记录个人学习中知识点总结以及遇到的问题。
 
